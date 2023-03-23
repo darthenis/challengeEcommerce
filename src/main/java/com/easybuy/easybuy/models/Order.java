@@ -21,8 +21,14 @@ public class Order {
 
     private LocalDateTime DateTime;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
+    private Client client;
+
     @OneToMany(mappedBy="order", fetch=FetchType.EAGER)
     private Set<OrderProduct> orderProducts = new HashSet<>();
+
+
 
     public Order(){}
 
@@ -39,6 +45,14 @@ public class Order {
 
     public void setOrderProducts(Set<OrderProduct> orderProducts) {
         this.orderProducts = orderProducts;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Long getId() {
