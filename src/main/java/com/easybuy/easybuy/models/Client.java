@@ -37,6 +37,13 @@ public class Client {
         this.password = password;
     }
 
+    public void addFavorites(Favorite favorite){
+
+        favorite.setClient(this);
+        favorites.add(favorite);
+
+    }
+
     public Long getId() {
         return id;
     }

@@ -26,6 +26,14 @@ public class Favorite {
         ImgUrl = imgUrl;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public Long getId() {
         return id;
     }
