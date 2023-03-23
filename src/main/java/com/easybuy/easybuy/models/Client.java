@@ -40,6 +40,8 @@ public class Client {
         this.password = password;
     }
 
+
+
     public void addFavorites(Favorite favorite){
 
         favorite.setClient(this);
