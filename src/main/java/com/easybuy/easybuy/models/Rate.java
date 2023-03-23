@@ -2,10 +2,7 @@ package com.easybuy.easybuy.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Rate {
@@ -18,6 +15,12 @@ public class Rate {
     private String commentary;
 
     private StarsEnum stars;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Client client;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Product product;
 
     public Rate(){}
 
@@ -49,4 +52,21 @@ public class Rate {
     public void setStars(StarsEnum stars) {
         this.stars = stars;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
 }

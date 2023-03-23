@@ -32,6 +32,9 @@ public class Product {
     @ElementCollection
     private List<CategoriesEnum> categoriesEnums;
 
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    private List<Rate> rates;
+
     public Product(){}
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -47,6 +50,11 @@ public class Product {
         this.stock = stock;
         this.date = date;
     }
+
+    public void addRate(Rate rate){
+
+        rate.setProduct(this);
+        rates.add(rate);
 
     public List<CategoriesEnum> getCategoriesEnums() {
         return categoriesEnums;
@@ -126,5 +134,21 @@ public class Product {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public List<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(List<Rate> rates) {
+        this.rates = rates;
+    }
+
+    public List<CategoriesEnum> getCategoriesEnums() {
+        return categoriesEnums;
+    }
+
+    public void setCategoriesEnums(List<CategoriesEnum> categoriesEnums) {
+        this.categoriesEnums = categoriesEnums;
     }
 }
