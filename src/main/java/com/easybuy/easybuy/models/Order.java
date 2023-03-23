@@ -2,11 +2,10 @@ package com.easybuy.easybuy.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Order {
@@ -22,12 +21,24 @@ public class Order {
 
     private LocalDateTime DateTime;
 
+    @OneToMany(mappedBy="order", fetch=FetchType.EAGER)
+    private Set<OrderProduct> orderProducts = new HashSet<>();
+
     public Order(){}
 
     public Order(String number, Double amount, LocalDateTime dateTime) {
         this.number = number;
         this.amount = amount;
         DateTime = dateTime;
+    }
+
+
+    public Set<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(Set<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
     }
 
     public Long getId() {
