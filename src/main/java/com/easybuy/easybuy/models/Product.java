@@ -32,6 +32,9 @@ public class Product {
     @ElementCollection
     private List<CategoriesEnum> categoriesEnums;
 
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    private List<Rate> rates;
+
     public Product(){}
 
     public Product(String name, String description, Double price, int discount, List<String> imgsUrls, int stock, LocalDate date) {
@@ -42,6 +45,13 @@ public class Product {
         this.imgsUrls = imgsUrls;
         this.stock = stock;
         this.date = date;
+    }
+
+    public void addRate(Rate rate){
+
+        rate.setProduct(this);
+        rates.add(rate);
+
     }
 
     public Long getId() {
@@ -106,5 +116,21 @@ public class Product {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public List<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(List<Rate> rates) {
+        this.rates = rates;
+    }
+
+    public List<CategoriesEnum> getCategoriesEnums() {
+        return categoriesEnums;
+    }
+
+    public void setCategoriesEnums(List<CategoriesEnum> categoriesEnums) {
+        this.categoriesEnums = categoriesEnums;
     }
 }
