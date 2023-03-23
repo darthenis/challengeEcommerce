@@ -3,7 +3,9 @@ package com.easybuy.easybuy.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Client {
@@ -28,6 +30,9 @@ public class Client {
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private List<Favorite> favorites;
 
+    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+    private Set<Order> orders = new HashSet<>();
+
     public Client(){}
     public Client(String name, String lastName, String tel, String email, String password){
         this.name = name;
@@ -40,10 +45,29 @@ public class Client {
 
 
     public void addFavorites(Favorite favorite){
-
         favorite.setClient(this);
         favorites.add(favorite);
+    }
+    public void addOrders(Order order){
+        order.setClient(this);
+        orders.add(order);
+    }
 
+
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
     public Long getId() {
