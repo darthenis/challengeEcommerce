@@ -33,6 +33,10 @@ public class Client {
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
     private Set<Order> orders = new HashSet<>();
 
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    private List<Rate> rates;
+
+
     public Client(){}
     public Client(String name, String lastName, String tel, String email, String password){
         this.name = name;
@@ -68,6 +72,13 @@ public class Client {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    public void addRate(Rate rate){
+
+        rate.setClient(this);
+        rates.add(rate);
+
     }
 
     public Long getId() {
@@ -124,5 +135,21 @@ public class Client {
 
     public void setUrlImg(String urlImg) {
         this.urlImg = urlImg;
+    }
+
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
+
+    public List<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(List<Rate> rates) {
+        this.rates = rates;
     }
 }
