@@ -29,6 +29,9 @@ public class Product {
 
     private LocalDate date;
 
+    @ElementCollection
+    private List<CategoriesEnum> categoriesEnums;
+
     public Product(){}
 
     public Product(String name, String description, Double price, int discount, List<String> imgsUrls, int stock, LocalDate date) {
