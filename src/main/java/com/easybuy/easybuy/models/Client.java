@@ -2,10 +2,8 @@ package com.easybuy.easybuy.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Client {
@@ -27,6 +25,9 @@ public class Client {
 
     private String urlImg;
 
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    private List<Favorite> favorites;
+
     public Client(){}
     public Client(String name, String lastName, String tel, String email, String password){
         this.name = name;
@@ -37,6 +38,13 @@ public class Client {
     }
 
 
+
+    public void addFavorites(Favorite favorite){
+
+        favorite.setClient(this);
+        favorites.add(favorite);
+
+    }
 
     public Long getId() {
         return id;
