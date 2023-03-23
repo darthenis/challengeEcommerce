@@ -34,6 +34,10 @@ public class Product {
 
     public Product(){}
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderProduct_id")
+    private OrderProduct orderProduct;
+
     public Product(String name, String description, Double price, int discount, List<String> imgsUrls, int stock, LocalDate date) {
         this.name = name;
         this.description = description;
@@ -42,6 +46,22 @@ public class Product {
         this.imgsUrls = imgsUrls;
         this.stock = stock;
         this.date = date;
+    }
+
+    public List<CategoriesEnum> getCategoriesEnums() {
+        return categoriesEnums;
+    }
+
+    public void setCategoriesEnums(List<CategoriesEnum> categoriesEnums) {
+        this.categoriesEnums = categoriesEnums;
+    }
+
+    public OrderProduct getOrderProduct() {
+        return orderProduct;
+    }
+
+    public void setOrderProduct(OrderProduct orderProduct) {
+        this.orderProduct = orderProduct;
     }
 
     public Long getId() {
