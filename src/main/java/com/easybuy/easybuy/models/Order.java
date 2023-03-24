@@ -25,7 +25,7 @@ public class Order {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy="orders", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="order", fetch=FetchType.EAGER)
     private Set<OrderProduct> orderProducts = new HashSet<>();
 
 
