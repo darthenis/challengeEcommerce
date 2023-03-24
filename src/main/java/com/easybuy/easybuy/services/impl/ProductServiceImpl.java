@@ -1,12 +1,10 @@
 package com.easybuy.easybuy.services.impl;
 
 import com.easybuy.easybuy.DTO.CreateProductDTO;
-import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.repositories.ProductRepository;
 import com.easybuy.easybuy.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
