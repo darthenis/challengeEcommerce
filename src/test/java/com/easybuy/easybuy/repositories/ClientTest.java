@@ -34,4 +34,12 @@ public class ClientTest {
 
     }
 
+    @Test
+    public void editClient() throws Exception{
+
+
+
+
+
+    }
 }
