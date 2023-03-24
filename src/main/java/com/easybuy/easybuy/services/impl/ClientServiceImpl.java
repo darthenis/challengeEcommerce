@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -41,5 +42,15 @@ public class ClientServiceImpl implements ClientService {
         Client newClient = new Client(newClientDTO.getName(), newClientDTO.getLastName(), newClientDTO.getTel(), newClientDTO.getEmail(), newClientDTO.getPassword());
 
         clientRepository.save(newClient);
+    }
+
+    @Override
+    public void editClient() throws Exception {
+
+    }
+
+    @Override
+    public Optional<Client> findByEmail(String email) {
+        return clientRepository.findByEmail(email);
     }
 }
