@@ -33,15 +33,15 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void createClient(NewClientDTO newClientDTO) throws Exception {
 
-        if(newClientDTO.getName() == null) throw new Exception("missing name");
+        if(newClientDTO.getName() == null || newClientDTO.getName().isEmpty()) throw new Exception("missing name");
 
-        if(newClientDTO.getLastName() == null) throw new Exception("missing lastName");
+        if(newClientDTO.getLastName() == null || newClientDTO.getLastName().isEmpty()) throw new Exception("missing lastName");
 
-        if(newClientDTO.getEmail() == null) throw new Exception("missing email");
+        if(newClientDTO.getEmail() == null || newClientDTO.getEmail().isEmpty()) throw new Exception("missing email");
 
-        if(newClientDTO.getPassword() == null) throw new Exception("missing password");
+        if(newClientDTO.getPassword() == null || newClientDTO.getPassword().isEmpty()) throw new Exception("missing password");
 
-        if(newClientDTO.getTel() == null) throw new Exception("missing tel");
+        if(newClientDTO.getTel() == null || newClientDTO.getTel().isEmpty()) throw new Exception("missing tel");
 
         Client newClient = new Client(newClientDTO.getName(), newClientDTO.getLastName(), newClientDTO.getTel(), newClientDTO.getEmail(), newClientDTO.getPassword());
 
@@ -51,18 +51,22 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void editClient(NewClientDTO newClientDTO, String email) throws Exception {
 
-        if (newClientDTO.getName().isEmpty() && newClientDTO.getLastName().isEmpty() && newClientDTO.getEmail().isEmpty() && newClientDTO.getTel().isEmpty())
+        if (    (newClientDTO.getName() == null || newClientDTO.getName().isEmpty()) &&
+                (newClientDTO.getLastName() == null || newClientDTO.getLastName().isEmpty()) &&
+                (newClientDTO.getEmail() == null || newClientDTO.getEmail().isEmpty()) &&
+                (newClientDTO.getTel() == null || newClientDTO.getTel().isEmpty()))
+
             throw new Exception("missing value");
 
         Optional<Client> client = clientRepository.findByEmail(email);
 
-        if (newClientDTO.getName() != null) client.get().setName(newClientDTO.getName());
+        if (newClientDTO.getName() != null && !newClientDTO.getName().isEmpty()) client.get().setName(newClientDTO.getName());
 
-        if (newClientDTO.getLastName() != null) client.get().setLastName(newClientDTO.getLastName());
+        if (newClientDTO.getLastName() != null && !newClientDTO.getLastName().isEmpty()) client.get().setLastName(newClientDTO.getLastName());
 
-        if (newClientDTO.getEmail() != null) client.get().setEmail(newClientDTO.getEmail());
+        if (newClientDTO.getEmail() != null && !newClientDTO.getEmail().isEmpty()) client.get().setEmail(newClientDTO.getEmail());
 
-        if (newClientDTO.getTel() != null) client.get().setTel(newClientDTO.getTel());
+        if (newClientDTO.getTel() != null && !newClientDTO.getTel().isEmpty()) client.get().setTel(newClientDTO.getTel());
 
         clientRepository.save(client.get());
 
