@@ -40,7 +40,7 @@ public class ClientController {
     public ResponseEntity<?> edit(@RequestBody NewClientDTO newClientDTO, Authentication authentication){
 
         try {
-            clientService.editClient(newClientDTO, authentication);
+            clientService.editClient(newClientDTO, authentication.getName());
             return new ResponseEntity<>("edited succesfully", HttpStatus.OK);
         }catch(Exception exception){
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);

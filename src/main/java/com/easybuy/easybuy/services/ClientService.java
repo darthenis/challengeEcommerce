@@ -15,7 +15,7 @@ public interface ClientService {
 
     public void createClient(NewClientDTO newClientDTO) throws Exception;
 
-    public void editClient(NewClientDTO newClientDTO, Authentication authentication) throws Exception;
+    public void editClient(NewClientDTO newClientDTO, String email) throws Exception;
 
     public Optional<Client> findByEmail(String email);
 

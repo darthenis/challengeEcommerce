@@ -6,6 +6,10 @@ import com.easybuy.easybuy.services.ClientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -26,7 +30,7 @@ public class ClientTest {
     @Test
     public void createClient() throws Exception{
 
-        clientService.createClient(new NewClientDTO("melba", "Gallo", "123312", "melba@mindhub.com", passwordEncoder.encode("asdasd")));
+        clientService.createClient(new NewClientDTO("melba", "Gallo", "123312", "melba@mindhub.com", passwordEncoder.encode("asd")));
 
         List<Client> clients = clientService.findAll();
 
@@ -37,9 +41,12 @@ public class ClientTest {
     @Test
     public void editClient() throws Exception{
 
+        //Authentication auth = new UsernamePasswordAuthenticationToken("melba@mindhub.com", passwordEncoder.encode("asd"), AuthorityUtils.createAuthorityList("CLIENT"));
 
+        clientService.editClient(new NewClientDTO("malba", null, null, null, null), "melba@mindhub.com");
 
+        List<Client> clients = clientService.findAll();
 
-
+        assertThat(clients, hasItem(hasProperty("name", is("malba"))));
     }
 }
