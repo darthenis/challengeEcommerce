@@ -1,4 +1,4 @@
-package com.easybuy.easybuy.repositories;
+package com.easybuy.easybuy.controllers;
 
 import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.models.Client;
