@@ -4,9 +4,11 @@ import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.repositories.ClientRepository;
 import com.easybuy.easybuy.services.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ClientServiceImpl implements ClientServices {
 
     @Autowired
