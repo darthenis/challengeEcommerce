@@ -1,6 +1,6 @@
 package com.easybuy.easybuy.DTO;
 
-import com.easybuy.easybuy.models.OrderProduct;
+import com.easybuy.easybuy.models.TicketProduct;
 import com.easybuy.easybuy.models.Product;
 
 public class OrderProductDTO {
@@ -15,12 +15,12 @@ public class OrderProductDTO {
 
     private Product product;
 
-    public OrderProductDTO(OrderProduct orderProduct) {
-        this.id = orderProduct.getId();
-        this.price = orderProduct.getPrice();
-        this.quantity = orderProduct.getQuantity();
-        this.name = orderProduct.getName();
-        this.product = orderProduct.getProduct();
+    public OrderProductDTO(TicketProduct ticketProduct) {
+        this.id = ticketProduct.getId();
+        this.price = ticketProduct.getPrice();
+        this.quantity = ticketProduct.getQuantity();
+        this.name = ticketProduct.getName();
+        this.product = ticketProduct.getProduct();
     }
 
     public Long getId() {

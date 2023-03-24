@@ -2,7 +2,6 @@ package com.easybuy.easybuy.controllers;
 
 
 import com.easybuy.easybuy.DTO.OrderDTO;
-import com.easybuy.easybuy.models.Order;
 import com.easybuy.easybuy.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
