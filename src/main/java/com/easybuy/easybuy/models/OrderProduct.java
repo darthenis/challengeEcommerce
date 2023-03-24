@@ -19,11 +19,10 @@ public class OrderProduct {
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "order_id")
-    private Set<Order> orders;
+    private Order order;
 
-    @OneToMany(mappedBy="orderProduct", fetch=FetchType.EAGER)
-    private Set<Product> products = new HashSet<>();
+    @ManyToOne(fetch=FetchType.EAGER)
+    private Product product;
 
 
 
@@ -41,15 +40,15 @@ public class OrderProduct {
 
     public void addProduct(Product product) {
         product.setOrderProduct(this);
-        products.add(product);
+        this.product = product;
     }
 
-    public Set<Product> getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public void setProducts(Product product) {
+        this.product = product;
     }
 
     public Long getId() {
@@ -84,11 +83,11 @@ public class OrderProduct {
         this.name = name;
     }
 
-    public Set<Order> getOrders() {
-        return orders;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

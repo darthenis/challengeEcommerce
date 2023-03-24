@@ -38,8 +38,7 @@ public class Product {
 
     public Product(){}
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderProduct_id")
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private Set<OrderProduct> orderProducts;
 
     public Product(String name, String description, Double price, int discount, List<String> imgsUrls, int stock, LocalDate date) {
