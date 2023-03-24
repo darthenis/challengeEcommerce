@@ -49,6 +49,8 @@ public class ClientServiceImpl implements ClientService {
 
         if(newClientDTO.getTel() == null || newClientDTO.getTel().isEmpty()) throw new Exception("missing tel");
 
+        if(clientRepository.existsByEmail(newClientDTO.getEmail())) throw new Exception("Email already registered");
+
         Client newClient = new Client(newClientDTO.getName(), newClientDTO.getLastName(), newClientDTO.getTel(), newClientDTO.getEmail(), passwordEncoder.encode(newClientDTO.getPassword()));
 
         clientRepository.save(newClient);
