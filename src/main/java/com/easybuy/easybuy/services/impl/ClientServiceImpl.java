@@ -5,6 +5,10 @@ import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.repositories.ClientRepository;
 import com.easybuy.easybuy.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,9 +49,32 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void editClient() throws Exception {
+    public void editClient(NewClientDTO newClientDTO, Authentication authentication) throws Exception {
 
-    }
+        if(newClientDTO.getName().isEmpty() && newClientDTO.getLastName().isEmpty() && newClientDTO.getEmail().isEmpty() && newClientDTO.getTel().isEmpty()) throw new Exception("missing value");
+
+        Optional<Client> client = clientRepository.findByEmail(authentication.getName());
+
+        if(!newClientDTO.getName().isEmpty()) client.get().setName(newClientDTO.getName());
+
+        if(!newClientDTO.getLastName().isEmpty()) client.get().setLastName(newClientDTO.getLastName());
+
+        if(!newClientDTO.getEmail().isEmpty()) client.get().setEmail(newClientDTO.getEmail());
+
+        if(!newClientDTO.getTel().isEmpty()) client.get().setTel(newClientDTO.getTel());
+
+        clientRepository.save(client.get());
+
+        authentication.setAuthenticated(false);
+
+        if(!newClientDTO.getEmail().isEmpty()){
+
+            Authentication auth = new UsernamePasswordAuthenticationToken(newClientDTO.getEmail(), client.get().getPassword(), AuthorityUtils.createAuthorityList("CLIENT"));
+
+            SecurityContextHolder.getContext().setAuthentication(auth);
+
+        }
+
 
     @Override
     public Optional<Client> findByEmail(String email) {

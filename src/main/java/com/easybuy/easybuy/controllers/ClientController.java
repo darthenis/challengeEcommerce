@@ -6,6 +6,7 @@ import com.easybuy.easybuy.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,18 @@ public class ClientController {
         }catch(Exception exception){
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
         }
+    }
+
+    @PostMapping("/clients/current")
+    public ResponseEntity<?> edit(@RequestBody NewClientDTO newClientDTO, Authentication authentication){
+
+        try {
+            clientService.editClient(newClientDTO, authentication);
+            return new ResponseEntity<>("edited succesfully", HttpStatus.OK);
+        }catch(Exception exception){
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
+        }
+
     }
 
 }
