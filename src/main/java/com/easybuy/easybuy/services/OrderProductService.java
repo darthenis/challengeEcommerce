@@ -1,14 +1,13 @@
 package com.easybuy.easybuy.services;
 
-import com.easybuy.easybuy.models.OrderProduct;
-import org.hibernate.mapping.Set;
+import com.easybuy.easybuy.models.TicketProduct;
 
 import java.util.List;
 
 public interface OrderProductService {
-    void save (OrderProduct orderProduct);
+    void save (TicketProduct ticketProduct);
 
-    List<OrderProduct> findAll() ;
+    List<TicketProduct> findAll() ;
 
 
 }

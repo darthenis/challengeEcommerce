@@ -1,13 +1,12 @@
 package com.easybuy.easybuy.services.impl;
 
-import com.easybuy.easybuy.models.OrderProduct;
+import com.easybuy.easybuy.models.TicketProduct;
 import com.easybuy.easybuy.repositories.OrderProductRepository;
 import com.easybuy.easybuy.services.OrderProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class OrderProductServiceImp implements OrderProductService{
@@ -17,12 +16,12 @@ public class OrderProductServiceImp implements OrderProductService{
 
 
     @Override
-    public void save(OrderProduct orderProduct) {
+    public void save(TicketProduct ticketProduct) {
 
     }
 
     @Override
-    public List<OrderProduct> findAll() {
+    public List<TicketProduct> findAll() {
         return orderProductRepository.findAll();
     }
 

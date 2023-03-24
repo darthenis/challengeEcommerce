@@ -1,17 +1,9 @@
 package com.easybuy.easybuy.DTO;
 
 import com.easybuy.easybuy.models.Client;
-import com.easybuy.easybuy.models.Favorite;
-import com.easybuy.easybuy.models.Order;
 
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toSet;
 
 public class ClientDTO {
 

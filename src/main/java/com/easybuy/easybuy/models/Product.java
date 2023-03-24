@@ -39,7 +39,7 @@ public class Product {
     public Product(){}
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private Set<OrderProduct> orderProducts;
+    private Set<TicketProduct> ticketProducts;
 
     public Product(String name, String description, Double price, int discount, List<String> imgsUrls, int stock, LocalDate date) {
         this.name = name;
@@ -58,12 +58,12 @@ public class Product {
 
     }
 
-    public Set<OrderProduct> getOrderProduct() {
-        return orderProducts;
+    public Set<TicketProduct> getOrderProduct() {
+        return ticketProducts;
     }
 
-    public void setOrderProduct(OrderProduct orderProduct) {
-        this.orderProducts.add(orderProduct);
+    public void setOrderProduct(TicketProduct ticketProduct) {
+        this.ticketProducts.add(ticketProduct);
     }
 
     public Long getId() {

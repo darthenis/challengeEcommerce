@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Order {
+public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -25,26 +25,26 @@ public class Order {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy="order", fetch=FetchType.EAGER)
-    private Set<OrderProduct> orderProducts = new HashSet<>();
+    @OneToMany(mappedBy= "ticket", fetch=FetchType.EAGER)
+    private Set<TicketProduct> ticketProducts = new HashSet<>();
 
 
 
-    public Order(){}
+    public Ticket(){}
 
-    public Order(String number, Double amount, LocalDateTime dateTime) {
+    public Ticket(String number, Double amount, LocalDateTime dateTime) {
         this.number = number;
         this.amount = amount;
         DateTime = dateTime;
     }
 
 
-    public Set<OrderProduct> getOrderProducts() {
-        return orderProducts;
+    public Set<TicketProduct> getOrderProducts() {
+        return ticketProducts;
     }
 
-    public void setOrderProducts(Set<OrderProduct> orderProducts) {
-        this.orderProducts = orderProducts;
+    public void setOrderProducts(Set<TicketProduct> ticketProducts) {
+        this.ticketProducts = ticketProducts;
     }
 
     public Client getClient() {

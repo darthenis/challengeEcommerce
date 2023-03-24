@@ -1,6 +1,6 @@
 package com.easybuy.easybuy.services.impl;
 
-import com.easybuy.easybuy.models.Order;
+import com.easybuy.easybuy.models.Ticket;
 import com.easybuy.easybuy.repositories.OrderRepository;
 import com.easybuy.easybuy.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ public class OrderServiceImpl implements OrderService {
     OrderRepository orderRepository;
 
     @Override
-    public void save(Order order) {
-        orderRepository.save(order);
+    public void save(Ticket ticket) {
+        orderRepository.save(ticket);
     }
 
     @Override
-    public List<Order> findAll() {
+    public List<Ticket> findAll() {
         return orderRepository.findAll();
     }
 }
