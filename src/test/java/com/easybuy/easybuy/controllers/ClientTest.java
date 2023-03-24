@@ -46,7 +46,7 @@ public class ClientTest {
 
     }
 
-    @WithMockUser(username="melba@mindhub.com")
+    @WithMockUser(username="melba@mindhub.com", roles = "CLIENT")
     @Test
     public void editClient() throws Exception{
 
@@ -60,4 +60,5 @@ public class ClientTest {
         List<Client> clients = clientService.findAll();
         assertThat(clients, hasItem(hasProperty("name", is("emi"))));
     }
+
 }

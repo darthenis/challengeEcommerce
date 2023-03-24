@@ -6,6 +6,7 @@ import com.easybuy.easybuy.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,8 @@ public class ProductController {
 
     }
 
-    @PostMapping("/clients/current/products")
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/products")
     public ResponseEntity<?> createProduct( @RequestBody CreateProductDTO createProductDTO){
         try{
             productService.createProduct(createProductDTO);
