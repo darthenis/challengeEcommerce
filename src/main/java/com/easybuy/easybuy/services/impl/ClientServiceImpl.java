@@ -1,4 +1,24 @@
 package com.easybuy.easybuy.services.impl;
 
-public class ClientServiceImpl {
+import com.easybuy.easybuy.models.Client;
+import com.easybuy.easybuy.repositories.ClientRepository;
+import com.easybuy.easybuy.services.ClientServices;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class ClientServiceImpl implements ClientServices {
+
+    @Autowired
+    ClientRepository clientRepository;
+
+    @Override
+    public void save(Client client) {
+        clientRepository.save(client);
+    }
+
+    @Override
+    public List<Client> findAll() {
+        return clientRepository.findAll();
+    }
 }
