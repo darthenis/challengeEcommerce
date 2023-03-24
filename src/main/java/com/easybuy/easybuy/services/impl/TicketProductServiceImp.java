@@ -1,18 +1,18 @@
 package com.easybuy.easybuy.services.impl;
 
 import com.easybuy.easybuy.models.TicketProduct;
-import com.easybuy.easybuy.repositories.OrderProductRepository;
-import com.easybuy.easybuy.services.OrderProductService;
+import com.easybuy.easybuy.repositories.TicketProductRepository;
+import com.easybuy.easybuy.services.TicketProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class OrderProductServiceImp implements OrderProductService{
+public class TicketProductServiceImp implements TicketProductService {
 
     @Autowired
-    private OrderProductRepository orderProductRepository;
+    private TicketProductRepository orderProductRepository;
 
 
     @Override

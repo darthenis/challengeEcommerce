@@ -1,8 +1,10 @@
 package com.easybuy.easybuy.controllers;
 
+import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.ProductDTO;
 import com.easybuy.easybuy.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +26,14 @@ public class ProductController {
 
     }
 
-    @PostMapping("/current/product/new")
-    public ResponseEntity<Object> createProduct(Authentication authentication, @RequestBody )
-
+    @PostMapping("/clients/current/products")
+    public ResponseEntity<?> createProduct( @RequestBody CreateProductDTO createProductDTO){
+        try{
+            productService.createProduct(createProductDTO);
+            return new ResponseEntity<>("Product created succesfully", HttpStatus.CREATED);
+        }catch(Exception exception){
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
 
 }

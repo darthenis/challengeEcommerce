@@ -1,10 +1,9 @@
 package com.easybuy.easybuy.repositories;
 
-import com.easybuy.easybuy.models.TicketProduct;
+import com.easybuy.easybuy.models.Ticket;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
-public interface OrderProductRepository extends JpaRepository <TicketProduct,Long> {
-
+public interface TicketRepository extends JpaRepository<Ticket,Long> {
 }
