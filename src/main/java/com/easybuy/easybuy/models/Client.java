@@ -47,7 +47,6 @@ public class Client {
     }
 
 
-
     public void addFavorites(Favorite favorite){
         favorite.setClient(this);
         favorites.add(favorite);
