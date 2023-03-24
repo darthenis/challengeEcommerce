@@ -20,8 +20,9 @@ public class OrderProduct {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id")
+    private Set<Order> orders;
 
-    @OneToMany(mappedBy="product", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="orderProduct", fetch=FetchType.EAGER)
     private Set<Product> products = new HashSet<>();
 
 
@@ -81,5 +82,13 @@ public class OrderProduct {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 }

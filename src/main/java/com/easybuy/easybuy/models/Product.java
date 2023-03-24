@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -39,7 +40,7 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "orderProduct_id")
-    private OrderProduct orderProduct;
+    private Set<OrderProduct> orderProducts;
 
     public Product(String name, String description, Double price, int discount, List<String> imgsUrls, int stock, LocalDate date) {
         this.name = name;
@@ -51,25 +52,19 @@ public class Product {
         this.date = date;
     }
 
-    public void addRate(Rate rate){
+    public void addRate(Rate rate) {
 
         rate.setProduct(this);
         rates.add(rate);
 
-    public List<CategoriesEnum> getCategoriesEnums() {
-        return categoriesEnums;
     }
 
-    public void setCategoriesEnums(List<CategoriesEnum> categoriesEnums) {
-        this.categoriesEnums = categoriesEnums;
-    }
-
-    public OrderProduct getOrderProduct() {
-        return orderProduct;
+    public Set<OrderProduct> getOrderProduct() {
+        return orderProducts;
     }
 
     public void setOrderProduct(OrderProduct orderProduct) {
-        this.orderProduct = orderProduct;
+        this.orderProducts.add(orderProduct);
     }
 
     public Long getId() {
