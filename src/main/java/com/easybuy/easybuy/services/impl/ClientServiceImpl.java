@@ -5,10 +5,12 @@ import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.repositories.ClientRepository;
 import com.easybuy.easybuy.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,10 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     ClientRepository clientRepository;
+
+    @Lazy
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public void save(Client client) {
@@ -43,7 +49,7 @@ public class ClientServiceImpl implements ClientService {
 
         if(newClientDTO.getTel() == null || newClientDTO.getTel().isEmpty()) throw new Exception("missing tel");
 
-        Client newClient = new Client(newClientDTO.getName(), newClientDTO.getLastName(), newClientDTO.getTel(), newClientDTO.getEmail(), newClientDTO.getPassword());
+        Client newClient = new Client(newClientDTO.getName(), newClientDTO.getLastName(), newClientDTO.getTel(), newClientDTO.getEmail(), passwordEncoder.encode(newClientDTO.getPassword()));
 
         clientRepository.save(newClient);
     }
