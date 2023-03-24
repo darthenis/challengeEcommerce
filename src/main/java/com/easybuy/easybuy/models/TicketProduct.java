@@ -3,11 +3,9 @@ package com.easybuy.easybuy.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-public class OrderProduct {
+public class TicketProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -19,18 +17,18 @@ public class OrderProduct {
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Order order;
+    private Ticket ticket;
 
     @ManyToOne(fetch=FetchType.EAGER)
     private Product product;
 
 
 
-    public OrderProduct() {
+    public TicketProduct() {
 
     }
 
-    public OrderProduct(Long id, Double price, int quantity, String name) {
+    public TicketProduct(Long id, Double price, int quantity, String name) {
         this.id = id;
         this.price = price;
         this.quantity = quantity;
@@ -83,11 +81,11 @@ public class OrderProduct {
         this.name = name;
     }
 
-    public Order getOrder() {
-        return order;
+    public Ticket getOrder() {
+        return ticket;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrder(Ticket ticket) {
+        this.ticket = ticket;
     }
 }

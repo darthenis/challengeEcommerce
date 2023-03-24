@@ -1,8 +1,8 @@
 package com.easybuy.easybuy.DTO;
 
 import com.easybuy.easybuy.models.Client;
-import com.easybuy.easybuy.models.Order;
-import com.easybuy.easybuy.models.OrderProduct;
+import com.easybuy.easybuy.models.Ticket;
+import com.easybuy.easybuy.models.TicketProduct;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -17,18 +17,18 @@ public class OrderDTO {
 
     private LocalDateTime dateTime;
 
-    private Set<OrderProduct> orderProducts;
+    private Set<TicketProduct> ticketProducts;
 
     private Client client;
 
 
-    public OrderDTO(Order order) {
-        this.id = order.getId();
-        this.number = order.getNumber();
-        this.amount = order.getAmount();
-        this.dateTime = order.getDateTime();
-        this.orderProducts = order.getOrderProducts();
-        this.client = order.getClient();
+    public OrderDTO(Ticket ticket) {
+        this.id = ticket.getId();
+        this.number = ticket.getNumber();
+        this.amount = ticket.getAmount();
+        this.dateTime = ticket.getDateTime();
+        this.ticketProducts = ticket.getOrderProducts();
+        this.client = ticket.getClient();
     }
 
     public Long getId() {
@@ -63,12 +63,12 @@ public class OrderDTO {
         this.dateTime = dateTime;
     }
 
-    public Set<OrderProduct> getOrderProducts() {
-        return orderProducts;
+    public Set<TicketProduct> getOrderProducts() {
+        return ticketProducts;
     }
 
-    public void setOrderProducts(Set<OrderProduct> orderProducts) {
-        this.orderProducts = orderProducts;
+    public void setOrderProducts(Set<TicketProduct> ticketProducts) {
+        this.ticketProducts = ticketProducts;
     }
 
     public Client getClient() {
