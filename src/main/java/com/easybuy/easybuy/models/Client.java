@@ -28,7 +28,7 @@ public class Client {
     private String urlImg;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
-    private List<Favorite> favorites;
+    private Set<Favorite> favorites;
 
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
     private Set<Order> orders = new HashSet<>();
@@ -57,13 +57,12 @@ public class Client {
         orders.add(order);
     }
 
-
-    public List<Favorite> getFavorites() {
-        return favorites;
+    public void setFavorites(Favorite favorite) {
+        this.favorites.add(favorite);
     }
 
-    public void setFavorites(List<Favorite> favorites) {
-        this.favorites = favorites;
+    public Set<Favorite> getFavorites() {
+        return favorites;
     }
 
     public Set<Order> getOrders() {
@@ -135,14 +134,6 @@ public class Client {
 
     public void setUrlImg(String urlImg) {
         this.urlImg = urlImg;
-    }
-
-    public List<Favorite> getFavorites() {
-        return favorites;
-    }
-
-    public void setFavorites(List<Favorite> favorites) {
-        this.favorites = favorites;
     }
 
     public List<Rate> getRates() {
