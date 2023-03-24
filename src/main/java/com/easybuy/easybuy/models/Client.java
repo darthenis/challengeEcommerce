@@ -57,6 +57,13 @@ public class Client {
         orders.add(order);
     }
 
+    public void addRate(Rate rate){
+
+        rate.setClient(this);
+        rates.add(rate);
+
+    }
+
     public void setFavorites(Favorite favorite) {
         this.favorites.add(favorite);
     }
@@ -71,13 +78,6 @@ public class Client {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
-    }
-
-    public void addRate(Rate rate){
-
-        rate.setClient(this);
-        rates.add(rate);
-
     }
 
     public Long getId() {
