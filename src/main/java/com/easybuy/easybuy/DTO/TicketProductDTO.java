@@ -3,7 +3,7 @@ package com.easybuy.easybuy.DTO;
 import com.easybuy.easybuy.models.TicketProduct;
 import com.easybuy.easybuy.models.Product;
 
-public class OrderProductDTO {
+public class TicketProductDTO {
 
     private Long id;
 
@@ -15,7 +15,7 @@ public class OrderProductDTO {
 
     private Product product;
 
-    public OrderProductDTO(TicketProduct ticketProduct) {
+    public TicketProductDTO(TicketProduct ticketProduct) {
         this.id = ticketProduct.getId();
         this.price = ticketProduct.getPrice();
         this.quantity = ticketProduct.getQuantity();
