@@ -36,7 +36,7 @@ public class ClientController {
         }
     }
 
-    @PostMapping("/clients/current")
+    @PatchMapping("/clients/current")
     public ResponseEntity<?> edit(@RequestBody NewClientDTO newClientDTO, Authentication authentication){
 
         try {
