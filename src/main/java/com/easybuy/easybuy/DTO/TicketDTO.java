@@ -7,7 +7,7 @@ import com.easybuy.easybuy.models.TicketProduct;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public class OrderDTO {
+public class TicketDTO {
 
     private Long id;
 
@@ -22,7 +22,7 @@ public class OrderDTO {
     private Client client;
 
 
-    public OrderDTO(Ticket ticket) {
+    public TicketDTO(Ticket ticket) {
         this.id = ticket.getId();
         this.number = ticket.getNumber();
         this.amount = ticket.getAmount();
