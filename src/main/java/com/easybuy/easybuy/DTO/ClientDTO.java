@@ -30,6 +30,7 @@ public class ClientDTO {
     private String urlImg;
 
     private List<FavoriteDTO> favorites;
+    private Set<FavoriteDTO> favorites;
 
     private Set<OrderDTO> orders ;
 
@@ -43,6 +44,8 @@ public class ClientDTO {
         this.urlImg = client.getUrlImg();
         this.favorites = client.getFavorites().stream().map(favorite -> new FavoriteDTO(favorite) ).collect(Collectors.toList());
         this.orders = client.getOrders().stream().map(order -> new OrderDTO(order)).collect(Collectors.toList());
+        this.favorites = client.getFavorites().stream().map(favorite -> new FavoriteDTO(favorite) ).collect(Collectors.toSet());
+        this.orders = client.getOrders().stream().map(order -> new OrderDTO(order)).collect(Collectors.toSet());
     }
 
     public Long getId() {
@@ -73,11 +76,11 @@ public class ClientDTO {
         return urlImg;
     }
 
-    public List<Favorite> getFavorites() {
+    public Set<FavoriteDTO> getFavorites() {
         return favorites;
     }
 
-    public Set<Order> getOrders() {
+    public Set<OrderDTO> getOrders() {
         return orders;
     }
 }

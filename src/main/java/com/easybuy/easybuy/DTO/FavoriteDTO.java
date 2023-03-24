@@ -1,5 +1,7 @@
 package com.easybuy.easybuy.DTO;
 
+import com.easybuy.easybuy.models.Favorite;
+
 public class FavoriteDTO {
 
     private Long id;
@@ -8,33 +10,26 @@ public class FavoriteDTO {
 
     private String imgUrl;
 
-    public FavoriteDTO(Long id, String name, String imgUrl) {
-        this.id = id;
-        this.name = name;
-        this.imgUrl = imgUrl;
+    public FavoriteDTO(Favorite favorite) {
+        this.id = favorite.getId();
+        this.name = favorite.getName();
+        this.imgUrl = favorite.getImgUrl();
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     public String getImgUrl() {
         return imgUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
 }
