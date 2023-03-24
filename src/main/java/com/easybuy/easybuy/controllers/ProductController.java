@@ -1,7 +1,7 @@
 package com.easybuy.easybuy.controllers;
 
-import com.easybuy.easybuy.DTO.ClientDTO;
-import com.easybuy.easybuy.services.ClientService;
+import com.easybuy.easybuy.DTO.ProductDTO;
+import com.easybuy.easybuy.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,16 +12,15 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
-public class ClientController {
+public class ProductController {
 
     @Autowired
-    ClientService clientService;
+    ProductService productService;
 
-    @GetMapping("/clients")
-    public List<ClientDTO> getAll(){
+    @GetMapping("/products")
+    public List<ProductDTO> getAll(){
 
-        return clientService.findAll().stream().map(ClientDTO::new).collect(Collectors.toList());
+        return productService.findAll().stream().map(ProductDTO::new).collect(Collectors.toList());
 
     }
-
 }
