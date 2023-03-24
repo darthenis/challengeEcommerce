@@ -41,12 +41,10 @@ public class ClientTest {
     @Test
     public void editClient() throws Exception{
 
-        //Authentication auth = new UsernamePasswordAuthenticationToken("melba@mindhub.com", passwordEncoder.encode("asd"), AuthorityUtils.createAuthorityList("CLIENT"));
-
-        clientService.editClient(new NewClientDTO("malba", null, null, null, null), "melba@mindhub.com");
+        clientService.editClient(new NewClientDTO(null, "pollo", null, null, null), "melba@mindhub.com");
 
         List<Client> clients = clientService.findAll();
 
-        assertThat(clients, hasItem(hasProperty("name", is("malba"))));
+        assertThat(clients, hasItem(hasProperty("lastName", is("pollo"))));
     }
 }
