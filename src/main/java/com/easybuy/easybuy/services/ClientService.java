@@ -4,7 +4,7 @@ import com.easybuy.easybuy.models.Client;
 
 import java.util.List;
 
-public interface ClientServices {
+public interface ClientService {
 
     public void save(Client client);
 
