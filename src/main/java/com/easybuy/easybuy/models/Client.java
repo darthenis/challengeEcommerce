@@ -71,11 +71,11 @@ public class Client {
         return favorites;
     }
 
-    public Set<Ticket> getOrders() {
+    public Set<Ticket> getTickets() {
         return tickets;
     }
 
-    public void setOrders(Set<Ticket> tickets) {
+    public void setTickets(Set<Ticket> tickets) {
         this.tickets = tickets;
     }
 

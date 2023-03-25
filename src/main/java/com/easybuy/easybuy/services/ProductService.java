@@ -5,6 +5,7 @@ import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.models.Product;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
@@ -13,5 +14,7 @@ public interface ProductService {
     public List<Product> findAll();
 
     public void createProduct(CreateProductDTO createProductDTO) throws Exception;
+
+    public Optional<Product> findById(Long id);
 
 }
