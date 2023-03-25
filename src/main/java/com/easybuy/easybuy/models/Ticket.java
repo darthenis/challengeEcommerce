@@ -39,11 +39,11 @@ public class Ticket {
     }
 
 
-    public Set<TicketProduct> getOrderProducts() {
+    public Set<TicketProduct> getTicketProducts() {
         return ticketProducts;
     }
 
-    public void setOrderProducts(Set<TicketProduct> ticketProducts) {
+    public void setTicketProducts(Set<TicketProduct> ticketProducts) {
         this.ticketProducts = ticketProducts;
     }
 

@@ -33,8 +33,8 @@ public class ClientDTO {
         this.email = client.getEmail();
         this.password = client.getPassword();
         this.urlImg = client.getUrlImg();
-        this.favorites = client.getFavorites().stream().map(favorite -> new FavoriteDTO(favorite) ).collect(Collectors.toSet());
-        this.orders = client.getOrders().stream().map(order -> new TicketDTO(order)).collect(Collectors.toSet());
+        this.favorites = client.getFavorites().stream().map(FavoriteDTO::new).collect(Collectors.toSet());
+        this.orders = client.getTickets().stream().map(TicketDTO::new).collect(Collectors.toSet());
     }
 
     public Long getId() {
