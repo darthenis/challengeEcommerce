@@ -51,7 +51,7 @@ public class Client {
         favorite.setClient(this);
         favorites.add(favorite);
     }
-    public void addOrders(Ticket ticket){
+    public void addTicket(Ticket ticket){
         ticket.setClient(this);
         tickets.add(ticket);
     }

@@ -1,22 +1,27 @@
 package com.easybuy.easybuy.DTO;
 
+import com.easybuy.easybuy.models.Product;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class NewTicketDTO {
-private Double amount;
+
 private LocalDateTime dateTime;
 
-    public NewTicketDTO(Double amount, LocalDateTime dateTime) {
-        this.amount = amount;
+private List<ApplyProductDTO> products;
+
+    public NewTicketDTO(LocalDateTime dateTime, List<ApplyProductDTO> products) {
         this.dateTime = dateTime;
+        this.products = products;
     }
 
-    public Double getAmount() {
-        return amount;
+    public List<ApplyProductDTO> getProducts() {
+        return products;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setProducts(List<ApplyProductDTO> products) {
+        this.products = products;
     }
 
     public LocalDateTime getDateTime() {

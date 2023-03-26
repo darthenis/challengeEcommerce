@@ -28,8 +28,6 @@ public class Ticket {
     @OneToMany(mappedBy= "ticket", fetch=FetchType.EAGER)
     private Set<TicketProduct> ticketProducts = new HashSet<>();
 
-
-
     public Ticket(){}
 
     public Ticket(String number, Double amount, LocalDateTime dateTime) {
@@ -38,6 +36,13 @@ public class Ticket {
         DateTime = dateTime;
     }
 
+    public void addTicketProduct(TicketProduct ticketProduct){
+
+        ticketProduct.setTicket(this);
+
+        this.ticketProducts.add(ticketProduct);
+
+    }
 
     public Set<TicketProduct> getTicketProducts() {
         return ticketProducts;

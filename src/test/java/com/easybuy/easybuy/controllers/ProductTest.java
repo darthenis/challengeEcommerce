@@ -1,12 +1,18 @@
 package com.easybuy.easybuy.controllers;
 
+import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
+import com.easybuy.easybuy.DTO.NewTicketDTO;
 import com.easybuy.easybuy.models.CategoriesEnum;
 import com.easybuy.easybuy.models.Product;
+import com.easybuy.easybuy.models.Ticket;
 import com.easybuy.easybuy.services.ProductService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.easybuy.easybuy.services.TicketService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -23,6 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProductTest {
 
     @Autowired
@@ -34,8 +42,12 @@ public class ProductTest {
     @Autowired
     ObjectMapper objectMapper;
 
+    @Autowired
+    TicketService ticketService;
+
     @WithMockUser(roles = "ADMIN")
     @Test
+    @Order(3)
     public void createProduct() throws Exception {
 
         CreateProductDTO product = new CreateProductDTO("Television", "30 pulgadas", 1000.0, 0, List.of("url"), 20, LocalDate.now(), List.of(CategoriesEnum.AUDIONVIDEO));
@@ -47,7 +59,28 @@ public class ProductTest {
 
         List<Product> products = productService.findAll();
 
+        System.out.println("element 2: " + products.size());
+
         assertThat(products, hasItem(hasProperty("name", is("Television"))));
+    }
+
+    @Order(4)
+    @WithMockUser(roles = "CLIENT", username = "melba@mindhub.com")
+    @Test
+    public void CreateTicketOK() throws Exception {
+
+        System.out.println("elements:  " + productService.findAll().size());
+
+        NewTicketDTO newTicketDTO = new NewTicketDTO(LocalDateTime.now(), List.of(new ApplyProductDTO(1L, 12.0, 2)));
+
+        mockMvc.perform(post("/api/client/current/ticket")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(newTicketDTO)))
+                .andExpect(status().isCreated());
+
+        List<Ticket> ticket= ticketService.findAll();
+        assertThat(ticket, hasItem(hasProperty("number", is("001-000001"))));
+
     }
 
 }
