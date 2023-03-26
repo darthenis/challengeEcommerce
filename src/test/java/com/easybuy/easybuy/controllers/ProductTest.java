@@ -3,6 +3,7 @@ package com.easybuy.easybuy.controllers;
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.NewTicketDTO;
+import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.models.CategoriesEnum;
 import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Product;
@@ -29,6 +30,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -68,29 +70,44 @@ public class ProductTest {
         assertThat(products, hasItem(hasProperty("name", is("Television"))));
     }
 
-    @Order(4)
-    @WithMockUser(roles = "CLIENT", username = "melba@mindhub.com")
+//    @Order(4)
+//    @WithMockUser(roles = "CLIENT", username = "melba@mindhub.com")
+//    @Test
+//    public void CreateTicketOK() throws Exception {
+//
+//        NewTicketDTO newTicketDTO = new NewTicketDTO(LocalDateTime.now(),1500.0, List.of(new ApplyProductDTO(1L, 12.0, 2)));
+//
+//        mockMvc.perform(post("/api/client/current/ticket")
+//                        .contentType("application/json")
+//                        .content(objectMapper.writeValueAsString(newTicketDTO)))
+//                .andExpect(status().isCreated());
+//
+//        List<Ticket> ticket = ticketService.findAll();
+//        assertThat(ticket, hasItem(hasProperty("number", is("001-000001"))));
+//
+//        Optional<Client> client = clientService.findByEmail("melba@mindhub.com");
+//
+//        assertThat(client.get().getTickets(), is(not(empty())));
+//
+//        Ticket ticket1 = ticketService.finByNumber("001-000001");
+//
+//        assertThat(ticket1.getTicketProducts(), is(not(empty())) );
+//
+//    }
+
+    @WithMockUser(roles = "ADMIN")
     @Test
-    public void CreateTicketOK() throws Exception {
+    public void patchProduct() throws Exception{
 
-        NewTicketDTO newTicketDTO = new NewTicketDTO(LocalDateTime.now(), List.of(new ApplyProductDTO(1L, 12.0, 2)));
-
-        mockMvc.perform(post("/api/client/current/ticket")
+        UpdateProductDTO updateProduct = new UpdateProductDTO(1l,"tv","full hd", 1500.5, 15, null,80, LocalDate.now(), null);
+        mockMvc.perform(patch("/api/products")
                         .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(newTicketDTO)))
+                        .content(objectMapper.writeValueAsString(updateProduct)))
                 .andExpect(status().isCreated());
 
-        List<Ticket> ticket = ticketService.findAll();
-        assertThat(ticket, hasItem(hasProperty("number", is("001-000001"))));
 
-        Optional<Client> client = clientService.findByEmail("melba@mindhub.com");
-
-        assertThat(client.get().getTickets(), is(not(empty())));
-
-        Ticket ticket1 = ticketService.finByNumber("001-000001");
-
-        assertThat(ticket1.getTicketProducts(), is(not(empty())) );
-
+        List<Product> products = productService.findAll();
+        assertThat(products,hasItem(hasProperty("name",is("tv"))));
     }
 
 

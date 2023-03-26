@@ -11,9 +11,15 @@ private LocalDateTime dateTime;
 
 private List<ApplyProductDTO> products;
 
-    public NewTicketDTO(LocalDateTime dateTime, List<ApplyProductDTO> products) {
+private Double amount;
+
+    public NewTicketDTO(LocalDateTime dateTime,Double amount, List<ApplyProductDTO> products) {
         this.dateTime = dateTime;
         this.products = products;
+    }
+
+    public Double getAmount() {
+        return amount;
     }
 
     public List<ApplyProductDTO> getProducts() {

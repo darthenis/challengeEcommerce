@@ -18,9 +18,8 @@ public interface ProductService {
     public void createProduct(CreateProductDTO createProductDTO) throws Exception;
 
 
-    public void updateProduct(CreateProductDTO createProductDTO) throws Exception;
+    public void updateProduct(UpdateProductDTO updateProductDTO) throws Exception;
 
-    void updateProduct(UpdateProductDTO updateProductDTO) throws Exception;
 
     public Optional<Product> findById(Long id);
 

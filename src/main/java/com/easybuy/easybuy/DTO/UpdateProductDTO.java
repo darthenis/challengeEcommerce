@@ -19,7 +19,9 @@ public class UpdateProductDTO {
     private List<CategoriesEnum> categories;
 
 
-    public void updateProductDTO(String name, String description, Double price, int discount, List<String> imgUrl, int stock, LocalDate date, List<CategoriesEnum> categories) {
+
+    public UpdateProductDTO(Long id,String name, String description, Double price, int discount, List<String> imgUrl, int stock, LocalDate date, List<CategoriesEnum> categories) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
