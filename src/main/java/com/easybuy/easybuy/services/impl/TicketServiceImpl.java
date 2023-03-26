@@ -66,12 +66,10 @@ public class TicketServiceImpl implements TicketService {
 
         serial = String.format("%03d", serialNumber);
         ticketNumber = String.format("%06d", maxId);
-        System.out.println(ticketNumber);
         finalTicketNumber = serial + "-" +ticketNumber;
-        System.out.println(finalTicketNumber);
         Ticket newTicket = new Ticket(finalTicketNumber,newTicketDTO.getAmount(),newTicketDTO.getDateTime());
         ticketRepository.save(newTicket);
-        System.out.println(newTicket.getNumber());
+
 
     }
 

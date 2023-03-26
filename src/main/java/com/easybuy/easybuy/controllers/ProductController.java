@@ -2,6 +2,7 @@ package com.easybuy.easybuy.controllers;
 
 import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.ProductDTO;
+import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,5 +38,16 @@ public class ProductController {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
         }
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PatchMapping("/products")
+    public ResponseEntity<?> updateProduct(@RequestBody UpdateProductDTO updateProductDTO) throws Exception{
+        try{
+            return new ResponseEntity<>("Product update succesfully", HttpStatus.CREATED);
+        }catch(Exception exception){
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
+
 
 }
