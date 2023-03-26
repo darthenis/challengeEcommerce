@@ -84,8 +84,6 @@ public class TicketTest {
     @Order(7)
     public void addRate() throws Exception {
 
-        //NewClientDTO client = new NewClientDTO("melba", "Gallo", "123312", "melba@mindhub.com", "asd");
-
         mockMvc.perform(post("/api/products/1/rates")
                         .contentType("application/json")
                         .param("commentary", "testing commentary")

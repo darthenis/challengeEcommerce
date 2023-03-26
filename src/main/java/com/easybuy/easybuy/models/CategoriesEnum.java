@@ -2,9 +2,12 @@ package com.easybuy.easybuy.models;
 
 public enum CategoriesEnum {
 
-    AUDIONVIDEO,
+    AUDIO,
+    VIDEO,
     TECNOLOGY,
     APPLIANCES,
     FURNITURE,
-    HEALTHNBEAUTY
+    HEALTHNBEAUTY,
+    KIDS
+
 }
