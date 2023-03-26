@@ -1,15 +1,11 @@
 package com.easybuy.easybuy.controllers;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
-import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.DTO.NewTicketDTO;
-import com.easybuy.easybuy.configuration.ApplicationContextProvider;
-import com.easybuy.easybuy.models.CategoriesEnum;
-import com.easybuy.easybuy.models.Client;
-import com.easybuy.easybuy.models.Product;
-import com.easybuy.easybuy.models.Ticket;
+import com.easybuy.easybuy.models.*;
 import com.easybuy.easybuy.repositories.ClientRepository;
 import com.easybuy.easybuy.repositories.ProductRepository;
+import com.easybuy.easybuy.repositories.RateRepository;
 import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.services.ProductService;
 import com.easybuy.easybuy.services.TicketService;
@@ -18,23 +14,18 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.context.assertj.ApplicationContextAssert;
-import org.springframework.boot.test.context.assertj.ApplicationContextAssertProvider;
-import org.springframework.context.ApplicationContext;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -62,6 +53,9 @@ public class TicketTest {
     @Autowired
     ClientRepository clientRepository;
 
+    @Autowired
+    RateRepository rateRepository;
+
 
     @Order(5)
     @WithMockUser(roles = "CLIENT", username = "julio@mindhub.com")
@@ -82,6 +76,25 @@ public class TicketTest {
         List<Ticket> ticket = ticketService.findAll();
 
         assertThat(ticket, hasItem(hasProperty("number", is("001-000001"))));
+
+    }
+
+    @WithMockUser(roles = "CLIENT", username = "julio@mindhub.com")
+    @Test
+    @Order(7)
+    public void addRate() throws Exception {
+
+        //NewClientDTO client = new NewClientDTO("melba", "Gallo", "123312", "melba@mindhub.com", "asd");
+
+        mockMvc.perform(post("/api/products/1/rates")
+                        .contentType("application/json")
+                        .param("commentary", "testing commentary")
+                        .param("starsEnum", "THREE"))
+                .andExpect(status().isCreated());
+
+        List<Rate> rates = rateRepository.findAll();
+
+        assertThat(rates, is(not(empty())));
 
     }
 
