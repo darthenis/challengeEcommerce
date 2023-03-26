@@ -52,7 +52,7 @@ public class ClientController {
     }
 
     @PreAuthorize("hasRole('CLIENT')")
-    @PatchMapping("/clients/current")
+    @PatchMapping("/clients/current/password")
     public ResponseEntity<?> editPassword(Authentication authentication,@RequestParam String oldPassword, @RequestParam String newPassword){
         try {
             clientService.editClientPassword(authentication,oldPassword,newPassword);

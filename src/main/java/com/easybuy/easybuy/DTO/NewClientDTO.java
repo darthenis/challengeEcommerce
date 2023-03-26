@@ -8,20 +8,17 @@ public class NewClientDTO {
     private String email;
     private String password;
 
-    public NewClientDTO(String name, String lastName, String tel, String email, String password) {
+
+    public NewClientDTO(String name, String lastName, String tel, String email,String password) {
         this.name = name;
         this.lastName = lastName;
         this.tel = tel;
         this.email = email;
         this.password = password;
+
     }
 
-    public NewClientDTO(String name, String lastName, String tel, String email) {
-        this.name = name;
-        this.lastName = lastName;
-        this.tel = tel;
-        this.email = email;
-    }
+
 
     public String getName() {
         return name;

@@ -1,6 +1,7 @@
 package com.easybuy.easybuy.controllers;
 
 import com.easybuy.easybuy.DTO.NewClientDTO;
+import com.easybuy.easybuy.DTO.UpdateClientDTO;
 import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.services.ClientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,7 +42,7 @@ public class ClientTest {
     @Order(1)
     public void createClient() throws Exception{
 
-        NewClientDTO client = new NewClientDTO("melba", "Gallo", "123312", "melba@mindhub.com", "asd");
+        NewClientDTO client = new NewClientDTO("melba", "Gallo", "123312", "melba@mindhub.com","asd");
 
         mockMvc.perform(post("/api/clients")
                         .contentType("application/json")
@@ -59,7 +60,7 @@ public class ClientTest {
     @Order(2)
     public void editClient() throws Exception{
 
-        NewClientDTO client = new NewClientDTO("emi", "Gallo", "123312", "melba@mindhub.com");
+        UpdateClientDTO client = new UpdateClientDTO("emi","Gallo", "123312", "melba@mindhub.com");
 
         mockMvc.perform(patch("/api/clients/current")
                         .contentType("application/json")
@@ -74,7 +75,7 @@ public class ClientTest {
     @Test
     @Order(3)
     public void editClientPassword() throws Exception {
-        mockMvc.perform(patch("/api/clients/current")
+        mockMvc.perform(patch("/api/clients/current/password")
                         .contentType("application/json")
                         .param("oldPassword", "asd")
                         .param("newPassword", "123"))

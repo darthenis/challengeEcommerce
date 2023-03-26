@@ -95,6 +95,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void editClientPassword(Authentication authentication, String oldPassword, String newPassword) throws Exception {
+
         Client selectClient = clientRepository.findByEmail(authentication.getName()).orElse(null);
 
         if (selectClient == null) {
@@ -106,7 +107,7 @@ public class ClientServiceImpl implements ClientService {
         if (newPassword.isEmpty()) {
             throw new Exception("missing new password");
         }
-        if (passwordEncoder.matches(selectClient.getPassword(), oldPassword)) {
+        if (passwordEncoder.matches( oldPassword,selectClient.getPassword())) {
             selectClient.setPassword(passwordEncoder.encode(newPassword));
             clientRepository.save(selectClient);
         } else {
