@@ -80,7 +80,6 @@ public class ClientTest {
                         .param("oldPassword", "asd")
                         .param("newPassword", "123"))
                 .andExpect(status().isOk());
-
     }
 
 }
