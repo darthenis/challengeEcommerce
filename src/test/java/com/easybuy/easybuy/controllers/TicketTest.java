@@ -30,7 +30,7 @@ import java.util.List;
 public class TicketTest {
 
     @Autowired
-    private TicketService ticketService;
+    TicketService ticketService;
 
     @Autowired
     ProductService productService;
@@ -42,7 +42,24 @@ public class TicketTest {
     ObjectMapper objectMapper;
 
 
+    @Order(4)
+    @WithMockUser(roles = "CLIENT", username = "melba@mindhub.com")
+    @Test
+    public void CreateTicketOK() throws Exception {
 
+        System.out.println("elements:  " + productService.findAll().size());
+
+        NewTicketDTO newTicketDTO = new NewTicketDTO(LocalDateTime.now(), List.of(new ApplyProductDTO(1L, 12.0, 2)));
+
+        mockMvc.perform(post("/api/client/current/ticket")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(newTicketDTO)))
+                .andExpect(status().isCreated());
+
+        List<Ticket> ticket= ticketService.findAll();
+        assertThat(ticket, hasItem(hasProperty("number", is("001-000001"))));
+
+    }
 
 
 
