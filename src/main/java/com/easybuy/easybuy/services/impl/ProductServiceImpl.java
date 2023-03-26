@@ -1,5 +1,6 @@
 package com.easybuy.easybuy.services.impl;
 
+import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.models.Product;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -24,6 +26,23 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findAll() {
         return productRepository.findAll();
+    }
+
+    @Override
+    public Optional<Product> findById(Long id) {return productRepository.findById(id);}
+
+    @Override
+    public boolean productsExists(List<ApplyProductDTO> products) {
+        for(ApplyProductDTO product : products){
+
+            if(!productRepository.existsById(product.getId())){
+
+                return false;
+            }
+
+        }
+
+        return true;
     }
 
     @Override

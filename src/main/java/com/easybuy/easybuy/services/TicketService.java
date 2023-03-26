@@ -17,7 +17,7 @@ public interface TicketService {
 
     public Ticket finByNumber (String number);
 
-    public  void createTicket(NewTicketDTO newTicketDTO) throws Exception;
+    public Ticket createTicket(NewTicketDTO newTicketDTO) throws Exception;
 
     public Long findByMaxId();
 

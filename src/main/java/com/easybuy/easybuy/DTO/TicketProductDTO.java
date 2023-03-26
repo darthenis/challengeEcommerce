@@ -11,15 +11,12 @@ public class TicketProductDTO {
 
     private int quantity;
 
-    private String name;
-
     private Product product;
 
     public TicketProductDTO(TicketProduct ticketProduct) {
         this.id = ticketProduct.getId();
         this.price = ticketProduct.getPrice();
         this.quantity = ticketProduct.getQuantity();
-        this.name = ticketProduct.getName();
         this.product = ticketProduct.getProduct();
     }
 
@@ -45,14 +42,6 @@ public class TicketProductDTO {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Product getProduct() {

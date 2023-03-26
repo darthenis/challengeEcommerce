@@ -58,11 +58,18 @@ public class Product {
 
     }
 
-    public Set<TicketProduct> getOrderProduct() {
+    public void addTicketProduct(TicketProduct ticketProduct){
+
+        ticketProduct.setProduct(this);
+
+
+    }
+
+    public Set<TicketProduct> getTicketProduct() {
         return ticketProducts;
     }
 
-    public void setOrderProduct(TicketProduct ticketProduct) {
+    public void setTicketProduct(TicketProduct ticketProduct) {
         this.ticketProducts.add(ticketProduct);
     }
 

@@ -51,7 +51,7 @@ public class Client {
         favorite.setClient(this);
         favorites.add(favorite);
     }
-    public void addOrders(Ticket ticket){
+    public void addTicket(Ticket ticket){
         ticket.setClient(this);
         tickets.add(ticket);
     }
@@ -71,11 +71,11 @@ public class Client {
         return favorites;
     }
 
-    public Set<Ticket> getOrders() {
+    public Set<Ticket> getTickets() {
         return tickets;
     }
 
-    public void setOrders(Set<Ticket> tickets) {
+    public void setTickets(Set<Ticket> tickets) {
         this.tickets = tickets;
     }
 

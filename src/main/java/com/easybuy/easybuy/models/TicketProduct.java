@@ -11,11 +11,8 @@ public class TicketProduct {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
-
     private Double price;
     private int quantity;
-    private String name;
-
     @ManyToOne(fetch = FetchType.EAGER)
     private Ticket ticket;
 
@@ -28,24 +25,16 @@ public class TicketProduct {
 
     }
 
-    public TicketProduct(Long id, Double price, int quantity, String name) {
-        this.id = id;
+    public TicketProduct(Double price, int quantity) {
         this.price = price;
         this.quantity = quantity;
-        this.name = name;
-    }
-
-
-    public void addProduct(Product product) {
-        product.setOrderProduct(this);
-        this.product = product;
     }
 
     public Product getProduct() {
         return product;
     }
 
-    public void setProducts(Product product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
@@ -73,19 +62,12 @@ public class TicketProduct {
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Ticket getOrder() {
+    public Ticket getTicket() {
         return ticket;
     }
 
-    public void setOrder(Ticket ticket) {
+    public void setTicket(Ticket ticket) {
         this.ticket = ticket;
     }
+
 }
