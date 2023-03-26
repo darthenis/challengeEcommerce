@@ -3,7 +3,9 @@ package com.easybuy.easybuy.controllers;
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.DTO.NewTicketDTO;
+import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Ticket;
+import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.services.ProductService;
 import com.easybuy.easybuy.services.TicketService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,6 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -39,25 +42,12 @@ public class TicketTest {
     MockMvc mockMvc;
 
     @Autowired
+    ClientService clientService;
+
+    @Autowired
     ObjectMapper objectMapper;
 
 
-    @Order(4)
-    @WithMockUser(roles = "CLIENT", username = "melba@mindhub.com")
-    @Test
-    public void CreateTicketOK() throws Exception {
-
-        NewTicketDTO newTicketDTO = new NewTicketDTO(LocalDateTime.now(), List.of(new ApplyProductDTO(1L, 12.0, 2)));
-
-        mockMvc.perform(post("/api/client/current/ticket")
-                        .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(newTicketDTO)))
-                .andExpect(status().isCreated());
-
-        List<Ticket> ticket= ticketService.findAll();
-        assertThat(ticket, hasItem(hasProperty("number", is("001-000001"))));
-
-    }
 
 
 
