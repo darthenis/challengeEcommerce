@@ -32,7 +32,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Ticket finByNumber(String number) {
+    public Ticket findByNumber(String number) {
         return ticketRepository.findByNumber(number);
     }
 
@@ -60,7 +60,7 @@ public class TicketServiceImpl implements TicketService {
         }else {
             maxId += 1L;
         }
-        System.out.println(maxId);
+
         while(maxId > 99999){
             maxId -= 99999;
             serialNumber++;
