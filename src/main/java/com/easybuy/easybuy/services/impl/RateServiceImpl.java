@@ -39,7 +39,9 @@ public class RateServiceImpl implements RateService {
     @Override
     public void addRate(Long productId, String commentary, StarsEnum starsEnum, Client client) throws Exception{
         Set<Ticket> tickets = client.getTickets();
+
         Set<TicketProduct> ticketProducts = new HashSet<>();
+
         for(Ticket ticket : tickets){
             ticketProducts.addAll(ticket.getTicketProducts());
         }
@@ -54,6 +56,8 @@ public class RateServiceImpl implements RateService {
         client.addRate(newRate);
 
         Optional<Product> product = productService.findById(productId);
+
+        System.out.println(product.isPresent());
 
         product.get().addRate(newRate);
 

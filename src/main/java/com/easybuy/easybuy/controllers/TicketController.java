@@ -56,6 +56,8 @@ public class TicketController {
 
         Optional<Client> client = clientService.findByEmail(authentication.getName());
 
+        System.out.println("isUser: " + client.isPresent());
+
         client.get().addTicket(ticket);
 
         clientService.save(client.get());
