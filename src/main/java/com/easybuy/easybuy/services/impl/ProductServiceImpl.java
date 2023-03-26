@@ -70,34 +70,48 @@ public class ProductServiceImpl implements ProductService {
 
         }
 
+
+
     @Override
     public void updateProduct(UpdateProductDTO updateProductDTO) throws Exception {
         Product selectProduct  ;
-
+        boolean isEmpty = true;
         selectProduct = productRepository.findById(updateProductDTO.getId()).orElse(null);
+
+        if(selectProduct == null){
+            throw new Exception("You haven't entered any data");
+        }
         if (!updateProductDTO.getName().isEmpty()){
             selectProduct.setName(updateProductDTO.getName());
+            isEmpty = false;
         }
         if (!updateProductDTO.getDescription().isEmpty()){
             selectProduct.setDescription(updateProductDTO.getDescription());
+            isEmpty = false;
         }
         if (updateProductDTO.getPrice() != null){
             selectProduct.setPrice(updateProductDTO.getPrice());
+            isEmpty = false;
         }
         if (updateProductDTO.getDiscount() >= 0){
             selectProduct.setDiscount(updateProductDTO.getDiscount());
+            isEmpty = false;
         }
         if (updateProductDTO.getImgUrl() != null){
             selectProduct.setImgsUrls(updateProductDTO.getImgUrl());
+            isEmpty = false;
         }
         if (updateProductDTO.getStock() >= 0){
             selectProduct.setStock(updateProductDTO.getStock());
+            isEmpty = false;
         }
         if (updateProductDTO.getCategories() != null){
             selectProduct.setCategoriesEnums(updateProductDTO.getCategories());
+            isEmpty = false;
         }
 
-        throw new Exception("You haven't entered any data");
+        if (isEmpty) throw new Exception("You haven't entered any data");
+        else productRepository.save(selectProduct);
     }
 
 

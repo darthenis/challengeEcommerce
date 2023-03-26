@@ -2,6 +2,7 @@ package com.easybuy.easybuy.DTO;
 
 public class ApplyProductDTO {
 
+
     private Long id;
 
     private Double price;

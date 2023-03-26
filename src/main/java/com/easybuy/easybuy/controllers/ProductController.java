@@ -41,11 +41,12 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/products")
-    public ResponseEntity<?> updateProduct(@RequestBody UpdateProductDTO updateProductDTO) throws Exception{
+    public ResponseEntity<?> patchProduct(@RequestBody UpdateProductDTO updateProductDTO) throws Exception{
         try{
+            productService.updateProduct(updateProductDTO);
             return new ResponseEntity<>("Product update succesfully", HttpStatus.CREATED);
         }catch(Exception exception){
-            return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
