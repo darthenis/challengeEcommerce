@@ -3,6 +3,7 @@ package com.easybuy.easybuy.services;
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.NewClientDTO;
+import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.models.Product;
 
 import java.util.List;
@@ -16,8 +17,14 @@ public interface ProductService {
 
     public void createProduct(CreateProductDTO createProductDTO) throws Exception;
 
+
+    public void updateProduct(CreateProductDTO createProductDTO) throws Exception;
+
+    void updateProduct(UpdateProductDTO updateProductDTO) throws Exception;
+
     public Optional<Product> findById(Long id);
 
     public boolean productsExists(List<ApplyProductDTO> products);
+
 
 }

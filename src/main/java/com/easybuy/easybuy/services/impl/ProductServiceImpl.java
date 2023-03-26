@@ -2,6 +2,7 @@ package com.easybuy.easybuy.services.impl;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
+import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.repositories.ProductRepository;
 import com.easybuy.easybuy.services.ProductService;
@@ -69,6 +70,35 @@ public class ProductServiceImpl implements ProductService {
 
         }
 
+    @Override
+    public void updateProduct(UpdateProductDTO updateProductDTO) throws Exception {
+        Product selectProduct  ;
+
+        selectProduct = productRepository.findById(updateProductDTO.getId()).orElse(null);
+        if (!updateProductDTO.getName().isEmpty()){
+            selectProduct.setName(updateProductDTO.getName());
+        }
+        if (!updateProductDTO.getDescription().isEmpty()){
+            selectProduct.setDescription(updateProductDTO.getDescription());
+        }
+        if (updateProductDTO.getPrice() != null){
+            selectProduct.setPrice(updateProductDTO.getPrice());
+        }
+        if (updateProductDTO.getDiscount() >= 0){
+            selectProduct.setDiscount(updateProductDTO.getDiscount());
+        }
+        if (updateProductDTO.getImgUrl() != null){
+            selectProduct.setImgsUrls(updateProductDTO.getImgUrl());
+        }
+        if (updateProductDTO.getStock() >= 0){
+            selectProduct.setStock(updateProductDTO.getStock());
+        }
+        if (updateProductDTO.getCategories() != null){
+            selectProduct.setCategoriesEnums(updateProductDTO.getCategories());
+        }
+
+        throw new Exception("You haven't entered any data");
+    }
 
 
 }

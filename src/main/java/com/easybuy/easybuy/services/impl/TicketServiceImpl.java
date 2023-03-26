@@ -70,6 +70,12 @@ public class TicketServiceImpl implements TicketService {
         ticketNumber = String.format("%06d", maxId);
         finalTicketNumber = serial + "-" +ticketNumber;
 
+        Ticket newTicket = new Ticket(finalTicketNumber,newTicketDTO.getAmount(),newTicketDTO.getDateTime());
+        ticketRepository.save(newTicket);
+
+
+
+
         double amount = 0.0;
 
         for(ApplyProductDTO applyProductDTO : newTicketDTO.getProducts()){
