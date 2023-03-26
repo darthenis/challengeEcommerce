@@ -88,9 +88,31 @@ public class ClientServiceImpl implements ClientService {
 
     }
 
-
     @Override
     public Optional<Client> findByEmail(String email) {
         return clientRepository.findByEmail(email);
     }
+
+    @Override
+    public void editClientPassword(Authentication authentication, String oldPassword, String newPassword) throws Exception {
+
+        Client selectClient = clientRepository.findByEmail(authentication.getName()).orElse(null);
+
+        if (selectClient == null) {
+            throw new Exception("Missing client");
+        }
+        if (oldPassword.isEmpty()) {
+            throw new Exception("Missing old password");
+        }
+        if (newPassword.isEmpty()) {
+            throw new Exception("missing new password");
+        }
+        if (passwordEncoder.matches( oldPassword,selectClient.getPassword())) {
+            selectClient.setPassword(passwordEncoder.encode(newPassword));
+            clientRepository.save(selectClient);
+        } else {
+            throw new Exception("Wrong password");
+        }
+    }
+
 }
