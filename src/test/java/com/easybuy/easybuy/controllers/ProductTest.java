@@ -8,14 +8,12 @@ import com.easybuy.easybuy.models.CategoriesEnum;
 import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.models.Ticket;
+import com.easybuy.easybuy.repositories.ProductRepository;
 import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.services.ProductService;
 import com.easybuy.easybuy.services.TicketService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -52,6 +50,9 @@ public class ProductTest {
 
     @Autowired
     ClientService clientService;
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @WithMockUser(roles = "ADMIN")
     @Test
@@ -68,35 +69,13 @@ public class ProductTest {
         List<Product> products = productService.findAll();
 
         assertThat(products, hasItem(hasProperty("name", is("Television"))));
+
     }
 
-//    @Order(4)
-//    @WithMockUser(roles = "CLIENT", username = "melba@mindhub.com")
-//    @Test
-//    public void CreateTicketOK() throws Exception {
-//
-//        NewTicketDTO newTicketDTO = new NewTicketDTO(LocalDateTime.now(),1500.0, List.of(new ApplyProductDTO(1L, 12.0, 2)));
-//
-//        mockMvc.perform(post("/api/client/current/ticket")
-//                        .contentType("application/json")
-//                        .content(objectMapper.writeValueAsString(newTicketDTO)))
-//                .andExpect(status().isCreated());
-//
-//        List<Ticket> ticket = ticketService.findAll();
-//        assertThat(ticket, hasItem(hasProperty("number", is("001-000001"))));
-//
-//        Optional<Client> client = clientService.findByEmail("melba@mindhub.com");
-//
-//        assertThat(client.get().getTickets(), is(not(empty())));
-//
-//        Ticket ticket1 = ticketService.finByNumber("001-000001");
-//
-//        assertThat(ticket1.getTicketProducts(), is(not(empty())) );
-//
-//    }
 
     @WithMockUser(roles = "ADMIN")
     @Test
+    @Order(4)
     public void patchProduct() throws Exception{
 
         UpdateProductDTO updateProduct = new UpdateProductDTO(1l,"tv","full hd", 1500.5, 15, null,80, LocalDate.now(), null);
@@ -108,6 +87,7 @@ public class ProductTest {
 
         List<Product> products = productService.findAll();
         assertThat(products,hasItem(hasProperty("name",is("tv"))));
+
     }
 
 

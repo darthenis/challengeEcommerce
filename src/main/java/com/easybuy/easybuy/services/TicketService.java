@@ -15,7 +15,7 @@ public interface TicketService {
 
     public List<Ticket> findAll();
 
-    public Ticket finByNumber (String number);
+    public Ticket findByNumber (String number);
 
     public Ticket createTicket(NewTicketDTO newTicketDTO) throws Exception;
 
