@@ -20,6 +20,8 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'com.google.cloud:google-cloud-storage:2.20.1'
+	runtimeOnly 'com.google.firebase:firebase-admin:9.1.1'
 }
 
 tasks.named('test') {

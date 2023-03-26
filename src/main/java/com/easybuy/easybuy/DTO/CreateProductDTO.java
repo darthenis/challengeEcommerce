@@ -11,20 +11,17 @@ public class CreateProductDTO {
     private String description;
     private Double price;
     private int discount;
-    private List<String> imgUrl;
-    private int Stock;
+    private int stock;
     private LocalDate date;
-
     private List<CategoriesEnum> categories;
 
 
-        public CreateProductDTO(String name, String description, Double price, int discount, List<String> imgUrl, int stock, LocalDate date,List<CategoriesEnum> categories) {
+        public CreateProductDTO(String name, String description, Double price, int discount, int stock, LocalDate date,List<CategoriesEnum> categories) {
             this.name = name;
             this.description = description;
             this.price = price;
             this.discount = discount;
-            this.imgUrl = imgUrl;
-            this.Stock = stock;
+            this.stock = stock;
             this.date = date;
             this.categories=categories;
      }
@@ -69,20 +66,12 @@ public class CreateProductDTO {
         this.discount = discount;
     }
 
-    public List<String> getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(List<String> imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
     public int getStock() {
-        return Stock;
+        return stock;
     }
 
     public void setStock(int stock) {
-        Stock = stock;
+        this.stock = stock;
     }
 
     public LocalDate getDate() {

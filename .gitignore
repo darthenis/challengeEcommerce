@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 
 ### STS ###
+firebaseConfig.json
 .apt_generated
 .classpath
 .factorypath
