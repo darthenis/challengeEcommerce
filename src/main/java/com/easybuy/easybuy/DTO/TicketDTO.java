@@ -27,7 +27,7 @@ public class TicketDTO {
         this.number = ticket.getNumber();
         this.amount = ticket.getAmount();
         this.dateTime = ticket.getDateTime();
-        this.ticketProducts = ticket.getOrderProducts();
+        this.ticketProducts = ticket.getTicketProducts();
         this.client = ticket.getClient();
     }
 

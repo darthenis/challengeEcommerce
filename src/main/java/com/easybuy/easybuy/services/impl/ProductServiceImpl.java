@@ -1,5 +1,6 @@
 package com.easybuy.easybuy.services.impl;
 
+import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.repositories.ProductRepository;
@@ -28,6 +29,20 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<Product> findById(Long id) {return productRepository.findById(id);}
+
+    @Override
+    public boolean productsExists(List<ApplyProductDTO> products) {
+        for(ApplyProductDTO product : products){
+
+            if(!productRepository.existsById(product.getId())){
+
+                return false;
+            }
+
+        }
+
+        return true;
+    }
 
     @Override
     public void createProduct(CreateProductDTO createProductDTO) throws Exception {
