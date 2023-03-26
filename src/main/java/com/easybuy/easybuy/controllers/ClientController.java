@@ -51,4 +51,15 @@ public class ClientController {
 
     }
 
+    @PreAuthorize("hasRole('CLIENT')")
+    @PatchMapping("/clients/current")
+    public ResponseEntity<?> editPassword(Authentication authentication,@RequestParam String oldPassword, @RequestParam String newPassword){
+        try {
+            clientService.editClientPassword(authentication,oldPassword,newPassword);
+            return new ResponseEntity<>("edited succesfully", HttpStatus.OK);
+        }catch(Exception exception){
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
+
 }

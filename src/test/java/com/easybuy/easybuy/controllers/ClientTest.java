@@ -11,6 +11,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -34,6 +35,8 @@ public class ClientTest {
     @Autowired
     ClientService clientService;
 
+
+
     @Test
     @Order(1)
     public void createClient() throws Exception{
@@ -56,7 +59,7 @@ public class ClientTest {
     @Order(2)
     public void editClient() throws Exception{
 
-        NewClientDTO client = new NewClientDTO("emi", "Gallo", "123312", "melba@mindhub.com", "null");
+        NewClientDTO client = new NewClientDTO("emi", "Gallo", "123312", "melba@mindhub.com");
 
         mockMvc.perform(patch("/api/clients/current")
                         .contentType("application/json")
@@ -65,6 +68,18 @@ public class ClientTest {
 
         List<Client> clients = clientService.findAll();
         assertThat(clients, hasItem(hasProperty("name", is("emi"))));
+    }
+
+    @WithMockUser(username="melba@mindhub.com", roles = "CLIENT")
+    @Test
+    @Order(3)
+    public void editClientPassword() throws Exception {
+        mockMvc.perform(patch("/api/clients/current")
+                        .contentType("application/json")
+                        .param("oldPassword", "asd")
+                        .param("newPassword", "123"))
+                .andExpect(status().isOk());
+
     }
 
 }

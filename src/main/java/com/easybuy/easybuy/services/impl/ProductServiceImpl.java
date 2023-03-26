@@ -79,7 +79,7 @@ public class ProductServiceImpl implements ProductService {
         selectProduct = productRepository.findById(updateProductDTO.getId()).orElse(null);
 
         if(selectProduct == null){
-            throw new Exception("You haven't entered any data");
+            throw new Exception("The product Doesn't exist");
         }
         if (!updateProductDTO.getName().isEmpty()){
             selectProduct.setName(updateProductDTO.getName());
