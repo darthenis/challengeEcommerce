@@ -47,8 +47,6 @@ public class TicketTest {
     @Test
     public void CreateTicketOK() throws Exception {
 
-        System.out.println("elements:  " + productService.findAll().size());
-
         NewTicketDTO newTicketDTO = new NewTicketDTO(LocalDateTime.now(), List.of(new ApplyProductDTO(1L, 12.0, 2)));
 
         mockMvc.perform(post("/api/client/current/ticket")

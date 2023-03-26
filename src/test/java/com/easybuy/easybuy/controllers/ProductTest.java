@@ -59,8 +59,6 @@ public class ProductTest {
 
         List<Product> products = productService.findAll();
 
-        System.out.println("element 2: " + products.size());
-
         assertThat(products, hasItem(hasProperty("name", is("Television"))));
     }
 
