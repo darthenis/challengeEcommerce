@@ -28,11 +28,13 @@ public class ProductController {
 
     @GetMapping("/products")
     public List<ProductDTO> getAll(){
-
         return productService.findAll().stream().map(ProductDTO::new).collect(Collectors.toList());
-
     }
 
+    @GetMapping("/products/{id}")
+    public ProductDTO gtByID(@PathVariable Long id){
+        return  new ProductDTO(productService.findById(id).get());
+    }
 
     @PostMapping("/products")
     public ResponseEntity<?> createProduct( @RequestBody CreateProductDTO createProductDTO){

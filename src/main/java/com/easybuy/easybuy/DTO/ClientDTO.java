@@ -23,7 +23,8 @@ public class ClientDTO {
 
     private Set<FavoriteDTO> favorites;
 
-    private Set<TicketDTO> orders ;
+    private Set<TicketDTO> ticket ;
+
 
     public ClientDTO(Client client) {
         this.id = client.getId();
@@ -34,7 +35,7 @@ public class ClientDTO {
         this.password = client.getPassword();
         this.urlImg = client.getUrlImg();
         this.favorites = client.getFavorites().stream().map(FavoriteDTO::new).collect(Collectors.toSet());
-        this.orders = client.getTickets().stream().map(TicketDTO::new).collect(Collectors.toSet());
+        this.ticket = client.getTickets().stream().map(TicketDTO::new).collect(Collectors.toSet());
     }
 
     public Long getId() {
@@ -69,7 +70,7 @@ public class ClientDTO {
         return favorites;
     }
 
-    public Set<TicketDTO> getOrders() {
-        return orders;
+    public Set<TicketDTO> getTickets() {
+        return ticket;
     }
 }

@@ -1,5 +1,6 @@
 package com.easybuy.easybuy.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -159,6 +160,7 @@ public class Client {
         this.urlImg = urlImg;
     }
 
+    @JsonIgnore
     public List<Rate> getRates() {
         return rates;
     }
