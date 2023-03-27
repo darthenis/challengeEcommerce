@@ -51,21 +51,20 @@ public class RateServiceImpl implements RateService {
             throw new Exception("product not found");
         }
 
-        Rate newRate = new Rate(commentary, starsEnum);
+        if (client.getRates().stream().noneMatch(rate -> rate.getProduct().getId() == productId)) {
+            Rate newRate = new Rate(commentary, starsEnum);
 
-        client.addRate(newRate);
+            client.addRate(newRate);
 
-        Optional<Product> product = productService.findById(productId);
+            Optional<Product> product = productService.findById(productId);
 
-        System.out.println(product.isPresent());
+            product.get().addRate(newRate);
 
-        product.get().addRate(newRate);
-
-        clientService.save(client);
-
-        productService.save(product.get());
-
-        rateRepository.save(newRate);
-
+            clientService.save(client);
+            productService.save(product.get());
+            rateRepository.save(newRate);
+        }else {
+            throw new Exception("You have already commmented on this product");
+        }
     }
 }

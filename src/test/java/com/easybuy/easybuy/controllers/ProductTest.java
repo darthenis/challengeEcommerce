@@ -52,7 +52,7 @@ public class ProductTest {
     public void createProduct() throws Exception {
 
 
-        CreateProductDTO product = new CreateProductDTO("Television", "30 pulgadas", 1000.0, 0, List.of("url"), 20, LocalDate.now(), List.of(CategoriesEnum.VIDEO));
+        CreateProductDTO product = new CreateProductDTO("Television", "30 pulgadas", 1000.0, 0, 20, LocalDate.now(), List.of(CategoriesEnum.VIDEO));
 
         
 

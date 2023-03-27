@@ -7,7 +7,9 @@ import com.easybuy.easybuy.models.Ticket;
 import java.awt.Color;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.http.HttpServletResponse;
 
 import com.easybuy.easybuy.models.TicketProduct;
@@ -88,7 +90,7 @@ public class PDFExporter {
 
     public void exportToRoot() throws DocumentException, IOException {
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("./ticket-"+ticket.getNumber()+".pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("./testPdf.pdf"));
 
         document.open();
         Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);

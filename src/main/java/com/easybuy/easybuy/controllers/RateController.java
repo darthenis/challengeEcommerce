@@ -24,7 +24,7 @@ public class RateController {
     @Autowired
     ClientService clientService;
 
-    @PreAuthorize("hasRole('CLIENT')")
+
     @PostMapping("/products/{id}/rates")
     public ResponseEntity<?> addRate(Authentication authentication, @RequestParam String commentary, @RequestParam StarsEnum starsEnum, @PathVariable Long id) {
 

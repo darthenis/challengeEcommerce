@@ -89,7 +89,7 @@ public class TicketController {
     }
 
 
-    @GetMapping("/client/current/pdf")
+    @GetMapping("/client/current/tickets")
     public void exportToPDF(HttpServletResponse response , Authentication authentication,@RequestParam Long idTicket) throws DocumentException, IOException {
         response.setContentType("application/pdf");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");

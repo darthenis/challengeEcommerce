@@ -20,7 +20,7 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @GetMapping("/clients")
     public List<ClientDTO> getAll(){
 
@@ -38,7 +38,7 @@ public class ClientController {
         }
     }
 
-    @PreAuthorize("hasRole('CLIENT')")
+
     @PatchMapping("/clients/current")
     public ResponseEntity<?> edit(@RequestBody NewClientDTO newClientDTO, Authentication authentication){
 
@@ -51,7 +51,7 @@ public class ClientController {
 
     }
 
-    @PreAuthorize("hasRole('CLIENT')")
+
     @PatchMapping("/clients/current/password")
     public ResponseEntity<?> editPassword(Authentication authentication,@RequestParam String oldPassword, @RequestParam String newPassword){
         try {
