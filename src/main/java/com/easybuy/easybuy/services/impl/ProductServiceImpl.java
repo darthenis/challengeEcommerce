@@ -41,7 +41,9 @@ public class ProductServiceImpl implements ProductService {
     public boolean productsExists(List<ApplyProductDTO> products) {
         for(ApplyProductDTO product : products){
 
-            if(!productRepository.existsById(product.getId())){
+            System.out.println("idProduct: " + product.getProductId());
+
+            if(!productRepository.existsById(product.getProductId())){
 
                 return false;
             }

@@ -47,7 +47,7 @@ public class TicketProductServiceImp implements TicketProductService {
 
             TicketProduct ticketProduct = new TicketProduct(applyProductDTO.getPrice(), applyProductDTO.getQuantity());
 
-            Optional<Product> product = productService.findById(applyProductDTO.getId());
+            Optional<Product> product = productService.findById(applyProductDTO.getProductId());
 
             ticket.addTicketProduct(ticketProduct);
 

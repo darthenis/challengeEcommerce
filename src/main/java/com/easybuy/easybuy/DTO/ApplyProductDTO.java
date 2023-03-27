@@ -10,17 +10,17 @@ public class ApplyProductDTO {
     private int quantity;
 
 
-    public ApplyProductDTO(Long id, Double price, int quantity) {
-        this.idProduct = id;
+    public ApplyProductDTO(Long idProduct, Double price, int quantity) {
+        this.idProduct = idProduct;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public Long getId() {
+    public Long getProductId() {
         return idProduct;
     }
 
-    public void setId(Long id) {
+    public void setProductId(Long id) {
         this.idProduct = id;
     }
 

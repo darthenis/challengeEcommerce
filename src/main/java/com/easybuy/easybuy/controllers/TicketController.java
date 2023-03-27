@@ -12,8 +12,12 @@ import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.services.ProductService;
 import com.easybuy.easybuy.services.TicketProductService;
 import com.easybuy.easybuy.services.TicketService;
+import com.easybuy.easybuy.utils.EmailHandler;
 import com.lowagie.text.DocumentException;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,14 +51,16 @@ public class TicketController {
     @Autowired
     ClientService clientService;
 
+    @Autowired
+    EmailHandler emailHandler;
+
 
     @RequestMapping("/orders")
     public Set<TicketDTO> getAll(){
         return ticketService.findAll().stream().map(TicketDTO::new).collect(Collectors.toSet());
     }
 
-    @PreAuthorize("hasRole('CLIENT')")
-    @PostMapping("/client/current/ticket")
+    @PostMapping("/client/current/tickets")
     public ResponseEntity<Object> newTicket(@RequestBody NewTicketDTO newTicketDTO, Authentication authentication) throws Exception {
 
         if(!productService.productsExists(newTicketDTO.getProducts())) return new ResponseEntity<>("product not found", HttpStatus.FORBIDDEN);
@@ -70,6 +76,16 @@ public class TicketController {
         client.get().addTicket(ticket);
 
         clientService.save(client.get());
+
+        PDFExporter exporter = new PDFExporter(ticket);
+
+        exporter.exportToRoot();
+
+        FileSystemResource fileSystemResource = new FileSystemResource("./testPdf.pdf");
+
+        emailHandler.sendMailAttachment("emi.acevedo.letras@gmail.com", client.get().getEmail(), "ticket", fileSystemResource);
+
+        FileUtils.forceDelete(fileSystemResource.getFile());
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -99,6 +115,5 @@ public class TicketController {
         }
 
     }
-
 
 }

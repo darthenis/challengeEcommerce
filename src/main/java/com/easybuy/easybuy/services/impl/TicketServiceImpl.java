@@ -78,9 +78,6 @@ public class TicketServiceImpl implements TicketService {
         Ticket newTicket = new Ticket(finalTicketNumber,newTicketDTO.getAmount(),newTicketDTO.getDateTime());
         ticketRepository.save(newTicket);
 
-
-
-
         double amount = 0.0;
 
         for(ApplyProductDTO applyProductDTO : newTicketDTO.getProducts()){
@@ -90,6 +87,8 @@ public class TicketServiceImpl implements TicketService {
             amount += total;
 
         }
+
+
 
         return new Ticket(finalTicketNumber, amount, newTicketDTO.getDateTime());
 
