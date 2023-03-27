@@ -1,9 +1,12 @@
 package com.easybuy.easybuy.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -36,10 +39,10 @@ public class Product {
     private List<CategoriesEnum> categoriesEnums;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private List<Rate> rates;
+    private List<Rate> rates = new ArrayList<>();
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private Set<TicketProduct> ticketProducts;
+    private Set<TicketProduct> ticketProducts = new HashSet<>();
 
 
     public Product(){}
@@ -79,15 +82,8 @@ public class Product {
         this.status = status;
     }
 
+    @JsonIgnore
     public Set<TicketProduct> getTicketProducts() {
-        return ticketProducts;
-    }
-
-    public void setTicketProducts(Set<TicketProduct> ticketProducts) {
-        this.ticketProducts = ticketProducts;
-    }
-
-    public Set<TicketProduct> getTicketProduct() {
         return ticketProducts;
     }
 

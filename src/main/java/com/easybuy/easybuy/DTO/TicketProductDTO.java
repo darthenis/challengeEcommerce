@@ -11,44 +11,31 @@ public class TicketProductDTO {
 
     private int quantity;
 
-    private Product product;
+    private ProductDTO product;
 
     public TicketProductDTO(TicketProduct ticketProduct) {
         this.id = ticketProduct.getId();
         this.price = ticketProduct.getPrice();
         this.quantity = ticketProduct.getQuantity();
-        this.product = ticketProduct.getProduct();
+        this.product = new ProductDTO(ticketProduct.getProduct());
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Double getPrice() {
         return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
-    public Product getProduct() {
+    public ProductDTO getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+
 }

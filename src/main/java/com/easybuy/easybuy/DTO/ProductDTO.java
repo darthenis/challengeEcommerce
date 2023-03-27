@@ -5,6 +5,7 @@ import com.easybuy.easybuy.models.Product;
 
 import javax.persistence.ElementCollection;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDTO {
@@ -26,6 +27,8 @@ public class ProductDTO {
     private LocalDate date;
 
     private List<CategoriesEnum> categoriesEnums;
+
+    private List<RateDTO> rates = new ArrayList<>();
 
     public ProductDTO(Product product) {
         this.id = product.getId();
@@ -73,5 +76,9 @@ public class ProductDTO {
 
     public List<CategoriesEnum> getCategoriesEnums() {
         return categoriesEnums;
+    }
+
+    public List<RateDTO> getRates() {
+        return rates;
     }
 }
