@@ -8,6 +8,7 @@ import org.hibernate.criterion.Order;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TicketService {
 
@@ -20,5 +21,7 @@ public interface TicketService {
     public Ticket createTicket(NewTicketDTO newTicketDTO) throws Exception;
 
     public Long findByMaxId();
+
+    public Optional<Ticket> findById (Long id);
 
 }

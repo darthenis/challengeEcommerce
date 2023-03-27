@@ -3,22 +3,31 @@ package com.easybuy.easybuy.controllers;
 
 import com.easybuy.easybuy.DTO.NewTicketDTO;
 import com.easybuy.easybuy.DTO.TicketDTO;
+import com.easybuy.easybuy.DTO.TicketProductDTO;
+import com.easybuy.easybuy.TicketUtils.PDFExporter;
 import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Ticket;
+import com.easybuy.easybuy.models.TicketProduct;
 import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.services.ProductService;
 import com.easybuy.easybuy.services.TicketProductService;
 import com.easybuy.easybuy.services.TicketService;
+import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -63,6 +72,32 @@ public class TicketController {
         clientService.save(client.get());
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+
+    @GetMapping("/client/current/pdf")
+    public void exportToPDF(HttpServletResponse response , Authentication authentication,@RequestParam Long idTicket) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        Optional<Ticket> selectTicket = ticketService.findById(idTicket);
+
+
+        if (idTicket == null) {
+            response.sendError(403, "Missing ID");
+        } else if (selectTicket.isEmpty()) {
+            response.sendError(403, "Ticket not found");
+        } else {
+            PDFExporter exporter = new PDFExporter(selectTicket.get());
+
+            exporter.export(response);
+        }
+
     }
 
 

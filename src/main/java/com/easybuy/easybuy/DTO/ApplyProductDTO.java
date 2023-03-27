@@ -3,24 +3,25 @@ package com.easybuy.easybuy.DTO;
 public class ApplyProductDTO {
 
 
-    private Long id;
+    private Long idProduct;
 
     private Double price;
 
     private int quantity;
 
+
     public ApplyProductDTO(Long id, Double price, int quantity) {
-        this.id = id;
+        this.idProduct = id;
         this.price = price;
         this.quantity = quantity;
     }
 
     public Long getId() {
-        return id;
+        return idProduct;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idProduct = id;
     }
 
     public Double getPrice() {

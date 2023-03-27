@@ -2,7 +2,6 @@ package com.easybuy.easybuy.services;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
-import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.models.Product;
 
