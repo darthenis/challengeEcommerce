@@ -33,12 +33,12 @@ public class EasybuyApplication {
 		return (args) ->{
 			Client Luisito = new Client("Luis","pirulo","1234444","luis@mindhub.com", passwordEncoder.encode("123"));
 
-			Product television = new Product("tv Samsung","tv moderna led , 65'",800.50,5, List.of("https://images.samsung.com/is/image/samsung/p6pim/ar/qn55q65bagczb/gallery/ar-qled-q60b-qn55q65bagczb-534377581?$650_519_PNG$"),5, LocalDate.now(), List.of(CategoriesEnum.VIDEO));
+			Product television = new Product("tv Samsung","tv moderna led 65'",800.50,5,5, LocalDate.now(), List.of(CategoriesEnum.VIDEO) );
 
 
 			Ticket newTicket = new Ticket("001-000001",800.50, LocalDateTime.now());
 
-			TicketProduct newTicketProduct = new TicketProduct(850.50, 1);
+			TicketProduct newTicketProduct = new TicketProduct(800.50, 1);
 
 
 

@@ -88,6 +88,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void deleteProduct(Long id) throws Exception {
+          Product selectProduct = productRepository.findById(id).get();
+
+         if(selectProduct == null){
+             throw new Exception("The product doesn't exist");
+         }else {
+             selectProduct.setStatus(false);
+         }
+
+         productRepository.save(selectProduct);
+    }
+
+    @Override
     public void createProduct(CreateProductDTO createProductDTO) throws Exception {
 
             if(createProductDTO.getDiscount() < 0 ) throw new Exception("The number entered is wrong");
@@ -102,7 +115,7 @@ public class ProductServiceImpl implements ProductService {
 
             if(createProductDTO.getStock() < 1) throw new Exception("The number entered is wrong");
 
-            Product newProduct = new Product(createProductDTO.getName(), createProductDTO.getDescription(), createProductDTO.getPrice(), createProductDTO.getDiscount(),createProductDTO.getStock(),createProductDTO.getDate(),createProductDTO.getCategories());
+            Product newProduct = new Product(createProductDTO.getName(), createProductDTO.getDescription(), createProductDTO.getPrice(), createProductDTO.getDiscount(),createProductDTO.getStock(),createProductDTO.getDate(),createProductDTO.getCategories())  ;
 
           productRepository.save(newProduct);
 
