@@ -3,12 +3,17 @@ package com.easybuy.easybuy.services.impl;
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.UpdateProductDTO;
+import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.repositories.ProductRepository;
 import com.easybuy.easybuy.services.ProductService;
+import com.easybuy.easybuy.utils.ImageHandler;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
+
     @Override
     public Optional<Product> findById(Long id) {return productRepository.findById(id);}
 
@@ -46,6 +52,42 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void uploadImages(MultipartFile[] multipartFiles, Product product) {
+
+        List<String> urls = product.getImgsUrls();
+
+        for(MultipartFile multipartFile : multipartFiles){
+
+            if(urls.size() < 4){
+
+                String url = ImageHandler.upload(multipartFile, product.getId() + "-" + urls.size());
+
+                urls.add(url);
+
+            }
+
+        }
+
+        product.setImgsUrls(urls);
+
+        productRepository.save(product);
+
+    }
+
+    @Override
+    public void deleteImage(String url, Long id) throws Exception {
+
+        Optional<Product> product = productRepository.findById(id);
+
+        if(product.isEmpty()) throw new Exception("product not found");
+
+        List<String> urls = product.get().getImgsUrls();
+
+        if(!urls.remove(url)) throw new Exception("url not found");
+
+    }
+
+    @Override
     public void createProduct(CreateProductDTO createProductDTO) throws Exception {
 
             if(createProductDTO.getDiscount() < 0 ) throw new Exception("The number entered is wrong");
@@ -58,13 +100,9 @@ public class ProductServiceImpl implements ProductService {
 
             if(createProductDTO.getPrice() == null) throw new Exception("missing price");
 
-            if(createProductDTO.getImgUrl() == null) throw new Exception("missing Image");
+            if(createProductDTO.getStock() < 1) throw new Exception("The number entered is wrong");
 
-            if(createProductDTO.getStock() <= 0) throw new Exception("The number entered is wrong");
-
-
-
-            Product newProduct = new Product(createProductDTO.getName(), createProductDTO.getDescription(), createProductDTO.getPrice(), createProductDTO.getDiscount(), createProductDTO.getImgUrl(),createProductDTO.getStock(),createProductDTO.getDate(),createProductDTO.getCategories());
+            Product newProduct = new Product(createProductDTO.getName(), createProductDTO.getDescription(), createProductDTO.getPrice(), createProductDTO.getDiscount(),createProductDTO.getStock(),createProductDTO.getDate(),createProductDTO.getCategories());
 
           productRepository.save(newProduct);
 

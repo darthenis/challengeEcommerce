@@ -64,7 +64,7 @@ public class TicketTest {
 
         clientRepository.save(new Client("julio", "Alvarez", "123123", "julio@mindhub.com", "asd"));
 
-        productRepository.save(new Product("Television", "30 pulgadas", 1000.0, 0, List.of("url"), 20, LocalDate.now(), List.of(CategoriesEnum.AUDIONVIDEO)));
+        productRepository.save(new Product("Television", "30 pulgadas", 1000.0, 0, 20, LocalDate.now(), List.of(CategoriesEnum.VIDEO)));
 
         NewTicketDTO newTicketDTO = new NewTicketDTO(LocalDateTime.now(),1500.0, List.of(new ApplyProductDTO(1L, 12.0, 2)));
 

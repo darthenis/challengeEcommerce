@@ -3,7 +3,9 @@ package com.easybuy.easybuy.services;
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.UpdateProductDTO;
+import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Product;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,5 +26,7 @@ public interface ProductService {
 
     public boolean productsExists(List<ApplyProductDTO> products);
 
+    public void uploadImages(MultipartFile[] multipartFiles, Product product) throws Exception;
 
+    public void deleteImage(String url, Long id) throws Exception;
 }

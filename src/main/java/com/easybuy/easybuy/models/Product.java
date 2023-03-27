@@ -41,7 +41,7 @@ public class Product {
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private Set<TicketProduct> ticketProducts;
 
-    public Product(String name, String description, Double price, int discount, List<String> imgsUrls, int stock, LocalDate date,List<CategoriesEnum> categoriesEnums) {
+    public Product(String name, String description, Double price, int discount, int stock, LocalDate date,List<CategoriesEnum> categoriesEnums) {
         this.name = name;
         this.description = description;
         this.price = price;
