@@ -18,9 +18,6 @@ public class TicketServiceImpl implements TicketService {
     @Autowired
     TicketRepository ticketRepository;
 
-    @Autowired
-    ProductService productService;
-
     @Override
     public void save(Ticket ticket) {
         ticketRepository.save(ticket);

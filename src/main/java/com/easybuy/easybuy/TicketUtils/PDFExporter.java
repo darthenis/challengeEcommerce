@@ -88,7 +88,7 @@ public class PDFExporter {
 
     public void exportToRoot() throws DocumentException, IOException {
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("./testPdf.pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("./ticket-"+ticket.getNumber()+".pdf"));
 
         document.open();
         Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
