@@ -1,0 +1,272 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+/* body */
+body{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.107), rgba(0, 0, 0, 0.101)), url("./img/pexels-monstera-7794441.jpg");
+}
+/* body */
+/* primer oferta */
+.padre-emi{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* border: 1px solid black; */
+    background-color: rgba(0, 0, 0, 0.538);
+    height: 32rem;
+    margin-top: 5rem;
+    justify-content: space-between;
+}
+.padre-delPadre-emi{
+    background-image: url(./img/th.jfif);
+    background-position: center;
+    background-size: cover;
+    left: -200px;
+    opacity: 0;
+    position: relative;
+    animation-name: emi;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes emi {
+    from{
+        left: -200px;
+        opacity: 0;
+        
+    }
+    to{
+        left:0px;
+        opacity: 1;
+    }
+}
+.padre-emi img{
+    width: 45%;
+}
+
+@media (max-width:500px) {
+    .texto-emi h3{
+        display: none;
+
+    }
+    .padre-emi{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .texto-emi{
+        padding: 1rem;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+    .padre-emi img{
+        width: 16rem;
+    }
+    
+}
+.texto-emi{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    color: white;
+    font-size: 20px;
+}
+.texto-emi h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    font-size: 45px;
+    text-shadow: -1px 1px 4px rgb(0, 0, 0);
+}
+.texto-emi h3{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 10px;
+    text-shadow: -1px 1px 4px rgb(0, 0, 0);
+}
+.hijoTextoEmi{
+    display: flex;
+    margin-bottom: 2rem;
+}
+.hijoTextoEmi p{
+    background-color: white;
+    border-radius: 200px;
+    text-align: center;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 14px;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+.hijo-del-hijo-emi{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.uno p{
+    color: red;
+}
+.dos p{
+    color: rgb(38, 0, 255);
+}
+.tres p{
+    color: rgb(0, 255, 26);
+}
+.cuatro p{
+    color: rgb(255, 0, 225);
+}
+/* primer oferta */
+
+
+/* segunda oferta */
+
+.padreSegundaTercerOferta{
+    display: flex;
+}
+.padre-segundaOferta{
+    display: flex;
+    background-image: url(./img/th.jfif);
+    background-position: center;
+    background-size: cover;
+    width: 50%;
+    margin: 10px;
+    height: 19rem;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    justify-content: space-between;
+    left: -200px;
+    opacity: 0;
+    position: relative;
+    animation-name: emi;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.primer-emi{
+margin-left: 0px;
+margin-right: 6px;
+}
+.segun-emi{
+    margin-right: 0px;
+    margin-left: 6px;
+}
+.padre-textoo{
+    display: flex;
+    /* REGULADOR DE COLOR DE FONDO */
+    background-color: rgba(0, 0, 0, 0.63);
+     /* REGULADOR DE COLOR DE FONDO */
+}
+.padre-segundaOferta h2{
+    font-weight: bolder;
+    font-size: 25px;
+}
+.texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+.padre-tercerOferta{
+    background-color: rgba(0, 0, 0, 0.542);
+    width: 50%;
+    margin: 10px;
+}
+.padre-segundaOferta img{
+    width: 45%;
+}
+@media (max-width:818px) {
+    .padreSegundaTercerOferta{
+        flex-direction: column;
+        align-items: center;
+    }
+    .padre-segundaOferta{
+        width: 100%;
+    }
+    
+}
+@media (max-width:500px) {
+    .texto-emii h3{
+        display: none;
+    }
+    .padre-textoo{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* segunda oferta */
+/*FOOTER, CARDS y FEEDBACK CUSTOMERS*/
+.heart{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card__product:hover{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/*Acá termina footer, cards y feedback customers*/
+
+@media (max-width:768px){
+    .iframe{display: none;
+    }
+}
+@media (max-width:640px){
+    .services{
+        border-bottom: 1px solid white;
+        padding-bottom: 1.5rem;
+    }
+}
+/* categorias */
+.categorias-emi{
+display: flex;
+gap: 4rem;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+}
+.categorias-emi a{
+    width: 119px;
+    text-align: center;
+    text-shadow: -2px 1px 2px rgb(102, 107, 146);
+    font-size: 14.5px;
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.categorias-emi i{
+ background-color: rgba(7, 29, 131, 0.867);
+ color: rgb(255, 255, 255);
+ padding: 2.4rem;
+ border-radius: 50%;
+ font-size: 2.7rem;
+ transition: all 1s;
+}
+.categorias-emi i:hover{
+    background-color:rgb(95, 108, 226) ;
+    color:rgb(0, 0, 0);
+    box-shadow: -5px 3px 1px rgba(50, 173, 157, 0.26);
+}
+.textoCategorias-emi{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.textoCategorias-emi h3{
+    margin-right: 1rem;
+    margin-top: 1.6rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+@media (max-width:818px) {
+    .categorias-emi i{
+        padding: 1rem;
+        font-size: 1.7rem;
+    }
+    
+}
+/* categorias */
