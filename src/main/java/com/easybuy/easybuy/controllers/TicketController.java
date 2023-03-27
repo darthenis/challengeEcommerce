@@ -71,8 +71,6 @@ public class TicketController {
 
         Optional<Client> client = clientService.findByEmail(authentication.getName());
 
-        System.out.println("isUser: " + client.isPresent());
-
         client.get().addTicket(ticket);
 
         clientService.save(client.get());
@@ -81,7 +79,7 @@ public class TicketController {
 
         exporter.exportToRoot();
 
-        FileSystemResource fileSystemResource = new FileSystemResource("./testPdf.pdf");
+        FileSystemResource fileSystemResource = new FileSystemResource("./ticket"+ticket.getNumber()+".pdf");
 
         emailHandler.sendMailAttachment("emi.acevedo.letras@gmail.com", client.get().getEmail(), "ticket", fileSystemResource);
 
