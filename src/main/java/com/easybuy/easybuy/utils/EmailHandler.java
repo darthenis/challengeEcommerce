@@ -56,12 +56,11 @@ public class EmailHandler {
 
         return
                 "<div style='background-color: #2C3E50; color: white;'>"+
-                        "<h1 style=\"padding: 10px; margin: 0; text-align: center\">Welcome to HB banking</h1>" +
+                        "<h1 style=\"padding: 10px; margin: 0; text-align: center\">Welcome to Easy Buy</h1>" +
                         "<div style='font-size: 20px'>"+
                         "<div style=\"margin: 0; text-align: center\">"+
                         "<p>We are happy to receive you</p>" +
                         "<p>Please confirm your email to continue registration. Click this <a style='color: white;' href='localhost:8080/web/index.html?token="+token+"'>LINK</a></p>"+
-                        "<p>The link is valid for the next 24 hours</p>"+
                         "</div>"+
                         "</div>"+
                         "<img   style='width: 100%; margin: 0;'" +
