@@ -33,7 +33,7 @@ public class ProductController {
 
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PostMapping("/products")
     public ResponseEntity<?> createProduct( @RequestBody CreateProductDTO createProductDTO){
         try{
@@ -44,7 +44,7 @@ public class ProductController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PatchMapping("/products")
     public ResponseEntity<?> patchProduct(@RequestBody UpdateProductDTO updateProductDTO) throws Exception{
         try{
@@ -55,7 +55,7 @@ public class ProductController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PostMapping("/products/{id}/images")
     public ResponseEntity<?> uploadImages(@RequestParam() MultipartFile[] images, @PathVariable Long id) {
 
@@ -75,7 +75,7 @@ public class ProductController {
 
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @DeleteMapping("/products/{id}")
     public ResponseEntity<?> deleteImg(@PathVariable Long id, @RequestParam String url){
 
@@ -92,7 +92,7 @@ public class ProductController {
 
     }
 
-    @DeleteMapping("/current/products/delete")
+    @DeleteMapping("/current/products")
     public ResponseEntity<?> delete(@RequestParam Long id){
         if(id == null) return new ResponseEntity<>("missing id", HttpStatus.FORBIDDEN);
 
