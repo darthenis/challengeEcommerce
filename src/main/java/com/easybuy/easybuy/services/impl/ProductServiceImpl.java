@@ -54,44 +54,36 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void uploadImages(MultipartFile[] multipartFiles, Product product) {
 
-        List<String> urls = new ArrayList<>();
-
-        List<String> actualurls = product.getImgsUrls();
-
-        System.out.println("size: " + multipartFiles.length);
-
-        int contador = 0;
-
-        boolean init;
+        List<String> urls = product.getImgsUrls();
 
         for(MultipartFile multipartFile : multipartFiles){
 
-            init = true;
+            if(urls.size() < 4){
 
-            do{
+                String url = ImageHandler.upload(multipartFile, product.getId() + "-" + urls.size());
 
-                if(actualurls.get(contador) == null){
+                urls.add(url);
 
-                    String url = ImageHandler.upload(multipartFile, product.getId() + "-" + contador);
-
-                    urls.add(url);
-
-                    init = false;
-
-                } else {
-
-                    contador++;
-
-                }
-
-            }while(init && contador < 4);
-
+            }
 
         }
 
         product.setImgsUrls(urls);
 
         productRepository.save(product);
+
+    }
+
+    @Override
+    public void deleteImage(String url, Long id) throws Exception {
+
+        Optional<Product> product = productRepository.findById(id);
+
+        if(product.isEmpty()) throw new Exception("product not found");
+
+        List<String> urls = product.get().getImgsUrls();
+
+        if(!urls.remove(url)) throw new Exception("url not found");
 
     }
 

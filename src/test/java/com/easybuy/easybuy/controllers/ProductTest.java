@@ -14,6 +14,7 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -22,8 +23,7 @@ import java.io.FileInputStream;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -87,6 +87,21 @@ public class ProductTest {
         mockMvc.perform(MockMvcRequestBuilders.multipart("/api/products/1/images")
                         .file(multipartFile))
                         .andExpect(status().isOk());
+
+    }
+
+    @WithMockUser(roles = "ADMIN")
+    @Test
+    @Order(6)
+    @Transactional
+    public void deleteImage() throws Exception {
+
+        String url = productService.findById(1L).get().getImgsUrls().get(0);
+
+        UpdateProductDTO updateProduct = new UpdateProductDTO(1L,"tv","full hd", 1500.5, 15, null,80, LocalDate.now(), null);
+        mockMvc.perform(delete("/api/products/1")
+                        .param("url", url))
+                .andExpect(status().isOk());
 
     }
 
