@@ -30,16 +30,19 @@ public class Product {
 
     private LocalDate date;
 
+    private Boolean status = true;
+
     @ElementCollection
     private List<CategoriesEnum> categoriesEnums;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<Rate> rates;
 
-    public Product(){}
-
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private Set<TicketProduct> ticketProducts;
+
+
+    public Product(){}
 
     public Product(String name, String description, Double price, int discount, int stock, LocalDate date,List<CategoriesEnum> categoriesEnums) {
         this.name = name;
@@ -50,6 +53,7 @@ public class Product {
         this.stock = stock;
         this.date = date;
         this.categoriesEnums = categoriesEnums;
+
     }
 
     public void addRate(Rate rate) {
@@ -64,6 +68,23 @@ public class Product {
         ticketProduct.setProduct(this);
 
 
+    }
+
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Set<TicketProduct> getTicketProducts() {
+        return ticketProducts;
+    }
+
+    public void setTicketProducts(Set<TicketProduct> ticketProducts) {
+        this.ticketProducts = ticketProducts;
     }
 
     public Set<TicketProduct> getTicketProduct() {
