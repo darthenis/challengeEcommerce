@@ -6,10 +6,12 @@ import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.env.RandomValuePropertySourceEnvironmentPostProcessor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -69,6 +71,23 @@ public class ProductController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>("error uploading", HttpStatus.FORBIDDEN);
+        }
+
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<?> deleteImg(@PathVariable Long id, @RequestParam String url){
+
+        if(id == null) return new ResponseEntity<>("missing id", HttpStatus.FORBIDDEN);
+
+        if(url == null) return new ResponseEntity<>("missing url", HttpStatus.FORBIDDEN);
+
+        try {
+            productService.deleteImage(url, id);
+            return new ResponseEntity<>("deleted succesfully", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
         }
 
     }
