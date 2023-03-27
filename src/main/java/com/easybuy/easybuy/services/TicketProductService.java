@@ -1,7 +1,6 @@
 package com.easybuy.easybuy.services;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
-import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.models.Ticket;
 import com.easybuy.easybuy.models.TicketProduct;
 

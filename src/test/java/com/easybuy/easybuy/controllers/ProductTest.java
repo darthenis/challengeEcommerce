@@ -4,6 +4,11 @@ import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.models.CategoriesEnum;
 import com.easybuy.easybuy.models.Product;
+
+import com.easybuy.easybuy.repositories.ProductRepository;
+import com.easybuy.easybuy.services.ClientService;
+
+
 import com.easybuy.easybuy.services.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
@@ -46,7 +51,11 @@ public class ProductTest {
     @Order(3)
     public void createProduct() throws Exception {
 
-        CreateProductDTO product = new CreateProductDTO("Television", "30 pulgadas", 1000.0, 0,20, LocalDate.now(), List.of(CategoriesEnum.VIDEO));
+
+        CreateProductDTO product = new CreateProductDTO("Television", "30 pulgadas", 1000.0, 0, List.of("url"), 20, LocalDate.now(), List.of(CategoriesEnum.VIDEO));
+
+        
+
 
         mockMvc.perform(post("/api/products")
                         .contentType("application/json")

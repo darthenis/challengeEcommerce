@@ -1,12 +1,10 @@
 package com.easybuy.easybuy.services.impl;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
-import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.models.Ticket;
 import com.easybuy.easybuy.models.TicketProduct;
 import com.easybuy.easybuy.repositories.TicketProductRepository;
-import com.easybuy.easybuy.repositories.TicketRepository;
 import com.easybuy.easybuy.services.ProductService;
 import com.easybuy.easybuy.services.TicketProductService;
 import com.easybuy.easybuy.services.TicketService;

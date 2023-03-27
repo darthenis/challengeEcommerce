@@ -49,6 +49,7 @@ public class Product {
         this.imgsUrls = imgsUrls;
         this.stock = stock;
         this.date = date;
+        this.categoriesEnums = categoriesEnums;
     }
 
     public void addRate(Rate rate) {

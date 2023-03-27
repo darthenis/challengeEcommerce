@@ -2,7 +2,6 @@ package com.easybuy.easybuy.services.impl;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.NewTicketDTO;
-import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.models.Ticket;
 import com.easybuy.easybuy.repositories.TicketRepository;
 import com.easybuy.easybuy.services.ProductService;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TicketServiceImpl implements TicketService {
@@ -40,6 +40,11 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public Long findByMaxId() {
         return ticketRepository.findMaxId();
+    }
+
+    @Override
+    public Optional<Ticket> findById(Long id) {
+        return ticketRepository.findById(id);
     }
 
     @Override

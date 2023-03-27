@@ -1,7 +1,5 @@
 package com.easybuy.easybuy.DTO;
 
-import com.easybuy.easybuy.models.Product;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
