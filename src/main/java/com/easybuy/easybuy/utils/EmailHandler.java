@@ -16,29 +16,6 @@ public class EmailHandler {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public void sendSimpleMail(String from, String to, String text, String subject) throws MessagingException {
-
-            // Creating a simple mail message
-            MimeMessage mimeMessage
-                    = javaMailSender.createMimeMessage();
-            MimeMessageHelper mimeMessageHelper;
-
-            mimeMessageHelper
-                    = new MimeMessageHelper(mimeMessage, true);
-
-            // Setting up necessary details
-            mimeMessageHelper.setFrom(from);
-            mimeMessageHelper.setTo(to);
-            mimeMessageHelper.setText("body", text);
-            mimeMessageHelper.setSubject("Confirm email");
-
-            // Sending the mail
-            javaMailSender.send(mimeMessage);
-
-        // Catch block to handle the exceptions
-
-    }
-
     public void sendMailAttachment(String from, String to, String subject, FileSystemResource file) throws MessagingException {
         MimeMessage mimeMessage
                 = javaMailSender.createMimeMessage();
@@ -48,7 +25,7 @@ public class EmailHandler {
                     = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setFrom(from);
             mimeMessageHelper.setTo(to);
-            mimeMessageHelper.setText("body", buildEmail("asd"));
+            mimeMessageHelper.setText("body", buildEmailTicket());
             mimeMessageHelper.setSubject(subject);
 
             mimeMessageHelper.addAttachment(
@@ -58,7 +35,24 @@ public class EmailHandler {
 
     }
 
-    public String buildEmail(String token){
+    public void sendEmailToken(String from, String to, String subject, String token) throws MessagingException {
+
+        MimeMessage mimeMessage
+                = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper;
+
+        mimeMessageHelper
+                = new MimeMessageHelper(mimeMessage, true);
+        mimeMessageHelper.setFrom(from);
+        mimeMessageHelper.setTo(to);
+        mimeMessageHelper.setText("body", buildEmailToken(token));
+        mimeMessageHelper.setSubject(subject);
+
+        javaMailSender.send(mimeMessage);
+
+    }
+
+    public String buildEmailToken(String token){
 
         return
                 "<div style='background-color: #2C3E50; color: white;'>"+
@@ -72,6 +66,21 @@ public class EmailHandler {
                         "</div>"+
                         "<img   style='width: 100%; margin: 0;'" +
                         "src='https://www.travelandleisure.com/thmb/LmeI6B9xXEr3XWCB4MHtYcF1-8I=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/woman-walking-looking-phone-STAYTOOL0522-705ddb14ac4047c0a7039df98319977c.jpg'></img>"+
+                        "</div>";
+    }
+
+    public String buildEmailTicket(){
+
+        return
+                "<div style='background-color: #2C3E50; color: white;'>"+
+                        "<h1 style=\"padding: 10px; margin: 0; text-align: center\">Thank you for buy in Easy Buy</h1>" +
+                        "<div style='font-size: 20px'>"+
+                        "<div style=\"margin: 0; text-align: center\">"+
+                        "<p>Thank you for shopping, we have attached the purchase receipt for you.</p>"+
+                        "</div>"+
+                        "</div>"+
+                        "<img   style='width: 100%; margin: 0;'" +
+                        "src='https://searchengineland.com/wp-content/seloads/2015/05/ecommerce-shopping-retail-ss-1920.jpg'></img>"+
                         "</div>";
     }
 

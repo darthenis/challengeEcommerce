@@ -53,8 +53,6 @@ public class TicketProductServiceImp implements TicketProductService {
 
             ticketService.save(ticket);
 
-            System.out.println(product.isPresent());
-
             product.get().addTicketProduct(ticketProduct);
 
             productService.save(product.get());
