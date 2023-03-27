@@ -32,7 +32,7 @@ public class EasybuyApplication {
 	public CommandLineRunner initData(ClientRepository clientRepository, ProductRepository productRepository, TicketProductRepository ticketProductRepository, TicketRepository ticketRepository) {
 		return (args) ->{
 
-			Client Luisito = new Client("Luis","pirulo","1234444","emi.acevedo.letras@gmail.com", passwordEncoder.encode("123"));
+			Client Luisito = new Client("Luis","pirulo","1234444","emi.acevedo@gmail.com", passwordEncoder.encode("123"));
 
 			Product ledTv = new Product("tv Samsung","tv led 65'",800.50,5,5, LocalDate.now(), List.of(CategoriesEnum.VIDEO) );
 			Product speaker = new Product("Speaker sony","torre de sonido de gran potencia 3000W",450.0,0,10, LocalDate.now(), List.of(CategoriesEnum.AUDIO) );

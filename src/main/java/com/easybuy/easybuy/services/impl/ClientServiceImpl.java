@@ -4,6 +4,7 @@ import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.repositories.ClientRepository;
 import com.easybuy.easybuy.services.ClientService;
+import com.easybuy.easybuy.utils.EmailHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -25,6 +27,9 @@ public class ClientServiceImpl implements ClientService {
     @Lazy
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    EmailHandler emailHandler;
 
     @Override
     public void save(Client client) {
@@ -51,7 +56,13 @@ public class ClientServiceImpl implements ClientService {
 
         if(clientRepository.existsByEmail(newClientDTO.getEmail())) throw new Exception("Email already registered");
 
+        String token = UUID.randomUUID().toString();
+
         Client newClient = new Client(newClientDTO.getName(), newClientDTO.getLastName(), newClientDTO.getTel(), newClientDTO.getEmail(), passwordEncoder.encode(newClientDTO.getPassword()));
+
+        newClient.setKeyToken(token);
+
+        emailHandler.sendEmailToken("emi.acevedo.letras@gmail.com", newClient.getEmail(), "Confirm email", token);
 
         clientRepository.save(newClient);
     }
@@ -114,5 +125,35 @@ public class ClientServiceImpl implements ClientService {
             throw new Exception("Wrong password");
         }
     }
+
+    @Override
+    public void activeClient(String keyToken) throws Exception {
+        Optional<Client> client = clientRepository.findByKeyToken(keyToken);
+
+        if(client.isEmpty()) throw new Exception("wrong keytoken");
+
+        client.get().setEnabled(true);
+
+        client.get().setKeyToken(null);
+
+        clientRepository.save(client.get());
+    }
+
+    @Override
+    public void resendEmail(String email) throws Exception {
+
+        Optional<Client> client = clientRepository.findByEmail(email);
+
+        if(!client.get().isEnabled()){
+
+            String token = UUID.randomUUID().toString();
+
+            emailHandler.sendEmailToken("emi.acevedo.letras@gmail.com", client.get().getEmail(), "confirm email", token);
+
+            client.get().setKeyToken(token);
+        }
+
+    }
+
 
 }

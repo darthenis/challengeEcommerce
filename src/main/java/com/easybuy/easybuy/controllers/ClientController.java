@@ -3,6 +3,7 @@ package com.easybuy.easybuy.controllers;
 import com.easybuy.easybuy.DTO.ClientDTO;
 import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.services.ClientService;
+import com.easybuy.easybuy.services.RateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,6 +61,36 @@ public class ClientController {
         }catch(Exception exception){
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
         }
+    }
+
+    @PostMapping("/clients/auth/active")
+    public ResponseEntity<?> activeClient(@RequestParam String token){
+
+        try {
+            clientService.activeClient(token);
+            return new ResponseEntity<>("client actived", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+        }
+
+    }
+
+    @PostMapping("/clients/auth/resend")
+    public ResponseEntity<?> resendToken(@RequestParam String email){
+
+        try {
+
+            clientService.resendEmail(email);
+
+            return new ResponseEntity<>("resent email successfully", HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+        }
+
+
+
     }
 
 }

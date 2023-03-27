@@ -27,6 +27,10 @@ public class Client {
 
     private String urlImg;
 
+    private boolean isEnabled = false;
+
+    private String keyToken;
+
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<Favorite> favorites;
 
@@ -54,6 +58,26 @@ public class Client {
     public void addTicket(Ticket ticket){
         ticket.setClient(this);
         tickets.add(ticket);
+    }
+
+    public String getKeyToken() {
+        return keyToken;
+    }
+
+    public void setKeyToken(String keyToken) {
+        this.keyToken = keyToken;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    public void setFavorites(Set<Favorite> favorites) {
+        this.favorites = favorites;
     }
 
     public void addRate(Rate rate){
