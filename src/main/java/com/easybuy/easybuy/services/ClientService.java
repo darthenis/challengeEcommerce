@@ -20,4 +20,8 @@ public interface ClientService {
     public Optional<Client> findByEmail(String email);
 
     void editClientPassword(Authentication authentication, String oldPassword, String newPassword) throws Exception;
+
+    void activeClient(String keyToken) throws Exception;
+
+    void resendEmail(String email) throws Exception;
 }
