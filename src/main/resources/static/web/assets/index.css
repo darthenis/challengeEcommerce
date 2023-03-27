@@ -209,7 +209,7 @@ margin-right: 6px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-/*Acá termina footer, cards y feedback customers*/
+
 
 @media (max-width:768px){
     .iframe{display: none;
@@ -218,9 +218,11 @@ margin-right: 6px;
 @media (max-width:640px){
     .services{
         border-bottom: 1px solid white;
-        padding-bottom: 1.5rem;
-    }
+        padding-bottom: 1.5rem;}
 }
+
+/*Acá termina footer, cards y feedback customers*/
+
 /* categorias */
 .categorias-emi{
 display: flex;
