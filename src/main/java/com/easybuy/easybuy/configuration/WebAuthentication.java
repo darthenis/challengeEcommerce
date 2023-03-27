@@ -35,9 +35,19 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
 
             Optional<Client> client = clientService.findByEmail(inputEmail);
 
-            if(client.isEmpty()) throw new UsernameNotFoundException("Unknown user: " + inputEmail);
+            if(client != null) {
+                if (inputEmail.equals("admin@mindhub.com")) {
+                    return new User(client.get().getEmail(), client.get().getPassword(),
+                            AuthorityUtils.createAuthorityList("ADMIN"));
+                } else {
+                    return new User(client.get().getEmail(), client.get().getPassword(), client.get().isEnabled(), true, true, true, AuthorityUtils.createAuthorityList("CLIENT"));
+                }
+            }else {
+                throw new UsernameNotFoundException("Unknown user: " + inputEmail);
+            }
 
-            return new User(client.get().getEmail(), client.get().getPassword(), client.get().isEnabled(), true, true, true, AuthorityUtils.createAuthorityList("CLIENT"));
+
+
 
         });
 
