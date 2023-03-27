@@ -31,13 +31,14 @@ public class EasybuyApplication {
 	@Bean
 	public CommandLineRunner initData(ClientRepository clientRepository, ProductRepository productRepository, TicketProductRepository ticketProductRepository, TicketRepository ticketRepository) {
 		return (args) ->{
+
 			Client Luisito = new Client("Luis","pirulo","1234444","emi.acevedo.letras@gmail.com", passwordEncoder.encode("123"));
 
-			Product television = new Product("tv Samsung","tv moderna led , 65'",800.50,5,5, LocalDate.now(), List.of(CategoriesEnum.VIDEO));
+			Product television = new Product("tv Samsung","tv moderna led 65'",800.50,5,5, LocalDate.now(), List.of(CategoriesEnum.VIDEO) );
 
 			Ticket newTicket = new Ticket("001-000001",800.50, LocalDateTime.now());
 
-			TicketProduct newTicketProduct = new TicketProduct(850.50, 1);
+			TicketProduct newTicketProduct = new TicketProduct(800.50, 1);
 
 
 

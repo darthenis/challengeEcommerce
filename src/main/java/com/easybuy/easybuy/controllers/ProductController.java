@@ -92,5 +92,16 @@ public class ProductController {
 
     }
 
+    @DeleteMapping("/current/products/delete")
+    public ResponseEntity<?> delete(@RequestParam Long id){
+        if(id == null) return new ResponseEntity<>("missing id", HttpStatus.FORBIDDEN);
+
+        try{
+            productService.deleteProduct(id);
+            return new ResponseEntity<>("deleted succesfully", HttpStatus.OK);
+        }catch (Exception exception){
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
 
 }

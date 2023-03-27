@@ -29,4 +29,6 @@ public interface ProductService {
     public void uploadImages(MultipartFile[] multipartFiles, Product product) throws Exception;
 
     public void deleteImage(String url, Long id) throws Exception;
+
+    public void deleteProduct(Long id) throws Exception;
 }
