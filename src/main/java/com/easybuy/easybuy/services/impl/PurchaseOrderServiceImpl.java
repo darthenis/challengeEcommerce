@@ -2,10 +2,9 @@ package com.easybuy.easybuy.services.impl;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.NewTicketDTO;
-import com.easybuy.easybuy.models.Ticket;
-import com.easybuy.easybuy.repositories.TicketRepository;
-import com.easybuy.easybuy.services.ProductService;
-import com.easybuy.easybuy.services.TicketService;
+import com.easybuy.easybuy.models.PurchaseOrder;
+import com.easybuy.easybuy.repositories.PurchaseOrderRepository;
+import com.easybuy.easybuy.services.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,46 +12,46 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TicketServiceImpl implements TicketService {
+public class PurchaseOrderServiceImpl implements RequestService {
 
     @Autowired
-    TicketRepository ticketRepository;
+    PurchaseOrderRepository purchaseOrderRepository;
 
     @Override
-    public void save(Ticket ticket) {
-        ticketRepository.save(ticket);
+    public void save(PurchaseOrder purchaseOrder) {
+        purchaseOrderRepository.save(purchaseOrder);
     }
 
     @Override
-    public List<Ticket> findAll() {
-        return ticketRepository.findAll();
+    public List<PurchaseOrder> findAll() {
+        return purchaseOrderRepository.findAll();
     }
 
     @Override
-    public Ticket findByNumber(String number) {
-        return ticketRepository.findByNumber(number);
+    public PurchaseOrder findByNumber(String number) {
+        return purchaseOrderRepository.findByNumber(number);
     }
 
 
     @Override
     public Long findByMaxId() {
-        return ticketRepository.findMaxId();
+        return purchaseOrderRepository.findMaxId();
     }
 
     @Override
-    public Optional<Ticket> findById(Long id) {
-        return ticketRepository.findById(id);
+    public Optional<PurchaseOrder> findById(Long id) {
+        return purchaseOrderRepository.findById(id);
     }
 
     @Override
-    public Ticket createTicket(NewTicketDTO newTicketDTO) throws Exception {
+    public PurchaseOrder createTicket(NewTicketDTO newTicketDTO) throws Exception {
 
         if(newTicketDTO.getDateTime() == null ) throw new Exception("missing date");
 
         if(newTicketDTO.getProducts() == null ) throw new Exception("missing products");
 
         int serialNumber = 1;
-        Long maxId = ticketRepository.findMaxId();
+        Long maxId = purchaseOrderRepository.findMaxId();
         String serial;
         String ticketNumber;
         String finalTicketNumber;
@@ -72,8 +71,8 @@ public class TicketServiceImpl implements TicketService {
         ticketNumber = String.format("%06d", maxId);
         finalTicketNumber = serial + "-" +ticketNumber;
 
-        Ticket newTicket = new Ticket(finalTicketNumber,newTicketDTO.getAmount(),newTicketDTO.getDateTime());
-        ticketRepository.save(newTicket);
+        PurchaseOrder newPurchaseOrder = new PurchaseOrder(finalTicketNumber,newTicketDTO.getAmount(),newTicketDTO.getDateTime());
+        purchaseOrderRepository.save(newPurchaseOrder);
 
         double amount = 0.0;
 
@@ -87,7 +86,7 @@ public class TicketServiceImpl implements TicketService {
 
 
 
-        return new Ticket(finalTicketNumber, amount, newTicketDTO.getDateTime());
+        return new PurchaseOrder(finalTicketNumber, amount, newTicketDTO.getDateTime());
 
     }
 

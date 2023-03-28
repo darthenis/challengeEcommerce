@@ -2,26 +2,21 @@ package com.easybuy.easybuy.controllers;
 
 
 import com.easybuy.easybuy.DTO.NewTicketDTO;
-import com.easybuy.easybuy.DTO.TicketDTO;
-import com.easybuy.easybuy.DTO.TicketProductDTO;
+import com.easybuy.easybuy.DTO.PurchaseOrderDTO;
 import com.easybuy.easybuy.TicketUtils.PDFExporter;
 import com.easybuy.easybuy.models.Client;
-import com.easybuy.easybuy.models.Ticket;
-import com.easybuy.easybuy.models.TicketProduct;
+import com.easybuy.easybuy.models.PurchaseOrder;
 import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.services.ProductService;
-import com.easybuy.easybuy.services.TicketProductService;
-import com.easybuy.easybuy.services.TicketService;
+import com.easybuy.easybuy.services.RequestProductService;
+import com.easybuy.easybuy.services.RequestService;
 import com.easybuy.easybuy.utils.EmailHandler;
 import com.lowagie.text.DocumentException;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,24 +24,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
-public class TicketController {
+public class PurchaseOrderController {
     @Autowired
-    TicketService ticketService;
+    RequestService requestService;
 
     @Autowired
     ProductService productService;
 
     @Autowired
-    TicketProductService ticketProductService;
+    RequestProductService requestProductService;
 
     @Autowired
     ClientService clientService;
@@ -56,8 +49,8 @@ public class TicketController {
 
 
     @RequestMapping("/orders")
-    public Set<TicketDTO> getAll(){
-        return ticketService.findAll().stream().map(TicketDTO::new).collect(Collectors.toSet());
+    public Set<PurchaseOrderDTO> getAll(){
+        return requestService.findAll().stream().map(PurchaseOrderDTO::new).collect(Collectors.toSet());
     }
 
     @PostMapping("/client/current/tickets")
@@ -65,21 +58,21 @@ public class TicketController {
 
         if(!productService.productsExists(newTicketDTO.getProducts())) return new ResponseEntity<>("product not found", HttpStatus.FORBIDDEN);
 
-        Ticket ticket = ticketService.createTicket(newTicketDTO);
+        PurchaseOrder purchaseOrder = requestService.createTicket(newTicketDTO);
 
-        ticketProductService.createTicketProduct(newTicketDTO.getProducts(), ticket);
+        requestProductService.createTicketProduct(newTicketDTO.getProducts(), purchaseOrder);
 
         Optional<Client> client = clientService.findByEmail(authentication.getName());
 
-        client.get().addTicket(ticket);
+        client.get().addTicket(purchaseOrder);
 
         clientService.save(client.get());
 
-        PDFExporter exporter = new PDFExporter(ticket);
+        PDFExporter exporter = new PDFExporter(purchaseOrder);
 
         exporter.exportToRoot();
 
-        FileSystemResource fileSystemResource = new FileSystemResource("./ticket"+ticket.getNumber()+".pdf");
+        FileSystemResource fileSystemResource = new FileSystemResource("./ticket"+ purchaseOrder.getNumber()+".pdf");
 
         emailHandler.sendMailAttachment("emi.acevedo.letras@gmail.com", client.get().getEmail(), "ticket", fileSystemResource);
 
@@ -99,7 +92,7 @@ public class TicketController {
         String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        Optional<Ticket> selectTicket = ticketService.findById(idTicket);
+        Optional<PurchaseOrder> selectTicket = requestService.findById(idTicket);
 
 
         if (idTicket == null) {

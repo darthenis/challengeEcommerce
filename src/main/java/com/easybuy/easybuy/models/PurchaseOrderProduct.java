@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-public class TicketProduct {
+public class PurchaseOrderProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -14,18 +14,18 @@ public class TicketProduct {
     private Double price;
     private int quantity;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Ticket ticket;
+    private PurchaseOrder purchaseOrder;
 
     @ManyToOne(fetch=FetchType.EAGER)
     private Product product;
 
 
 
-    public TicketProduct() {
+    public PurchaseOrderProduct() {
 
     }
 
-    public TicketProduct(Double price, int quantity) {
+    public PurchaseOrderProduct(Double price, int quantity) {
         this.price = price;
         this.quantity = quantity;
     }
@@ -62,12 +62,12 @@ public class TicketProduct {
         this.quantity = quantity;
     }
 
-    public Ticket getTicket() {
-        return ticket;
+    public PurchaseOrder getTicket() {
+        return purchaseOrder;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
+    public void setTicket(PurchaseOrder purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
     }
 
 }

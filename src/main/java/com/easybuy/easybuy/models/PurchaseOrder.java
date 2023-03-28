@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Ticket {
+public class PurchaseOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -25,31 +25,31 @@ public class Ticket {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy= "ticket", fetch=FetchType.EAGER)
-    private Set<TicketProduct> ticketProducts = new HashSet<>();
+    @OneToMany(mappedBy= "purchaseOrder", fetch=FetchType.EAGER)
+    private Set<PurchaseOrderProduct> purchaseOrderProducts = new HashSet<>();
 
-    public Ticket(){}
+    public PurchaseOrder(){}
 
-    public Ticket(String number, Double amount, LocalDateTime dateTime) {
+    public PurchaseOrder(String number, Double amount, LocalDateTime dateTime) {
         this.number = number;
         this.amount = amount;
         DateTime = dateTime;
     }
 
-    public void addTicketProduct(TicketProduct ticketProduct){
+    public void addTicketProduct(PurchaseOrderProduct purchaseOrderProduct){
 
-        ticketProduct.setTicket(this);
+        purchaseOrderProduct.setTicket(this);
 
-        this.ticketProducts.add(ticketProduct);
+        this.purchaseOrderProducts.add(purchaseOrderProduct);
 
     }
 
-    public Set<TicketProduct> getTicketProducts() {
-        return ticketProducts;
+    public Set<PurchaseOrderProduct> getTicketProducts() {
+        return purchaseOrderProducts;
     }
 
-    public void setTicketProducts(Set<TicketProduct> ticketProducts) {
-        this.ticketProducts = ticketProducts;
+    public void setTicketProducts(Set<PurchaseOrderProduct> purchaseOrderProducts) {
+        this.purchaseOrderProducts = purchaseOrderProducts;
     }
 
     public Client getClient() {

@@ -42,7 +42,7 @@ public class Product {
     private List<Rate> rates = new ArrayList<>();
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private Set<TicketProduct> ticketProducts = new HashSet<>();
+    private Set<PurchaseOrderProduct> purchaseOrderProducts = new HashSet<>();
 
 
     public Product(){}
@@ -66,9 +66,9 @@ public class Product {
 
     }
 
-    public void addTicketProduct(TicketProduct ticketProduct){
+    public void addTicketProduct(PurchaseOrderProduct purchaseOrderProduct){
 
-        ticketProduct.setProduct(this);
+        purchaseOrderProduct.setProduct(this);
 
 
     }
@@ -83,12 +83,12 @@ public class Product {
     }
 
     @JsonIgnore
-    public Set<TicketProduct> getTicketProducts() {
-        return ticketProducts;
+    public Set<PurchaseOrderProduct> getTicketProducts() {
+        return purchaseOrderProducts;
     }
 
-    public void setTicketProduct(TicketProduct ticketProduct) {
-        this.ticketProducts.add(ticketProduct);
+    public void setTicketProduct(PurchaseOrderProduct purchaseOrderProduct) {
+        this.purchaseOrderProducts.add(purchaseOrderProduct);
     }
 
     public Long getId() {
