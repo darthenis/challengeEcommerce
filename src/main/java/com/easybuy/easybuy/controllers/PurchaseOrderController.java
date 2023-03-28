@@ -1,15 +1,15 @@
 package com.easybuy.easybuy.controllers;
 
 
-import com.easybuy.easybuy.DTO.NewTicketDTO;
+import com.easybuy.easybuy.DTO.NewPurchaseOrderDTO;
 import com.easybuy.easybuy.DTO.PurchaseOrderDTO;
 import com.easybuy.easybuy.TicketUtils.PDFExporter;
 import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.PurchaseOrder;
 import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.services.ProductService;
-import com.easybuy.easybuy.services.RequestProductService;
-import com.easybuy.easybuy.services.RequestService;
+import com.easybuy.easybuy.services.PurchaseOrderProductService;
+import com.easybuy.easybuy.services.PurchaseService;
 import com.easybuy.easybuy.utils.EmailHandler;
 import com.lowagie.text.DocumentException;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
@@ -33,13 +33,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class PurchaseOrderController {
     @Autowired
-    RequestService requestService;
+    PurchaseService purchaseService;
 
     @Autowired
     ProductService productService;
 
     @Autowired
-    RequestProductService requestProductService;
+    PurchaseOrderProductService purchaseOrderProductService;
 
     @Autowired
     ClientService clientService;
@@ -50,17 +50,17 @@ public class PurchaseOrderController {
 
     @RequestMapping("/orders")
     public Set<PurchaseOrderDTO> getAll(){
-        return requestService.findAll().stream().map(PurchaseOrderDTO::new).collect(Collectors.toSet());
+        return purchaseService.findAll().stream().map(PurchaseOrderDTO::new).collect(Collectors.toSet());
     }
 
-    @PostMapping("/client/current/tickets")
-    public ResponseEntity<Object> newTicket(@RequestBody NewTicketDTO newTicketDTO, Authentication authentication) throws Exception {
+    @PostMapping("/client/current/orders")
+    public ResponseEntity<Object> newOrder(@RequestBody NewPurchaseOrderDTO newPurchaseOrderDTO, Authentication authentication) throws Exception {
 
-        if(!productService.productsExists(newTicketDTO.getProducts())) return new ResponseEntity<>("product not found", HttpStatus.FORBIDDEN);
+        if(!productService.productsExists(newPurchaseOrderDTO.getProducts())) return new ResponseEntity<>("product not found", HttpStatus.FORBIDDEN);
 
-        PurchaseOrder purchaseOrder = requestService.createTicket(newTicketDTO);
+        PurchaseOrder purchaseOrder = purchaseService.createPurchaseOrder(newPurchaseOrderDTO);
 
-        requestProductService.createTicketProduct(newTicketDTO.getProducts(), purchaseOrder);
+        purchaseOrderProductService.createTicketProduct(newPurchaseOrderDTO.getProducts(), purchaseOrder);
 
         Optional<Client> client = clientService.findByEmail(authentication.getName());
 
@@ -68,15 +68,15 @@ public class PurchaseOrderController {
 
         clientService.save(client.get());
 
-        PDFExporter exporter = new PDFExporter(purchaseOrder);
+       // PDFExporter exporter = new PDFExporter(purchaseOrder);
 
-        exporter.exportToRoot();
+       // exporter.exportToRoot();
 
-        FileSystemResource fileSystemResource = new FileSystemResource("./ticket"+ purchaseOrder.getNumber()+".pdf");
+       // FileSystemResource fileSystemResource = new FileSystemResource("./ticket"+ purchaseOrder.getNumber()+".pdf");
 
-        emailHandler.sendMailAttachment("emi.acevedo.letras@gmail.com", client.get().getEmail(), "ticket", fileSystemResource);
+       // emailHandler.sendMailAttachment("emi.acevedo.letras@gmail.com", client.get().getEmail(), "ticket", fileSystemResource);
 
-        FileUtils.forceDelete(fileSystemResource.getFile());
+       // FileUtils.forceDelete(fileSystemResource.getFile());
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -92,7 +92,7 @@ public class PurchaseOrderController {
         String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        Optional<PurchaseOrder> selectTicket = requestService.findById(idTicket);
+        Optional<PurchaseOrder> selectTicket = purchaseService.findById(idTicket);
 
 
         if (idTicket == null) {

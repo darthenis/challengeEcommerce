@@ -6,7 +6,7 @@ import com.easybuy.easybuy.models.PurchaseOrderProduct;
 
 import java.util.List;
 
-public interface RequestProductService {
+public interface PurchaseOrderProductService {
     void save (PurchaseOrderProduct purchaseOrderProduct);
 
     List<PurchaseOrderProduct> findAll() ;
