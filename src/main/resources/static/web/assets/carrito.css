@@ -1,0 +1,54 @@
+
+
+.carrito{
+    position: fixed;
+    top: 0px;
+    right: -1000px;
+    opacity: .3;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes slideIn {
+
+    from{
+        opacity: .3;
+        right: -1000px;
+    } to {
+        opacity: 1;
+        right: 0px;
+
+    }
+    
+}
+
+@keyframes slideOut {
+
+    from{
+        opacity: 1;
+        right: 0px;
+
+    } to {
+
+        opacity: .3;
+        right: -1000px;
+
+    }
+    
+}
+
+
+.input[type='number']::-webkit-inner-spin-button,
+.input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.custom-number-input input:focus {
+    outline: none !important;
+}
+
+.custom-number-input button:focus {
+    outline: none !important;
+}
