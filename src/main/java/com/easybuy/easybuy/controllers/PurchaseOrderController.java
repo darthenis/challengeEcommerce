@@ -139,7 +139,7 @@ public class PurchaseOrderController {
 
             exporter.exportToRoot();
 
-            FileSystemResource fileSystemResource = new FileSystemResource("./ticket"+ purchaseOrder.getNumber()+".pdf");
+            FileSystemResource fileSystemResource = new FileSystemResource("./ticket-"+ ticket.getNumber()+".pdf");
 
             emailHandler.sendMailAttachment("emi.acevedo.letras@gmail.com", client.get().getEmail(), "ticket", fileSystemResource);
 
