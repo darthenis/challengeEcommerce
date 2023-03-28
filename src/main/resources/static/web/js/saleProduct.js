@@ -5,7 +5,8 @@ createApp({
             selectImg: "",
             dataProduct: null,
             radioPayments: null,
-            bag: JSON.parse(localStorage.getItem("bag")) || []
+            bag: JSON.parse(localStorage.getItem("bag")) || [],
+            active: null
 
         }
     },
@@ -69,6 +70,22 @@ createApp({
                 this.bag.push(this.dataProduct)
             }
             localStorage.setItem("bag", JSON.stringify(this.bag))
+
+        },
+
+        toggleCar() {
+
+            if (this.active == null) {
+
+                this.active = true;
+
+            } else {
+
+                this.active = !this.active;
+
+            }
+
+            console.log(this.active)
 
         }
 
