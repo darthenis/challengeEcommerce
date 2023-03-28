@@ -3,9 +3,8 @@ package com.easybuy.easybuy;
 import com.easybuy.easybuy.models.*;
 import com.easybuy.easybuy.repositories.ClientRepository;
 import com.easybuy.easybuy.repositories.ProductRepository;
-import com.easybuy.easybuy.repositories.TicketProductRepository;
-import com.easybuy.easybuy.repositories.TicketRepository;
-import com.easybuy.easybuy.services.ClientService;
+import com.easybuy.easybuy.repositories.PurchaseOrderProductRepository;
+import com.easybuy.easybuy.repositories.PurchaseOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -29,7 +28,7 @@ public class EasybuyApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(ClientRepository clientRepository, ProductRepository productRepository, TicketProductRepository ticketProductRepository, TicketRepository ticketRepository) {
+	public CommandLineRunner initData(ClientRepository clientRepository, ProductRepository productRepository, PurchaseOrderProductRepository purchaseOrderProductRepository, PurchaseOrderRepository purchaseOrderRepository) {
 		return (args) ->{
 
 			Client Luisito = new Client("Luis","pirulo","1234444","emi.acevedo@gmail.com", passwordEncoder.encode("123"));
@@ -54,39 +53,39 @@ public class EasybuyApplication {
 			cuutopiaPlush.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6514/6514490_sd.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6514/6514490cv12d.jpg;maxHeight=2000;maxWidth=2000", "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6514/6514490cv16d.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6514/6514490_rd.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6514/6514490cv11d.jpg;maxHeight=2000;maxWidth=2000"));
 			Product sofa = new Product("sofa","Lifestyle Solutions - Hamburg Rolled Arm Sofa - Dark Grey",395.99,5,3, LocalDate.now(), List.of(CategoriesEnum.FURNITURE) );
 
-			Ticket newTicket = new Ticket("001-000001", ledTv.getPrice()+speaker.getPrice()+ laptop.getPrice()+ cableHdmi.getPrice()+ bloodPressure.getPrice()+ cuutopiaPlush.getPrice()+ sofa.getPrice(), LocalDateTime.now());
+			PurchaseOrder newPurchaseOrder = new PurchaseOrder("001-000001", ledTv.getPrice()+speaker.getPrice()+ laptop.getPrice()+ cableHdmi.getPrice()+ bloodPressure.getPrice()+ cuutopiaPlush.getPrice()+ sofa.getPrice(), LocalDateTime.now());
 
-			TicketProduct ledTvTicketProduct = new TicketProduct(800.50, 1);
-			TicketProduct speakerTicketProduct = new TicketProduct(450.0,1);
-			TicketProduct laptopTicketProduct = new TicketProduct(180.0,1);
-			TicketProduct cablehdmiTicketProduct = new TicketProduct(20.0,1);
-			TicketProduct bloodPressureTicketProduct = new TicketProduct(100.50,1);
-			TicketProduct cuutopiaTicketProduct = new TicketProduct(10.99,1);
-			TicketProduct sofaTicketProduct = new TicketProduct(395.99,1);
+			PurchaseOrderProduct ledTvPurchaseOrderProduct = new PurchaseOrderProduct(800.50, 1);
+			PurchaseOrderProduct speakerPurchaseOrderProduct = new PurchaseOrderProduct(450.0,1);
+			PurchaseOrderProduct laptopPurchaseOrderProduct = new PurchaseOrderProduct(180.0,1);
+			PurchaseOrderProduct cablehdmiPurchaseOrderProduct = new PurchaseOrderProduct(20.0,1);
+			PurchaseOrderProduct bloodPressurePurchaseOrderProduct = new PurchaseOrderProduct(100.50,1);
+			PurchaseOrderProduct cuutopiaPurchaseOrderProduct = new PurchaseOrderProduct(10.99,1);
+			PurchaseOrderProduct sofaPurchaseOrderProduct = new PurchaseOrderProduct(395.99,1);
 
 
 
-			Luisito.addTicket(newTicket);
-			newTicket.addTicketProduct(ledTvTicketProduct);
-			ledTv.addTicketProduct(ledTvTicketProduct);
+			Luisito.addTicket(newPurchaseOrder);
+			newPurchaseOrder.addTicketProduct(ledTvPurchaseOrderProduct);
+			ledTv.addTicketProduct(ledTvPurchaseOrderProduct);
 
-			newTicket.addTicketProduct(speakerTicketProduct);
-			speaker.addTicketProduct(speakerTicketProduct);
+			newPurchaseOrder.addTicketProduct(speakerPurchaseOrderProduct);
+			speaker.addTicketProduct(speakerPurchaseOrderProduct);
 
-			newTicket.addTicketProduct(laptopTicketProduct);
-			laptop.addTicketProduct(laptopTicketProduct);
+			newPurchaseOrder.addTicketProduct(laptopPurchaseOrderProduct);
+			laptop.addTicketProduct(laptopPurchaseOrderProduct);
 
-			newTicket.addTicketProduct(cablehdmiTicketProduct);
-			cableHdmi.addTicketProduct(cablehdmiTicketProduct);
+			newPurchaseOrder.addTicketProduct(cablehdmiPurchaseOrderProduct);
+			cableHdmi.addTicketProduct(cablehdmiPurchaseOrderProduct);
 
-			newTicket.addTicketProduct(bloodPressureTicketProduct);
-			bloodPressure.addTicketProduct(bloodPressureTicketProduct);
+			newPurchaseOrder.addTicketProduct(bloodPressurePurchaseOrderProduct);
+			bloodPressure.addTicketProduct(bloodPressurePurchaseOrderProduct);
 
-			newTicket.addTicketProduct(cuutopiaTicketProduct);
-			cuutopiaPlush.addTicketProduct(cuutopiaTicketProduct);
+			newPurchaseOrder.addTicketProduct(cuutopiaPurchaseOrderProduct);
+			cuutopiaPlush.addTicketProduct(cuutopiaPurchaseOrderProduct);
 
-			newTicket.addTicketProduct(sofaTicketProduct);
-			sofa.addTicketProduct(sofaTicketProduct);
+			newPurchaseOrder.addTicketProduct(sofaPurchaseOrderProduct);
+			sofa.addTicketProduct(sofaPurchaseOrderProduct);
 
 
 			clientRepository.save(Luisito);
@@ -100,15 +99,15 @@ public class EasybuyApplication {
 			productRepository.save(cuutopiaPlush);
 			productRepository.save(sofa);
 
-			ticketRepository.save(newTicket);
+			purchaseOrderRepository.save(newPurchaseOrder);
 
-			ticketProductRepository.save(ledTvTicketProduct);
-			ticketProductRepository.save(speakerTicketProduct);
-			ticketProductRepository.save(laptopTicketProduct);
-			ticketProductRepository.save(cablehdmiTicketProduct);
-			ticketProductRepository.save(bloodPressureTicketProduct);
-			ticketProductRepository.save(cuutopiaTicketProduct);
-			ticketProductRepository.save(sofaTicketProduct);
+			purchaseOrderProductRepository.save(ledTvPurchaseOrderProduct);
+			purchaseOrderProductRepository.save(speakerPurchaseOrderProduct);
+			purchaseOrderProductRepository.save(laptopPurchaseOrderProduct);
+			purchaseOrderProductRepository.save(cablehdmiPurchaseOrderProduct);
+			purchaseOrderProductRepository.save(bloodPressurePurchaseOrderProduct);
+			purchaseOrderProductRepository.save(cuutopiaPurchaseOrderProduct);
+			purchaseOrderProductRepository.save(sofaPurchaseOrderProduct);
 
 
 
