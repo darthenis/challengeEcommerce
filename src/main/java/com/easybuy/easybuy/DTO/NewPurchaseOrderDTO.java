@@ -3,7 +3,7 @@ package com.easybuy.easybuy.DTO;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class NewTicketDTO {
+public class NewPurchaseOrderDTO {
 
 private LocalDateTime dateTime;
 
@@ -11,13 +11,18 @@ private List<ApplyProductDTO> products;
 
 private Double amount;
 
-    public NewTicketDTO(LocalDateTime dateTime,Double amount, List<ApplyProductDTO> products) {
+    public NewPurchaseOrderDTO(LocalDateTime dateTime, Double amount, List<ApplyProductDTO> products) {
         this.dateTime = dateTime;
         this.products = products;
+        this.amount = amount;
     }
 
-    public Double getAmount() {
-        return amount;
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public List<ApplyProductDTO> getProducts() {
@@ -28,11 +33,11 @@ private Double amount;
         this.products = products;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 }

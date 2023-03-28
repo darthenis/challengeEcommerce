@@ -1,21 +1,33 @@
 package com.easybuy.easybuy.services.impl;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
-import com.easybuy.easybuy.DTO.NewTicketDTO;
+import com.easybuy.easybuy.DTO.NewPurchaseOrderDTO;
 import com.easybuy.easybuy.models.PurchaseOrder;
+import com.easybuy.easybuy.models.PurchaseOrderProduct;
 import com.easybuy.easybuy.repositories.PurchaseOrderRepository;
-import com.easybuy.easybuy.services.RequestService;
+import com.easybuy.easybuy.services.ProductService;
+import com.easybuy.easybuy.services.PurchaseOrderProductService;
+import com.easybuy.easybuy.services.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PurchaseOrderServiceImpl implements RequestService {
+public class PurchaseOrderServiceImpl implements PurchaseService {
 
     @Autowired
     PurchaseOrderRepository purchaseOrderRepository;
+
+    @Autowired
+    ProductService productService;
+
+    @Lazy
+    @Autowired
+    PurchaseOrderProductService purchaseOrderProductService;
 
     @Override
     public void save(PurchaseOrder purchaseOrder) {
@@ -44,11 +56,52 @@ public class PurchaseOrderServiceImpl implements RequestService {
     }
 
     @Override
-    public PurchaseOrder createTicket(NewTicketDTO newTicketDTO) throws Exception {
+    public boolean checkPurchaseOrderState(String number) {
 
-        if(newTicketDTO.getDateTime() == null ) throw new Exception("missing date");
+        PurchaseOrder purchaseOrder = purchaseOrderRepository.findByNumber(number);
 
-        if(newTicketDTO.getProducts() == null ) throw new Exception("missing products");
+        return purchaseOrder.isState();
+
+    }
+
+    @Override
+    @Transactional
+    public void delete(String number) {
+
+        PurchaseOrder purchaseOrder = purchaseOrderRepository.findByNumber(number);
+
+        for(PurchaseOrderProduct purchaseOrderProduct : purchaseOrder.getTicketProducts()){
+
+            productService.sumStock(purchaseOrderProduct.getProduct().getId(), purchaseOrderProduct.getQuantity());
+
+            purchaseOrderProductService.deleteById(purchaseOrderProduct.getId());
+
+        }
+
+        purchaseOrderRepository.deleteById(purchaseOrder.getId());
+    }
+
+    @Override
+    public PurchaseOrder completePurchase(Long id) throws Exception {
+
+        Optional<PurchaseOrder> purchaseOrder = purchaseOrderRepository.findById(id);
+
+        if(purchaseOrder.isEmpty()) throw new Exception("PurchaseOrder not found");
+
+        purchaseOrder.get().setState(true);
+
+        purchaseOrderRepository.save(purchaseOrder.get());
+
+        return purchaseOrder.get();
+
+    }
+
+    @Override
+    public PurchaseOrder createPurchaseOrder(NewPurchaseOrderDTO newPurchaseOrderDTO) throws Exception {
+
+        if(newPurchaseOrderDTO.getDateTime() == null ) throw new Exception("missing date");
+
+        if(newPurchaseOrderDTO.getProducts() == null ) throw new Exception("missing products");
 
         int serialNumber = 1;
         Long maxId = purchaseOrderRepository.findMaxId();
@@ -71,12 +124,17 @@ public class PurchaseOrderServiceImpl implements RequestService {
         ticketNumber = String.format("%06d", maxId);
         finalTicketNumber = serial + "-" +ticketNumber;
 
-        PurchaseOrder newPurchaseOrder = new PurchaseOrder(finalTicketNumber,newTicketDTO.getAmount(),newTicketDTO.getDateTime());
-        purchaseOrderRepository.save(newPurchaseOrder);
+
+
+        PurchaseOrder newPurchaseOrder = new PurchaseOrder(finalTicketNumber, newPurchaseOrderDTO.getAmount(), newPurchaseOrderDTO.getDateTime());
+
+
 
         double amount = 0.0;
 
-        for(ApplyProductDTO applyProductDTO : newTicketDTO.getProducts()){
+        for(ApplyProductDTO applyProductDTO : newPurchaseOrderDTO.getProducts()){
+
+            productService.restStock(applyProductDTO.getProductId(), applyProductDTO.getQuantity());
 
             double total = applyProductDTO.getPrice() * applyProductDTO.getQuantity();
 
@@ -84,9 +142,10 @@ public class PurchaseOrderServiceImpl implements RequestService {
 
         }
 
+        purchaseOrderRepository.save(newPurchaseOrder);
 
 
-        return new PurchaseOrder(finalTicketNumber, amount, newTicketDTO.getDateTime());
+        return newPurchaseOrder;
 
     }
 
