@@ -34,11 +34,12 @@ public class WebAuthorization {
                 .antMatchers("api/client/current/tickets").hasAuthority("ADMIN")
                 .antMatchers("api/orders").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.POST,"/api/products").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.GET,"api/products").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.PATCH,"api/products").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.POST,"api/products/{id}/images").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.DELETE,"api/products/{id}").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.DELETE,"api/current/products").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET,"/api/products").permitAll()
+                .antMatchers(HttpMethod.PATCH,"/api/products").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST,"/api/products/{id}/images").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/api/products/{id}").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/api/current/products").hasAuthority("ADMIN")
+
                 .antMatchers(HttpMethod.GET,"/api/clients").hasAuthority("ADMIN")
                 .antMatchers("/manager/**").hasAuthority("ADMIN");
 
