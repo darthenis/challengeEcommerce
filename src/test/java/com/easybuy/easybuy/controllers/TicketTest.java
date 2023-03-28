@@ -3,12 +3,13 @@ package com.easybuy.easybuy.controllers;
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.NewTicketDTO;
 import com.easybuy.easybuy.models.*;
+import com.easybuy.easybuy.models.PurchaseOrder;
 import com.easybuy.easybuy.repositories.ClientRepository;
 import com.easybuy.easybuy.repositories.ProductRepository;
 import com.easybuy.easybuy.repositories.RateRepository;
 import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.services.ProductService;
-import com.easybuy.easybuy.services.TicketService;
+import com.easybuy.easybuy.services.RequestService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ import java.util.List;
 public class TicketTest {
 
     @Autowired
-    TicketService ticketService;
+    RequestService requestService;
 
     @Autowired
     ProductService productService;
@@ -57,7 +58,7 @@ public class TicketTest {
     RateRepository rateRepository;
 
 
-    @Order(5)
+    @org.junit.jupiter.api.Order(5)
     @WithMockUser(roles = "CLIENT", username = "julio@mindhub.com")
     @Test
     public void CreateTicketOK() throws Exception {
@@ -73,15 +74,15 @@ public class TicketTest {
                         .content(objectMapper.writeValueAsString(newTicketDTO)))
                 .andExpect(status().isCreated());
 
-        List<Ticket> ticket = ticketService.findAll();
+        List<PurchaseOrder> purchaseOrder = requestService.findAll();
 
-        assertThat(ticket, hasItem(hasProperty("number", is("001-000001"))));
+        assertThat(purchaseOrder, hasItem(hasProperty("number", is("001-000001"))));
 
     }
 
     @WithMockUser(roles = "CLIENT", username = "julio@mindhub.com")
     @Test
-    @Order(7)
+    @org.junit.jupiter.api.Order(7)
     public void addRate() throws Exception {
 
         mockMvc.perform(post("/api/products/1/rates")

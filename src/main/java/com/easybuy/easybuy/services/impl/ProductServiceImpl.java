@@ -3,17 +3,14 @@ package com.easybuy.easybuy.services.impl;
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
 import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.UpdateProductDTO;
-import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.repositories.ProductRepository;
 import com.easybuy.easybuy.services.ProductService;
 import com.easybuy.easybuy.utils.ImageHandler;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

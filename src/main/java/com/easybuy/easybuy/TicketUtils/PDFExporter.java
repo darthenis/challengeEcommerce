@@ -1,28 +1,24 @@
 package com.easybuy.easybuy.TicketUtils;
 
-import com.easybuy.easybuy.DTO.TicketDTO;
-import com.easybuy.easybuy.DTO.TicketProductDTO;
-import com.easybuy.easybuy.models.Ticket;
+import com.easybuy.easybuy.models.PurchaseOrder;
 
 import java.awt.Color;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.NumberFormat;
-import java.util.List;
 import java.util.Locale;
 import javax.servlet.http.HttpServletResponse;
 
-import com.easybuy.easybuy.models.TicketProduct;
+import com.easybuy.easybuy.models.PurchaseOrderProduct;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
-import org.springframework.core.io.FileSystemResource;
 
 
 public class PDFExporter {
-    private Ticket ticket;
+    private PurchaseOrder purchaseOrder;
 
-    public PDFExporter(Ticket ticket) {
-        this.ticket = ticket;
+    public PDFExporter(PurchaseOrder purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
     }
 
     private void writeTableHeader(PdfPTable table) {
@@ -45,10 +41,10 @@ public class PDFExporter {
     }
 
     private void writeTableData(PdfPTable table) {
-        for (TicketProduct ticketProduct : ticket.getTicketProducts() ) {
-            table.addCell(String.valueOf(ticketProduct.getQuantity()));
-            table.addCell(String.valueOf(ticketProduct.getProduct().getName()));
-            table.addCell(NumberFormat.getCurrencyInstance(new Locale("en", "US")).format(ticketProduct.getPrice()));
+        for (PurchaseOrderProduct purchaseOrderProduct : purchaseOrder.getTicketProducts() ) {
+            table.addCell(String.valueOf(purchaseOrderProduct.getQuantity()));
+            table.addCell(String.valueOf(purchaseOrderProduct.getProduct().getName()));
+            table.addCell(NumberFormat.getCurrencyInstance(new Locale("en", "US")).format(purchaseOrderProduct.getPrice()));
 
         }
 
@@ -68,7 +64,7 @@ public class PDFExporter {
         cell.setPhrase(new Phrase("", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase(NumberFormat.getCurrencyInstance(new Locale("en", "US")).format(ticket.getAmount()) , font));
+        cell.setPhrase(new Phrase(NumberFormat.getCurrencyInstance(new Locale("en", "US")).format(purchaseOrder.getAmount()) , font));
         table.addCell(cell);
     }
 
@@ -98,7 +94,7 @@ public class PDFExporter {
         font1.setColor(Color.BLUE);
 
         Paragraph p = new Paragraph("EASY-BUY TICKET", font1);
-        Paragraph t = new Paragraph("TICKET NUMBER: "+ticket.getNumber(), font);
+        Paragraph t = new Paragraph("TICKET NUMBER: "+ purchaseOrder.getNumber(), font);
         t.setAlignment(Paragraph.ALIGN_RIGHT);
         p.setAlignment(Paragraph.ALIGN_CENTER);
 
