@@ -5,9 +5,6 @@ import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.models.CategoriesEnum;
 import com.easybuy.easybuy.models.Product;
 
-import com.easybuy.easybuy.repositories.ProductRepository;
-import com.easybuy.easybuy.services.ClientService;
-
 
 import com.easybuy.easybuy.services.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -36,7 +36,7 @@ public class Client {
     private Set<Favorite> favorites;
 
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
-    private Set<Ticket> tickets = new HashSet<>();
+    private Set<PurchaseOrder> purchaseOrders = new HashSet<>();
 
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private List<Rate> rates;
@@ -56,9 +56,9 @@ public class Client {
         favorite.setClient(this);
         favorites.add(favorite);
     }
-    public void addTicket(Ticket ticket){
-        ticket.setClient(this);
-        tickets.add(ticket);
+    public void addTicket(PurchaseOrder purchaseOrder){
+        purchaseOrder.setClient(this);
+        purchaseOrders.add(purchaseOrder);
     }
 
     public String getKeyToken() {
@@ -96,12 +96,12 @@ public class Client {
         return favorites;
     }
 
-    public Set<Ticket> getTickets() {
-        return tickets;
+    public Set<PurchaseOrder> getTickets() {
+        return purchaseOrders;
     }
 
-    public void setTickets(Set<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setTickets(Set<PurchaseOrder> purchaseOrders) {
+        this.purchaseOrders = purchaseOrders;
     }
 
     public Long getId() {
