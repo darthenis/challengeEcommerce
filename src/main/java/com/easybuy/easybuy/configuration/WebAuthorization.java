@@ -38,6 +38,7 @@ public class WebAuthorization {
                 .antMatchers(HttpMethod.PATCH,"/api/products").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.POST,"/api/products/{id}/images").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.DELETE,"/api/products/{id}").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET,"/api/products/{id}").permitAll()//hasAuthority("CLIENT")
                 .antMatchers(HttpMethod.DELETE,"/api/current/products").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.GET,"/api/clients").hasAuthority("ADMIN")
                 .antMatchers("/manager/**").hasAuthority("ADMIN");

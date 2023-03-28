@@ -2,30 +2,31 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            product: {
-                img: ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6514/6514490_sd.jpg", "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6514/6514490cv12d.jpg;maxHeight=2000;maxWidth=2000", "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6514/6514490cv16d.jpg;maxHeight=2000;maxWidth=2000"]
-            },
             selectImg: "",
-            dataProduct: null
+            dataProduct: null,
+            radioPayments: null,
+            bag: JSON.parse(localStorage.getItem("bag")) || [],
+            active: null
 
         }
     },
     created() {
-        /* let parameterUrl = location.search
+        let parameterUrl = location.search
         let parameters = new URLSearchParams(parameterUrl)
-        this.id = parameters.get("id") */
-        /*   this.loadData() */
-        this.selectImg = this.product.img[0]
+        this.id = parameters.get("id")
+        this.loadData()
+
 
 
     },
     methods: {
         loadData() {
-            axios.get("api/products/6")
+            axios.get("/api/products/6")
                 .then(response => {
                     this.dataProduct = response.data
                     console.log(this.dataProduct)
                     this.params
+                    this.selectImg = this.dataProduct.imgsUrls[0]
                 })
         },
 
@@ -43,10 +44,52 @@ createApp({
                 })
         },
 
+        formatDollar(price) {
+            let USDollar = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+            return USDollar.format(price)
+        },
+
+        resetPayments() {
+            this.radioPayments = null
+        },
+
+        saveBag(object) {
+            if (this.bag.find(item => item.id == object.id)) {
+                this.bag = this.bag.map(item => {
+                    if (item.id == object.id && object.stock > 0 && object.stock > item.quantity) {
+                        return { ...item, quantity: (item.quantity + 1) }
+                    } else {
+                        return item;
+                    }
+                })
+            } else {
+                let product = { ...object, quantity: 1 }
+                this.bag.push(this.dataProduct)
+            }
+            localStorage.setItem("bag", JSON.stringify(this.bag))
+
+        },
+
+        toggleCar() {
+
+            if (this.active == null) {
+
+                this.active = true;
+
+            } else {
+
+                this.active = !this.active;
+
+            }
+
+            console.log(this.active)
+
+        }
+
+
     },
-
-
-
-
 
 }).mount("#app")
