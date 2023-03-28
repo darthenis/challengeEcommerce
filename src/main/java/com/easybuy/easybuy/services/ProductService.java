@@ -30,4 +30,8 @@ public interface ProductService {
     public void deleteImage(String url, Long id) throws Exception;
 
     public void deleteProduct(Long id) throws Exception;
+
+    public void restStock(Long id, int quantity) throws Exception;
+
+    public void sumStock(Long id, int quantity);
 }

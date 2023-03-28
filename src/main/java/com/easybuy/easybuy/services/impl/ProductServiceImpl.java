@@ -98,6 +98,27 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void restStock(Long id, int quantity) throws Exception {
+
+        Optional<Product> product = productRepository.findById(id);
+
+        if(product.isEmpty()) throw new Exception("Product not found");
+
+        if(product.get().getStock() < quantity) throw new Exception("Not stock for productId: " + id);
+
+        product.get().setStock(product.get().getStock() - quantity);
+
+        productRepository.save(product.get());
+    }
+
+    @Override
+    public void sumStock(Long id, int quantity) {
+        Optional<Product> product = productRepository.findById(id);
+        product.get().setStock(product.get().getStock() + quantity);
+        productRepository.save(product.get());
+    }
+
+    @Override
     public void createProduct(CreateProductDTO createProductDTO) throws Exception {
 
             if(createProductDTO.getDiscount() < 0 ) throw new Exception("The number entered is wrong");

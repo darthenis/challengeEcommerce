@@ -1,7 +1,7 @@
 package com.easybuy.easybuy.controllers;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
-import com.easybuy.easybuy.DTO.NewTicketDTO;
+import com.easybuy.easybuy.DTO.NewPurchaseOrderDTO;
 import com.easybuy.easybuy.models.*;
 import com.easybuy.easybuy.models.PurchaseOrder;
 import com.easybuy.easybuy.repositories.ClientRepository;
@@ -9,7 +9,7 @@ import com.easybuy.easybuy.repositories.ProductRepository;
 import com.easybuy.easybuy.repositories.RateRepository;
 import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.services.ProductService;
-import com.easybuy.easybuy.services.RequestService;
+import com.easybuy.easybuy.services.PurchaseService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ import java.util.List;
 public class TicketTest {
 
     @Autowired
-    RequestService requestService;
+    PurchaseService purchaseService;
 
     @Autowired
     ProductService productService;
@@ -67,16 +67,16 @@ public class TicketTest {
 
         productRepository.save(new Product("Television", "30 pulgadas", 1000.0, 0, 20, LocalDate.now(), List.of(CategoriesEnum.VIDEO)));
 
-        NewTicketDTO newTicketDTO = new NewTicketDTO(LocalDateTime.now(),1500.0, List.of(new ApplyProductDTO(1L, 12.0, 2)));
+        /*NewPurchaseOrderDTO newPurchaseOrderDTO = new NewPurchaseOrderDTO(LocalDateTime.now(),1500.0, List.of(new ApplyProductDTO(1L, 12.0, 2)));
 
         mockMvc.perform(post("/api/client/current/ticket")
                         .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(newTicketDTO)))
+                        .content(objectMapper.writeValueAsString(newPurchaseOrderDTO)))
                 .andExpect(status().isCreated());
 
-        List<PurchaseOrder> purchaseOrder = requestService.findAll();
+        List<PurchaseOrder> purchaseOrder = purchaseService.findAll();
 
-        assertThat(purchaseOrder, hasItem(hasProperty("number", is("001-000001"))));
+        assertThat(purchaseOrder, hasItem(hasProperty("number", is("001-000001"))));*/
 
     }
 

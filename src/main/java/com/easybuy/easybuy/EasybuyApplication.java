@@ -31,9 +31,11 @@ public class EasybuyApplication {
 	public CommandLineRunner initData(ClientRepository clientRepository, ProductRepository productRepository, PurchaseOrderProductRepository purchaseOrderProductRepository, PurchaseOrderRepository purchaseOrderRepository) {
 		return (args) ->{
 
-			Client Luisito = new Client("Luis","pirulo","1234444","emi.acevedo@gmail.com", passwordEncoder.encode("123"));
-			Luisito.setEnabled(true);
+			Client luisito = new Client("Luis","pirulo","1234444","emi.acevedo@gmail.com", passwordEncoder.encode("123"));
+			luisito.setEnabled(true);
 			Client admin = new Client("Admin","Admin","4444444","admin@mindhub.com", passwordEncoder.encode("123"));
+
+			luisito.setEnabled(true);
 
 			Product ledTv = new Product("tv Samsung","tv led 65'",800.50,5,5, LocalDate.now(), List.of(CategoriesEnum.VIDEO) );
 
@@ -65,7 +67,7 @@ public class EasybuyApplication {
 
 
 
-			Luisito.addTicket(newPurchaseOrder);
+			luisito.addTicket(newPurchaseOrder);
 			newPurchaseOrder.addTicketProduct(ledTvPurchaseOrderProduct);
 			ledTv.addTicketProduct(ledTvPurchaseOrderProduct);
 
@@ -88,7 +90,7 @@ public class EasybuyApplication {
 			sofa.addTicketProduct(sofaPurchaseOrderProduct);
 
 
-			clientRepository.save(Luisito);
+			clientRepository.save(luisito);
 			clientRepository.save(admin);
 
 			productRepository.save(ledTv);

@@ -10,15 +10,17 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletResponse;
 
 import com.easybuy.easybuy.models.PurchaseOrderProduct;
+import com.easybuy.easybuy.models.Ticket;
+import com.easybuy.easybuy.models.TicketProduct;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 
 
 public class PDFExporter {
-    private PurchaseOrder purchaseOrder;
+    private Ticket ticket;
 
-    public PDFExporter(PurchaseOrder purchaseOrder) {
-        this.purchaseOrder = purchaseOrder;
+    public PDFExporter(Ticket ticket) {
+        this.ticket = ticket;
     }
 
     private void writeTableHeader(PdfPTable table) {
@@ -41,10 +43,10 @@ public class PDFExporter {
     }
 
     private void writeTableData(PdfPTable table) {
-        for (PurchaseOrderProduct purchaseOrderProduct : purchaseOrder.getTicketProducts() ) {
-            table.addCell(String.valueOf(purchaseOrderProduct.getQuantity()));
-            table.addCell(String.valueOf(purchaseOrderProduct.getProduct().getName()));
-            table.addCell(NumberFormat.getCurrencyInstance(new Locale("en", "US")).format(purchaseOrderProduct.getPrice()));
+        for (TicketProduct ticketProduct : ticket.getTicketProducts() ) {
+            table.addCell(String.valueOf(ticketProduct.getQuantity()));
+            table.addCell(String.valueOf(ticketProduct.getName()));
+            table.addCell(NumberFormat.getCurrencyInstance(new Locale("en", "US")).format(ticketProduct.getPrice()));
 
         }
 
@@ -64,7 +66,7 @@ public class PDFExporter {
         cell.setPhrase(new Phrase("", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase(NumberFormat.getCurrencyInstance(new Locale("en", "US")).format(purchaseOrder.getAmount()) , font));
+        cell.setPhrase(new Phrase(NumberFormat.getCurrencyInstance(new Locale("en", "US")).format(sumTotalProduct()) , font));
         table.addCell(cell);
     }
 
@@ -94,7 +96,7 @@ public class PDFExporter {
         font1.setColor(Color.BLUE);
 
         Paragraph p = new Paragraph("EASY-BUY TICKET", font1);
-        Paragraph t = new Paragraph("TICKET NUMBER: "+ purchaseOrder.getNumber(), font);
+        Paragraph t = new Paragraph("TICKET NUMBER: "+ ticket.getNumber(), font);
         t.setAlignment(Paragraph.ALIGN_RIGHT);
         p.setAlignment(Paragraph.ALIGN_CENTER);
 
@@ -115,5 +117,19 @@ public class PDFExporter {
 
         document.close();
     }
+
+    private Double sumTotalProduct(){
+        Double sum = 0.0;
+
+        for(TicketProduct ticketProduct : ticket.getTicketProducts()){
+
+            sum += ticketProduct.getPrice() * ticketProduct.getQuantity();
+
+        }
+
+        return sum;
+
+    }
+
 }
 

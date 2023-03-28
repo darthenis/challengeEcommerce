@@ -6,8 +6,8 @@ import com.easybuy.easybuy.models.PurchaseOrder;
 import com.easybuy.easybuy.models.PurchaseOrderProduct;
 import com.easybuy.easybuy.repositories.PurchaseOrderProductRepository;
 import com.easybuy.easybuy.services.ProductService;
-import com.easybuy.easybuy.services.RequestProductService;
-import com.easybuy.easybuy.services.RequestService;
+import com.easybuy.easybuy.services.PurchaseOrderProductService;
+import com.easybuy.easybuy.services.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PurchaseOrderProductServiceImp implements RequestProductService {
+public class PurchaseOrderProductServiceImp implements PurchaseOrderProductService {
 
     @Autowired
     private PurchaseOrderProductRepository orderProductRepository;
@@ -24,7 +24,7 @@ public class PurchaseOrderProductServiceImp implements RequestProductService {
     ProductService productService;
 
     @Autowired
-    RequestService requestService;
+    PurchaseService purchaseService;
 
     @Autowired
     private PurchaseOrderProductRepository purchaseOrderProductRepository;
@@ -51,7 +51,7 @@ public class PurchaseOrderProductServiceImp implements RequestProductService {
 
             purchaseOrder.addTicketProduct(purchaseOrderProduct);
 
-            requestService.save(purchaseOrder);
+            purchaseService.save(purchaseOrder);
 
             product.get().addTicketProduct(purchaseOrderProduct);
 
@@ -60,6 +60,11 @@ public class PurchaseOrderProductServiceImp implements RequestProductService {
             purchaseOrderProductRepository.save(purchaseOrderProduct);
 
         }
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        purchaseOrderProductRepository.deleteById(id);
     }
 
 

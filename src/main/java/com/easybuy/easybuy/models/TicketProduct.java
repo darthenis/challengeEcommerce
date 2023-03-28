@@ -1,0 +1,69 @@
+package com.easybuy.easybuy.models;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+public class TicketProduct {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
+    private Long id;
+
+    private String name;
+
+    private Double price;
+
+    private int quantity;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Ticket ticket;
+
+    public TicketProduct(){}
+
+    public TicketProduct(String name, Double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public TicketProduct(PurchaseOrderProduct purchaseOrderProduct) {
+        this.name = purchaseOrderProduct.getProduct().getName();
+        this.price = purchaseOrderProduct.getPrice();
+        this.quantity = purchaseOrderProduct.getQuantity();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+}

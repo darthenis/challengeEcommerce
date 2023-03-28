@@ -21,6 +21,8 @@ public class PurchaseOrder {
 
     private LocalDateTime DateTime;
 
+    private boolean state = false;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
@@ -50,6 +52,14 @@ public class PurchaseOrder {
 
     public void setTicketProducts(Set<PurchaseOrderProduct> purchaseOrderProducts) {
         this.purchaseOrderProducts = purchaseOrderProducts;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 
     public Client getClient() {
@@ -91,4 +101,5 @@ public class PurchaseOrder {
     public void setDateTime(LocalDateTime dateTime) {
         DateTime = dateTime;
     }
+
 }

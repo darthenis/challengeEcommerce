@@ -6,10 +6,12 @@ import com.easybuy.easybuy.models.PurchaseOrderProduct;
 
 import java.util.List;
 
-public interface RequestProductService {
+public interface PurchaseOrderProductService {
     void save (PurchaseOrderProduct purchaseOrderProduct);
 
     List<PurchaseOrderProduct> findAll() ;
 
     void createTicketProduct(List<ApplyProductDTO> products, PurchaseOrder purchaseOrder);
+
+    void deleteById(Long id);
 }
