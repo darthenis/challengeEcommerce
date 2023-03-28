@@ -20,4 +20,10 @@ public interface PurchaseService {
 
     public Optional<PurchaseOrder> findById (Long id);
 
+    public boolean checkPurchaseOrderState(String number);
+
+    public void delete(String number);
+
+    public PurchaseOrder completePurchase(Long id) throws Exception;
+
 }

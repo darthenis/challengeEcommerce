@@ -2,31 +2,31 @@ package com.easybuy.easybuy.controllers;
 
 
 import com.easybuy.easybuy.DTO.NewPurchaseOrderDTO;
+import com.easybuy.easybuy.DTO.PayApplicationDTO;
 import com.easybuy.easybuy.DTO.PurchaseOrderDTO;
 import com.easybuy.easybuy.TicketUtils.PDFExporter;
 import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.PurchaseOrder;
-import com.easybuy.easybuy.services.ClientService;
-import com.easybuy.easybuy.services.ProductService;
-import com.easybuy.easybuy.services.PurchaseOrderProductService;
-import com.easybuy.easybuy.services.PurchaseService;
+import com.easybuy.easybuy.models.Ticket;
+import com.easybuy.easybuy.services.*;
 import com.easybuy.easybuy.utils.EmailHandler;
 import com.lowagie.text.DocumentException;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.jpa.repository.support.QuerydslJpaRepository;
+import org.springframework.http.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @RestController
@@ -47,6 +47,12 @@ public class PurchaseOrderController {
     @Autowired
     EmailHandler emailHandler;
 
+    @Autowired
+    TicketService ticketService;
+
+    @Autowired
+    RestTemplate restTemplate;
+
 
     @RequestMapping("/orders")
     public Set<PurchaseOrderDTO> getAll(){
@@ -54,11 +60,26 @@ public class PurchaseOrderController {
     }
 
     @PostMapping("/client/current/orders")
-    public ResponseEntity<Object> newOrder(@RequestBody NewPurchaseOrderDTO newPurchaseOrderDTO, Authentication authentication) throws Exception {
+    public ResponseEntity<Object> newOrder(@RequestBody NewPurchaseOrderDTO newPurchaseOrderDTO, Authentication authentication) {
+
+        if(newPurchaseOrderDTO.getAmount() == null) return new ResponseEntity<>("missing amount", HttpStatus.FORBIDDEN);
+
+        if(newPurchaseOrderDTO.getProducts() == null || newPurchaseOrderDTO.getProducts().size() == 0) return new ResponseEntity<>("missing products", HttpStatus.FORBIDDEN);
+
+        if(newPurchaseOrderDTO.getDateTime() == null) return new ResponseEntity<>("missing dateTime", HttpStatus.FORBIDDEN);
 
         if(!productService.productsExists(newPurchaseOrderDTO.getProducts())) return new ResponseEntity<>("product not found", HttpStatus.FORBIDDEN);
 
-        PurchaseOrder purchaseOrder = purchaseService.createPurchaseOrder(newPurchaseOrderDTO);
+        PurchaseOrder purchaseOrder;
+
+        try {
+
+            purchaseOrder = purchaseService.createPurchaseOrder(newPurchaseOrderDTO);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+        }
 
         purchaseOrderProductService.createTicketProduct(newPurchaseOrderDTO.getProducts(), purchaseOrder);
 
@@ -68,17 +89,69 @@ public class PurchaseOrderController {
 
         clientService.save(client.get());
 
-       // PDFExporter exporter = new PDFExporter(purchaseOrder);
+        CompletableFuture.delayedExecutor(30, TimeUnit.MINUTES).execute(() -> {
+           boolean isBuyed =  purchaseService.checkPurchaseOrderState(purchaseOrder.getNumber());
 
-       // exporter.exportToRoot();
-
-       // FileSystemResource fileSystemResource = new FileSystemResource("./ticket"+ purchaseOrder.getNumber()+".pdf");
-
-       // emailHandler.sendMailAttachment("emi.acevedo.letras@gmail.com", client.get().getEmail(), "ticket", fileSystemResource);
-
-       // FileUtils.forceDelete(fileSystemResource.getFile());
+           if(!isBuyed) purchaseService.delete(purchaseOrder.getNumber());
+        });
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/client/current/orders/{id}/tickets")
+    public ResponseEntity<?> completePurchaseOrder(@PathVariable Long id, @RequestBody PayApplicationDTO payApplicationDTO,  Authentication authentication){
+
+        try {
+
+            PurchaseOrder purchaseOrder = purchaseService.completePurchase(id);
+
+            if(purchaseOrder == null) return new ResponseEntity<>("Order not found", HttpStatus.FORBIDDEN);
+
+            final String URL = "https://mindhub-huborange.up.railway.app/api/transactions/pay";
+
+            payApplicationDTO.setAmount(purchaseOrder.getAmount());
+
+            payApplicationDTO.setDescription("debit to Easy Buy SRL");
+
+            HttpHeaders headers=new HttpHeaders();
+            headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+            HttpEntity<PayApplicationDTO> entity= new HttpEntity<>(payApplicationDTO,headers);
+
+            System.out.println("aca");
+
+            ResponseEntity<?> response = restTemplate.exchange(URL, HttpMethod.POST, entity ,String.class);
+
+            System.out.println(response.getStatusCodeValue());
+
+            if(!response.getStatusCode().equals(HttpStatus.OK)){
+
+                return new ResponseEntity<>("failed payment", HttpStatus.FORBIDDEN);
+
+            }
+
+            purchaseOrder.setState(true);
+
+            Optional<Client> client = clientService.findByEmail(authentication.getName());
+
+            Ticket ticket = ticketService.createTicket(purchaseOrder);
+
+            PDFExporter exporter = new PDFExporter(ticket);
+
+            exporter.exportToRoot();
+
+            FileSystemResource fileSystemResource = new FileSystemResource("./ticket"+ purchaseOrder.getNumber()+".pdf");
+
+            emailHandler.sendMailAttachment("emi.acevedo.letras@gmail.com", client.get().getEmail(), "ticket", fileSystemResource);
+
+            FileUtils.forceDelete(fileSystemResource.getFile());
+
+            return new ResponseEntity<>("Purchased completed successfully", HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+        }
+
     }
 
 
@@ -92,7 +165,7 @@ public class PurchaseOrderController {
         String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        Optional<PurchaseOrder> selectTicket = purchaseService.findById(idTicket);
+        Optional<Ticket> selectTicket = ticketService.findByid(idTicket);
 
 
         if (idTicket == null) {

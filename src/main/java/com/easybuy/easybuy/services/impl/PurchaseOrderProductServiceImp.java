@@ -62,5 +62,10 @@ public class PurchaseOrderProductServiceImp implements PurchaseOrderProductServi
         }
     }
 
+    @Override
+    public void deleteById(Long id) {
+        purchaseOrderProductRepository.deleteById(id);
+    }
+
 
 }

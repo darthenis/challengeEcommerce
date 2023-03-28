@@ -12,4 +12,6 @@ public interface PurchaseOrderProductService {
     List<PurchaseOrderProduct> findAll() ;
 
     void createTicketProduct(List<ApplyProductDTO> products, PurchaseOrder purchaseOrder);
+
+    void deleteById(Long id);
 }

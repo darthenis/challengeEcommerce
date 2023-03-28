@@ -112,6 +112,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void sumStock(Long id, int quantity) {
+        Optional<Product> product = productRepository.findById(id);
+        product.get().setStock(product.get().getStock() + quantity);
+        productRepository.save(product.get());
+    }
+
+    @Override
     public void createProduct(CreateProductDTO createProductDTO) throws Exception {
 
             if(createProductDTO.getDiscount() < 0 ) throw new Exception("The number entered is wrong");
