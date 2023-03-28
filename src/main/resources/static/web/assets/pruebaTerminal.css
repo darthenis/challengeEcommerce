@@ -19,11 +19,13 @@
 }
 
 .select-product-img {
+  padding: 1rem;
+
   height: 30rem;
 }
 
 .box-general {
   padding: 1rem;
-  backdrop-filter: blur(4px);
-  /*   background-color: rgba(128, 128, 128, 0.326); */
+  backdrop-filter: blur(3px);
+  /*  background-color: rgba(128, 128, 128, 0.442); */
 }
