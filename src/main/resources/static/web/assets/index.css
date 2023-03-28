@@ -272,3 +272,317 @@ align-items: center;
     
 }
 /* categorias */
+
+/* main ABOUT US */
+.main-about-us{
+    min-height: 20rem;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.666), rgba(0, 0, 0, 0.923)), url("./img/th\ \(1\).jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 20px;
+}
+.main-about-us h2{
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: -2px 1px 3px white;
+}
+.main-about-us p{
+    margin: 5rem;
+    margin-top: 0px;
+    /* background-color: rgba(40, 40, 140, 0.344); */
+    padding: 0.7rem;
+    border-radius: 0.4rem;
+    margin-bottom: 0px;
+}
+.botones{
+    display: flex;
+    gap:3rem;
+    font-weight: 700;
+}
+.botones button{
+    background-color: rgba(194, 11, 11, 0.945);
+    padding: 0.4rem;
+    border-radius: 0.2rem;
+    border: 1px solid white;
+    transition: all 1s;
+}
+.botones button:hover{
+    background-color: rgba(255, 0, 0, 0.452);
+}
+.section-about-us{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 7rem;
+}
+.section-about-us img{
+    width: 50%;
+    box-shadow: -5px 5px 30px black;
+}
+.texto-section-about-us{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    text-align: start;
+
+}
+.texto-section-about-us h3{
+    font-weight: 900;
+    font-size: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: -2px 1px 3px rgb(255, 255, 255);
+}
+.texto-section-about-us p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: -1px 1px 1px rgb(99, 75, 75);
+    
+}
+/* segundo section  */
+.section-about-us2{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 7rem;
+    flex-direction: row-reverse;
+}
+.section-about-us2 img{
+    width: 50%;
+    box-shadow: -5px 5px 30px black;
+}
+.texto-section-about-us2{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    text-align: start;
+    
+
+}
+.texto-section-about-us2 h3{
+    text-shadow: -2px 1px 3px white;
+    font-weight: 900;
+    font-size: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.texto-section-about-us2 p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: -1px 1px 1px rgb(99, 75, 75);
+}
+/* segundo section  */
+@media (max-width:745px) {
+    .section-about-us{
+        flex-direction: column;
+    }
+    .section-about-us img{
+        width: 100%;
+    }
+    .section-about-us{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .section-about-us2{
+        flex-direction: column;
+    }
+    .section-about-us2 img{
+        width: 100%;
+    }
+    .section-about-us2{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    
+}
+@media (max-width:500px) {
+    .botones{
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+    .main-about-us p{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .section-about-us img{
+        max-width: 500px;
+        width: 18rem;
+    }
+    .section-about-us2 img{
+        max-width: 500px;
+        width: 18rem;
+    }
+}
+/* main ABOUT US */
+/* carrusel leo */
+/*carrusel*/
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(none);
+    position: relative;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.484);
+    margin-top: 26px;
+    background-position: center;
+    background-size: cover;
+    /* backdrop-filter: blur(3px); */
+background-color: rgba(172, 175, 219, 0.815);
+}
+.carousel h2{
+    color: rgb(3, 3, 3);
+    margin-top: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-shadow: -1.3px 1px 1px rgb(76, 50, 50);
+}
+.carousel-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-open:checked + .carousel-item {
+    position: static;
+    opacity: 100;
+}
+
+.carousel-item {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+}
+
+.carousel-item img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.carousel-control {
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    font-size: 40px;
+    height: 40px;
+    line-height: 30px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    cursor: pointer;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    text-align: center;
+    width: 40px;
+    z-index: 10;
+}
+
+.carousel-control.prev {
+    left: 2%;
+}
+
+.carousel-control.next {
+    right: 2%;
+}
+
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #f9f5f5;
+}
+
+#carousel-1:checked ~ .control-1,
+#carousel-2:checked ~ .control-2,
+#carousel-3:checked ~ .control-3 {
+    display: block;
+}
+
+.carousel-indicators {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.carousel-bullet {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 35px;
+}
+
+.carousel-bullet:hover {
+    color: #aaaaaa;
+}
+
+#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+    color: #428bca;
+}
+
+#title {
+    width: 100%;
+    position: absolute;
+    padding: 0px;
+    margin: 0px auto;
+    text-align: center;
+    font-size: 27px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Open Sans', sans-serif;
+    z-index: 9999;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
+}
+
+/*CARDS*/
+
+.feedback{
+    width: 20rem;
+    height: 20rem;
+    box-shadow: 1px 1px 5px  rgba(0, 0, 0, 0.5);
+    overflow-y: hidden;
+}
+
+.profile{
+    border-radius: 50%;
+    width: 3rem;
+}
+
+@media (max-width:768px){
+   .carr3{
+    display: none;}
+}
+
+.feedback h3 {
+line-height: 2rem; 
+word-spacing: 0.4rem;
+}
+
+@media (max-width:500px){
+    .carr3{
+     display: none;}
+     .carr2{
+        display: none;}
+ }
+/* carrusel leo */
