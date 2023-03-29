@@ -126,6 +126,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void createProduct(CreateProductDTO createProductDTO) throws Exception {
 
+        if (createProductDTO.getDescription().length() > 1000) throw new Exception("the maximum of characters is 1000");
+
+            if (createProductDTO.getName().length() > 20) throw new Exception("the maximum of characters is 20");
+
             if(createProductDTO.getDiscount() < 0 ) throw new Exception("The number entered is wrong");
 
             if(createProductDTO.getName().isEmpty()) throw new Exception("missing Name");
