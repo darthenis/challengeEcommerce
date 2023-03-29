@@ -115,8 +115,8 @@
         position: fixed;
         min-width: 100vw;
         min-height: 100vh;
-        background-color: rgb(69, 72, 252);
-        color: white;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
         display: flex;
         align-items: center;
         justify-content: center;

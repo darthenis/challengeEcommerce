@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
@@ -23,11 +24,24 @@ public class ClientController {
 
 
     @GetMapping("/clients")
-    public List<ClientDTO> getAll(){
+    public List<ClientDTO> getAll() {
 
         return clientService.findAll().stream().map(ClientDTO::new).collect(Collectors.toList());
 
     }
+
+    @GetMapping("/clients/auth")
+    public ResponseEntity<?> checkClientAuth(Authentication authentication) {
+
+        if(authentication == null) return new ResponseEntity<>("Not authenticated", HttpStatus.UNAUTHORIZED);
+
+        boolean isClient = authentication.getAuthorities().stream().anyMatch(autority -> Objects.equals(autority.getAuthority(), "CLIENT"));
+
+        if(!isClient) return new ResponseEntity<>("User is client", HttpStatus.OK);
+
+        return new ResponseEntity<>("Is not a client", HttpStatus.UNAUTHORIZED);
+    }
+
 
     @PostMapping("/clients")
     public ResponseEntity<?> create(@RequestBody NewClientDTO newClientDTO){
