@@ -17,7 +17,7 @@ createApp({
     },
     created(){
 
-        document.addEventListener("scroll", () => this.isVisible("article1"));
+        document.addEventListener("scroll", () => this.isVisible());
 
         axios.post("/api/login", "email=emi.acevedo@gmail.com&password=123")
             .then(res => {
@@ -123,7 +123,7 @@ createApp({
     },
     mounted(){
 
-        new WOW().init();
+
 
     }
 
