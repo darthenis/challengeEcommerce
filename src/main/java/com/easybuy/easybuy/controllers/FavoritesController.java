@@ -46,8 +46,16 @@ public class FavoritesController {
 
         if(favoriteApplyDTO.getImgUrl() == null) return new ResponseEntity<>("missing imgUrl", HttpStatus.FORBIDDEN);
 
+        Optional<Client> client = clientService.findByEmail(authentication.getName());
+
+        if(client.get().getFavorites().stream().anyMatch(favorite -> favorite.getProductId().equals(favoriteApplyDTO.getProductId()))){
+
+            return new ResponseEntity<>("the product already exists in favorites", HttpStatus.FORBIDDEN);
+
+        }
+
         try {
-            Optional<Client> client = clientService.findByEmail(authentication.getName());
+
             favoriteService.add(client.get(), favoriteApplyDTO);
             return new ResponseEntity<>("product added to favorite successfully", HttpStatus.CREATED);
         } catch (Exception e) {
@@ -61,6 +69,7 @@ public class FavoritesController {
     public ResponseEntity<?> delete(Authentication authentication, @PathVariable Long id){
 
         Optional<Client> client = clientService.findByEmail(authentication.getName());
+
 
         if(client.get().getFavorites().stream().noneMatch(favorite -> favorite.getId().equals(id))){
 
