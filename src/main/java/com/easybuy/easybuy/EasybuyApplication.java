@@ -96,7 +96,7 @@ public class EasybuyApplication {
 					"The dual LCD display shows previous and current readings for easier comparison, while the " +
 					"advanced accuracy technology measures more data points for more consistent blood pressure readings. " +
 					"This Omron wireless upper arm blood pressure monitor features TruRead technology that lets you take " +
-					"three consecutive readings at customized intervals.",100.50,8,5, LocalDate.now().minusDays(5), List.of(CategoriesEnum.HEALTHNBEAUTY) );
+					"three consecutive readings at customized intervals.",100.50,8,5, LocalDate.now().minusDays(5), List.of(CategoriesEnum.HEALTH) );
 			bloodPressure.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325cv12d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325cv13d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325cv11d.jpg;maxHeight=640;maxWidth=550"));
 
 
