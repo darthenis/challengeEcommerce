@@ -8,31 +8,31 @@ createApp({
             bag: JSON.parse(localStorage.getItem("bag")) || [],
             active: null,
             totalCart: 0,
-            totalCartQuantity: 0
-
+            totalCartQuantity: 0,
+            id: null
 
         }
     },
     created() {
-        this.loadData()
+
         let parameterUrl = location.search
         let parameters = new URLSearchParams(parameterUrl)
         this.id = parameters.get("id")
-
+        this.params()
     },
 
     /*-------------------METHODS----------------------*/
     methods: {
-        /*---------------LOAD DATA------------------*/
 
-        loadData() {
-            axios.get("/api/products/6")
+        /*----------------PARAMS ID PRODUCTO-------------------*/
+        params() {
+            axios.get("/api/products/" + this.id)
                 .then(response => {
                     this.dataProduct = response.data
-                    console.log(this.dataProduct)
                     this.selectImg = this.dataProduct.imgsUrls[0]
                     this.priceTotalCart()
                     this.quantityTotalCart()
+                    console.log(this.dataProduct)
                 })
         },
 
@@ -42,19 +42,7 @@ createApp({
             this.selectImg = img
         },
 
-        /*----------------PARAMS ID PRODUCTO-------------------*/
-        params() {
 
-            axios.get("/api/products/" + this.id)
-                .then(res => {
-                    this.dataProduct = response.data
-                    console.log(this.dataProduct)
-                    this.selectImg = this.dataProduct.imgsUrls[0]
-                    this.priceTotalCart()
-                    this.quantityTotalCart()
-
-                })
-        },
         /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/
         formatDollar(price) {
             let USDollar = new Intl.NumberFormat('en-US', {
@@ -105,7 +93,7 @@ createApp({
 
         removeItem(object) {
             if (this.bag.find(item => item.id == object.id)) {
-                let index = this.bag.indexOf(this.bag.find(prod => prod.id === object))
+                let index = this.bag.findIndex(item => item.id == object.id)
                 this.bag.splice(index, 1)
             }
             localStorage.setItem("bag", JSON.stringify(this.bag))
