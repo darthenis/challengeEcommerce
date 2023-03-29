@@ -67,8 +67,21 @@
 
 }
 
+.categories_shop_mobile{
 
-@media (max-width: 532px) {
+    display: none;
+
+
+}
+
+
+.button_mobile_categories{
+
+    display: none;
+    
+}
+
+@media (max-width: 823px) {
 
     .grid_layout{
 
@@ -80,13 +93,63 @@
 
         grid-column: 1/-1;
         height: 100px;
+        flex-direction: column;
 
     }
 
     .categories_shop{
 
-        grid-column: 1/-1;
-        flex-direction: row;
+        display: none;
+    }
+
+    .button_mobile_categories{
+
+        display: inline-block;
+        
+    }
+    
+
+    .categories_shop_mobile{
+        display: inline-block;
+        z-index: 10000000;
+        position: fixed;
+        min-width: 100vw;
+        min-height: 100vh;
+        background-color: rgb(69, 72, 252);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        top: 0;
+        left: -100vw;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    
+    
+}
+
+
+
+@keyframes slideIn {
+
+    from{
+        left: -100vw;
+    }
+    to{
+        left: 0px;
+    }
+    
+}
+
+@keyframes slideOut {
+
+    from{
+        left: 0px;
+    }
+    to{
+        left: -100vw;
     }
     
 }
