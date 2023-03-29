@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../web/assets/login.css">
+    <title>Easy Buy</title>
+</head>
+
+<body>
+    <header>
+        <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
+          
+          
+         
+          <div class="flex items-center justify-center md:flex">
+            <img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" />
+          </div>
+    
+          
+    
+          <div class="md:w-[50%] flex justify-center gap-4">
+            <input type="text" class="w-[80%]" />
+            <button
+              class="p-2 flex items-center justify-center md:p-3 bg-blue-900 text-white tracking-[2px] rounded-md hover:bg-blue-600 transition-all duration-[.5s]"
+            >
+            <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
+              <span class="hidden md:flex">SEARCH</span>
+            </button>
+          </div>
+    
+          <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden">
+            <div class="w-8  h-1 bg-white" ></div>
+            <div class="w-8  h-1 bg-white" ></div>
+            <div class="w-8  h-1 bg-white" ></div>
+          </div>
+    
+          <div class="hidden lg:flex items-center gap-6">
+            <i
+              class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"
+            ></i>
+            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"></i>
+            <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
+          </div>
+        </nav>
+    
+        <nav class="hidden lg:h-[4rem] bg-blue-900 lg:flex justify-center">
+          <div
+            class="flex justify-around items-center text-white w-[45%] tracking-[1px] transition-all"
+          >
+            <p
+              class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
+            >
+              Categories
+            </p>
+            <p
+              class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
+            >
+              Frecuent Questions
+            </p>
+            <p
+              class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
+            >
+              About Us
+            </p>
+            <p
+              class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
+            >
+              Contact
+            </p>
+          </div>
+        </nav>
+      </header>
+
+      <main class="loginSection">
+        <div class="form-structor">
+            <div class="signup">
+                <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
+                <div class="form-holder">
+                    <input type="text" class="input" placeholder="Name" />
+                    <input type="email" class="input" placeholder="Last Name" />
+                    <input type="email" class="input" placeholder="Email" />
+                    <input type="email" class="input" placeholder="Phone Number" />
+                    <input type="password" class="input" placeholder="Password" />
+                </div>
+                <button class="submit-btn">Sign up</button>
+            </div>
+            <div class="login slide-up">
+                <div class="center">
+                    <h2 class="form-title" id="login"><span>or</span>Log in</h2>
+                    <div class="form-holder">
+                        <input type="email" class="input" placeholder="Email" />
+                        <input type="password" class="input" placeholder="Password" />
+                    </div>
+                    <button class="submit-btn">Log in</button>
+                </div>
+            </div>
+        </div>
+        <div class="information hidden lg:flex">
+          <div class="bg-blue-200/60 w-[80%] h-[80%] flex items-center justify-center rounded-lg">
+            <div class= "bg-blue-900 w-[90%] h-[90%] p-4 flex flex-col justify-center gap-4 items-center text-justify text-white rounded-2xl">
+              <h2 class="text-3xl p-3 tracking-[2px]">Welcome to EasyBuy!</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure accusantium mollitia tempore velit itaque saepe quas ab ut adipisci eum tempora officiis odit cum vero esse quo amet, recusandae reiciendis.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo veritatis illum dicta odio error deleniti ducimus et temporibus nisi explicabo recusandae, harum quisquam magni reiciendis, quasi minima nam? Sequi, placeat?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores quos, minima explicabo nostrum, ab unde quaerat quo iste pariatur optio, officiis libero ex debitis praesentium culpa? Delectus ipsum laudantium quae!</p>
+
+            </div>
+            
+          </div>
+          
+        </div>
+      
+    </main>
+    <script
+      src="https://kit.fontawesome.com/a9a67006ad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/4ffb8edd00.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../web/js/login.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
