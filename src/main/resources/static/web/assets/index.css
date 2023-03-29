@@ -5,9 +5,9 @@
 }
 
 body{
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size:auto;
+    background-repeat: no-repeat;   
+    background-attachment: fixed;
     background-image: linear-gradient(rgba(0, 0, 0, 0.107), rgba(0, 0, 0, 0.101)), url("./img/pexels-monstera-7794441.jpg");
    
 }

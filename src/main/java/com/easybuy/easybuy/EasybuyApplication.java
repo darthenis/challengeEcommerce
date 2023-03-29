@@ -42,7 +42,7 @@ public class EasybuyApplication {
 			Product speaker = new Product("Speaker sony","torre de sonido de gran potencia 3000W",450.0,0,10, LocalDate.now(), List.of(CategoriesEnum.AUDIO) );
 			Product laptop= new Product("laptop lenovo mtr550","Lenovo - Flex 3 Chromebook 11.6, HD Touch-screen Laptop - Mediatek MT8183 - 4GB - 64GB eMMC - Abyss Blue",180.0,3,23, LocalDate.now(), List.of(CategoriesEnum.TECNOLOGY) );
 			Product cableHdmi = new Product("HDMI Cable - Black","18000 megabytes per second",20.0,0,30, LocalDate.now(), List.of(CategoriesEnum.APPLIANCES) );
-			Product bloodPressure = new Product("Blood Pressure","Omron - 10 Series - Wireless Upper Arm Blood Pressure Monitor - Black/White",100.50,8,5, LocalDate.now(), List.of(CategoriesEnum.HEALTHNBEAUTY) );
+			Product bloodPressure = new Product("Blood Pressure","Omron - 10 Series - Wireless Upper Arm Blood Pressure Monitor - Black/White",100.50,8,5, LocalDate.now(), List.of(CategoriesEnum.HEALTH) );
 			Product cuutopiaPlush = new Product("Star Wars - 7'",
 					"Star Wars fans of all ages will fall in love with Grogu all over again! " +
 							"At 11 inches tall, Squeeze & Blink Grogu has a soft plush body and detailed vinyl head, " +
