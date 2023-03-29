@@ -21,8 +21,10 @@ createApp({
 
     },
 
-
+    /*-------------------METHODS----------------------*/
     methods: {
+        /*---------------LOAD DATA------------------*/
+
         loadData() {
             axios.get("/api/products/6")
                 .then(response => {
@@ -30,6 +32,7 @@ createApp({
                     console.log(this.dataProduct)
                     this.selectImg = this.dataProduct.imgsUrls[0]
                     this.priceTotalCart()
+                    this.quantityTotalCart()
                 })
         },
 
@@ -44,8 +47,11 @@ createApp({
 
             axios.get("/api/products/" + this.id)
                 .then(res => {
-                    this.accountSelect = res.data
-                    this.transactionFilter = this.accountSelect.transactions
+                    this.dataProduct = response.data
+                    console.log(this.dataProduct)
+                    this.selectImg = this.dataProduct.imgsUrls[0]
+                    this.priceTotalCart()
+                    this.quantityTotalCart()
 
                 })
         },
