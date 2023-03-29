@@ -34,4 +34,6 @@ public interface ProductService {
     public void restStock(Long id, int quantity) throws Exception;
 
     public void sumStock(Long id, int quantity);
+
+    public boolean productExist(Long id);
 }

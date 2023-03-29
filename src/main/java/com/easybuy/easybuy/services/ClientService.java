@@ -1,5 +1,6 @@
 package com.easybuy.easybuy.services;
 
+import com.easybuy.easybuy.DTO.FavoriteApplyDTO;
 import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.models.Client;
 import org.springframework.security.core.Authentication;
@@ -24,4 +25,6 @@ public interface ClientService {
     void activeClient(String keyToken) throws Exception;
 
     void resendEmail(String email) throws Exception;
+
+    void addFavorite(FavoriteApplyDTO favoriteApplyDTO, Authentication authentication) throws Exception;
 }

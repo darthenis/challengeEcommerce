@@ -119,6 +119,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public boolean productExist(Long id) {
+        return productRepository.existsById(id);
+    }
+
+    @Override
     public void createProduct(CreateProductDTO createProductDTO) throws Exception {
 
         if (createProductDTO.getDescription().length() > 1000) throw new Exception("the maximum of characters is 1000");
