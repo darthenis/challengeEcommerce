@@ -119,6 +119,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public boolean productExist(Long id) {
+        return productRepository.existsById(id);
+    }
+
+    @Override
     public void createProduct(CreateProductDTO createProductDTO) throws Exception {
 
             if(createProductDTO.getDiscount() < 0 ) throw new Exception("The number entered is wrong");

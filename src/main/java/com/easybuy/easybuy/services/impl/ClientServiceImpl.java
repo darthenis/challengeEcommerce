@@ -1,7 +1,9 @@
 package com.easybuy.easybuy.services.impl;
 
+import com.easybuy.easybuy.DTO.FavoriteApplyDTO;
 import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.models.Client;
+import com.easybuy.easybuy.models.Favorite;
 import com.easybuy.easybuy.repositories.ClientRepository;
 import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.utils.EmailHandler;
@@ -152,6 +154,19 @@ public class ClientServiceImpl implements ClientService {
 
             client.get().setKeyToken(token);
         }
+
+    }
+
+    @Override
+    public void addFavorite(FavoriteApplyDTO favoriteApplyDTO, Authentication authentication) throws Exception {
+
+            Favorite favorite = new Favorite(favoriteApplyDTO);
+
+            Optional<Client> client = clientRepository.findByEmail(authentication.getName());
+
+            client.get().addFavorites(favorite);
+
+            clientRepository.save(client.get());
 
     }
 
