@@ -30,7 +30,8 @@
 
                 <div class="flex items-center gap-6">
                     <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
-                    <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCar"></i>
+                    <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer " @click="toggleCart"><span
+                            class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
                     <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
                 </div>
             </nav>
@@ -459,7 +460,7 @@
                     <img src="./assets/img/cart.svg" alt="cart" style="width: 40px">
                     <p class="lg:text-2xl text-1xl font-black leading-10 text-white">My cart</p>
                     <div class="py-1 px-3 font-bold bg-white rounded-full shadow-lg hover:bg-blue-300"
-                        @click="toggleCar">X</div>
+                        @click="toggleCart">X</div>
                 </div>
 
 
@@ -476,15 +477,17 @@
                             <div class="custom-number-input h-10 w-20">
                                 <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
                                     <button data-action="decrement"
-                                        class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
-                                        <span class="m-auto text-2xl font-thin" @click="outProductBag(product)">−</span>
+                                        class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+                                        @click="outProductBag(product)">
+                                        <span class="m-auto text-2xl font-thin">−</span>
                                     </button>
                                     <input type="number" style="width: 20px;"
                                         class="input outline-none focus:outline-none text-center bg-gray-200 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
-                                        name="custom-input-number" value="0"></input>
+                                        name="custom-input-number" :value="product.quantity"></input>
                                     <button data-action="increment"
-                                        class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
-                                        <span class="m-auto text-2xl font-thin" @click="saveBag(product)">+</span>
+                                        class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+                                        @click="saveBag(product)">
+                                        <span class="m-auto text-2xl font-thin">+</span>
                                     </button>
                                 </div>
                             </div>
@@ -492,7 +495,8 @@
                         <div class="flex items-center justify-between pt-5">
                             <div class="flex itemms-center">
                                 <p class="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
-                                <p class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                                <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
+                                    @click="removeItem(product)">Remove</a>
                             </div>
                             <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price )}}
                             </p>
@@ -504,7 +508,12 @@
                     <div
                         class="flex flex-col h-auto lg:px-8 md:px-7 px-4 lg:py-2 md:py-10 py-2 justify-between overflow-y-auto">
                         <div>
-                            <div class="flex items-center pb-6 justify-between lg:pt-5">
+                            <div class="flex items-center justify-between border-b-2">
+                                <p class="text-xl leading-normal text-gray-800">Quantity Products</p>
+                                <p class="text-xl font-bold leading-normal text-right text-gray-800">
+                                    {{totalCartQuantity}}</p>
+                            </div>
+                            <div class="flex items-center pb-1 mb-2 justify-between lg:pt-3 border-b-2">
                                 <p class="text-2xl leading-normal text-gray-800">Total</p>
                                 <p class="text-2xl font-bold leading-normal text-right text-gray-800">
                                     {{formatDollar(totalCart)}}</p>
