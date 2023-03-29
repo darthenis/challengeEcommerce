@@ -1,0 +1,21 @@
+
+.elementFadeIn{
+
+    animation-name: fadein;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    position: relative;
+    right: -200px;
+    opacity: 0;
+}
+
+@keyframes fadein {
+    from{
+        opacity: 0;
+        right: -200px;
+
+    } to {
+        opacity: 1;
+        right: 0px;
+    }
+}
