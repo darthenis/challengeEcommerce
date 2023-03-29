@@ -37,5 +37,7 @@ public interface ProductService {
 
     public boolean productExist(Long id);
 
-    public List<Product> findLastTenProducts();
+    public List<Product> findLast4ProductsUpdated();
+
+    public List<Product> findBest4Offers();
 }

@@ -124,10 +124,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findLastTenProducts() {
+    public List<Product> findLast4ProductsUpdated() {
+        return productRepository.findTop4ByOrderByDateDesc();
+    }
 
-        return productRepository.findTop10ByFechaCreacion();
-
+    @Override
+    public List<Product> findBest4Offers() {
+        return productRepository.findTop4ByOrderByDiscountDesc();
     }
 
     @Override

@@ -51,7 +51,7 @@ public class EasybuyApplication {
 					" that stay true without fading, regardless of the scene's brightness. Quantum HDR "+
 					"Experience the full effect of every image with dynamic tone mapping that draws from a" +
 					"wider range of color and brightness than standard HD. Deep blacks, vibrant imagery and " +
-					"detail always shine through. Multiple Voice Assistants Control your TV with just your voice. " ,1299.99,5,5, LocalDate.now(), List.of(CategoriesEnum.VIDEO) );
+					"detail always shine through. Multiple Voice Assistants Control your TV with just your voice. " ,1299.99,5,5, LocalDate.now().plusDays(12), List.of(CategoriesEnum.VIDEO) );
 			ledTv.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6452/6452064cv12d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6452/6452064cv11d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6452/6452064_sd.jpg;maxHeight=1000;maxWidth=1000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6452/6452064cv20d.jpg;maxHeight=2000;maxWidth=2000"));
 
 			Product speaker = new Product("Bose - S1 Pro Portable Bluetooth ",
@@ -64,7 +64,7 @@ public class EasybuyApplication {
 							"Auto EQ ensure that the music always sounds the way it should and that everyone can hear it. " +
 							"For the ultimate freedom, play for up to 11 hours using the internal rechargeable lithium-ion " +
 							"battery and go wherever the fun is happening. So, when it's your turn to bring the music, " +
-							"bring a pro. Bring the Bose S1 Pro.",599.99,0,10, LocalDate.now().minusDays(1), List.of(CategoriesEnum.AUDIO) );
+							"bring a pro. Bring the Bose S1 Pro.",599.99,0,10, LocalDate.now().plusDays(1), List.of(CategoriesEnum.AUDIO) );
 			speaker.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6223/6223400_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6223/6223400_rd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6223/6223400ld.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6223/6223400cv11d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6223/6223400cv12d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6223/6223400cv17d.jpg;maxHeight=2000;maxWidth=2000"));
 
 			Product laptop= new Product("Lenovo - Flex 3 Chromebook 11.6'",
@@ -74,7 +74,7 @@ public class EasybuyApplication {
 					"laptop or stand modes. Watch crisp visuals in high definition with its 10-point touchscreen on " +
 							"the 11.6' IPS display while being more productive with help from Google. Just say " +
 							"“Hey Google,” to manage tasks, enjoy your entertainment, get answers, or control smart " +
-							"home devices.",170.99,3,23, LocalDate.now().minusWeeks(2), List.of(CategoriesEnum.TECNOLOGY) );
+							"home devices.",170.99,3,23, LocalDate.now().plusWeeks(2), List.of(CategoriesEnum.TECNOLOGY) );
 			laptop.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337_rd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337ld.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337cv1d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337cv4d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337cv16d.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337cv17d.jpg;maxHeight=2000;maxWidth=2000"));
 
 			Product cableHdmi = new Product("Rocketfish™ - 8' 4K UltraHD/HDR ",
@@ -96,7 +96,7 @@ public class EasybuyApplication {
 					"The dual LCD display shows previous and current readings for easier comparison, while the " +
 					"advanced accuracy technology measures more data points for more consistent blood pressure readings. " +
 					"This Omron wireless upper arm blood pressure monitor features TruRead technology that lets you take " +
-					"three consecutive readings at customized intervals.",100.50,8,5, LocalDate.now().minusDays(5), List.of(CategoriesEnum.HEALTH) );
+					"three consecutive readings at customized intervals.",100.50,8,5, LocalDate.now().plusDays(5), List.of(CategoriesEnum.HEALTH) );
 			bloodPressure.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325cv12d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325cv13d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325cv11d.jpg;maxHeight=640;maxWidth=550"));
 
 
@@ -120,7 +120,7 @@ public class EasybuyApplication {
 							"tufted back hug your body with comfort and is poised to transform any room into your favorite place to " +
 							"let go of the day and relax in pure bliss. Combining Dark Grey premium microfiber upholstered fabric and " +
 							"solid eucalyptus wooden frame, this durable plush loveseat invites you to rest in the knowledge of years of " +
-							"enjoyment to come.",222.99,5,3, LocalDate.now().minusYears(1), List.of(CategoriesEnum.FURNITURE) );
+							"enjoyment to come.",222.99,5,3, LocalDate.now().plusYears(1), List.of(CategoriesEnum.FURNITURE) );
 			sofa.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6479/6479575_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6479/6479575_rd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6479/6479575cv11d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6479/6479575cv13d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6479/6479575cv12d.jpg;maxHeight=120;maxWidth=120"));
 
 

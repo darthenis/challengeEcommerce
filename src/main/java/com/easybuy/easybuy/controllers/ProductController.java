@@ -53,7 +53,6 @@ public class ProductController {
         }
     }
 
-
     @PostMapping("/products/{id}/images")
     public ResponseEntity<?> uploadImages(@RequestParam() MultipartFile[] images, @PathVariable Long id) {
 
@@ -102,10 +101,17 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/products/last")
-    public List<ProductDTO> getLast(){
+    @GetMapping("/products/last/updated")
+    public List<ProductDTO> getLastUpdated(){
 
-        return productService.findLastTenProducts().stream().map(ProductDTO::new).collect(Collectors.toList());
+        return productService.findLast4ProductsUpdated().stream().map(ProductDTO::new).collect(Collectors.toList());
+
+    }
+
+    @GetMapping("/products/last/offers")
+    public List<ProductDTO> getLasOffer(){
+
+        return productService.findBest4Offers().stream().map(ProductDTO::new).collect(Collectors.toList());
 
     }
 
