@@ -33,9 +33,12 @@ createApp({
                 })
         },
 
+        /*---------CAMBIO DE IMAGEN DE PRODUCTO-----------------*/
+
         changeImg(img) {
             this.selectImg = img
         },
+
         /*----------------PARAMS ID PRODUCTO-------------------*/
         params() {
 
