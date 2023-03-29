@@ -9,7 +9,7 @@ createApp({
             totalCart: 0,
             totalCartQuantity: 0,
             id: null,
-            top4LastUpdated : [],
+            top4LastUpdated: [],
             top4offersProducts: []
 
         }
@@ -69,6 +69,9 @@ createApp({
 
         /* -------------QUITAR CANTIDAD DEL CARRITO -------------*/
         outProductBag(object) {
+            if (object.quantity <= 0) {
+                return
+            }
             if (this.bag.find(item => item.id == object.id)) {
                 object.quantity--
                 if (object.quantity === 0) {
@@ -127,42 +130,42 @@ createApp({
 
             this.visibleArticle = [];
 
-            for(product of this.top4LastUpdated){
+            for (product of this.top4LastUpdated) {
 
-                const element = document.getElementById("product-"+product.id);
+                const element = document.getElementById("product-" + product.id);
 
-                if(element){
+                if (element) {
                     let rect = element.getBoundingClientRect();
                     let windowHeight = (window.innerHeight || document.documentElement.clientHeight);
                     let windowWidth = (window.innerWidth || document.documentElement.clientWidth);
-                  
+
                     // Verificar si el elemento está dentro de la ventana vertical
                     let vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
-                  
+
                     // Verificar si el elemento está dentro de la ventana horizontal
                     let horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
-                  
+
                     this.visibleArticle.push(vertInView && horInView);
                 }
 
             }
 
         },
-        getWithDiscount(price, discount){
+        getWithDiscount(price, discount) {
 
-            if(!discount){
+            if (!discount) {
 
                 return this.formatDollar(price);
 
             } else {
 
-                return this.formatDollar(price - ((price / 100) * discount ))
+                return this.formatDollar(price - ((price / 100) * discount))
 
             }
 
         },
-        avaregeStars(rates){
-            
+        avaregeStars(rates) {
+
             let five = 0;
 
             let four = 0;
@@ -173,23 +176,23 @@ createApp({
 
             let one = 0;
 
-            for(let rate of rates){
+            for (let rate of rates) {
 
-                switch(rate.stars){
+                switch (rate.stars) {
                     case "ONE":
-                        one ++;
+                        one++;
                         break;
                     case "TWO":
-                        two ++;
+                        two++;
                         break;
                     case "THREE":
-                        three ++;
+                        three++;
                         break;
                     case "FOUR":
-                        four ++;
+                        four++;
                         break;
                     case "FIVE":
-                        five ++;
+                        five++;
                         break;
                 }
 
@@ -199,7 +202,7 @@ createApp({
 
         },
 
-        counterStars(rates){
+        counterStars(rates) {
 
             let rounded = 0;
 
@@ -211,15 +214,15 @@ createApp({
 
             let html = "";
 
-            for(let i = 1; i <= rounded; i++){
+            for (let i = 1; i <= rounded; i++) {
 
                 hmtl += star;
 
             }
 
-            if((5 - rounded) != 0){
+            if ((5 - rounded) != 0) {
 
-                for(let i = rounded; i <= 5; i++){
+                for (let i = rounded; i <= 5; i++) {
 
                     rounded++
 
