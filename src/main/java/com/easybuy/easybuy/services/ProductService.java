@@ -36,4 +36,6 @@ public interface ProductService {
     public void sumStock(Long id, int quantity);
 
     public boolean productExist(Long id);
+
+    public List<Product> findLastTenProducts();
 }

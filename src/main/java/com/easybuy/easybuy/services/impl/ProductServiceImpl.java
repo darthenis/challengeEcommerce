@@ -124,6 +124,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findLastTenProducts() {
+
+        return productRepository.findTop10ByFechaCreacion();
+
+    }
+
+    @Override
     public void createProduct(CreateProductDTO createProductDTO) throws Exception {
 
         if (createProductDTO.getDescription().length() > 1000) throw new Exception("the maximum of characters is 1000");

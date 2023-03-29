@@ -102,4 +102,11 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/products/last")
+    public List<ProductDTO> getLast(){
+
+        return productService.findLastTenProducts().stream().map(ProductDTO::new).collect(Collectors.toList());
+
+    }
+
 }
