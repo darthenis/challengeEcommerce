@@ -7,7 +7,7 @@ public enum CategoriesEnum {
     TECNOLOGY,
     APPLIANCES,
     FURNITURE,
-    HEALTHNBEAUTY,
+    HEALTH,
     KIDS
 
 }

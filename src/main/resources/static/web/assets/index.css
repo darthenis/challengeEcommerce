@@ -5,9 +5,9 @@
 }
 
 body{
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size:auto;
+    background-repeat: no-repeat;   
+    background-attachment: fixed;
     background-image: linear-gradient(rgba(0, 0, 0, 0.107), rgba(0, 0, 0, 0.101)), url("./img/pexels-monstera-7794441.jpg");
    
 }
@@ -80,15 +80,16 @@ body{
     font-size: 20px;
 }
 .texto-emi h2{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     font-weight: bolder;
     font-size: 45px;
     text-shadow: -1px 1px 4px rgb(0, 0, 0);
 }
 .texto-emi h3{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     margin: 10px;
     text-shadow: -1px 1px 4px rgb(0, 0, 0);
+    text-align: center;
 }
 .hijoTextoEmi{
     display: flex;
@@ -137,7 +138,7 @@ body{
     margin: 10px;
     height: 19rem;
     text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     justify-content: space-between;
     left: -200px;
     opacity: 0;
@@ -329,7 +330,7 @@ align-items: center;
 .main-about-us h2{
     font-size: 2.5rem;
     font-weight: 500;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     text-shadow: -2px 1px 3px white;
 }
 .main-about-us p{
@@ -377,11 +378,11 @@ align-items: center;
 .texto-section-about-us h3{
     font-weight: 900;
     font-size: 2rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     text-shadow: -2px 1px 3px rgb(255, 255, 255);
 }
 .texto-section-about-us p{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     text-shadow: -1px 1px 1px rgb(99, 75, 75);
     
 }
@@ -411,10 +412,10 @@ align-items: center;
     text-shadow: -2px 1px 3px white;
     font-weight: 900;
     font-size: 2rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
 }
 .texto-section-about-us2 p{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     text-shadow: -1px 1px 1px rgb(99, 75, 75);
 }
 /* segundo section  */
@@ -480,7 +481,7 @@ background-color: rgba(172, 175, 219, 0.815);
 .carousel h2{
     color: rgb(3, 3, 3);
     margin-top: 1rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     font-weight: 700;
     font-size: 1.6rem;
     text-shadow: -1.3px 1px 1px rgb(76, 50, 50);

@@ -12,13 +12,11 @@ public class RateDTO {
 
     private StarsEnum stars;
 
-    private Product product;
 
     public RateDTO(Rate rate){
         this.id = rate.getId();
         this.commentary = rate.getCommentary();
         this.stars = rate.getStars();
-        this.product = rate.getProduct();
     }
 
     public Long getId() {
@@ -45,11 +43,4 @@ public class RateDTO {
         this.stars = stars;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }

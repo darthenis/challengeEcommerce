@@ -16,85 +16,112 @@
 
 <body>
     <div id="app">
-
+        {{filtering}}
         <div class="categories_shop_mobile" :style="{animationName : activeMenuCategories ? 'slideIn' : activeMenuCategories != null ? 'slideOut' : ''}">
             <button v-if="activeMenuCategories" @click="handlerMenuCategories" class="fixed top-0 right-0 m-4 rounded-lg p-4">X</button>
             <h4 class="mb-2">Categories</h4>
             <ul class="flex flex-col gap-2">
                 <li>
                     
-                   <input type="checkbox" id="appli"> <label class="ml-8" for="appli">Applience</label>
+                   <input type="checkbox" id="appli1" value="Appliance" v-model="filterTags"> <label class="ml-8" for="appli1">Appliance</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="aud"> <label class="ml-8" for="aud">Audio</label>
+                    <input type="checkbox" id="aud1" value="Audio" v-model="filterTags"> <label class="ml-8" for="aud">Audio</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="forn"> <label class="ml-8" for="forn">Forniture</label>
+                    <input type="checkbox" id="forn1"  value="Forniture" v-model="filterTags"> <label class="ml-8" for="forn1">Forniture</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="heal">  <label class="ml-8" for="heal">Health</label>
+                    <input type="checkbox" id="heal1"  value="Health" v-model="filterTags">  <label class="ml-8" for="heal1">Health</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="kids">  <label class="ml-8" for="kids">Kids</label>
+                    <input type="checkbox" id="kids1"  value="Kids" v-model="filterTags">  <label class="ml-8" for="kids1">Kids</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="tecn">  <label class="ml-8" for="tecn">Tecnology</label>
+                    <input type="checkbox" id="tecn1"  value="Tecnology" v-model="filterTags">  <label class="ml-8" for="tecn1">Tecnology</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="vid"> <label class="ml-8" for="vid">Video</label> 
+                    <input type="checkbox" id="vid1"  value="Video" v-model="filterTags"> <label class="ml-8" for="vid1">Video</label> 
                 </li>
             </ul>
 
             <div class="mt-4">
                 <h3 class="text-center mb-2">Range price</h3>
                 <div class="flex gap-2 justify-center items-center">
-                    <input class="border input_shop" id="min" type="text" placeholder="min" style="width: 70px;"/>
+                    <input class="border input_shop" id="min" type="text" placeholder="min" v-model="minPrice" style="width: 70px;"/>
                     -
-                    <input class="border input_shop" id="min" type="text" placeholder="max" style="width: 70px;"/>
+                    <input class="border input_shop" id="min" type="text" placeholder="max" v-model="maxPrice" style="width: 70px;"/>
                 </div>
             </div>
         </div>
 
 
         <header>
-            <nav class="bg-blue-200 flex justify-between items-center p-2 px-24">
-                <a href="./index.html" class="flex items-center justify-center">
-                    <img src="./assets/img/logo-easy.png" alt="" class="w-[8.5rem]" />
-                </a>
-
-                <div class="w-[50%] flex justify-center gap-4">
-                    <input type="text" class="w-[80%]" />
-                    <button
-                        class="p-3 bg-blue-900 text-white tracking-[2px] font-bold rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
-                        SEARCH
-                    </button>
-                </div>
-
-                <div class="flex items-center gap-6">
-                    <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
-                    <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCar"></i>
-                    <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
-                </div>
+            <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
+              
+              
+             
+              <div class="flex items-center justify-center md:flex">
+                <img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" />
+              </div>
+    
+              
+    
+              <div class="md:w-[50%] flex justify-center gap-4">
+                <input type="text" class="w-[80%] p-2" placeholder="Search a product..." v-model="searchProduct"/>
+                <button
+                  class="p-2 flex items-center justify-center md:p-3 bg-blue-900 text-white tracking-[2px] rounded-md hover:bg-blue-600 transition-all duration-[.5s]"
+                >
+                <i class="fa-solid fa-magnifying-glass md:hidden"></i>
+                  <span class="hidden md:flex">SEARCH</span>
+                </button>
+              </div>
+    
+              <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden">
+                <div class="w-8  h-1 bg-white" ></div>
+                <div class="w-8  h-1 bg-white" ></div>
+                <div class="w-8  h-1 bg-white" ></div>
+              </div>
+    
+              <div class="hidden lg:flex items-center gap-6">
+                <i
+                  class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"
+                ></i>
+                <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"></i>
+                <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
+              </div>
             </nav>
-            <nav class="h-[4rem] bg-blue-900 flex justify-center">
-                <div
-                    class="flex justify-around items-center text-white w-[45%] font-bold tracking-[1px] transition-all">
-                    <p class="hover:text-teal-900 cursor-pointer transition-all duration-[.3s]">
-                        Categories
-                    </p>
-                    <p class="hover:text-teal-900 cursor-pointer transition-all duration-[.3s]">
-                        FAQ
-                    </p>
-                    <p class="hover:text-teal-900 cursor-pointer transition-all duration-[.3s]">
-                        About Us
-                    </p>
-                    <p class="hover:text-teal-900 cursor-pointer transition-all duration-[.3s]">
-                        Contact
-                    </p>
-                </div>
+    
+            <nav class="hidden lg:h-[4rem] bg-blue-900 lg:flex justify-center">
+              <div
+                class="flex justify-around items-center text-white w-[45%] tracking-[1px] transition-all"
+              >
+                <p
+                  class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
+                >
+                  Categories
+                </p>
+                <p
+                  class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
+                >
+                  Frecuent Questions
+                </p>
+                <p
+                  class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
+                >
+                  About Us
+                </p>
+                <p
+                  class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
+                >
+                  Contact
+                </p>
+              </div>
             </nav>
-        </header>
-        <main class="container_shop_main font-serif">
+          </header>
+
+        
+        <main class="container_shop_main">
              <section class="grid_layout">
             
                 <div class="categories_shop" style="height: fit-content">
@@ -102,47 +129,47 @@
                     <ul class="flex flex-col gap-2">
                         <li>
                             
-                           <input type="checkbox" id="appli"> <label class="ml-8" for="appli">Applience</label>
+                           <input type="checkbox" id="appli" value="Appliance" v-model="filterTags"> <label class="ml-8" for="appli">Appliance</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="aud"> <label class="ml-8" for="aud">Audio</label>
+                            <input type="checkbox" id="aud" value="Audio" v-model="filterTags"> <label class="ml-8" for="aud">Audio</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="forn"> <label class="ml-8" for="forn">Forniture</label>
+                            <input type="checkbox" id="forn" value="Forniture" v-model="filterTags"> <label class="ml-8" for="forn">Forniture</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="heal">  <label class="ml-8" for="heal">Health</label>
+                            <input type="checkbox" id="heal" value="Health" v-model="filterTags">  <label class="ml-8" for="heal">Health</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="kids">  <label class="ml-8" for="kids">Kids</label>
+                            <input type="checkbox" id="kids" value="Kids" v-model="filterTags">  <label class="ml-8" for="kids">Kids</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="tecn">  <label class="ml-8" for="tecn">Tecnology</label>
+                            <input type="checkbox" id="tecn" value="Tecnology" v-model="filterTags">  <label class="ml-8" for="tecn">Tecnology</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="vid"> <label class="ml-8" for="vid">Video</label> 
+                            <input type="checkbox" id="vid" value="Video" v-model="filterTags"> <label class="ml-8" for="vid">Video</label> 
                         </li>
                     </ul>
 
                     <div class="mt-4">
-                        <h3>Range price</h3>
+                        <h3 class="mb-2">Range price</h3>
                         <div class="flex gap-2 justify-center items-center">
-                            <input class="border input_shop" id="min" type="text" placeholder="min" style="width: 70px;"/>
+                            <input class="border input_shop" id="min" type="text" v-model="minPrice" placeholder="min" style="width: 70px;"/>
                             -
-                            <input class="border input_shop" id="min" type="text" placeholder="max" style="width: 70px;"/>
+                            <input class="border input_shop" id="min" type="text" v-model="maxPrice" placeholder="max" style="width: 70px;"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="menu_top_shop pt-4 pb-2">
-                    <div>Showing 1–16 of 66 results</div>
+                    <div>Showing {{(initPage / 9) + 1}}–<span v-html="Math.round(totalFilteredProducts.length / 9)"></span> of <span v-html="filteredProducts.length"></span> results</div>
                     <div>Sort by: 
-                        <select style="width: 100px;">
+                        <select style="width: 100px;" v-model="sortSeleted">
                             <option value="">Default</option>
-                            <option value="">Price Ascending</option>
-                            <option value="">Price Descending</option>
-                            <option value="">a-z</option>
-                            <option value="">z-a</option>
+                            <option value="asc">Price Ascending</option>
+                            <option value="des">Price Descending</option>
+                            <option value="a-z">a-z</option>
+                            <option value="z-a">z-a</option>
                         </select>
                     </div>
                     <div class="button_mobile_categories" @click="handlerMenuCategories">Filters ></div>
@@ -150,40 +177,47 @@
 
                 <div class="container_cards_shop">
 
-                    <template v-for="(product, index) of products">
+                    <template v-for="(product, index) of filteredProducts">
 
-                        <article  :id="'product-'+product.id"  :class="{elementFadeIn : visibleArticle[index]}"
-                                class="rounded-lg relative mt-5 w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
+                        <article    :id="'product-'+product.id"  
+                                    :class="{elementFadeIn : visibleArticle[index]}"
+                                    style="height: 370px"
+                                    class="rounded-lg relative  w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
                             <i class="fa-solid fa-heart fa-solid fa-lg text-gray-400 hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
                             <a href="#">
                                 <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;" :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'" alt="product image" />
                             </a>
-                            <div class="px-5 pb-5"> 
+                            <div class="px-5 flex flex-col justify-between"> 
                                 <a href="#">
-                                    <h5 class="mt-4 text-xl font-semibold tracking-tight text-gray-900 dark:text-dark">{{product.name}}</h5>
+                                    <h5 class="mt-1 text-xl font-semibold tracking-tight text-gray-900 dark:text-dark">{{product.name}}</h5>
                                 </a>
-                                <div class="flex items-center mt-2.5 mb-5">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                <div class="flex items-center mt-2.5">
+                                    <span class="flex" v-html="counterStars(product.rates)"></span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
                                 </div>
-                                <div class="flex items-center justify-between">
+                                <div class="flex items-center flex-col justify-between">
                                     <div class="flex flex-col items-center">
-                                        <span class="text-1xl font-bold text-gray-900 dark:text-dark" style="text-decoration: line-through;">$1599</span>
-                                        <span class="text-3xl font-bold text-gray-900 dark:text-dark">${{product.price}}</span>
+                                        <div class="font-bold text-red-400" :style="{visibility: product.discount ? 'visible' : 'hidden'}" style="font-size: 14px">{{product.discount ? product.discount + '%off' : "asd"}} <span v-if="product.discount" style="text-decoration: line-through; font-size: 12px">{{formatCurrency(product.price)}}</span></div>
+                                        <span class="text-2xl font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price, product.discount)}}</span>
                                     </div>
                                     <a href="#" class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add to cart</a>
                                 </div>
                             </div>
                         </article>
-
+                        
                     </template>
 
                     
 
+                </div>
+
+                <div class="flex justify-end gap-1 w-100" style="grid-column: 1/-1" >
+                    <span   v-if="initPage != 0"
+                            class="bg-white font-bold hover:bg-gray-200 text-black p-2 rounded-sm shadow-sm" 
+                            @click="handlePages(false)">Prev</span> 
+                    <span   v-if="totalFilteredProducts.length > endPage"
+                            class="bg-white font-bold hover:bg-gray-200 text-black p-2 rounded-sm shadow-sm"
+                            @click="handlePages(true)">Next</span>
                 </div>
 
             </section>

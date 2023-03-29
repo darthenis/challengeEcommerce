@@ -38,6 +38,7 @@ public class EasybuyApplication {
 			luisito.setEnabled(true);
 
 
+
 			Product ledTv = new Product("Samsung - 75' Class Q70A",
 					"Quantum Processor 4K" +
 					"Powered by machine learning, our most powerful 4K processor enhances picture from any source into crisp 4K action in each and every scene."+
@@ -97,6 +98,7 @@ public class EasybuyApplication {
 					"This Omron wireless upper arm blood pressure monitor features TruRead technology that lets you take " +
 					"three consecutive readings at customized intervals.",100.50,8,5, LocalDate.now().minusDays(5), List.of(CategoriesEnum.HEALTHNBEAUTY) );
 			bloodPressure.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325cv12d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325cv13d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6370/6370325cv11d.jpg;maxHeight=640;maxWidth=550"));
+
 
 			Product cuutopiaPlush = new Product("Star Wars - 7'",
 					"Star Wars fans of all ages will fall in love with Grogu all over again! " +
