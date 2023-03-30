@@ -396,7 +396,8 @@
           class="rounded-lg relative w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
           <i  v-if="isLogged"
               @click="addFavorites(product)"
-              class="fa-solid fa-heart fa-solid fa-lg text-gray-400 hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
+              :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
+              class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
           <a :href="'./product.html?id='+product.id">
             <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"
               :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
