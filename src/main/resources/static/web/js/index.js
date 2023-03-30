@@ -343,8 +343,6 @@ createApp({
         },
         checkedFavoritesAdded() {
 
-            console.log("favs: ", this.favs)
-
             this.top4LastUpdated = this.top4LastUpdated.map(updated => {
 
                 if (this.favs.find(fav => fav.productId == updated.id)) {
