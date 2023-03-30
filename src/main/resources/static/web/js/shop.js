@@ -24,6 +24,7 @@ createApp({
             active: null,
             bag: [],
             totalCartQuantity : 0,
+            totalCart: 0,
             navActive : null
         }
     },
@@ -41,6 +42,17 @@ createApp({
 
     },
     methods:{
+        logout(){
+
+            axios.post("/api/logout")
+                .then(() => {
+
+                    this.isLogged = false;
+                    this.handleMessageAlert("Sign out successfully", 3, false)
+
+                })
+
+        },
         checkIsLogged(){
 
             axios("/api/clients/auth")
@@ -490,9 +502,9 @@ createApp({
         /*--------------TOGGLE CART--------------*/
         toggleCart() {
 
-            if (this.active == null) {
+            if (!this.active) {
                 this.active = true;
-                this.navActive = false;
+                this.navActive = this.navActive != null ? false : null;
             } else {
                 this.active = !this.active;
             }
