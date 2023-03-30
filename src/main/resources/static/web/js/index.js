@@ -308,8 +308,6 @@ createApp({
 
             if (this.favs.find(fav => fav.productId == product.id)) {
 
-
-
                 axios.delete("/api/client/current/favorites/" + this.favs.find(fav => fav.productId == product.id).id)
                     .then(res => {
 
