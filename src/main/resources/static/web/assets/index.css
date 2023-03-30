@@ -321,8 +321,8 @@ align-items: center;
 .main-about-us{
     min-height: 20rem;
     background-size: cover;
-    background-position: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.666), rgba(0, 0, 0, 0.923)), url("./img/th\ \(1\).jpg");
+    background-position:center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.666), rgba(0, 0, 0, 0.923)), url("./img/ourteam.jpg");
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -376,18 +376,21 @@ align-items: center;
     align-items: start;
     gap: 20px;
     text-align: start;
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 1px 0px 0px black;
 
 }
 .texto-section-about-us h3{
-    font-weight: 900;
-    font-size: 2rem;
-    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
-    text-shadow: -2px 1px 3px rgb(255, 255, 255);
+
+    font-size: 2.5rem;
+ 
 }
 .texto-section-about-us p{
+    font-weight: 900;
     /*font-family: Georgia, 'Times New Roman', Times, serif;*/
-    text-shadow: -1px 1px 1px rgb(99, 75, 75);
-    
+    text-shadow: -2px 1px 3px rgb(255, 255, 255);
 }
 /* segundo section  */
 .section-about-us2{
@@ -412,15 +415,19 @@ align-items: center;
 
 }
 .texto-section-about-us2 h3{
+
+    font-size: 2.5rem;
+
+}
+.texto-section-about-us2 p{
+ rgb:(99, 75, 75);
+
     text-shadow: -2px 1px 3px white;
     font-weight: 900;
     font-size: 2rem;
     /*font-family: Georgia, 'Times New Roman', Times, serif;*/
 }
-.texto-section-about-us2 p{
-    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
-    text-shadow: -1px 1px 1px rgb(99, 75, 75);
-}
+
 /* segundo section  */
 @media (max-width:745px) {
     .section-about-us{
