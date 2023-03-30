@@ -146,7 +146,7 @@
                     class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
                   <li>
                     <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                      href="./updateClient.html" @click="logout" data-te-dropdown-item-ref>LogOut</a>
+                      href="" @click="logout" data-te-dropdown-item-ref>LogOut</a>
                   </li>
                 </ul>
               </div>
@@ -168,50 +168,49 @@
             Home
           </a>
           <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-            <div class="relative" data-te-dropdown-ref>
-              <div class="cursor-pointer" id="dropdownMenuButton1d"
-                data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-                data-te-ripple-color="light">Categories</div>
-              <ul
-                class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
-                aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Tecnology">
-                    <h2>Technology</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Appliance">
-                    <h2>Appliance</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Furniture">
-                    <h2>Furniture</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Health">
-                    <h2>Health</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Audio">
-                    <h2>Audio</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Video">
-                    <h2>Video</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Kids">
-                    <h2>Kids</h2>
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div class="relative" data-te-dropdown-ref>
+            <div class="cursor-pointer" id="dropdownMenuButton1d" data-te-dropdown-toggle-ref aria-expanded="false"
+              data-te-ripple-init data-te-ripple-color="light">Categories</div>
+            <ul
+              class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+              aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Tecnology">
+                  <h2>Technology</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Appliance">
+                  <h2>Appliance</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Furniture">
+                  <h2>Furniture</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Health">
+                  <h2>Health</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Audio">
+                  <h2>Audio</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Video">
+                  <h2>Video</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Kids">
+                  <h2>Kids</h2>
+                </a>
+              </li>
+            </ul>
+          </div>
           </p>
           <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
             Frecuent Questions
@@ -467,10 +466,9 @@
           style="height: 370px"
           class="rounded-lg relative w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
 
-          <i  v-if="isLogged"
-              @click="addFavorites(product)"
-              :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
-              class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
+          <i v-if="isLogged" @click="addFavorites(product)"
+            :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
+            class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
 
           <a :href="'./product.html?id='+product.id">
             <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"

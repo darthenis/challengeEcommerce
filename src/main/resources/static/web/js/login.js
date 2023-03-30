@@ -17,10 +17,6 @@ createApp({
 
 
 
-
-
-
-
 	},
 	methods: {
 		login() {
@@ -47,10 +43,7 @@ createApp({
 				password: this.password
 			},)
 				.then(response => {
-					console.log(response)
-					this.user = this.email
-					this.password1 = this.password
-					this.login()
+					window.location.href = "/web/login.html"
 				})
 				.catch(error => console.log(error))
 		},

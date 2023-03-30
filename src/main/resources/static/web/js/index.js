@@ -78,7 +78,11 @@ createApp({
         },
         /*-------------------LOGOUT--------------------*/
         logout() {
-            axios.post('/api/logout').then(response => console.log('signed out!!!'))
+            axios.post('/api/logout')
+                .then(response => {
+                    console.log('signed out!!!')
+                    window.location.href = "/web/login.html"
+                })
         },
 
         /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/
