@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/index.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
     <title>Frecuent Questions | Easy Buy</title>
 </head>
 
@@ -67,6 +68,120 @@
         </header>
 
         <main>
+
+            <div class="h-screen bg-gradient-to-br from-pink-50 to-indigo-100 grid place-items-center">
+                <div class="w-11/12 md:w-9/12 lg:w-6/12 mx-auto rounded border">
+                    <div class="bg-white p-10 shadow-sm">
+                        <h3 class="text-lg font-medium text-gray-800">Frecuently asked questions</h3>
+                        <p class="text-sm font-light text-gray-600 my-3">
+                            Here we are a section to solve issues with purchases
+                        </p>
+    
+                        <div class="h-1 w-full mx-auto border-b my-5"></div>
+    
+                        <!-- What is term -->
+                        <div class="transition hover:bg-indigo-50">
+                            <!-- header -->
+                            <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                <i class="fas fa-plus"></i>
+                                <h3>How to return a purchase?</h3>
+                            </div>
+                            <!-- Content -->
+                            <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    Contact a representative through the contact form or through our telephone lines. tel:341-2235-3456
+                                </p>
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    Contactesé con un representante    mediante el formulario de contactos o a traves de nuestras lineas telefonicas. tel:341-2235-3456                            </p>
+                            </div>
+                        </div>
+    
+                        <!-- When to use Accordion Components -->
+                        <div class="transition hover:bg-indigo-50">
+                            <!-- header -->
+                            <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                <i class="fas fa-plus"></i>
+                                <h3>Billing and taxes on EASY BUY</h3>
+                            </div>
+                            <!-- Content -->
+                            <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    Surcharges are added when the buyer has not made the payment by the due date.
+                                </p>
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    Los recargos se agregan cuando al pasar la fecha limite el comprador no efectuó el pago.
+                                </p>
+                                
+                            </div>
+                        </div>
+    
+                        <!-- Accordion Wrapper -->
+                        <div class="transition hover:bg-indigo-50">
+                            <!-- header -->
+                            <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                <i class="fas fa-plus"></i>
+                                <h3>Why some products do not have shipping?
+                                </h3>
+                            </div>
+                            <!-- Content -->
+                            <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    Some products do not have shipping since a minimum amount is required in the purchase.
+                                    
+                                </p>
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    
+                                    Algunos productos no tienen envio ya que se requiere un monto minimo en la compra.
+                                </p>
+                                
+                            </div>
+                        </div>
+    
+                        <!-- Accordion Wrapper -->
+                        <div class="transition hover:bg-indigo-50">
+                            <!-- header -->
+                            <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                <i class="fas fa-plus"></i>
+                                <h3>About the offers on EASY BUY</h3>
+                            </div>
+                            <!-- Content -->
+                            <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    Offers on our site have a maximum of 7 days from their publication.
+    
+                                </p>
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    Las ofertas en nuestro sitio tienen un maximo de 7 dias desde su publicacion.
+    
+                                </p>
+                            </div>
+                        </div>
+    
+                        <!-- Accordion Wrapper -->
+                        <div class="transition hover:bg-indigo-50">
+                            <!-- header -->
+                            <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                <i class="fas fa-plus"></i>
+                                <h3>Minimun amount to free shiping</h3>
+                            </div>
+                            <!-- Content -->
+                            <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    The minimum amount to get free shipings is over U$D 100 dollars or product weights greater than 50kg
+                                </p>
+                                <p class="leading-6 font-light pl-9 text-justify">
+                                    El monto mínimo para obtener envíos gratis es superior a U$D 100 dólares o pesos de productos superiores a 50 kg.
+    
+                                </p>
+                            </div>
+                        </div>
+    
+                        
+                    </div>
+                </div>
+                
+            </div>
+
         </main>
         
         <footer aria-label="Site Footer" class="mt-20 bg-blue-900 flex items-center">
@@ -277,6 +392,36 @@
     <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/4ffb8edd00.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    
+    <style>
+        .accordion-content {
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+    </style>
+
+    <script>
+        const accordionHeader = document.querySelectorAll(".accordion-header");
+        accordionHeader.forEach((header) => {
+            header.addEventListener("click", function () {
+                const accordionContent = header.parentElement.querySelector(".accordion-content");
+                let accordionMaxHeight = accordionContent.style.maxHeight;
+
+                // Condition handling
+                if (accordionMaxHeight == "0px" || accordionMaxHeight.length == 0) {
+                    accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
+                    header.querySelector(".fas").classList.remove("fa-plus");
+                    header.querySelector(".fas").classList.add("fa-minus");
+                    header.parentElement.classList.add("bg-indigo-50");
+                } else {
+                    accordionContent.style.maxHeight = `0px`;
+                    header.querySelector(".fas").classList.add("fa-plus");
+                    header.querySelector(".fas").classList.remove("fa-minus");
+                    header.parentElement.classList.remove("bg-indigo-50");
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -50,10 +50,6 @@ public class PurchaseOrderController {
     @Autowired
     TicketService ticketService;
 
-    @Autowired
-    RestTemplate restTemplate;
-
-
     @RequestMapping("/orders")
     public Set<PurchaseOrderDTO> getAll(){
         return purchaseService.findAll().stream().map(PurchaseOrderDTO::new).collect(Collectors.toSet());
@@ -106,28 +102,6 @@ public class PurchaseOrderController {
             PurchaseOrder purchaseOrder = purchaseService.completePurchase(id);
 
             if(purchaseOrder == null) return new ResponseEntity<>("Order not found", HttpStatus.FORBIDDEN);
-
-            final String URL = "https://mindhub-huborange.up.railway.app/api/transactions/pay";
-
-            payApplicationDTO.setAmount(purchaseOrder.getAmount());
-
-            payApplicationDTO.setDescription("debit to Easy Buy SRL");
-
-            HttpHeaders headers=new HttpHeaders();
-            headers.setAccept(List.of(MediaType.APPLICATION_JSON));
-            HttpEntity<PayApplicationDTO> entity= new HttpEntity<>(payApplicationDTO,headers);
-
-            System.out.println("aca");
-
-            ResponseEntity<?> response = restTemplate.exchange(URL, HttpMethod.POST, entity ,String.class);
-
-            System.out.println(response.getStatusCodeValue());
-
-            if(!response.getStatusCode().equals(HttpStatus.OK)){
-
-                return new ResponseEntity<>("failed payment", HttpStatus.FORBIDDEN);
-
-            }
 
             purchaseOrder.setState(true);
 

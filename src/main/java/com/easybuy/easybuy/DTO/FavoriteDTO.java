@@ -16,6 +16,8 @@ public class FavoriteDTO {
 
     private String description;
 
+    private Long productId;
+
     public FavoriteDTO(Favorite favorite) {
         this.id = favorite.getId();
         this.name = favorite.getName();
@@ -23,6 +25,7 @@ public class FavoriteDTO {
         this.price = favorite.getPrice();
         this.stock = favorite.getStock();
         this.description = favorite.getDescription();
+        this.productId = favorite.getProductId();
     }
 
     public Long getId() {
@@ -75,5 +78,13 @@ public class FavoriteDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 }
