@@ -14,74 +14,114 @@
 
 <body>
     <div id="app">
-        <header>
-            <nav class="bg-blue-200 flex justify-between items-center p-2 px-24">
-                <a href="./index.html" class="flex items-center justify-center">
-                    <img src="./assets/img/logo-easy.png" alt="" class="w-[8.5rem]" />
-                </a>
+        
+        <nav  class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center" 
+        :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
+        <div  class="navAnimated w-min-screen flex flex-end"
+              :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
+            <div  class="fixed px-4 py-2 m-2 bg-white text-black rounded-lg font-bold" 
+              
+              @click="handleNavResponsive">X
+            </div>
+        </div>
+        
+    <div class="flex flex-col gap-10 mt-4 justify-center items-center text-white w-full tracking-[1px] transition-all">
 
-                <div class="w-[50%] flex justify-center gap-4">
-                    <input type="text" class="w-[80%]" />
-                    <button
-                        class="p-3 bg-blue-900 text-white tracking-[2px] font-bold rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
-                        SEARCH
-                    </button>
-                </div>
+      <div class="flex gap-10 items-center gap-6" v-if="">
+        <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
+        <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCart"><span
+            class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
+        <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
+      </div>
 
-                <div class="flex items-center gap-6">
-                    <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
-                    <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer " @click="toggleCart"><span
-                            class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
-                    <div class="flex justify-center">
-                        <div>
-                            <div class="relative" data-te-dropdown-ref>
-                                <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
-                                    data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-                                    data-te-ripple-color="light"></i>
-                                <ul class="p-3 absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-400 bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                                    aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
-                                    <li>
-                                        <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                            href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
-                                    </li>
-                                    <li>
-                                        <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                            href="./favorites.html" data-te-dropdown-item-ref>favorites</a>
-                                    </li>
-                                    <li>
-                                        <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                            href="#" data-te-dropdown-item-ref>Settings</a>
-                                    </li>
-                                    <hr
-                                        class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
-                                    <li>
-                                        <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                            href="#" data-te-dropdown-item-ref>LogOut</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <nav class="h-[4rem] bg-blue-900 flex justify-center">
-                <div
-                    class="flex justify-around items-center text-white w-[45%] font-bold tracking-[1px] transition-all">
-                    <p class="hover:text-teal-900 cursor-pointer transition-all duration-[.3s]">
-                        Categories
-                    </p>
-                    <p class="hover:text-teal-900 cursor-pointer transition-all duration-[.3s]">
-                        FAQ
-                    </p>
-                    <p class="hover:text-teal-900 cursor-pointer transition-all duration-[.3s]">
-                        About Us
-                    </p>
-                    <p class="hover:text-teal-900 cursor-pointer transition-all duration-[.3s]">
-                        Contact
-                    </p>
-                </div>
-            </nav>
-        </header>
+      <a href="#" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        Home
+      </a>
+      <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        Categories
+      </p>
+      <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        Frecuent Questions
+      </a>
+      <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        About Us
+      </a>
+      <a href="./form.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        Contact </a>
+        <div class="flex justify-center gap-4 mt-4">
+          <input type="text" class="w-[20rem] p-2 rounded-lg" placeholder="Search a product..."  style="max-width: 69vw;"/>
+          <button
+            style="max-width: 20vw;"
+            class=" flex items-center justify-center w-[5rem] bg-white text-black rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+            <i class="fa-solid fa-magnifying-glass p-1 md:hidden text-black"></i>
+          </button>
+        </div>
+      
+    </div>
+  </nav>
+
+<!-- mai -->
+<header>
+  <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
+
+
+
+    <div class="flex items-center justify-center md:flex">
+      <img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" />
+    </div>
+
+
+
+    <div class="md:w-[50%] justify-center gap-4 hidden sm:flex">
+      <input type="text" class="w-[80%] p-2 rounded-lg" placeholder="Search a product..." />
+      <button
+        class=" flex items-center justify-center w-[10rem] bg-blue-900 text-white rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+        <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
+        <span class="hidden md:flex">SEARCH</span>
+      </button>
+    </div>
+
+    <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden mr-5" @click="handleNavResponsive">
+      <div class="w-8  h-1 bg-blue-900"></div>
+      <div class="w-8  h-1 bg-blue-900"></div>
+      <div class="w-8  h-1 bg-blue-900"></div>
+    </div>
+
+    <div class="hidden lg:flex items-center gap-6" v-if="isLogged">
+      <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
+      <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCart"><span
+          class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
+      <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
+    </div>
+
+    <div class="hidden lg:flex" v-else>
+      <a href="./login.html">
+        <button class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
+      </a>
+    </div>
+  </nav>
+
+  <nav class="hidden lg:h-[4rem] bg-blue-900 lg:flex justify-center">
+    <div class="flex justify-around items-center text-white w-[45%] tracking-[1px] transition-all">
+      <a href="#" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        Home
+      </a>
+      <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        Categories
+      </p>
+      <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        Frecuent Questions
+      </a>
+      <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        About Us
+      </a>
+      <a href="./form.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        Contact </a>
+    </div>
+  </nav>
+</header>
+
+
         <main class="main-selectProduct">
             <section class="pb-12 sm:py-16">
                 <div class="container mx-auto px-4 ">
@@ -113,39 +153,10 @@
                             <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{dataProduct.name}}</h1>
 
                             <div class="mt-5 flex items-center ">
-                                <div class="flex items-center bg-zinc-200 rounded-lg">
-                                    <svg class="block h-4 w-4 align-middle text-yellow-500"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                            class=""></path>
-                                    </svg>
-                                    <svg class="block h-4 w-4 align-middle text-yellow-500"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                            class=""></path>
-                                    </svg>
-                                    <svg class="block h-4 w-4 align-middle text-yellow-500"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                            class=""></path>
-                                    </svg>
-                                    <svg class="block h-4 w-4 align-middle text-yellow-500"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                            class=""></path>
-                                    </svg>
-                                    <svg class="block h-4 w-4 align-middle text-yellow-500"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                            class=""></path>
-                                    </svg>
+                                <div class="flex items-center bg-zinc-200 rounded-lg" v-html="counterStars(dataProduct.rates)">
+                                    
                                 </div>
-                                <p class="ml-2 text-sm font-medium text-gray-900">1,209 Reviews</p>
+                                <p class="ml-2 text-sm font-medium text-gray-900"><span v-html="avaregeStars(dataProduct.rates)"></span></p>
                             </div>
 
 
@@ -238,32 +249,32 @@
 
                         <div class="lg:col-span-3">
                             <div class="border-b border-gray-300">
-                                <nav class="flex gap-4">
-                                    <a href="#description" title=""
-                                        class="border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800">
-                                        Description </a>
+                                <nav class="flex gap-4" style="cursor: pointer">
+                                    <div title="" @click="selectSubMenu = false" :class="{'border-gray-900': !selectSubMenu}"
+                                        class="border-b-2 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800">
+                                        Description </div>
 
-                                    <a href="#" title=""
+                                    <div title="" @click="selectSubMenu = true" :class="{'border-gray-900': selectSubMenu}"
                                         class="inline-flex items-center border-b-2 border-transparent py-4 text-sm font-medium text-gray-600">
                                         Reviews
-                                        <span
-                                            class="ml-2 block rounded-full bg-blue-700 px-2 py-px text-xs font-bold text-gray-100">
-                                            1,209 </span>
-                                    </a>
+                                    </div>
                                 </nav>
                             </div>
 
-                            <div class="mt-8 flow-root sm:mt-12">
-                                <h1 class="text-3xl font-bold">Delivered To Your Door</h1>
-                                <p class="mt-4"> means convenience. Get what you need without leaving home. Save
-                                    time,
-                                    avoid lines, and heavy bags. Place your order now and receive it comfortably at
-                                    home.</p>
+                            <div class="mt-8 flow-root sm:mt-12" id="description" v-if="!selectSubMenu">
                                 <h1 class="mt-8 text-3xl font-bold" id="description">Description</h1>
-                                <p class="mt-4">{{dataProduct.name}}</p>
-                                <p class="mt-4">{{dataProduct.description}}
-                                </p>
+                                <p class="mt-4">{{dataProduct.description}}</p>
                             </div>
+
+                            
+                            <div class="mt-8 flow-root sm:mt-12" id="reviews" v-else>
+                                <div v-if="dataProduct.rates.length" v-for="rate of dataProduct.rates">
+                                    <h1 class="text-3xl font-bold">Comment</h1>
+                                    <p class="mt-4">{{rate.comment}}</p>
+                                </div>
+                                <p v-else>No comments yet</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
