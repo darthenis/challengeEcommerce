@@ -5,14 +5,14 @@
     animation-duration: 1s;
     animation-fill-mode: forwards;
     position: relative;
-    right: -200px;
+    right: -100px;
     opacity: 0;
 }
 
 @keyframes fadein {
     from{
         opacity: 0;
-        right: -200px;
+        right: -100px;
 
     } to {
         opacity: 1;
@@ -27,14 +27,14 @@
     animation-duration: 1s;
     animation-fill-mode: forwards;
     position: relative;
-    left: -200px;
+    left: -100px;
     opacity: 0;
 }
 
 @keyframes fadeinLeft {
     from{
         opacity: 0;
-        left: -200px;
+        left: -100px;
 
     } to {
         opacity: 1;
