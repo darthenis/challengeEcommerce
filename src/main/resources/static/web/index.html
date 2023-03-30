@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="./assets/carrito.css">
   <link rel="stylesheet" href="./assets/fadeInBottom.css">
   <title>HOME | Easy Buy</title>
+  <link rel="shortcut icon" href="./assets/img/logo-easy.png
+  " type="image/x-icon">
 </head>
 
 <body class="bg-rose-50">
@@ -44,7 +46,37 @@
           <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
           <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCart"><span
               class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
-          <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
+          <div class="flex justify-center">
+            <div>
+              <div class="relative" data-te-dropdown-ref>
+                <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
+                  data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+                  data-te-ripple-color="light"></i>
+                <ul
+                  class="p-3 absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-400 bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                  aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+                  <li>
+                    <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                      href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                      href="./favorites.html" data-te-dropdown-item-ref>favorites</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                      href="#" data-te-dropdown-item-ref>Settings</a>
+                  </li>
+                  <hr
+                    class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                      href="#" data-te-dropdown-item-ref>LogOut</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
 
@@ -628,6 +660,8 @@
   <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4ffb8edd00.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./js/index.js"></script>
