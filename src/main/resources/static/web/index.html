@@ -13,6 +13,52 @@
 
 <body class="bg-rose-50">
   <div id="app">
+
+      <nav  class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center" 
+            :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
+            <div  class="navAnimated w-min-screen flex flex-end"
+                  :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
+                <div  class="fixed px-4 py-2 m-2 bg-white text-black rounded-lg font-bold" 
+                  
+                  @click="handleNavResponsive">X
+                </div>
+            </div>
+            
+        <div class="flex flex-col gap-10 mt-4 justify-center items-center text-white w-full tracking-[1px] transition-all">
+
+          <div class="flex gap-10 items-center gap-6" v-if="">
+            <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
+            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCart"><span
+                class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
+            <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
+          </div>
+
+          <a href="#" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+            Home
+          </a>
+          <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+            Categories
+          </p>
+          <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+            Frecuent Questions
+          </a>
+          <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+            About Us
+          </a>
+          <a href="./form.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+            Contact </a>
+            <div class="flex justify-center gap-4 mt-4">
+              <input type="text" class="w-[20rem] p-2 rounded-lg" placeholder="Search a product..."  style="max-width: 69vw;"/>
+              <button
+                style="max-width: 20vw;"
+                class=" flex items-center justify-center w-[5rem] bg-white text-black rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+                <i class="fa-solid fa-magnifying-glass p-1 md:hidden text-black"></i>
+              </button>
+            </div>
+          
+        </div>
+      </nav>
+
     <!-- mai -->
     <header>
       <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
@@ -25,26 +71,32 @@
 
 
 
-        <div class="md:w-[50%] flex justify-center gap-4">
-          <input type="text" class="w-[80%]" />
+        <div class="md:w-[50%] justify-center gap-4 hidden sm:flex">
+          <input type="text" class="w-[80%] p-2 rounded-lg" placeholder="Search a product..." />
           <button
-            class="p-2 flex items-center justify-center md:p-3 bg-blue-900 text-white tracking-[2px] rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+            class=" flex items-center justify-center w-[10rem] bg-blue-900 text-white rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
             <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
             <span class="hidden md:flex">SEARCH</span>
           </button>
         </div>
 
-        <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden">
-          <div class="w-8  h-1 bg-white"></div>
-          <div class="w-8  h-1 bg-white"></div>
-          <div class="w-8  h-1 bg-white"></div>
+        <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden mr-5" @click="handleNavResponsive">
+          <div class="w-8  h-1 bg-blue-900"></div>
+          <div class="w-8  h-1 bg-blue-900"></div>
+          <div class="w-8  h-1 bg-blue-900"></div>
         </div>
 
-        <div class="hidden lg:flex items-center gap-6">
+        <div class="hidden lg:flex items-center gap-6" v-if="isLogged">
           <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
           <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCart"><span
               class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
           <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
+        </div>
+
+        <div class="hidden lg:flex" v-else>
+          <a href="./login.html">
+            <button class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
+          </a>
         </div>
       </nav>
 

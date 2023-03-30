@@ -12,7 +12,9 @@ createApp({
             top4LastUpdated : [],
             top4offersProducts: [],
             offersEffect: [],
-            topUpdatedEffect : []
+            topUpdatedEffect : [],
+            isLogged: false,
+            navActive: null
 
         }
     },
@@ -24,6 +26,17 @@ createApp({
         document.addEventListener("scroll", () => this.isVisible("top"));
     },
     methods: {
+        checkIsLogged(){
+
+            axios("/clients/auth")
+                .then(res => {
+
+                    this.isLogged = true;
+
+                })
+                .catch(err => this.isLogged = false)
+
+        },
         loadData() {
 
             axios.get("/api/products/last/updated")
@@ -39,6 +52,19 @@ createApp({
                     this.top4offersProducts = res.data;
 
                 }).catch(err => console.log(err))
+        },
+        handleNavResponsive(){
+
+            if(!this.navActive){
+
+                this.navActive = true;
+
+            } else {
+
+                this.navActive = false;
+
+            }
+
         },
 
         /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/
