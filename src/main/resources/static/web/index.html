@@ -156,10 +156,10 @@
       <h2>Top Offers</h2>
     </div>
 
-    <div class="flex justify-evenly flex-wrap">
+    <div class="flex justify-evenly flex-wrap gap-1">
       <template v-for="(product, index) of top4offersProducts">
 
-        <article :id="'product-'+product.id" :class="{elementFadeIn : false}" style="height: 370px"
+        <article :id="'product-'+product.id" :class="{elementFadeIn : offersEffect[index]}" style="height: 370px"
           class="rounded-lg relative  w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
           <i
             class="fa-solid fa-heart fa-solid fa-lg text-gray-400 hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
@@ -302,8 +302,8 @@
     <div class="flex justify-evenly flex-wrap gap-1">
       <template v-for="(product, index) of top4LastUpdated">
 
-        <article :id="'product-'+product.id" :class="{elementFadeIn : false}" style="height: 370px"
-          class="rounded-lg relative  w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
+        <article :id="'productUpdated-'+product.id" :class="{elementFadeIn : topUpdatedEffect[index]}" style="height: 370px"
+          class="rounded-lg relative w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
           <i
             class="fa-solid fa-heart fa-solid fa-lg text-gray-400 hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
           <a href="#">
@@ -331,6 +331,7 @@
                   product.discount)}}</span>
               </div>
               <a href="#"
+                @click="saveBag(product)"
                 class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
                 to cart</a>
             </div>
