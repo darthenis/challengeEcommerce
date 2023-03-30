@@ -27,8 +27,16 @@ createApp({
 
         document.addEventListener("scroll", () => this.isVisible());
 
+      
     },
     methods:{
+        getParam(key){
+
+            let parameterUrl = location.search
+            let parameters = new URLSearchParams(parameterUrl)
+            return parameters.get(key)
+
+        },
         loadData(){
 
             axios.get("/api/products")
@@ -37,6 +45,12 @@ createApp({
                     this.products = res.data;
                     this.filterProducts = res.data;
 
+                    let string = this.getParam("filter");
+
+                    let element = document.getElementById(string);
+
+                    if(element) element.click();         
+                    
                 })
                 .catch(err => {
 

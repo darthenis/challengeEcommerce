@@ -129,25 +129,25 @@
                     <ul class="flex flex-col gap-2">
                         <li>
                             
-                           <input type="checkbox" id="appli" value="Appliance" v-model="filterTags"> <label class="ml-8" for="appli">Appliance</label>
+                           <input type="checkbox" id="Appliance" value="Appliance" v-model="filterTags"> <label class="ml-8" for="Appliance">Appliance</label>
+                        </li>   
+                        <li>
+                            <input type="checkbox" id="Audio" value="Audio" v-model="filterTags"> <label class="ml-8" for="Audio">Audio</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="aud" value="Audio" v-model="filterTags"> <label class="ml-8" for="aud">Audio</label>
+                            <input type="checkbox" id="Furniture" value="Furniture" v-model="filterTags"> <label class="ml-8" for="Furniture">Furniture</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="forn" value="Forniture" v-model="filterTags"> <label class="ml-8" for="forn">Forniture</label>
+                            <input type="checkbox" id="Health" value="Health" v-model="filterTags">  <label class="ml-8" for="Health">Health</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="heal" value="Health" v-model="filterTags">  <label class="ml-8" for="heal">Health</label>
+                            <input type="checkbox" id="Kids" value="Kids" v-model="filterTags">  <label class="ml-8" for="kids">Kids</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="kids" value="Kids" v-model="filterTags">  <label class="ml-8" for="kids">Kids</label>
+                            <input type="checkbox" id="Tecnology" value="Tecnology" v-model="filterTags">  <label class="ml-8" for="Tecnology">Tecnology</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="tecn" value="Tecnology" v-model="filterTags">  <label class="ml-8" for="tecn">Tecnology</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="vid" value="Video" v-model="filterTags"> <label class="ml-8" for="vid">Video</label> 
+                            <input type="checkbox" id="Video" value="Video" v-model="filterTags"> <label class="ml-8" for="Video">Video</label> 
                         </li>
                     </ul>
 
@@ -189,9 +189,9 @@
                             </a>
                             <div class="px-5 flex flex-col justify-between"> 
                                 <a href="#">
-                                    <h5 class="mt-1 text-xl font-semibold tracking-tight text-gray-900 dark:text-dark">{{product.name}}</h5>
+                                    <h5 style="font-size: 15px;" class="mt-1 text-center text-xl font-semibold tracking-tight text-gray-900 dark:text-dark">{{product.name}}</h5>
                                 </a>
-                                <div class="flex items-center mt-2.5">
+                                <div class="flex items-center mt-2.5 justify-center">
                                     <span class="flex" v-html="counterStars(product.rates)"></span>
                                     <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
                                 </div>
