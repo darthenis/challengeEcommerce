@@ -9,13 +9,13 @@ createApp({
             totalCart: 0,
             totalCartQuantity: 0,
             id: null,
-            top4LastUpdated : [],
+            top4LastUpdated: [],
             top4offersProducts: [],
             offersEffect: [],
-            topUpdatedEffect : [],
+            topUpdatedEffect: [],
             isLogged: false,
             navActive: null,
-            favs : []
+            favs: []
 
         }
     },
@@ -27,7 +27,7 @@ createApp({
         document.addEventListener("scroll", () => this.isVisible("top"));
     },
     methods: {
-        checkIsLogged(){
+        checkIsLogged() {
 
             axios("/api/clients/auth")
                 .then(res => {
@@ -35,11 +35,12 @@ createApp({
                     this.isLogged = true;
 
                 })
-                .catch(err => { 
-                    
+                .catch(err => {
+
                     console.log(err)
-                    
-                    this.isLogged = false})
+
+                    this.isLogged = false
+                })
 
         },
         loadData() {
@@ -60,11 +61,11 @@ createApp({
                 }).catch(err => console.log(err))
 
             axios.get("/api/client/current/favorites")
-                    .then(res => this.favs = res.data)
+                .then(res => this.favs = res.data)
         },
-        handleNavResponsive(){
+        handleNavResponsive() {
 
-            if(!this.navActive){
+            if (!this.navActive) {
 
                 this.navActive = true;
 
@@ -74,6 +75,10 @@ createApp({
 
             }
 
+        },
+        /*-------------------LOGOUT--------------------*/
+        logout() {
+            axios.post('/api/logout').then(response => console.log('signed out!!!'))
         },
 
         /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/
@@ -173,41 +178,41 @@ createApp({
 
             let preId;
 
-            if(type == "offer") {
+            if (type == "offer") {
 
                 this.offersEffect = []
-                
+
                 array = this.top4offersProducts;
 
                 preId = "product-"
-            
+
             } else {
 
                 this.topUpdatedEffect = []
-            
+
                 array = this.top4LastUpdated;
 
                 preId = "productUpdated-"
-            
+
             }
 
-            for(product of array){
+            for (product of array) {
 
-                const element = document.getElementById(preId+product.id);
+                const element = document.getElementById(preId + product.id);
 
-                if(element){
+                if (element) {
                     let rect = element.getBoundingClientRect();
                     let windowHeight = (window.innerHeight || document.documentElement.clientHeight);
                     let windowWidth = (window.innerWidth || document.documentElement.clientWidth);
-                  
+
                     // Verificar si el elemento está dentro de la ventana vertical
                     let vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
-                  
+
                     // Verificar si el elemento está dentro de la ventana horizontal
                     let horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
-                  
-                   type == "offer"  ? this.offersEffect.push(vertInView && horInView) 
-                                    : this.topUpdatedEffect.push(vertInView && horInView) 
+
+                    type == "offer" ? this.offersEffect.push(vertInView && horInView)
+                        : this.topUpdatedEffect.push(vertInView && horInView)
                 }
 
             }
@@ -215,21 +220,21 @@ createApp({
             console.log(this.offersEffect)
 
         },
-        getWithDiscount(price, discount){
+        getWithDiscount(price, discount) {
 
-            if(!discount){
+            if (!discount) {
 
                 return this.formatDollar(price);
 
             } else {
 
-                return this.formatDollar(price - ((price / 100) * discount ))
+                return this.formatDollar(price - ((price / 100) * discount))
 
             }
 
         },
-        avaregeStars(rates){
-            
+        avaregeStars(rates) {
+
             let five = 0;
 
             let four = 0;
@@ -240,23 +245,23 @@ createApp({
 
             let one = 0;
 
-            for(let rate of rates){
+            for (let rate of rates) {
 
-                switch(rate.stars){
+                switch (rate.stars) {
                     case "ONE":
-                        one ++;
+                        one++;
                         break;
                     case "TWO":
-                        two ++;
+                        two++;
                         break;
                     case "THREE":
-                        three ++;
+                        three++;
                         break;
                     case "FOUR":
-                        four ++;
+                        four++;
                         break;
                     case "FIVE":
-                        five ++;
+                        five++;
                         break;
                 }
 
@@ -266,7 +271,7 @@ createApp({
 
         },
 
-        counterStars(rates){
+        counterStars(rates) {
 
             let rounded = 0;
 
@@ -278,15 +283,15 @@ createApp({
 
             let html = "";
 
-            for(let i = 1; i <= rounded; i++){
+            for (let i = 1; i <= rounded; i++) {
 
                 hmtl += star;
 
             }
 
-            if((5 - rounded) != 0){
+            if ((5 - rounded) != 0) {
 
-                for(let i = rounded; i <= 5; i++){
+                for (let i = rounded; i <= 5; i++) {
 
                     rounded++
 
@@ -299,32 +304,13 @@ createApp({
             return html
 
         },
-        addFavorites(product){
+        addFavorites(product) {
 
-            if(this.favs.find(fav => fav.productId == product.id)){
-
-                
-
-                axios.delete("/api/client/current/favorites/"+this.favs.find(fav => fav.productId == product.id).id)
-                .then(res => {
-
-                    console.log(res)
-
-                    this.loadData();
-
-                }).catch(err => console.log(err))
+            if (this.favs.find(fav => fav.productId == product.id)) {
 
 
-            }
 
-            const data = {  name : product.name, 
-                            imgUrl : product.imgsUrls[0], 
-                            price : product.price,
-                            productId : product.id,
-                            description : product.description,
-                            stock : product.stock}
-
-            axios.post("/api/client/current/favorites", {...data})
+                axios.delete("/api/client/current/favorites/" + this.favs.find(fav => fav.productId == product.id).id)
                     .then(res => {
 
                         console.log(res)
@@ -333,43 +319,64 @@ createApp({
 
                     }).catch(err => console.log(err))
 
+
+            }
+
+            const data = {
+                name: product.name,
+                imgUrl: product.imgsUrls[0],
+                price: product.price,
+                productId: product.id,
+                description: product.description,
+                stock: product.stock
+            }
+
+            axios.post("/api/client/current/favorites", { ...data })
+                .then(res => {
+
+                    console.log(res)
+
+                    this.loadData();
+
+                }).catch(err => console.log(err))
+
         },
-        checkedFavoritesAdded(){
+        checkedFavoritesAdded() {
 
             this.top4LastUpdated = this.top4LastUpdated.map(updated => {
 
-                        if(this.favs.find(fav => fav.productId == updated.id)){
+                if (this.favs.find(fav => fav.productId == updated.id)) {
 
-                            return {...updated, inFavs : true}
+                    return { ...updated, inFavs: true }
 
-                        } else {
+                } else {
 
-                            return {...updated, inFavs : false}
+                    return { ...updated, inFavs: false }
 
-                        }
+                }
 
             })
 
             this.top4offersProducts = this.top4offersProducts.map(updated => {
 
-                if(this.favs.find(fav => fav.productId == updated.id)){
+                if (this.favs.find(fav => fav.productId == updated.id)) {
 
-                    return {...updated, inFavs : true}
+                    return { ...updated, inFavs: true }
 
                 } else {
 
-                    return {...updated, inFavs : false}
+                    return { ...updated, inFavs: false }
 
                 }
 
-    })
+            })
 
         },
 
     },
-    computed : {
+    computed: {
 
-        checkedFavorites(){
+        checkedFavorites() {
 
             this.checkedFavoritesAdded();
 
