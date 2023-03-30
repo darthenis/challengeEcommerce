@@ -66,11 +66,10 @@
             <input type="text" class="input" placeholder="Name" v-model="name" />
             <input type="text" class="input" placeholder="Last Name" v-model="lastName" />
             <input type="email" class="input" placeholder="Email" v-model="email" />
-            <input type="text" class="input" placeholder="Phone Number" v-model="tel"
-              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(..?)../g, '$1').replace(/^0[^.]/, '0');" />
+            <input type="text" class="input" placeholder="Phone Number" v-model="tel" />
             <input type="password" class="input" placeholder="Password" v-model="password" />
           </div>
-          <button class="submit-btn">Sign up</button>
+          <button class="submit-btn" @click="signUp">Sign up</button>
         </div>
         <div class="login slide-up">
           <div class="center">

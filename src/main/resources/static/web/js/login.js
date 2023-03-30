@@ -36,9 +36,16 @@ createApp({
 				})
 				.catch(error => concole.error(error))
 		},
+
+
 		signUp() {
-			axios.post('/api/clients', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`,
-				{ headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+			axios.post('/api/clients', {
+				name: this.name,
+				lastName: this.lastName,
+				email: this.email,
+				tel: this.tel,
+				password: this.password
+			},)
 				.then(response => {
 					console.log(response)
 					this.user = this.email
