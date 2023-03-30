@@ -127,7 +127,7 @@
         class="mt-[3rem] bg-blue-100 shadow-lg w-[90%] lg:w-[40%] h-[25rem] flex flex-col relative gap-3 overflow-hidden">
         <a href="#" class="z-50 rounded-md ml-3 w-[8rem] font-bold mt-5 p-2 bg-white">New Released</a>
         <h3 class="z-50 ml-4 text-3xl tracking-[2px]">Design Soft</h3>
-        <h2 class="z-50 ml-5 text-4xl font-bold">Motozed Reclain Sofa</h2>
+        <h2 class="z-50 ml-5 text-4xl font-bold">Individual Sofa</h2>
         <h3 class="ml-4 mb-4 text-blue-800">Special-shaped sofa for sale</h3>
 
         <div class="bg-blue-200 mt-1 text-blue-800">
@@ -152,7 +152,7 @@
         class="mt-[3rem] bg-blue-100 shadow-lg w-[90%] lg:w-[40%] h-[25rem] flex flex-col relative gap-3 overflow-hidden">
         <a href="#" class="z-50 rounded-md ml-3 w-[8rem] font-bold mt-5 p-2 bg-white">New Released</a>
         <h3 class="z-50 ml-4 text-3xl tracking-[2px]">Design soft</h3>
-        <h2 class="z-50 ml-5 text-4xl font-bold">Motozed Reclain Sofa</h2>
+        <h2 class="z-50 ml-5 text-4xl font-bold">Hammock chair</h2>
         <h3 class="ml-4 mb-4 text-blue-800">Special-shaped sofa for sale</h3>
 
         <div class="bg-blue-200 mt-1 text-blue-800">
@@ -216,6 +216,7 @@
         <article :id="'product-'+product.id" :class="{elementFadeIn : offersEffect[index]}" style="height: 370px"
           class="rounded-lg relative  w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
           <i  @click="addFavorites(product)"
+              v-if="isLogged"
               :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
               class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
           <a :href="'./product.html?id='+product.id">
@@ -359,8 +360,9 @@
 
         <article :id="'productUpdated-'+product.id" :class="{elementFadeInLeft : topUpdatedEffect[index]}" style="height: 370px"
           class="rounded-lg relative w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
-          <i
-            class="fa-solid fa-heart fa-solid fa-lg text-gray-400 hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
+          <i  v-if="isLogged"
+              @click="addFavorites(product)"
+              class="fa-solid fa-heart fa-solid fa-lg text-gray-400 hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
           <a :href="'./product.html?id='+product.id">
             <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"
               :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
@@ -368,10 +370,10 @@
           </a>
           <div class="px-5 flex flex-col justify-between">
             <a :href="'./product.html?id='+product.id">
-              <h5 style="font-size: 15px;" class="mt-1 font-semibold tracking-tight text-gray-900 dark:text-dark">
+              <h5 style="font-size: 15px;" class="text-center mt-1 font-semibold tracking-tight text-gray-900 dark:text-dark">
                 {{product.name}}</h5>
             </a>
-            <div class="flex items-center mt-2.5">
+            <div class="flex items-center mt-2.5 justify-center">
               <span class="flex" v-html="counterStars(product.rates)"></span>
               <span
                 class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
