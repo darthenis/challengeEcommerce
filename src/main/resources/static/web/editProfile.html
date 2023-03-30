@@ -69,10 +69,64 @@
         </div>
       </nav>
     </header>
-    <main>
-      <section class="h-screen w-full bg-blue-100">
-        <div class="w-[50%] h-full bg-red-400"></div>
-        <div class="w-[50%]"></div>
+    <main class="h-[83.5vh]">
+      <section class="h-full w-full bg-blue-100 flex">
+        <div class="w-[50%] h-full flex items-center justify-center">
+          <form
+            action=""
+            class="bg-blue-200 h-[80%] w-[70%] mt-4 flex justify-center items-center flex-col gap-2 p-8 overflow-hidden relative"
+          >
+            <div
+              class="h-[80%] -rotate-45 bg-slate-900/50 w-[200%] absolute"
+            ></div>
+            <img
+              src="../web/assets/img/profile3.png"
+              class="w-32 rounded-full object-cover object-center z-10"
+              alt=""
+            />
+            <div class="relative bg-blue-800 p-2 text-white rounded-lg">
+              <h3>Seleccionar Archivo</h3>
+              <input
+                type="file"
+                accept="image/png, image/jpeg"
+                class="w-full h-full absolute top-0 opacity-0"
+              />
+            </div>
+            <div
+              class="bg-blue-900 p-10 flex gap-4 w-[90%] justify-center z-10"
+            >
+              <input
+                type="text"
+                class="p-2 rounded-md"
+                placeholder="Username..."
+              /><input
+                type="text"
+                placeholder="Email..."
+                class="p-2 rounded-md"
+              />
+            </div>
+            <div
+              class="bg-blue-900 p-10 w-[90%] flex gap-4 justify-center z-10"
+            >
+              <input
+                type="text"
+                class="p-2 rounded-md"
+                placeholder="Phone..."
+              /><input
+                type="text"
+                class="p-2 rounded-md"
+                placeholder="Password..."
+              />
+            </div>
+            <button class="bg-blue-800 p-3 rounded-lg text-white z-10">
+              Submit Changes
+            </button>
+          </form>
+        </div>
+        <div class="w-[50%] bg-slate-900 relative flex flex-col p-10 gap-2">
+          <img src="./assets/img/fondococina.jpg" alt="" class="h-[50%] object-cover object-center" />
+          <img src="./assets/img/cocina.jpg" alt="" class="h-[50%] object-cover object-center" />
+        </div>
       </section>
     </main>
     <footer></footer>
