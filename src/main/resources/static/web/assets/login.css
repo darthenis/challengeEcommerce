@@ -96,10 +96,10 @@ body {
   outline: none;
   box-shadow: none;
   display: block;
-  height: 30px;
+  height: 50px;
   line-height: 30px;
   padding: 8px 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #05050556;
   width: 100%;
   font-size: 12px;
 }
@@ -120,7 +120,6 @@ body {
   padding: 15px 45px;
   width: 100%;
   font-size: 13px;
-  font-weight: bold;
   cursor: pointer;
   opacity: 1;
   visibility: visible;
@@ -165,7 +164,7 @@ body {
 }
 .form-structor .login .center .form-title {
   color: #000;
-  font-size: 1.7em;
+  font-size: 1.7rem;
   text-align: center;
 }
 .form-structor .login .center .form-title span {
@@ -177,7 +176,7 @@ body {
 .form-structor .login .center .form-holder {
   border-radius: 15px;
   background-color: #fff;
-  border: 1px solid #eee;
+  border: 1px solid #05050556;
   overflow: hidden;
   margin-top: 50px;
   opacity: 1;
@@ -189,10 +188,10 @@ body {
   outline: none;
   box-shadow: none;
   display: block;
-  height: 30px;
+  height: 50px;
   line-height: 30px;
   padding: 8px 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #05050556;;
   width: 100%;
   font-size: 12px;
 }
@@ -212,7 +211,6 @@ body {
   padding: 15px 45px;
   width: 100%;
   font-size: 13px;
-  font-weight: bold;
   cursor: pointer;
   opacity: 1;
   visibility: visible;
