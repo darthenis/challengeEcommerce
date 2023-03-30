@@ -630,3 +630,38 @@ word-spacing: 0.4rem;
         display: none;}
  }
 /* carrusel leo */
+
+
+/*animation bar responsive*/
+
+.navAnimated{
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    z-index: 10000;
+
+}
+
+@keyframes moveIn {
+    
+    from {  
+        left: -100vw;
+    }
+    to{
+        left: 0px
+    }
+
+}
+
+@keyframes moveOut {
+    
+    from {
+        left: 0px
+    }
+    to{
+        left: -100vw;
+    }
+
+}
