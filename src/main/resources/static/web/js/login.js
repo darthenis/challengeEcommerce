@@ -8,13 +8,16 @@ createApp({
 			lastName: "",
 			tel: "",
 			password: "",
-			email: ""
-
+			email: "",
+			token: ""
 
 		}
 	},
 	created() {
-
+		let parameterUrl = location.search
+		let parameters = new URLSearchParams(parameterUrl)
+		this.token = parameters.get("token")
+		this.params()
 
 
 	},
@@ -31,6 +34,11 @@ createApp({
 					}
 				})
 				.catch(error => concole.error(error))
+		},
+
+		/*----------------PARAMS TOKEN LOGIN-------------------*/
+		params() {
+			axios.post("/api/clients/auth/active", `token=${this.token}`)
 		},
 
 
