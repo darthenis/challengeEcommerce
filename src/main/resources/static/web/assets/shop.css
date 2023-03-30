@@ -84,8 +84,9 @@
 @media (max-width: 823px) {
 
     .grid_layout{
-
-        grid-template-columns: 1fr;
+        grid-template-rows: 100px 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
 
     }
 
@@ -127,6 +128,18 @@
         animation-fill-mode: forwards;
     }
     
+    
+}
+
+@media (max-width: 550px) {
+
+    
+    .grid_layout{
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+    }
     
 }
 
