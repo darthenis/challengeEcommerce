@@ -15,7 +15,8 @@ createApp({
             topUpdatedEffect: [],
             isLogged: false,
             navActive: null,
-            favs: []
+            favs: [],
+            searchProduct : ""
 
         }
     },
@@ -167,6 +168,7 @@ createApp({
 
             if (this.active == null) {
                 this.active = true;
+                this.navActive = false;
             } else {
                 this.active = !this.active;
             }
@@ -370,6 +372,11 @@ createApp({
             })
 
         },
+        handleSearch(){
+
+            location.href = "/web/shop.html?search="+this.searchProduct;
+
+        }
 
     },
     computed: {
