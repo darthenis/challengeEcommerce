@@ -260,7 +260,7 @@ createApp({
 
             let maxPrice = this.maxPrice ? this.maxPrice : Infinity;
 
-            this.filteredProducts = this.filteredProducts.filter(product => product.name.includes(this.searchProduct))
+            this.filteredProducts = this.filteredProducts.filter(product => product.name.toUpperCase().includes(this.searchProduct.toUpperCase()))
 
             this.filteredProducts = this.filteredProducts.filter(product => product.price > minPrice && product.price < maxPrice)
 
