@@ -5,9 +5,9 @@
 }
 
 body{
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size:auto;
+    background-repeat: no-repeat;   
+    background-attachment: fixed;
     background-image: linear-gradient(rgba(0, 0, 0, 0.107), rgba(0, 0, 0, 0.101)), url("./img/pexels-monstera-7794441.jpg");
    
 }
@@ -80,15 +80,16 @@ body{
     font-size: 20px;
 }
 .texto-emi h2{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     font-weight: bolder;
     font-size: 45px;
     text-shadow: -1px 1px 4px rgb(0, 0, 0);
 }
 .texto-emi h3{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     margin: 10px;
     text-shadow: -1px 1px 4px rgb(0, 0, 0);
+    text-align: center;
 }
 .hijoTextoEmi{
     display: flex;
@@ -127,6 +128,8 @@ body{
 
 .padreSegundaTercerOferta{
     display: flex;
+    gap:10px;
+    margin-top: 10px;
 }
 .padre-segundaOferta{
     display: flex;
@@ -134,10 +137,10 @@ body{
     background-position: center;
     background-size: cover;
     width: 50%;
-    margin: 10px;
+    gap: 10px;
     height: 19rem;
     text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     justify-content: space-between;
     left: -200px;
     opacity: 0;
@@ -148,11 +151,11 @@ body{
 }
 .primer-emi{
 margin-left: 0px;
-margin-right: 6px;
+margin-right: 0px;
 }
 .segun-emi{
     margin-right: 0px;
-    margin-left: 6px;
+    margin-left: 0px;
 }
 .padre-textoo{
     display: flex;
@@ -183,6 +186,7 @@ margin-right: 6px;
     .padreSegundaTercerOferta{
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
     .padre-segundaOferta{
         width: 100%;
@@ -208,7 +212,7 @@ margin-right: 6px;
 }
 
 .card__product:hover{
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -329,7 +333,8 @@ align-items: center;
 .main-about-us h2{
     font-size: 2.5rem;
     font-weight: 500;
-    
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
+    text-shadow: -2px 1px 3px white;
 }
 .main-about-us p{
     margin: 5rem;
@@ -383,7 +388,9 @@ align-items: center;
  
 }
 .texto-section-about-us p{
-    
+    font-weight: 900;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
+    text-shadow: -2px 1px 3px rgb(255, 255, 255);
 }
 /* segundo section  */
 .section-about-us2{
@@ -408,12 +415,19 @@ align-items: center;
 
 }
 .texto-section-about-us2 h3{
+
     font-size: 2.5rem;
 
 }
 .texto-section-about-us2 p{
  rgb:(99, 75, 75);
+
+    text-shadow: -2px 1px 3px white;
+    font-weight: 900;
+    font-size: 2rem;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
 }
+
 /* segundo section  */
 @media (max-width:745px) {
     .section-about-us{
@@ -477,7 +491,7 @@ background-color: rgba(172, 175, 219, 0.815);
 .carousel h2{
     color: rgb(3, 3, 3);
     margin-top: 1rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     font-weight: 700;
     font-size: 1.6rem;
     text-shadow: -1.3px 1px 1px rgb(76, 50, 50);
@@ -623,3 +637,38 @@ word-spacing: 0.4rem;
         display: none;}
  }
 /* carrusel leo */
+
+
+/*animation bar responsive*/
+
+.navAnimated{
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    z-index: 10000;
+
+}
+
+@keyframes moveIn {
+    
+    from {  
+        left: -100vw;
+    }
+    to{
+        left: 0px
+    }
+
+}
+
+@keyframes moveOut {
+    
+    from {
+        left: 0px
+    }
+    to{
+        left: -100vw;
+    }
+
+}

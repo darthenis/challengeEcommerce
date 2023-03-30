@@ -5,9 +5,9 @@ public enum CategoriesEnum {
     AUDIO,
     VIDEO,
     TECNOLOGY,
-    APPLIANCES,
+    APPLIANCE,
     FURNITURE,
-    HEALTHNBEAUTY,
+    HEALTH,
     KIDS
 
 }

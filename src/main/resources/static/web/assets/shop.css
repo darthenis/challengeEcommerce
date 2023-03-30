@@ -1,0 +1,155 @@
+
+.container_shop_main{
+
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+
+}
+
+
+.grid_layout{
+    width: 1200px;
+    max-width: 90vw;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 70px 1fr;
+
+}
+
+.categories_shop{
+    border-radius: 10px;
+    min-width: 200px;
+    padding: 20px;
+    justify-self: center;
+    background-color: white;
+    width: fit-content;
+    grid-column: 1span;
+    grid-row: 1/-1;
+
+}
+
+.menu_top_shop{
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+    grid-column: 2/-1;
+    grid-row: 1span;
+
+}
+
+.container_cards_shop{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.container_cards_shop > article{
+
+    align-self: center;
+    justify-self: center;
+
+}
+
+.input_shop{
+
+    padding: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+
+}
+
+.categories_shop_mobile{
+
+    display: none;
+
+
+}
+
+
+.button_mobile_categories{
+
+    display: none;
+    
+}
+
+@media (max-width: 823px) {
+
+    .grid_layout{
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .menu_top_shop{
+
+        grid-column: 1/-1;
+        height: 100px;
+        flex-direction: column;
+
+    }
+
+    .categories_shop{
+
+        display: none;
+    }
+
+    .button_mobile_categories{
+
+        display: inline-block;
+        
+    }
+    
+
+    .categories_shop_mobile{
+        display: inline-block;
+        z-index: 10000000;
+        position: fixed;
+        min-width: 100vw;
+        min-height: 100vh;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        top: 0;
+        left: -100vw;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    
+    
+}
+
+
+
+@keyframes slideIn {
+
+    from{
+        left: -100vw;
+    }
+    to{
+        left: 0px;
+    }
+    
+}
+
+@keyframes slideOut {
+
+    from{
+        left: 0px;
+    }
+    to{
+        left: -100vw;
+    }
+    
+}

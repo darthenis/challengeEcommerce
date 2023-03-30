@@ -1,0 +1,43 @@
+
+.elementFadeIn{
+
+    animation-name: fadein;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    position: relative;
+    right: -100px;
+    opacity: 0;
+}
+
+@keyframes fadein {
+    from{
+        opacity: 0;
+        right: -100px;
+
+    } to {
+        opacity: 1;
+        right: 0px;
+    }
+}
+
+
+.elementFadeInLeft{
+
+    animation-name: fadeinLeft;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    position: relative;
+    left: -100px;
+    opacity: 0;
+}
+
+@keyframes fadeinLeft {
+    from{
+        opacity: 0;
+        left: -100px;
+
+    } to {
+        opacity: 1;
+        left: 0px;
+    }
+}
