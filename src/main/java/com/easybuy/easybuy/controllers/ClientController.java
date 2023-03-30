@@ -37,7 +37,7 @@ public class ClientController {
 
         boolean isClient = authentication.getAuthorities().stream().anyMatch(autority -> Objects.equals(autority.getAuthority(), "CLIENT"));
 
-        if(!isClient) return new ResponseEntity<>("User is client", HttpStatus.OK);
+        if(isClient) return new ResponseEntity<>("User is client", HttpStatus.OK);
 
         return new ResponseEntity<>("Is not a client", HttpStatus.UNAUTHORIZED);
     }
