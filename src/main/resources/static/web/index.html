@@ -9,21 +9,23 @@
   <link rel="stylesheet" href="./assets/carrito.css">
   <link rel="stylesheet" href="./assets/fadeInBottom.css">
   <title>HOME | Easy Buy</title>
+  <link rel="shortcut icon" href="./assets/img/logo-easy.png
+  " type="image/x-icon">
 </head>
 
 <body class="bg-rose-50">
   <div id="app">
       {{checkedFavorites}}
-      <nav  class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center" 
+      <nav  class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center"
             :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
             <div  class="navAnimated w-min-screen flex flex-end"
                   :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
-                <div  class="fixed px-4 py-2 m-2 bg-white text-black rounded-lg font-bold" 
-                  
+                <div  class="fixed px-4 py-2 m-2 bg-white text-black rounded-lg font-bold"
+
                   @click="handleNavResponsive">X
                 </div>
             </div>
-            
+
         <div class="flex flex-col gap-10 mt-4 justify-center items-center text-white w-full tracking-[1px] transition-all">
 
           <div class="flex gap-10 items-center gap-6">
@@ -55,7 +57,7 @@
                 <i class="fa-solid fa-magnifying-glass p-1 md:hidden text-black"></i>
               </button>
             </div>
-          
+
         </div>
       </nav>
 
@@ -383,8 +385,7 @@
                 <span class="text-2xl font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
                   product.discount)}}</span>
               </div>
-              <a href="#"
-                @click="saveBag(product)"
+              <a href="#" @click="saveBag(product)"
                 class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
                 to cart</a>
             </div>
@@ -681,6 +682,8 @@
   <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4ffb8edd00.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./js/index.js"></script>
