@@ -14,7 +14,8 @@ createApp({
             offersEffect: [],
             topUpdatedEffect : [],
             isLogged: false,
-            navActive: null
+            navActive: null,
+            favs : []
 
         }
     },
@@ -28,13 +29,17 @@ createApp({
     methods: {
         checkIsLogged(){
 
-            axios("/clients/auth")
+            axios("/api/clients/auth")
                 .then(res => {
 
                     this.isLogged = true;
 
                 })
-                .catch(err => this.isLogged = false)
+                .catch(err => { 
+                    
+                    console.log(err)
+                    
+                    this.isLogged = false})
 
         },
         loadData() {
@@ -43,6 +48,7 @@ createApp({
                 .then(res => {
                     console.log(res)
                     this.top4LastUpdated = res.data;
+                    this.checkIsLogged()
 
                 }).catch(err => console.log(err))
 
@@ -52,6 +58,9 @@ createApp({
                     this.top4offersProducts = res.data;
 
                 }).catch(err => console.log(err))
+
+            axios.get("/api/client/current/favorites")
+                    .then(res => this.favs = res.data)
         },
         handleNavResponsive(){
 
@@ -290,6 +299,83 @@ createApp({
             return html
 
         },
+        addFavorites(product){
+
+            if(this.favs.find(fav => fav.productId == product.id)){
+
+                
+
+                axios.delete("/api/client/current/favorites/"+this.favs.find(fav => fav.productId == product.id).id)
+                .then(res => {
+
+                    console.log(res)
+
+                    this.loadData();
+
+                }).catch(err => console.log(err))
+
+
+            }
+
+            const data = {  name : product.name, 
+                            imgUrl : product.imgsUrls[0], 
+                            price : product.price,
+                            productId : product.id,
+                            description : product.description,
+                            stock : product.stock}
+
+            axios.post("/api/client/current/favorites", {...data})
+                    .then(res => {
+
+                        console.log(res)
+
+                        this.loadData();
+
+                    }).catch(err => console.log(err))
+
+        },
+        checkedFavoritesAdded(){
+
+            console.log("favs: ", this.favs)
+
+            this.top4LastUpdated = this.top4LastUpdated.map(updated => {
+
+                        if(this.favs.find(fav => fav.productId == updated.id)){
+
+                            return {...updated, inFavs : true}
+
+                        } else {
+
+                            return {...updated, inFavs : false}
+
+                        }
+
+            })
+
+            this.top4offersProducts = this.top4offersProducts.map(updated => {
+
+                if(this.favs.find(fav => fav.productId == updated.id)){
+
+                    return {...updated, inFavs : true}
+
+                } else {
+
+                    return {...updated, inFavs : false}
+
+                }
+
+    })
+
+        },
+
+    },
+    computed : {
+
+        checkedFavorites(){
+
+            this.checkedFavoritesAdded();
+
+        }
 
     }
 }).mount("#app")

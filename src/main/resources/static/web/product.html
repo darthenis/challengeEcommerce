@@ -267,7 +267,7 @@
                             </div>
 
                             
-                            <div class="mt-8 flow-root sm:mt-12" id="reviews" v-else>
+                            <div class="mt-8 flow-root sm:mt-12 flex flex-col gap-4" id="reviews" v-else>
                                 <div v-if="dataProduct.rates.length" v-for="rate of dataProduct.rates">
                                     <h1 class="text-3xl font-bold">Comment</h1>
                                     <p class="mt-4">{{rate.comment}}</p>
