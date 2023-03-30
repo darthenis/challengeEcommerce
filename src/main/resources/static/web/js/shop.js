@@ -19,6 +19,9 @@ createApp({
             searchProduct: "",
             initPage: 0,
             endPage: 9,
+            favs : [],
+            isLogged : false,
+            active: null
         }
     },
     created(){
@@ -27,8 +30,31 @@ createApp({
 
         document.addEventListener("scroll", () => this.isVisible());
 
+        this.checkIsLogged()
     },
     methods:{
+        checkIsLogged(){
+
+            axios("/api/clients/auth")
+                .then(res => {
+
+                    this.isLogged = true;
+
+                })
+                .catch(err => { 
+                    
+                    console.log(err)
+                    
+                    this.isLogged = false})
+
+        },
+        getParam(key){
+
+            let parameterUrl = location.search
+            let parameters = new URLSearchParams(parameterUrl)
+            return parameters.get(key)
+
+        },
         loadData(){
 
             axios.get("/api/products")
@@ -37,12 +63,21 @@ createApp({
                     this.products = res.data;
                     this.filterProducts = res.data;
 
+                    let string = this.getParam("filter");
+
+                    let element = document.getElementById(string);
+
+                    if(element) element.click();         
+                    
                 })
                 .catch(err => {
 
                     console.log(err)
 
                 })
+
+            axios.get("/api/client/current/favorites")
+                    .then(res => this.favs = res.data)
 
         },
         handlePages(isNext){
@@ -225,7 +260,7 @@ createApp({
 
             let maxPrice = this.maxPrice ? this.maxPrice : Infinity;
 
-            this.filteredProducts = this.filteredProducts.filter(product => product.name.includes(this.searchProduct))
+            this.filteredProducts = this.filteredProducts.filter(product => product.name.toUpperCase().includes(this.searchProduct.toUpperCase()))
 
             this.filteredProducts = this.filteredProducts.filter(product => product.price > minPrice && product.price < maxPrice)
 
@@ -266,13 +301,167 @@ createApp({
             this.totalFilteredProducts = [...this.filteredProducts]
 
             this.filteredProducts = this.filteredProducts.slice(this.initPage, this.endPage);
-        }
+        },
+        handleMessageAlert(message, seconds, isError) {
+
+            this.messageAlert = {
+                message,
+                isError
+            }
+
+            setTimeout(() => this.messageAlert.message = "", seconds * 1000)
+        },
+        addFavorites(product){
+
+            if(this.favs.find(fav => fav.productId == product.id)){
+
+                axios.delete("/api/client/current/favorites/"+this.favs.find(fav => fav.productId == product.id).id)
+                .then(res => {
+
+                    this.handleMessageAlert("Fav quit succesfully", 2, false)
+
+                    this.loadData();
+
+                }).catch(err => console.log(err))
+
+
+            }
+
+            const data = {  name : product.name, 
+                            imgUrl : product.imgsUrls[0], 
+                            price : product.price,
+                            productId : product.id,
+                            description : product.description,
+                            stock : product.stock}
+
+            axios.post("/api/client/current/favorites", {...data})
+                    .then(res => {
+
+                        this.handleMessageAlert("Fav added succesfully", 2, false)
+
+                        this.loadData();
+
+                    }).catch(err => console.log(err))
+
+        },
+        checkedFavoritesAdded(){
+
+            console.log("favs: ", this.favs)
+
+            this.filteredProducts = this.filteredProducts.map(updated => {
+
+                        if(this.favs.find(fav => fav.productId == updated.id)){
+
+                            return {...updated, inFavs : true}
+
+                        } else {
+
+                            return {...updated, inFavs : false}
+
+                        }
+
+            })
+
+        },
+        /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/
+        formatDollar(price) {
+            let USDollar = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+            return USDollar.format(price)
+        },
+
+        resetPayments() {
+            this.radioPayments = null
+        },
+        /*---------------AGREGAR AL CARRITO Y CANTIDAD----------------*/
+        saveBag(object) {
+            if (this.bag.find(item => item.id == object.id)) {
+                this.bag = this.bag.map(item => {
+                    if (item.id == object.id && object.stock > 0 && object.stock > item.quantity) {
+                        return { ...item, quantity: (item.quantity + 1) }
+                    } else {
+                        return item;
+                    }
+                })
+            } else {
+
+                let product = { ...object, quantity: 1 }
+                this.bag.push(product)
+            }
+            localStorage.setItem("bag", JSON.stringify(this.bag))
+            this.quantityTotalCart()
+            this.priceTotalCart()
+        },
+
+        /* -------------QUITAR CANTIDAD DEL CARRITO -------------*/
+        outProductBag(object) {
+            if (object.quantity <= 0) {
+                return
+            }
+            if (this.bag.find(item => item.id == object.id)) {
+                object.quantity--
+                if (object.quantity === 0) {
+                    let index = this.bag.indexOf(this.bag.find(prod => prod.id === object))
+                    this.bag.splice(index, 1)
+                }
+            }
+            localStorage.setItem("bag", JSON.stringify(this.bag))
+            this.quantityTotalCart()
+            this.priceTotalCart()
+        },
+
+        /*--------------QUITAR POR COMPLETO DEL CARRITO-------------*/
+
+        removeItem(object) {
+            if (this.bag.find(item => item.id == object.id)) {
+                let index = this.bag.findIndex(item => item.id == object.id)
+                this.bag.splice(index, 1)
+            }
+            localStorage.setItem("bag", JSON.stringify(this.bag))
+            this.quantityTotalCart()
+            this.priceTotalCart()
+        },
+
+
+        /*--------------CALCULO DE TOTAL CARRITO--------------*/
+        priceTotalCart() {
+            let totalCount = 0
+            this.bag.forEach(object => {
+                totalCount += object.price * object.quantity
+            })
+            this.totalCart = totalCount
+        },
+
+        /*-----------------CANTIDAD DE PRODUCTOS-----------------*/
+        quantityTotalCart() {
+            let totalCount = 0
+            this.bag.forEach(object => {
+                totalCount += object.quantity
+            })
+            this.totalCartQuantity = totalCount
+        },
+
+
+        /*--------------TOGGLE CART--------------*/
+        toggleCart() {
+
+            if (this.active == null) {
+                this.active = true;
+            } else {
+                this.active = !this.active;
+            }
+
+        },
+
     },
     computed : {
 
         filtering(){
 
             this.handleFilterProducts();
+            this.checkedFavoritesAdded();
 
         }
 

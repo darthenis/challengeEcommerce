@@ -9,10 +9,87 @@
   <link rel="stylesheet" href="./assets/carrito.css">
   <link rel="stylesheet" href="./assets/fadeInBottom.css">
   <title>HOME | Easy Buy</title>
+  <link rel="shortcut icon" href="./assets/img/logo-easy.png
+  " type="image/x-icon">
 </head>
 
 <body class="bg-rose-50">
   <div id="app">
+    {{checkedFavorites}}
+    <nav class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center"
+      :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
+      <div class="navAnimated w-min-screen flex flex-end"
+        :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
+        <div class="fixed px-4 py-2 m-2 bg-white text-black rounded-lg font-bold" @click="handleNavResponsive">X
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col gap-10 mt-4 justify-center items-center text-white w-full tracking-[1px] transition-all">
+
+        <div class="flex gap-10 items-center gap-6">
+          <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
+          <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCart"><span
+              class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
+          <div class="flex justify-center">
+            <div>
+              <div class="relative" data-te-dropdown-ref>
+                <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
+                  data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+                  data-te-ripple-color="light"></i>
+                <ul
+                  class="p-3 absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-400 bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                  aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+                  <li>
+                    <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                      href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                      href="./favorites.html" data-te-dropdown-item-ref>favorites</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                      href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
+                  </li>
+                  <hr
+                    class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                      href="#" @click="logout" data-te-dropdown-item-ref>LogOut</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Home
+        </a>
+        <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Categories
+        </p>
+        <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Frecuent Questions
+        </a>
+        <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          About Us
+        </a>
+        <a href="./form.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Contact </a>
+        <div class="flex justify-center gap-4 mt-4">
+          <input type="text" class="w-[20rem] p-2 rounded-lg" placeholder="Search a product..."
+            style="max-width: 69vw;" />
+          <button style="max-width: 20vw;"
+            class=" flex items-center justify-center w-[5rem] bg-white text-black rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+            <i class="fa-solid fa-magnifying-glass p-1 md:hidden text-black"></i>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+
     <!-- mai -->
     <header>
       <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
@@ -25,26 +102,63 @@
 
 
 
-        <div class="md:w-[50%] flex justify-center gap-4">
-          <input type="text" class="w-[80%]" />
+        <div class="md:w-[50%] justify-center gap-4 hidden sm:flex">
+          <input type="text" class="w-[80%] p-2 rounded-lg" placeholder="Search a product..." />
           <button
-            class="p-2 flex items-center justify-center md:p-3 bg-blue-900 text-white tracking-[2px] rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+            class=" flex items-center justify-center w-[10rem] bg-blue-900 text-white rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
             <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
             <span class="hidden md:flex">SEARCH</span>
           </button>
         </div>
 
-        <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden">
-          <div class="w-8  h-1 bg-white"></div>
-          <div class="w-8  h-1 bg-white"></div>
-          <div class="w-8  h-1 bg-white"></div>
+        <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden mr-5" @click="handleNavResponsive">
+          <div class="w-8  h-1 bg-blue-900"></div>
+          <div class="w-8  h-1 bg-blue-900"></div>
+          <div class="w-8  h-1 bg-blue-900"></div>
         </div>
 
-        <div class="hidden lg:flex items-center gap-6">
-          <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
+        <div class="hidden lg:flex items-center gap-6" v-if="isLogged">
+          <a href="./favorites.html"><i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i></a>
           <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCart"><span
               class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
-          <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
+          <div class="flex justify-center">
+            <div>
+              <div class="relative" data-te-dropdown-ref>
+                <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
+                  data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+                  data-te-ripple-color="light"></i>
+                <ul
+                  class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+                  aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+                  <li>
+                    <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./favorites.html" data-te-dropdown-item-ref>Favorites</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
+                  </li>
+                  <hr
+                    class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./updateClient.html" @click="logout" data-te-dropdown-item-ref>LogOut</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden lg:flex" v-else>
+          <a href="./login.html">
+            <button
+              class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
+          </a>
         </div>
       </nav>
 
@@ -54,7 +168,50 @@
             Home
           </a>
           <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-            Categories
+            <div class="relative" data-te-dropdown-ref>
+              <div class="cursor-pointer" id="dropdownMenuButton1d"
+                data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+                data-te-ripple-color="light">Categories</div>
+              <ul
+                class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+                aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+                <li class="hover:bg-blue-900 py-1 px-2">
+                  <a href="./shop.html?filter=Tecnology">
+                    <h2>Technology</h2>
+                  </a>
+                </li>
+                <li class="hover:bg-blue-900 py-1 px-2">
+                  <a href="./shop.html?filter=Appliance">
+                    <h2>Appliance</h2>
+                  </a>
+                </li>
+                <li class="hover:bg-blue-900 py-1 px-2">
+                  <a href="./shop.html?filter=Furniture">
+                    <h2>Furniture</h2>
+                  </a>
+                </li>
+                <li class="hover:bg-blue-900 py-1 px-2">
+                  <a href="./shop.html?filter=Health">
+                    <h2>Health</h2>
+                  </a>
+                </li>
+                <li class="hover:bg-blue-900 py-1 px-2">
+                  <a href="./shop.html?filter=Audio">
+                    <h2>Audio</h2>
+                  </a>
+                </li>
+                <li class="hover:bg-blue-900 py-1 px-2">
+                  <a href="./shop.html?filter=Video">
+                    <h2>Video</h2>
+                  </a>
+                </li>
+                <li class="hover:bg-blue-900 py-1 px-2">
+                  <a href="./shop.html?filter=Kids">
+                    <h2>Kids</h2>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </p>
           <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
             Frecuent Questions
@@ -70,10 +227,10 @@
 
     <main class="flex flex-col items-center lg:flex-row lg:justify-evenly w-[100%] relative">
       <div
-        class="mt-[3rem] bg-blue-100 shadow-lg w-[90%] lg:w-[40%] h-[60vh] flex flex-col relative gap-3 overflow-hidden">
+        class="mt-[3rem] bg-blue-100 shadow-lg w-[90%] lg:w-[40%] h-[25rem] flex flex-col relative gap-3 overflow-hidden">
         <a href="#" class="z-50 rounded-md ml-3 w-[8rem] font-bold mt-5 p-2 bg-white">New Released</a>
         <h3 class="z-50 ml-4 text-3xl tracking-[2px]">Design Soft</h3>
-        <h2 class="z-50 ml-5 text-4xl font-bold">Motozed Reclain Sofa</h2>
+        <h2 class="z-50 ml-5 text-4xl font-bold">Individual Sofa</h2>
         <h3 class="ml-4 mb-4 text-blue-800">Special-shaped sofa for sale</h3>
 
         <div class="bg-blue-200 mt-1 text-blue-800">
@@ -95,10 +252,10 @@
       </div>
 
       <div
-        class="mt-[3rem] bg-blue-100 shadow-lg w-[90%] lg:w-[40%] h-[60vh] flex flex-col relative gap-3 overflow-hidden">
+        class="mt-[3rem] bg-blue-100 shadow-lg w-[90%] lg:w-[40%] h-[25rem] flex flex-col relative gap-3 overflow-hidden">
         <a href="#" class="z-50 rounded-md ml-3 w-[8rem] font-bold mt-5 p-2 bg-white">New Released</a>
         <h3 class="z-50 ml-4 text-3xl tracking-[2px]">Design soft</h3>
-        <h2 class="z-50 ml-5 text-4xl font-bold">Motozed Reclain Sofa</h2>
+        <h2 class="z-50 ml-5 text-4xl font-bold">Hammock chair</h2>
         <h3 class="ml-4 mb-4 text-blue-800">Special-shaped sofa for sale</h3>
 
         <div class="bg-blue-200 mt-1 text-blue-800">
@@ -125,35 +282,35 @@
     <!-- mai -->
     <section>
       <div class="textoCategorias-emi">
-        <h2 class="">Categories</h2>
+        <h2 class="text-white">Categories</h2>
       </div>
       <div class="categorias-emi">
-        <a href="#"><i class="fa-solid fa-tablet-button"></i>
+        <a href="./shop.html?filter=Tecnology"><i class="fa-solid fa-tablet-button"></i>
           <h2>Technology</h2>
         </a>
-        <a href="#"><i class="fa-regular fa-newspaper"></i>
+        <a href="./shop.html?filter=Appliance"><i class="fa-regular fa-newspaper"></i>
           <h2>Appliance</h2>
         </a>
-        <a href="#"><i class="fa-solid fa-couch"></i>
+        <a href="./shop.html?filter=Furniture"><i class="fa-solid fa-couch"></i>
           <h2>Furniture</h2>
         </a>
-        <a href="#"><i class="fa-solid fa-heart-pulse"></i>
+        <a href="./shop.html?filter=Health"><i class="fa-solid fa-heart-pulse"></i>
           <h2>Health</h2>
         </a>
-        <a href="#"><i class="fa-solid fa-headphones"></i>
+        <a href="./shop.html?filter=Audio"><i class="fa-solid fa-headphones"></i>
           <h2>Audio</h2>
         </a>
-        <a href="#"><i class="fa-solid fa-video"></i>
+        <a href="./shop.html?filter=Video"><i class="fa-solid fa-video"></i>
           <h2>Video</h2>
         </a>
-        <a href="#"><i class="fa-solid fa-children"></i>
+        <a href="./shop.html?filter=Kids"><i class="fa-solid fa-children"></i>
           <h2>Kids</h2>
         </a>
       </div>
     </section>
     <!-- leo -->
     <div class="categoriasLeonardo">
-      <h2>Top Offers</h2>
+      <h2 class="text-white">Top Offers</h2>
     </div>
 
     <div class="flex justify-evenly flex-wrap gap-1">
@@ -161,19 +318,23 @@
 
         <article :id="'product-'+product.id" :class="{elementFadeIn : offersEffect[index]}" style="height: 370px"
           class="rounded-lg relative  w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
-          <i
-            class="fa-solid fa-heart fa-solid fa-lg text-gray-400 hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
-          <a href="#">
+
+          <i @click="addFavorites(product)" v-if="isLogged"
+            :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
+            class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
+
+          <a :href="'./product.html?id='+product.id">
             <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"
               :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
               alt="product image" />
           </a>
           <div class="px-5 flex flex-col justify-between">
-            <a href="#">
-              <h5 style="font-size: 15px;" class="mt-1 font-semibold tracking-tight text-gray-900 dark:text-dark">
+            <a :href="'./product.html?id='+product.id">
+              <h5 style="font-size: 15px;"
+                class="mt-1 text-center font-semibold tracking-tight text-gray-900 dark:text-dark">
                 {{product.name}}</h5>
             </a>
-            <div class="flex items-center mt-2.5">
+            <div class="flex items-center mt-2.5 justify-center">
               <span class="flex" v-html="counterStars(product.rates)"></span>
               <span
                 class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
@@ -296,27 +457,33 @@
 
     <!-- leo -->
     <div class="popularLeo">
-      <h2>Last updated:</h2>
+      <h2 class="text-white">Last updated</h2>
     </div>
 
     <div class="flex justify-evenly flex-wrap gap-1">
       <template v-for="(product, index) of top4LastUpdated">
 
-        <article :id="'productUpdated-'+product.id" :class="{elementFadeIn : topUpdatedEffect[index]}" style="height: 370px"
+        <article :id="'productUpdated-'+product.id" :class="{elementFadeInLeft : topUpdatedEffect[index]}"
+          style="height: 370px"
           class="rounded-lg relative w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
-          <i
-            class="fa-solid fa-heart fa-solid fa-lg text-gray-400 hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
-          <a href="#">
+
+          <i  v-if="isLogged"
+              @click="addFavorites(product)"
+              :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
+              class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
+
+          <a :href="'./product.html?id='+product.id">
             <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"
               :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
               alt="product image" />
           </a>
           <div class="px-5 flex flex-col justify-between">
-            <a href="#">
-              <h5 style="font-size: 15px;" class="mt-1 font-semibold tracking-tight text-gray-900 dark:text-dark">
+            <a :href="'./product.html?id='+product.id">
+              <h5 style="font-size: 15px;"
+                class="text-center mt-1 font-semibold tracking-tight text-gray-900 dark:text-dark">
                 {{product.name}}</h5>
             </a>
-            <div class="flex items-center mt-2.5">
+            <div class="flex items-center mt-2.5 justify-center">
               <span class="flex" v-html="counterStars(product.rates)"></span>
               <span
                 class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
@@ -330,8 +497,7 @@
                 <span class="text-2xl font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
                   product.discount)}}</span>
               </div>
-              <a href="#"
-                @click="saveBag(product)"
+              <a href="#" @click="saveBag(product)"
                 class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
                 to cart</a>
             </div>
@@ -628,6 +794,8 @@
   <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4ffb8edd00.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./js/index.js"></script>

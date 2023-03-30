@@ -86,7 +86,7 @@ public class EasybuyApplication {
 					"entertainment centers.Enjoy stunning visuals and crisp, clear audio with this in-wall " +
 					"certified Rocketfish™ HDMI cable which lets you connect an HDMI component to an HDTV or " +
 					"projector and supports 4K Ultra HD & 1080P resolution as well as HDR and advanced audio " +
-					"formats like Dolby Atmos.",20.0,0,30, LocalDate.now(), List.of(CategoriesEnum.APPLIANCES) );
+					"formats like Dolby Atmos.",20.0,0,30, LocalDate.now(), List.of(CategoriesEnum.APPLIANCE) );
 			cableHdmi.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/3720/3720011cv14d.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/3720/3720011_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/3720/3720011_rd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/3720/3720011cv1d.jpg;maxHeight=120;maxWidth=120"));
 
 
