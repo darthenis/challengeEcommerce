@@ -4,13 +4,39 @@ createApp({
     data(){
         return{
             navActive : null,
-            active : false,
+            active : null,
             bag: [],
-            totalCartQuantity: 0
+            totalCartQuantity: 0,
+            totalCart: 0,
+            isLogged: false
 
         }
     },
+    created(){
+
+        this.checkIsLogged()
+
+    },
     methods:{
+        /*-------------------LOGOUT--------------------*/
+        logout() {
+            axios.post('/api/logout').then(response => this.isLogged = false)
+        },
+        checkIsLogged(){
+
+            axios("/api/clients/auth")
+                .then(res => {
+
+                    this.isLogged = true;
+
+                })
+                .catch(err => { 
+                    
+                    console.log(err)
+                    
+                    this.isLogged = false})
+
+        },
         /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/
         formatDollar(price) {
             let USDollar = new Intl.NumberFormat('en-US', {
@@ -76,9 +102,9 @@ createApp({
         /*--------------TOGGLE CART--------------*/
         toggleCart() {
 
-            if (this.active == null) {
+            if (!this.active) {
                 this.active = true;
-                this.navActive = false;
+                this.navActive = this.navActive != null ? false : null;
             } else {
                 this.active = !this.active;
             }
@@ -97,5 +123,10 @@ createApp({
             }
 
         },
+        handleSearch(){
+
+            location.href = "/web/shop.html?search="+this.searchProduct;
+
+        }
     }
 }).mount("#app")

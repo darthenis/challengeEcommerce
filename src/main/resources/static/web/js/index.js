@@ -48,7 +48,6 @@ createApp({
 
             axios.get("/api/products/last/updated")
                 .then(res => {
-                    console.log(res)
                     this.top4LastUpdated = res.data;
                     this.checkIsLogged()
 
@@ -56,7 +55,6 @@ createApp({
 
             axios.get("/api/products/last/offers")
                 .then(res => {
-                    console.log(res)
                     this.top4offersProducts = res.data;
 
                 }).catch(err => console.log(err))
@@ -79,7 +77,7 @@ createApp({
         },
         /*-------------------LOGOUT--------------------*/
         logout() {
-            axios.post('/api/logout').then(response => console.log('signed out!!!'))
+            axios.post('/api/logout').then(response => this.isLogged = false)
         },
 
         /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/
@@ -166,9 +164,9 @@ createApp({
         /*--------------TOGGLE CART--------------*/
         toggleCart() {
 
-            if (this.active == null) {
+            if (!this.active) {
                 this.active = true;
-                this.navActive = false;
+                this.navActive = this.navActive != null ? false : null;
             } else {
                 this.active = !this.active;
             }
@@ -218,8 +216,6 @@ createApp({
                 }
 
             }
-
-            console.log(this.offersEffect)
 
         },
         getWithDiscount(price, discount) {
@@ -313,8 +309,6 @@ createApp({
                 axios.delete("/api/client/current/favorites/" + this.favs.find(fav => fav.productId == product.id).id)
                     .then(res => {
 
-                        console.log(res)
-
                         this.loadData();
 
                     }).catch(err => console.log(err))
@@ -333,8 +327,6 @@ createApp({
 
             axios.post("/api/client/current/favorites", { ...data })
                 .then(res => {
-
-                    console.log(res)
 
                     this.loadData();
 
