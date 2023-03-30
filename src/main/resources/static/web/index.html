@@ -160,7 +160,7 @@
         <h2 class="text-white">Categories</h2>
       </div>
       <div class="categorias-emi">
-      <a href="./shop.html?filter=Tecnology"><i class="fa-solid fa-tablet-button"></i>
+        <a href="./shop.html?filter=Tecnology"><i class="fa-solid fa-tablet-button"></i>
           <h2>Technology</h2>
         </a>
         <a href="./shop.html?filter=Appliance"><i class="fa-regular fa-newspaper"></i>
@@ -202,7 +202,8 @@
           </a>
           <div class="px-5 flex flex-col justify-between">
             <a href="#">
-              <h5 style="font-size: 15px;" class="mt-1 text-center font-semibold tracking-tight text-gray-900 dark:text-dark">
+              <h5 style="font-size: 15px;"
+                class="mt-1 text-center font-semibold tracking-tight text-gray-900 dark:text-dark">
                 {{product.name}}</h5>
             </a>
             <div class="flex items-center mt-2.5 justify-center">
@@ -334,7 +335,8 @@
     <div class="flex justify-evenly flex-wrap gap-1">
       <template v-for="(product, index) of top4LastUpdated">
 
-        <article :id="'productUpdated-'+product.id" :class="{elementFadeInLeft : topUpdatedEffect[index]}" style="height: 370px"
+        <article :id="'productUpdated-'+product.id" :class="{elementFadeInLeft : topUpdatedEffect[index]}"
+          style="height: 370px"
           class="rounded-lg relative w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
           <i
             class="fa-solid fa-heart fa-solid fa-lg text-gray-400 hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
@@ -362,8 +364,7 @@
                 <span class="text-2xl font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
                   product.discount)}}</span>
               </div>
-              <a href="#"
-                @click="saveBag(product)"
+              <a href="#" @click="saveBag(product)"
                 class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
                 to cart</a>
             </div>
