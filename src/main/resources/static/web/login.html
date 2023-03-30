@@ -102,7 +102,7 @@
           class="bg-blue-200/60 w-[80%] h-[70%] flex items-center justify-center rounded-lg z-20"
         >
           <div
-            class="bg-blue-900 w-[90%] h-[80%] p-4 flex flex-col justify-center gap-4 items-center text-justify text-white rounded-2xl"
+            class="bg-regal-blue w-[90%] h-[80%] p-4 flex flex-col justify-center gap-4 items-center text-justify text-white rounded-2xl"
           >
             <h2 class="text-3xl p-3 tracking-[2px]">Welcome to EasyBuy!</h2>
             <p>
@@ -127,6 +127,7 @@
         </div>
       </div>
     </main>
+
     <script
       src="https://kit.fontawesome.com/a9a67006ad.js"
       crossorigin="anonymous"
@@ -136,6 +137,18 @@
       crossorigin="anonymous"
     ></script>
     <script src="../web/js/login.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script>
+      tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                "regal-blue": '#7795a3'
+              }
+            }
+          }
+        }
+    </script>
   </body>
 </html>
