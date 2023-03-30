@@ -55,8 +55,10 @@
                       href="./favorites.html" data-te-dropdown-item-ref>Favorites</a>
                   </li>
                   <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                      href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
+
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                      href="./settingUser.html" data-te-dropdown-item-ref>Settings</a>
+
                   </li>
                   <hr
                     class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
@@ -197,13 +199,15 @@
                   </li>
                   <li>
                     <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                      href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
+                      href="./settingUser.html" data-te-dropdown-item-ref>Settings</a>
                   </li>
                   <hr
                     class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
                   <li>
                     <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                      href="#" @click="logout" data-te-dropdown-item-ref>LogOut</a>
+
+                      href="" @click="logout" data-te-dropdown-item-ref>LogOut</a>
+
                   </li>
                 </ul>
               </div>
@@ -224,6 +228,7 @@
           <a href="./index.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
             Home
           </a>
+
 
           <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
             <div class="relative" data-te-dropdown-ref>
@@ -270,6 +275,7 @@
                 </li>
               </ul>
             </div>
+
           </p>
           <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
             Frecuent Questions
@@ -525,10 +531,9 @@
           style="height: 370px"
           class="rounded-lg relative w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
 
-          <i  v-if="isLogged"
-              @click="addFavorites(product)"
-              :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
-              class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
+          <i v-if="isLogged" @click="addFavorites(product)"
+            :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
+            class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
 
           <a :href="'./product.html?id='+product.id">
             <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"

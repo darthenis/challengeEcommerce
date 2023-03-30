@@ -77,7 +77,9 @@ createApp({
         },
         /*-------------------LOGOUT--------------------*/
         logout() {
+
             axios.post('/api/logout').then(response => this.isLogged = false)
+
         },
 
         /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/

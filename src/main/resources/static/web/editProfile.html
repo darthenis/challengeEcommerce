@@ -1,143 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Profile</title>
-  </head>
-  <body>
-    <header>
-      <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
-        <div class="flex items-center justify-center md:flex">
-          <img
-            src="./assets/img/logo-easy.png"
-            alt=""
-            class="w-16 md:w-[8.5rem]"
-          />
-        </div>
 
-        <div class="md:w-[50%] flex justify-center gap-4">
-          <input type="text" class="w-[80%]" />
-          <button
-            class="p-2 flex items-center justify-center md:p-3 bg-blue-900 text-white tracking-[2px] rounded-md hover:bg-blue-600 transition-all duration-[.5s]"
-          >
-            <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
-            <span class="hidden md:flex">SEARCH</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile</title>
+</head>
+
+<body>
+  <header>
+    <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
+      <div class="flex items-center justify-center md:flex">
+        <img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" />
+      </div>
+
+      <div class="md:w-[50%] flex justify-center gap-4">
+        <input type="text" class="w-[80%]" />
+        <button
+          class="p-2 flex items-center justify-center md:p-3 bg-blue-900 text-white tracking-[2px] rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+          <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
+          <span class="hidden md:flex">SEARCH</span>
+        </button>
+      </div>
+
+      <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden">
+        <div class="w-8 h-1 bg-white"></div>
+        <div class="w-8 h-1 bg-white"></div>
+        <div class="w-8 h-1 bg-white"></div>
+      </div>
+
+      <div class="hidden lg:flex items-center gap-6">
+        <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
+        <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"></i>
+        <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
+      </div>
+    </nav>
+
+    <nav class="hidden lg:h-[4rem] bg-blue-900 lg:flex justify-center">
+      <div class="flex justify-around items-center text-white w-[45%] tracking-[1px] transition-all">
+        <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Categories
+        </p>
+        <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Frecuent Questions
+        </p>
+        <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          About Us
+        </p>
+        <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Contact
+        </p>
+      </div>
+    </nav>
+  </header>
+  <main class="h-[83.5vh]">
+    <section class="h-full w-full bg-blue-100 flex">
+      <div class="w-[50%] h-full flex items-center justify-center">
+        <form action=""
+          class="bg-blue-200 h-[80%] w-[70%] mt-4 flex justify-center items-center flex-col gap-2 p-8 overflow-hidden relative">
+          <div class="h-[80%] -rotate-45 bg-slate-900/50 w-[200%] absolute"></div>
+          <img src="../web/assets/img/profile3.png" class="w-32 rounded-full object-cover object-center z-10" alt="" />
+          <div class="relative bg-blue-800 p-2 text-white rounded-lg">
+            <h3>Seleccionar Archivo</h3>
+            <input type="file" accept="image/png, image/jpeg" class="w-full h-full absolute top-0 opacity-0" />
+          </div>
+          <div class="bg-blue-900 p-10 flex gap-4 w-[90%] justify-center z-10">
+            <input type="text" class="p-2 rounded-md" placeholder="Username..." /><input type="text"
+              placeholder="Email..." class="p-2 rounded-md" />
+          </div>
+          <div class="bg-blue-900 p-10 w-[90%] flex gap-4 justify-center z-10">
+            <input type="text" class="p-2 rounded-md" placeholder="Phone..." /><input type="text" class="p-2 rounded-md"
+              placeholder="Password..." />
+          </div>
+          <button class="bg-blue-800 p-3 rounded-lg text-white z-10">
+            Submit Changes
           </button>
-        </div>
+        </form>
+      </div>
+      <div class="w-[50%] bg-slate-900 relative flex flex-col p-10 gap-2">
+        <img src="./assets/img/fondococina.jpg" alt="" class="h-[50%] object-cover object-center" />
+        <img src="./assets/img/cocina.jpg" alt="" class="h-[50%] object-cover object-center" />
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4ffb8edd00.js" crossorigin="anonymous"></script>
+</body>
 
-        <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden">
-          <div class="w-8 h-1 bg-white"></div>
-          <div class="w-8 h-1 bg-white"></div>
-          <div class="w-8 h-1 bg-white"></div>
-        </div>
-
-        <div class="hidden lg:flex items-center gap-6">
-          <i
-            class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"
-          ></i>
-          <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"></i>
-          <i class="text-2xl fa-solid fa-user cursor-pointer"></i>
-        </div>
-      </nav>
-
-      <nav class="hidden lg:h-[4rem] bg-blue-900 lg:flex justify-center">
-        <div
-          class="flex justify-around items-center text-white w-[45%] tracking-[1px] transition-all"
-        >
-          <p
-            class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
-          >
-            Categories
-          </p>
-          <p
-            class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
-          >
-            Frecuent Questions
-          </p>
-          <p
-            class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
-          >
-            About Us
-          </p>
-          <p
-            class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]"
-          >
-            Contact
-          </p>
-        </div>
-      </nav>
-    </header>
-    <main class="h-[83.5vh]">
-      <section class="h-full w-full bg-blue-100 flex">
-        <div class="w-[50%] h-full flex items-center justify-center">
-          <form
-            action=""
-            class="bg-blue-200 h-[80%] w-[70%] mt-4 flex justify-center items-center flex-col gap-2 p-8 overflow-hidden relative"
-          >
-            <div
-              class="h-[80%] -rotate-45 bg-slate-900/50 w-[200%] absolute"
-            ></div>
-            <img
-              src="../web/assets/img/profile3.png"
-              class="w-32 rounded-full object-cover object-center z-10"
-              alt=""
-            />
-            <div class="relative bg-blue-800 p-2 text-white rounded-lg">
-              <h3>Seleccionar Archivo</h3>
-              <input
-                type="file"
-                accept="image/png, image/jpeg"
-                class="w-full h-full absolute top-0 opacity-0"
-              />
-            </div>
-            <div
-              class="bg-blue-900 p-10 flex gap-4 w-[90%] justify-center z-10"
-            >
-              <input
-                type="text"
-                class="p-2 rounded-md"
-                placeholder="Username..."
-              /><input
-                type="text"
-                placeholder="Email..."
-                class="p-2 rounded-md"
-              />
-            </div>
-            <div
-              class="bg-blue-900 p-10 w-[90%] flex gap-4 justify-center z-10"
-            >
-              <input
-                type="text"
-                class="p-2 rounded-md"
-                placeholder="Phone..."
-              /><input
-                type="text"
-                class="p-2 rounded-md"
-                placeholder="Password..."
-              />
-            </div>
-            <button class="bg-blue-800 p-3 rounded-lg text-white z-10">
-              Submit Changes
-            </button>
-          </form>
-        </div>
-        <div class="w-[50%] bg-slate-900 relative flex flex-col p-10 gap-2">
-          <img src="./assets/img/fondococina.jpg" alt="" class="h-[50%] object-cover object-center" />
-          <img src="./assets/img/cocina.jpg" alt="" class="h-[50%] object-cover object-center" />
-        </div>
-      </section>
-    </main>
-    <footer></footer>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      src="https://kit.fontawesome.com/a9a67006ad.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/4ffb8edd00.js"
-      crossorigin="anonymous"
-    ></script>
-  </body>
 </html>
