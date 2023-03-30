@@ -118,7 +118,7 @@ createApp({
                 case "Tecnology":
                     element = document.getElementById("tecn1");
                     break;
-                default:
+                case "Video":
                     element = document.getElementById("vid1");
                     break;
             }
