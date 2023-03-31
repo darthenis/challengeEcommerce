@@ -8,7 +8,13 @@ createApp({
             amountBuy: 0,
             bag: JSON.parse(localStorage.getItem("bag")) || [],
             total: 0,
-            orderId : null
+            orderId : null,
+            messageAlert: {
+                message: "",
+                isError: false
+
+            },
+            completed: false
 
 
         }
@@ -34,7 +40,15 @@ createApp({
                     console.error(err.response.data)
                 })
         },
+        handleMessageAlert(message, seconds, isError) {
 
+            this.messageAlert = {
+                message,
+                isError
+            }
+
+            setTimeout(() => this.messageAlert.message = "", seconds * 1000)
+        },
         calculateTotal(){
 
             for(product of this.bag){
@@ -49,7 +63,7 @@ createApp({
 
             let products = [];
 
-            for(product of this.bag){
+            for(let product of this.bag){
 
                 products.push({
                                 idProduct: product.id,
@@ -66,7 +80,9 @@ createApp({
 
             this.isLoading = true;
 
-            axios.post('http://localhost:8080/api/transactions/pay',{...this.data, amount : parseInt(this.data.amount)})
+            axios.post('https://mindhub-huborange.up.railway.app/api/transactions/pay',{    cardNumber : this.cardNumber,
+                                                                                                cvv : this.cvv,
+                                                                                                amount : this.total})
               .then(res => {
 
                   this.clearForm();
@@ -80,6 +96,19 @@ createApp({
                 this.handleMessage(err.response.data, 3, true)
 
               })
+
+          },
+          finishPay(){
+
+            axios.post(`/client/current/orders/${orderId}/tickets`)
+                    .then(res => {
+
+
+                        this.handleMessageAlert("Purchase completed succesfully", 3, false)
+
+                        this.completed = true;
+
+                    })
 
           }
 

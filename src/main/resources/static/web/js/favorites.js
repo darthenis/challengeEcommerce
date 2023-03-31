@@ -198,6 +198,8 @@ createApp({
 
                     this.handleMessageAlert("Favorite deleted succesfully", 2, false)
 
+                    setTimeout(() => location.href="/index.html", 2000)
+
                 })
                 .catch(err => {
 
