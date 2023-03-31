@@ -5,14 +5,14 @@
     animation-duration: 1s;
     animation-fill-mode: forwards;
     position: relative;
-    right: -100px;
+    right: -50px;
     opacity: 0;
 }
 
 @keyframes fadein {
     from{
         opacity: 0;
-        right: -100px;
+        right: -50px;
 
     } to {
         opacity: 1;
