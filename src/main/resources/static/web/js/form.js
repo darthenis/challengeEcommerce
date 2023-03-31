@@ -9,7 +9,6 @@ createApp({
             totalCartQuantity: 0,
             totalCart: 0,
             isLogged: false
-
         }
     },
     created(){
@@ -17,8 +16,7 @@ createApp({
         this.checkIsLogged()
 
     },
-    methods:{
-        /*-------------------LOGOUT--------------------*/
+    methods: {
         logout() {
             axios.post('/api/logout').then(response => this.isLogged = false)
         },
@@ -129,4 +127,6 @@ createApp({
 
         }
     }
+
+
 }).mount("#app")

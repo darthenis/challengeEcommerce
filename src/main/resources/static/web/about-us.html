@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/index.css">
+    <link rel="stylesheet" href="./assets/carrito.css">
     <title>ABOUT US | Easy Buy</title>
 </head>
 <body>
-  <div id="App">
+  <div id="app">
     <nav class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center"
     :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
     <div class="navAnimated w-min-screen flex flex-end"
@@ -952,6 +953,89 @@
           </div>
         </div>
       </footer>
+
+          <!-- CART MODAL -->
+    <div v-if="active" class="fixed top-0 left-0 w-screen h-screen"
+    style="z-index: 100; background-color: rgba(0, 0, 0, 0.5);">
+
+<div
+  class="carrito bg-blue-900 shadow-lg w-96 h-screen p-2 flex flex-col gap-1 max-h-screen overflow-y-scroll overflow-x-hidden"
+  :style="{animationName : active ? 'slideIn' : active != null ? 'slideOut' : ''}" style="max-width: 100vw;">
+
+  <div class="flex justify-between items-center">
+    <img src="./assets/img/cart.svg" alt="cart" style="width: 40px">
+    <p class="lg:text-2xl text-1xl font-black leading-10 text-white">My cart</p>
+    <div class="py-1 px-3 font-bold bg-white rounded-full shadow-lg hover:bg-blue-300" @click="toggleCart">X</div>
+  </div>
+
+
+  <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-for="product of bag"
+    v-if="bag.length">
+    <div class="md:w-4/12 2xl:w-1/4 w-full">
+      <img :src="product.imgsUrls[0]" alt="Black Leather Bag"
+        class="h-full object-center object-cover md:block hidden" />
+
+    </div>
+    <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col md:justify-between md:h-full">
+      <div class="flex items-center justify-between w-full">
+        <p class="text-base font-black leading-none text-gray-800">{{product.name}}</p>
+        <div class="custom-number-input h-10 w-20">
+          <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+            <button data-action="decrement"
+              class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+              @click="outProductBag(product)">
+              <span class="m-auto text-2xl font-thin">−</span>
+            </button>
+            <input type="number" style="width: 20px;"
+              class="input outline-none focus:outline-none text-center bg-gray-200 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+              name="custom-input-number" :value="product.quantity"></input>
+            <button data-action="increment"
+              class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+              @click="saveBag(product)">
+              <span class="m-auto text-2xl font-thin">+</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between pt-5">
+        <div class="flex itemms-center">
+          <p class="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
+          <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
+            @click="removeItem(product)">Remove</a>
+        </div>
+        <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price )}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-else>
+    <img
+      src="https://cdni.iconscout.com/illustration/premium/thumb/confusing-woman-due-to-empty-cart-4558760-3780056.png"
+      alt="">
+  </div>
+  <div class="w-full bg-white rounded-lg ">
+    <div class="flex flex-col h-auto lg:px-8 md:px-7 px-4 lg:py-2 md:py-10 py-2 justify-between overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between border-b-2">
+          <p class="text-xl leading-normal text-gray-800">Quantity Products</p>
+          <p class="text-xl font-bold leading-normal text-right text-gray-800">
+            {{totalCartQuantity}}</p>
+        </div>
+        <div class="flex items-center pb-1 mb-2 justify-between lg:pt-3 border-b-2">
+          <p class="text-2xl leading-normal text-gray-800">Total</p>
+          <p class="text-2xl font-bold leading-normal text-right text-gray-800">
+            {{formatDollar(totalCart)}}</p>
+        </div>
+        <button onclick="checkoutHandler1(true)"
+          class="text-xl hover:bg-red-500 hover:drop-shadow-2xl rounded-md leading-none w-full py-5 bg-red-600 border-blue-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+<!--     CART MODAL -->
+
     </div>
     <script
       src="https://kit.fontawesome.com/a9a67006ad.js"
@@ -962,6 +1046,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./js/aboutUs.js"></script>
   </body>

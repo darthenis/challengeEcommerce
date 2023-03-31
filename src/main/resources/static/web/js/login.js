@@ -8,17 +8,16 @@ createApp({
 			lastName: "",
 			tel: "",
 			password: "",
-			email: ""
-
+			email: "",
+			token: ""
 
 		}
 	},
 	created() {
-
-
-
-
-
+		let parameterUrl = location.search
+		let parameters = new URLSearchParams(parameterUrl)
+		this.token = parameters.get("token")
+		this.params()
 
 
 	},
@@ -37,6 +36,11 @@ createApp({
 				.catch(error => concole.error(error))
 		},
 
+		/*----------------PARAMS TOKEN LOGIN-------------------*/
+		params() {
+			axios.post("/api/clients/auth/active", `token=${this.token}`)
+		},
+
 
 		signUp() {
 			axios.post('/api/clients', {
@@ -47,10 +51,7 @@ createApp({
 				password: this.password
 			},)
 				.then(response => {
-					console.log(response)
-					this.user = this.email
-					this.password1 = this.password
-					this.login()
+					window.location.href = "/web/login.html"
 				})
 				.catch(error => console.log(error))
 		},
