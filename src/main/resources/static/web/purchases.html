@@ -296,7 +296,8 @@
                     </h2>
                 </div>
                 <div style="min-height: 40vh">
-                    <template>
+                    <p v-if="!products.length">No purchases</p>
+                    <template v-else v-for="product of products">
                         <article class="w-100" class=>
                             <div
                                 class="m-4 mx-auto max-w-screen-lg rounded-md border border-gray-100 text-gray-600 shadow-md bg-white">
@@ -304,18 +305,15 @@
 
                                     <div class="mx-auto flex justify-center items-center px-1 pt-1 md:p-1">
                                         <img style="width: 12rem;" class="block h-auto max-w-full rounded-md shadow-lg"
-                                            src="" alt="refrigerator" />
+                                            :src="product.imgsUrls[0]" alt="refrigerator" />
                                     </div>
                                     <div class="relative p-1 md:w-4/6 flex flex-col items-center">
                                         <div class="flex flex-col md:flex-row mt-2">
-                                            <h2 class="text-2xl font-black"></h2>
+                                            <h2 class="text-2xl font-black">{{product.name}}</h2>
                                         </div>
-                                        <p class="mt-1 font-sans text-base tracking-normal"></p>
-                                        <div class="flex flex-col md:flex-row md:items-end">
-                                            <p class="mt-4 text-2xl font-black"><sup
-                                                    class="align-super text-sm">00</sup></p>
-                                            <span class="ml-2 text-xs uppercase"> Stock</span>
-                                        </div>
+
+                                        <p>Purchase date: {{date}}</p>
+                                      
                                         <div class="mt-1 flex flex-col sm:flex-row">
                                             <button
                                                 class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md bg-blue-900 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-blue-600">
@@ -324,10 +322,8 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                                 </svg>
-                                                Add to cart
+                                                Add rate
                                             </button>
-                                            <button
-                                                class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md border py-2 px-8 text-center text-white bg-red-600 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-red-500 hover:text-white">Delete</button>
                                         </div>
                                     </div>
 

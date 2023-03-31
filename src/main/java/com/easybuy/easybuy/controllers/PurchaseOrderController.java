@@ -56,7 +56,7 @@ public class PurchaseOrderController {
     }
 
     @PostMapping("/client/current/orders")
-    public ResponseEntity<Object> newOrder(@RequestBody NewPurchaseOrderDTO newPurchaseOrderDTO, Authentication authentication) {
+    public ResponseEntity<?> newOrder(@RequestBody NewPurchaseOrderDTO newPurchaseOrderDTO, Authentication authentication) {
 
         if(newPurchaseOrderDTO.getAmount() == null) return new ResponseEntity<>("missing amount", HttpStatus.FORBIDDEN);
 
@@ -91,7 +91,9 @@ public class PurchaseOrderController {
            if(!isBuyed) purchaseService.delete(purchaseOrder.getNumber());
         });
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        PurchaseOrder purchaseOrder1 = purchaseService.findByNumber(purchaseOrder.getNumber());
+
+        return new ResponseEntity<>(purchaseOrder1.getId(), HttpStatus.CREATED);
     }
 
     @PostMapping("/client/current/orders/{id}/tickets")
