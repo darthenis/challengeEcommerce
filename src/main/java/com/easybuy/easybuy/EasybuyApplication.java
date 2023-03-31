@@ -90,6 +90,13 @@ public class EasybuyApplication {
 			Rate speakerRate = new Rate("I recently bought a compact and portable Bluetooth speaker that provides impressive sound quality and fast Bluetooth connectivity. The battery lasts for several hours and charges quickly. I recommend it to anyone looking for a high-quality portable option to enjoy their favorite music anytime, anywhere.",StarsEnum.FIVE);
 			Rate speakerRate2= new Rate("I purchased a high-quality Bluetooth speaker with a modern and sleek design. The sound quality is excellent, with deep bass and clear treble, and the Bluetooth connectivity is fast and stable. The battery lasts for hours and charges quickly. I recommend it for anyone looking for an unparalleled audio experience anywhere, anytime.",StarsEnum.FOUR);
 
+			Product airPods = new Product("Apple - AirPods Pro","AirPods Pro feature up to 2x more Active Noise Cancellation,¹ plus Adaptive Transparency, and Personalized Spatial Audio with dynamic head tracking for immersive sound.² Now with multiple ear tips (XS, S, M, L) and up to 6 hours of listening time.³",249.99,5,15,LocalDate.now().minusDays(5),List.of(CategoriesEnum.AUDIO));
+			airPods.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4900/4900964_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4900/4900964_rd.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4900/4900964ld.jpg;maxHeight=120;maxWidth=120","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4900/4900964cv11d.jpg;maxHeight=120;maxWidth=120","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4900/4900964cv12d.jpg;maxHeight=2000;maxWidth=2000"));
+			Rate airpodsRate = new Rate("I recently purchased the Airpods and they are fantastic! The sound quality is amazing and the Bluetooth connection is seamless. They fit comfortably in my ears and the battery life is impressive. I highly recommend them to anyone in the market for wireless earbuds.", StarsEnum.FIVE);
+			Rate airpodsRate2 = new Rate("I am so happy with my purchase of the Airpods! The sound quality is incredible and they are so easy to use. They fit perfectly in my ears and I can wear them for hours without any discomfort. The battery life is great too. I would definitely recommend them to anyone who wants high-quality wireless earbuds.", StarsEnum.FOUR);
+
+
+
 			Product laptop= new Product("Lenovo - Flex 3 Chromebook 11.6'",
 					"Packs what makes Chromebook so amazing into one svelte 360-degree convertible. " +
 					"Versatile and portable, the IdeaPad™ Flex 3 Chromebook measures just 19.6 mm thick and " +
@@ -101,6 +108,17 @@ public class EasybuyApplication {
 			laptop.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337_rd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337ld.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337cv1d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337cv4d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337cv16d.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6500/6500337cv17d.jpg;maxHeight=2000;maxWidth=2000"));
 			Rate laptopRate = new Rate("I recently purchased a new laptop and I am blown away by its speed and performance. The processor is lightning fast and can handle multiple tasks without slowing down. The display is vibrant and clear, making it perfect for streaming videos or working on graphics-intensive projects. The battery life is impressive, lasting for several hours even with heavy use. Overall, I highly recommend this laptop for anyone in need of a reliable and powerful machine.", StarsEnum.FIVE);
 			Rate laptopRate2 = new Rate("I bought a budget-friendly laptop and while it gets the job done, it falls short in some areas. The processor is not as fast as I would like, which makes it difficult to multitask or run more demanding programs. The display is decent, but not as sharp or vibrant as higher-end models. However, the battery life is impressive and lasts for several hours on a single charge. If you're looking for a basic laptop for everyday use, this one could work for you, but if you need something more powerful and feature-rich, you may want to consider a higher-end model.", StarsEnum.THREE);
+
+			Product pcApple = new Product("MacBook Air 13.3' Laptop - Apple M1 chip",
+					"Apple’s thinnest and lightest notebook gets supercharged with the Apple M1 chip." +
+							" Tackle your projects with the blazing-fast 8-core CPU. " +
+							"Take graphics-intensive apps and games to the next level with the 7-core GPU. " +
+							"And accelerate machine learning tasks with the 16-core Neural Engine. All with a silent, " +
+							"fanless design and the longest battery life ever — up to 18 hours.¹ MacBook Air. Still perfectly portable. " +
+							"Just a lot more powerful.",799.99,0,20,LocalDate.now().minusDays(1),List.of(CategoriesEnum.TECNOLOGY));
+			pcApple.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6418/6418599_sd.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6418/6418599cv11d.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6418/6418599cv12d.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6418/6418599cv13d.jpg;maxHeight=2000;maxWidth=2000","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6418/6418599cv15d.jpg;maxHeight=2000;maxWidth=2000"));
+			Rate macbookRate = new Rate("I recently purchased a MacBook Air and I couldn't be happier with my choice. The computer is super lightweight and easy to carry around, making it perfect for both work and personal use. The battery life is impressive, lasting for several hours without needing a recharge. The speed and performance of the computer are top-notch, allowing me to easily run multiple applications at once without any lag. I highly recommend the MacBook Air to anyone in the market for a new computer.", StarsEnum.FIVE);
+			Rate macbookRate2 = new Rate("I upgraded to the MacBook Air and it was the best decision I've made. The design is sleek and modern, and the computer is extremely fast and efficient. The battery life lasts for hours on end, so I never have to worry about running out of juice when I'm out and about. The keyboard is also very comfortable to type on, making it great for long typing sessions. Overall, I'm extremely satisfied with my purchase and would highly recommend the MacBook Air to anyone in need of a reliable, high-performance laptop.", StarsEnum.FOUR);
 
 			Product cableHdmi = new Product("Rocketfish™ - 8' 4K UltraHD/HDR ",
 					"Install your home theater system with this in-wall Rocketfish 4K UltraHD cable, " +
@@ -155,7 +173,37 @@ public class EasybuyApplication {
 			Rate sofaRate = new Rate("I recently purchased this sofa and I am extremely satisfied with my purchase. The quality is amazing, with durable and comfortable materials that make it perfect for lounging or entertaining. The design is sleek and modern, and it fits perfectly with my home decor. The assembly was straightforward and easy to do on my own. I highly recommend this sofa to anyone in need of a high-quality and stylish addition to their home.", StarsEnum.FIVE);
 			Rate sofaRate2 = new Rate("I purchased this sofa hoping to upgrade my living room, but unfortunately it fell short of my expectations. The quality was not as good as I had hoped, with thin and flimsy materials that didn't feel very durable. The design was not as comfortable as I had hoped, and the color was not as vibrant as it appeared in the photos. Assembly was difficult and required the help of a professional. While it's a budget-friendly option, I would recommend spending more for a higher-quality sofa.", StarsEnum.TWO);
 
+			Product sofaXl = new Product("Lovesac - 4 Seats + 5 Sides Corded" , "The World’s Most Adaptable Couch – Sactionals were specially designed to provide style, comfort," +
+					" and peace of mind. Not only do they easily change their shape to perfectly accommodate every occasion, " +
+					"they can transform their color and style to always match your tastes. " +
+					"The Sactionals product platform provides peace of mind where other couches can’t. " +
+					"Spills, a growing family, or moving to a new home shouldn’t mean that your couch ends up in a landfill. " +
+					"Instead, we designed Sactionals to evolve as your life changes, enabling you to enjoy even more little moments along the way. " +
+					"Get Sactionals and experience Total Comfort. ***UPGRADE THIS SACTIONALS SETUP WITH LOVESAC STEALTHTECH***" +
+					" The Sactionals StealthTech Sound + Charge System features immersive surround sound by Harman Kardon and " +
+					"integrated wireless charging, elegantly embedded inside Sactionals and completely hidden from view.",239.00,20,2,LocalDate.now().minusDays(10),List.of(CategoriesEnum.FURNITURE));
+			sofaXl.setImgsUrls(List.of("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6502/6502395_sd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6502/6502395_rd.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6502/6502395cv1d.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6502/6502395ld.jpg;maxHeight=640;maxWidth=550","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6502/6502395cv3d.jpg;maxHeight=640;maxWidth=550"));
+			Rate sofaXlRate1 = new Rate("I recently bought an XL sofa that has quickly become the centerpiece of my living room. The sofa is incredibly comfortable and the perfect size for my family to relax on together. I also love the sleek and modern design, which complements my home decor perfectly. Overall, I am extremely satisfied with my purchase and highly recommend this sofa to anyone looking for a comfortable and stylish seating option.", StarsEnum.FIVE);
+			Rate sofaXlRate2 = new Rate("I was looking for a large and comfortable sofa to accommodate my growing family, and I found the perfect one with this XL sofa. The sofa is spacious and comfortable, with plenty of room for everyone to relax on. The design is also very modern and fits well with my home decor. I highly recommend this sofa to anyone looking for a high-quality, stylish, and comfortable seating option.", StarsEnum.FOUR);
 
+			Product desk = new Product("Sauder - Boulevard Café L Shape Desk",
+					"It's time for a style upgrade. Get motivated to take on all your major projects with the charming good looks and " +
+					"industrial-inspired design of this L-shaped desk from the Boulevard Café collection. Its spacious workspace provides " +
+					"you with all the room you need for your must-have desk essentials like your laptop, collection of notepads and your " +
+					"hot cup of coffee. It features two drawers with full extension slides for easy access storage for items like pencils " +
+					"and pens. Behind its metal door featuring a wire mesh front is a storage area that includes an adjustable shelf that " +
+					"can be moved to different heights to create flexible storage for items of all shapes and sizes. If that isn't enough, " +
+					"it also features elevated shelving for additional storage options or a display area for your favorite décor items. ",469.99,20,2,LocalDate.now().minusYears(1),List.of(CategoriesEnum.FURNITURE));
+			desk.setImgsUrls(List.of("http://localhost:8080/web/assets/img/sillon-emi.png"));
+			Rate deskRate1 = new Rate("I recently purchased a desk for my home office and it has been a great addition to my workspace. The desk is sturdy and well-built, providing ample workspace for my computer, paperwork, and other office essentials. The design is sleek and modern, fitting in perfectly with the rest of my office decor. Overall, I highly recommend this desk to anyone looking for a functional and stylish workspace.", StarsEnum.FIVE);
+			Rate deskRate2 = new Rate("I am extremely happy with my purchase of this desk. The assembly process was straightforward and the desk is very durable, standing up well to daily use. The desk also has a convenient built-in storage system that keeps my workspace organized and clutter-free. I highly recommend this desk to anyone looking for a functional and stylish addition to their home office or workspace.", StarsEnum.FOUR);
+
+			Product bed = new Product("CorLiving - Nova Ridge Tufted ","\n" +
+					"This beautifully upholstered fabric bed is the complete package, all delivered to you in 1 package. Complete your bedroom space with the stylish diamond button-tufted padded headboard with matching upholstered fabric bed frame. Equipped with durable slats and adjustable support legs designed with comfort and stability in mind, " +
+					"enjoy a restful night's sleep on this trendy extension to your bedroom or guestroom.",421.99,15,5,LocalDate.now().minusWeeks(1),List.of(CategoriesEnum.FURNITURE));
+			bed.setImgsUrls(List.of("http://localhost:8080/web/assets/img/camaa.png"));
+			Rate bedRate1 = new Rate("I recently purchased a new bed and it has been a game changer for my sleep. The bed is incredibly comfortable and supportive, providing me with a great night's sleep every night. The design is modern and sleek, and the construction is very sturdy and durable. I highly recommend this bed to anyone in need of a comfortable and stylish sleeping solution.", StarsEnum.FIVE);
+			Rate bedRate2 = new Rate("I am extremely satisfied with my purchase of this bed. The bed is well-constructed and provides a comfortable sleeping experience. The design is also very stylish and fits in well with my bedroom decor. Overall, I highly recommend this bed to anyone in the market for a new sleeping solution.", StarsEnum.FOUR);
 
 			PurchaseOrder newPurchaseOrder = new PurchaseOrder("001-000001", ledTv.getPrice()+speaker.getPrice()+ laptop.getPrice()+ cableHdmi.getPrice()+ bloodPressure.getPrice()+ cuutopiaPlush.getPrice()+ sofa.getPrice(), LocalDateTime.now());
 
@@ -228,6 +276,10 @@ public class EasybuyApplication {
 			client4.addRate(hdmiRate2);
 			client10.addRate(hdmiRate2);
 
+			client4.addRate(airpodsRate);
+			airPods.addRate(airpodsRate);
+			client6.addRate(airpodsRate2);
+			airPods.addRate(airpodsRate2);
 
 
 
@@ -245,12 +297,12 @@ public class EasybuyApplication {
 			clientRepository.save(client10);
 
 			productRepository.save(ledTv);
-			productRepository.save(speaker);
-			productRepository.save(laptop);
-			productRepository.save(cableHdmi);
-			productRepository.save(bloodPressure);
-			productRepository.save(cuutopiaPlush);
-			productRepository.save(sofa);
+			productRepository.save(airPods);
+			productRepository.save(pcApple);
+			productRepository.save(sofaXl);
+			productRepository.save(desk);
+			productRepository.save(bed);
+
 
 			purchaseOrderRepository.save(newPurchaseOrder);
 

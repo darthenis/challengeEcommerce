@@ -259,7 +259,7 @@ createApp({
 
             for (let i = 1; i <= rounded; i++) {
 
-                hmtl += star;
+                html += star;
 
             }
 
