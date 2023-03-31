@@ -149,9 +149,9 @@ body {
 
 .padre-segundaOferta {
     display: flex;
-
-    background-color: #428bca;
-
+    background-image: url("../assets/img/fondoimg.jpg");
+    background-position: center;
+    background-size: cover;
     width: 50%;
     gap: 10px;
     height: 19rem;
@@ -286,8 +286,6 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 3rem;
-    /* justify-content: space-between; */
-    background-color: rgb(95, 108, 226);
 }
 
 .categoriasLeonardo h2 {
@@ -319,7 +317,7 @@ body {
     align-items: center;
     margin-bottom: 3rem;
     /* justify-content: space-between; */
-    background-color: rgb(100, 113, 230);
+
 }
 
 .popularLeo h2 {
@@ -334,8 +332,6 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 3rem;
-    /* justify-content: space-between; */
-    background-color: rgb(95, 108, 226);
 }
 
 @media (max-width:818px) {
