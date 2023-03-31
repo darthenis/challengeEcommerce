@@ -16,11 +16,22 @@ createApp({
             isLogged: false,
             navActive: null,
             favs: [],
-            searchProduct : ""
+            searchProduct : "",
+            counter : {
+                days:0,
+                hours:0,
+                minutes:0,
+                seconds:0
+            }
 
         }
     },
     created() {
+
+        let countDownDate = new Date(Date.UTC(2023, 3, 2, 20, 33, 0)).getTime();
+
+        this.regretCount(countDownDate)
+
         this.loadData()
 
         document.addEventListener("scroll", () => this.isVisible("offer"));
@@ -369,6 +380,23 @@ createApp({
         handleSearch(){
 
             location.href = "/web/shop.html?search="+this.searchProduct;
+
+        },
+        regretCount(countDownDate){
+
+            setInterval(() => {
+
+                let now = new Date().getTime();
+
+                let distance = countDownDate - now;
+
+                this.counter.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                this.counter.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                this.counter.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                this.counter.seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+            }, 1000);
+            
 
         }
 
