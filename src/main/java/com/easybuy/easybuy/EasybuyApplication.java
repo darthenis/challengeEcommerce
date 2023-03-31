@@ -120,6 +120,9 @@ public class EasybuyApplication {
 			Rate macbookRate = new Rate("I recently purchased a MacBook Air and I couldn't be happier with my choice. The computer is super lightweight and easy to carry around, making it perfect for both work and personal use. The battery life is impressive, lasting for several hours without needing a recharge. The speed and performance of the computer are top-notch, allowing me to easily run multiple applications at once without any lag. I highly recommend the MacBook Air to anyone in the market for a new computer.", StarsEnum.FIVE);
 			Rate macbookRate2 = new Rate("I upgraded to the MacBook Air and it was the best decision I've made. The design is sleek and modern, and the computer is extremely fast and efficient. The battery life lasts for hours on end, so I never have to worry about running out of juice when I'm out and about. The keyboard is also very comfortable to type on, making it great for long typing sessions. Overall, I'm extremely satisfied with my purchase and would highly recommend the MacBook Air to anyone in need of a reliable, high-performance laptop.", StarsEnum.FOUR);
 
+
+
+
 			Product cableHdmi = new Product("Rocketfish™ - 8' 4K UltraHD/HDR ",
 					"Install your home theater system with this in-wall Rocketfish 4K UltraHD cable, " +
 					"and enjoy the latest technology your television offers. " +
@@ -186,6 +189,9 @@ public class EasybuyApplication {
 			Rate sofaXlRate1 = new Rate("I recently bought an XL sofa that has quickly become the centerpiece of my living room. The sofa is incredibly comfortable and the perfect size for my family to relax on together. I also love the sleek and modern design, which complements my home decor perfectly. Overall, I am extremely satisfied with my purchase and highly recommend this sofa to anyone looking for a comfortable and stylish seating option.", StarsEnum.FIVE);
 			Rate sofaXlRate2 = new Rate("I was looking for a large and comfortable sofa to accommodate my growing family, and I found the perfect one with this XL sofa. The sofa is spacious and comfortable, with plenty of room for everyone to relax on. The design is also very modern and fits well with my home decor. I highly recommend this sofa to anyone looking for a high-quality, stylish, and comfortable seating option.", StarsEnum.FOUR);
 
+
+
+
 			Product desk = new Product("Sauder - Boulevard Café L Shape Desk",
 					"It's time for a style upgrade. Get motivated to take on all your major projects with the charming good looks and " +
 					"industrial-inspired design of this L-shaped desk from the Boulevard Café collection. Its spacious workspace provides " +
@@ -198,12 +204,15 @@ public class EasybuyApplication {
 			Rate deskRate1 = new Rate("I recently purchased a desk for my home office and it has been a great addition to my workspace. The desk is sturdy and well-built, providing ample workspace for my computer, paperwork, and other office essentials. The design is sleek and modern, fitting in perfectly with the rest of my office decor. Overall, I highly recommend this desk to anyone looking for a functional and stylish workspace.", StarsEnum.FIVE);
 			Rate deskRate2 = new Rate("I am extremely happy with my purchase of this desk. The assembly process was straightforward and the desk is very durable, standing up well to daily use. The desk also has a convenient built-in storage system that keeps my workspace organized and clutter-free. I highly recommend this desk to anyone looking for a functional and stylish addition to their home office or workspace.", StarsEnum.FOUR);
 
-			Product bed = new Product("CorLiving - Nova Ridge Tufted ","\n" +
+
+
+			Product bed = new Product("CorLiving - Nova Ridge Tufted ",
 					"This beautifully upholstered fabric bed is the complete package, all delivered to you in 1 package. Complete your bedroom space with the stylish diamond button-tufted padded headboard with matching upholstered fabric bed frame. Equipped with durable slats and adjustable support legs designed with comfort and stability in mind, " +
 					"enjoy a restful night's sleep on this trendy extension to your bedroom or guestroom.",421.99,15,5,LocalDate.now().minusWeeks(1),List.of(CategoriesEnum.FURNITURE));
 			bed.setImgsUrls(List.of("http://localhost:8080/web/assets/img/camaa.png"));
 			Rate bedRate1 = new Rate("I recently purchased a new bed and it has been a game changer for my sleep. The bed is incredibly comfortable and supportive, providing me with a great night's sleep every night. The design is modern and sleek, and the construction is very sturdy and durable. I highly recommend this bed to anyone in need of a comfortable and stylish sleeping solution.", StarsEnum.FIVE);
 			Rate bedRate2 = new Rate("I am extremely satisfied with my purchase of this bed. The bed is well-constructed and provides a comfortable sleeping experience. The design is also very stylish and fits in well with my bedroom decor. Overall, I highly recommend this bed to anyone in the market for a new sleeping solution.", StarsEnum.FOUR);
+
 
 			PurchaseOrder newPurchaseOrder = new PurchaseOrder("001-000001", ledTv.getPrice()+speaker.getPrice()+ laptop.getPrice()+ cableHdmi.getPrice()+ bloodPressure.getPrice()+ cuutopiaPlush.getPrice()+ sofa.getPrice(), LocalDateTime.now());
 
@@ -281,7 +290,26 @@ public class EasybuyApplication {
 			client6.addRate(airpodsRate2);
 			airPods.addRate(airpodsRate2);
 
+			client9.addRate(macbookRate);
+			pcApple.addRate(macbookRate);
+			client8.addRate(macbookRate2);
+			pcApple.addRate(macbookRate2);
 
+			client2.addRate(sofaXlRate1);
+			sofaXl.addRate(sofaXlRate1);
+			client8.addRate(sofaXlRate2);
+			sofaXl.addRate(sofaRate2);
+
+
+			client4.addRate(bedRate1);
+			bed.addRate(bedRate1);
+			client8.addRate(bedRate2);
+			bed.addRate(bedRate2);
+
+			client9.addRate(deskRate1);
+			desk.addRate(deskRate1);
+			client2.addRate(deskRate2);
+			desk.addRate(deskRate2);
 
 			clientRepository.save(luisito);
 			clientRepository.save(admin);
@@ -302,6 +330,12 @@ public class EasybuyApplication {
 			productRepository.save(sofaXl);
 			productRepository.save(desk);
 			productRepository.save(bed);
+			productRepository.save(bloodPressure);
+			productRepository.save(cuutopiaPlush);
+			productRepository.save(speaker);
+			productRepository.save(cableHdmi);
+			productRepository.save(sofa);
+			productRepository.save(laptop);
 
 
 			purchaseOrderRepository.save(newPurchaseOrder);
@@ -334,6 +368,22 @@ public class EasybuyApplication {
 
 			rateRepository.save(hdmiRate);
 			rateRepository.save(hdmiRate2);
+
+			rateRepository.save(bedRate1);
+			rateRepository.save(bedRate2);
+
+			rateRepository.save(deskRate1);
+			rateRepository.save(deskRate2);
+
+			rateRepository.save(airpodsRate2);
+			rateRepository.save(airpodsRate);
+
+			rateRepository.save(macbookRate2);
+			rateRepository.save(macbookRate);
+
+			rateRepository.save(sofaXlRate2);
+			rateRepository.save(sofaXlRate1);
+
 
 
 		};
