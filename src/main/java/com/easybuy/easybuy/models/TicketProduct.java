@@ -16,6 +16,8 @@ public class TicketProduct {
 
     private Double price;
 
+    private Long productId;
+
     private int quantity;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -23,16 +25,26 @@ public class TicketProduct {
 
     public TicketProduct(){}
 
-    public TicketProduct(String name, Double price, int quantity) {
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+    }
+
+    public TicketProduct(String name, Double price, int quantity, Long productId) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.productId = productId;
     }
 
     public TicketProduct(PurchaseOrderProduct purchaseOrderProduct) {
         this.name = purchaseOrderProduct.getProduct().getName();
         this.price = purchaseOrderProduct.getPrice();
         this.quantity = purchaseOrderProduct.getQuantity();
+        this.productId = purchaseOrderProduct.getProduct().getId();
     }
 
     public Long getId() {
@@ -65,5 +77,13 @@ public class TicketProduct {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 }

@@ -95,7 +95,7 @@ public class PurchaseOrderController {
     }
 
     @PostMapping("/client/current/orders/{id}/tickets")
-    public ResponseEntity<?> completePurchaseOrder(@PathVariable Long id, @RequestBody PayApplicationDTO payApplicationDTO,  Authentication authentication){
+    public ResponseEntity<?> completePurchaseOrder(@PathVariable Long id, Authentication authentication){
 
         try {
 
@@ -107,9 +107,13 @@ public class PurchaseOrderController {
 
             Optional<Client> client = clientService.findByEmail(authentication.getName());
 
-            Ticket ticket = ticketService.createTicket(purchaseOrder);
+            Ticket ticket = ticketService.createTicket(purchaseOrder, client.get());
 
             PDFExporter exporter = new PDFExporter(ticket);
+
+            //client.get().addTicketPurchase(ticket);
+
+            //clientService.save(client.get());
 
             exporter.exportToRoot();
 

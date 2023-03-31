@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,18 +19,27 @@ public class Ticket {
 
     private String fullName;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Client client;
+
     private LocalDateTime dateTime;
 
-    @OneToMany(mappedBy = "ticket", fetch = FetchType.EAGER)
-    private List<TicketProduct> ticketProducts;
+    @OneToMany(mappedBy = "ticket", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<TicketProduct> ticketProducts = new ArrayList<>();
 
     public Ticket(){}
 
-    public Ticket(String number, String fullName, List<TicketProduct> ticketProducts, LocalDateTime dateTime) {
+    public Ticket(String number, String fullName, LocalDateTime dateTime) {
         this.number = number;
         this.fullName = fullName;
-        this.ticketProducts = ticketProducts;
         this.dateTime = dateTime;
+    }
+
+    public void addTicketProduct(TicketProduct ticketProduct){
+
+            ticketProduct.setTicket(this);
+            this.ticketProducts.add(ticketProduct);
+
     }
 
     public Long getId() {
@@ -62,5 +72,21 @@ public class Ticket {
 
     public void setTicketProducts(List<TicketProduct> ticketProducts) {
         this.ticketProducts = ticketProducts;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }

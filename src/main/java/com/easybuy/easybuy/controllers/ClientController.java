@@ -130,8 +130,6 @@ public class ClientController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
         }
 
-
-
     }
 
 }
