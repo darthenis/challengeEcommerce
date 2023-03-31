@@ -12,11 +12,18 @@ public class RateDTO {
 
     private StarsEnum stars;
 
+    private String fullName;
+
 
     public RateDTO(Rate rate){
         this.id = rate.getId();
         this.commentary = rate.getCommentary();
         this.stars = rate.getStars();
+        this.fullName = rate.getClient().getName() + " " +rate.getClient().getLastName();
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 
     public Long getId() {

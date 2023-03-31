@@ -1,38 +1,38 @@
-const {createApp} = Vue;
+const { createApp } = Vue;
 
 createApp({
-    data(){
-        return{
+    data() {
+        return {
             products: [],
             filteredProducts: [],
             totalFilteredProducts: [],
             activeMenuCategories: null,
             filterTags: [],
-            messageAlert:{
-                message : "",
-                isError : false
+            messageAlert: {
+                message: "",
+                isError: false
             },
-            visibleArticle : [],
+            visibleArticle: [],
             minPrice: "",
             maxPrice: "",
-            sortSeleted : "",
+            sortSeleted: "",
             searchProduct: "",
             initPage: 0,
             endPage: 9,
-            favs : [],
-            isLogged : false,
+            favs: [],
+            isLogged: false,
             active: null,
             bag: JSON.parse(localStorage.getItem("bag")) || [],
-            totalCartQuantity : 0,
+            totalCartQuantity: 0,
             totalCart: 0,
-            navActive : null
+            navActive: null
         }
     },
-    created(){
+    created() {
 
         let valueSearch = this.getParam("search");
 
-        if(valueSearch) this.searchProduct = valueSearch;
+        if (valueSearch) this.searchProduct = valueSearch;
 
         this.loadData().then(() => this.setCheckBox());
 
@@ -45,8 +45,8 @@ createApp({
         this.priceTotalCart()
 
     },
-    methods:{
-        logout(){
+    methods: {
+        logout() {
 
             axios.post("/api/logout")
                 .then(() => {
@@ -57,7 +57,7 @@ createApp({
                 })
 
         },
-        checkIsLogged(){
+        checkIsLogged() {
 
             axios("/api/clients/auth")
                 .then(res => {
@@ -65,21 +65,22 @@ createApp({
                     this.isLogged = true;
 
                 })
-                .catch(err => { 
-                    
+                .catch(err => {
+
                     console.log(err)
-                    
-                    this.isLogged = false})
+
+                    this.isLogged = false
+                })
 
         },
-        getParam(key){
+        getParam(key) {
 
             let parameterUrl = location.search
             let parameters = new URLSearchParams(parameterUrl)
             return parameters.get(key)
 
         },
-        async loadData(){
+        async loadData() {
 
             axios.get("/api/products")
                 .then(res => {
@@ -94,20 +95,20 @@ createApp({
                 })
 
             axios.get("/api/client/current/favorites")
-                    .then(res => this.favs = res.data)
+                .then(res => this.favs = res.data)
 
         },
-        setCheckBox(){
+        setCheckBox() {
 
             let string = this.getParam("filter");
 
             let element;
-            
-            switch(string){
+
+            switch (string) {
                 case "Appliance":
                     element = document.getElementById("appli1");
                     break;
-                case "Audio":   
+                case "Audio":
                     element = document.getElementById("aud1");
                     break;
                 case "Furniture":
@@ -127,25 +128,25 @@ createApp({
                     break;
             }
 
-            if(element) element.click();     
-            
+            if (element) element.click();
+
             let element2 = document.getElementById(string);
 
-            if(element2) element2.click();
+            if (element2) element2.click();
 
 
         },
-        handlePages(isNext){
+        handlePages(isNext) {
 
             window.scrollTo(0, 0);
 
-            if(isNext && this.totalFilteredProducts.length > this.endPage){
+            if (isNext && this.totalFilteredProducts.length > this.endPage) {
 
                 this.initPage += 9;
 
                 this.endPage += 9
 
-            } else if(this.initPage != 0){
+            } else if (this.initPage != 0) {
 
                 this.initPage -= 9;
 
@@ -153,30 +154,30 @@ createApp({
 
             }
 
-            
+
 
 
         },
-        handlerMenuCategories(){
+        handlerMenuCategories() {
 
-            if(!this.activeMenuCategories){
+            if (!this.activeMenuCategories) {
 
                 this.activeMenuCategories = true;
 
             } else {
 
-                    this.activeMenuCategories = false;
-                
+                this.activeMenuCategories = false;
+
             }
 
         },
-        formatCurrency(value){
+        formatCurrency(value) {
 
             let USDollar = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
             });
-            
+
             return USDollar.format(value)
 
         },
@@ -184,21 +185,21 @@ createApp({
 
             this.visibleArticle = [];
 
-            for(product of this.filteredProducts){
+            for (product of this.filteredProducts) {
 
-                const element = document.getElementById("product-"+product.id);
+                const element = document.getElementById("product-" + product.id);
 
-                if(element){
+                if (element) {
                     let rect = element.getBoundingClientRect();
                     let windowHeight = (window.innerHeight || document.documentElement.clientHeight);
                     let windowWidth = (window.innerWidth || document.documentElement.clientWidth);
-                  
+
                     // Verificar si el elemento está dentro de la ventana vertical
                     let vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
-                  
+
                     // Verificar si el elemento está dentro de la ventana horizontal
                     let horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
-                  
+
                     this.visibleArticle.push(vertInView && horInView);
                 }
 
@@ -206,8 +207,8 @@ createApp({
 
         },
 
-        avaregeStars(rates){
-            
+        avaregeStars(rates) {
+
             let five = 0;
 
             let four = 0;
@@ -218,23 +219,23 @@ createApp({
 
             let one = 0;
 
-            for(let rate of rates){
+            for (let rate of rates) {
 
-                switch(rate.stars){
+                switch (rate.stars) {
                     case "ONE":
-                        one ++;
+                        one++;
                         break;
                     case "TWO":
-                        two ++;
+                        two++;
                         break;
                     case "THREE":
-                        three ++;
+                        three++;
                         break;
                     case "FOUR":
-                        four ++;
+                        four++;
                         break;
                     case "FIVE":
-                        five ++;
+                        five++;
                         break;
                 }
 
@@ -244,7 +245,7 @@ createApp({
 
         },
 
-        counterStars(rates){
+        counterStars(rates) {
 
             let rounded = 0;
 
@@ -256,15 +257,15 @@ createApp({
 
             let html = "";
 
-            for(let i = 1; i <= rounded; i++){
+            for (let i = 1; i <= rounded; i++) {
 
                 hmtl += star;
 
             }
 
-            if((5 - rounded) != 0){
+            if ((5 - rounded) != 0) {
 
-                for(let i = rounded; i <= 5; i++){
+                for (let i = rounded; i < 5; i++) {
 
                     rounded++
 
@@ -278,28 +279,28 @@ createApp({
 
         },
 
-        getWithDiscount(price, discount){
+        getWithDiscount(price, discount) {
 
-            if(!discount){
+            if (!discount) {
 
                 return this.formatCurrency(price);
 
             } else {
 
-                return this.formatCurrency(price - ((price / 100) * discount ))
+                return this.formatCurrency(price - ((price / 100) * discount))
 
             }
 
         },
 
-        handleFilterProducts(){
+        handleFilterProducts() {
 
             this.filteredProducts = [];
-            
-            
-            if(this.filterTags.length){
 
-                for(filterTag of this.filterTags){
+
+            if (this.filterTags.length) {
+
+                for (filterTag of this.filterTags) {
 
                     this.filteredProducts = this.filteredProducts.concat(this.products.filter(product => product.categoriesEnums.find(category => category === filterTag.toUpperCase())))
 
@@ -319,35 +320,35 @@ createApp({
 
             this.filteredProducts = this.filteredProducts.filter(product => product.price > minPrice && product.price < maxPrice)
 
-            if(this.sortSeleted){
+            if (this.sortSeleted) {
 
-                if(this.sortSeleted == "asc") this.filteredProducts.sort((a, b) => a.price - b.price)
+                if (this.sortSeleted == "asc") this.filteredProducts.sort((a, b) => a.price - b.price)
 
-                if(this.sortSeleted == "des") this.filteredProducts.sort((a, b) => b.price - a.price)
+                if (this.sortSeleted == "des") this.filteredProducts.sort((a, b) => b.price - a.price)
 
-                if(this.sortSeleted == "a-z") this.filteredProducts.sort((a, b) => {
+                if (this.sortSeleted == "a-z") this.filteredProducts.sort((a, b) => {
 
 
                     if (a.name < b.name) {
                         return -1;
-                      }
-                      if (a.name > b.name) {
+                    }
+                    if (a.name > b.name) {
                         return 1;
-                      }
-                      return 0;
+                    }
+                    return 0;
 
                 })
 
-                if(this.sortSeleted == "z-a") this.filteredProducts.sort((a, b) => {
+                if (this.sortSeleted == "z-a") this.filteredProducts.sort((a, b) => {
 
 
                     if (a.name < b.name) {
                         return 1;
-                      }
-                      if (a.name > b.name) {
+                    }
+                    if (a.name > b.name) {
                         return -1;
-                      }
-                      return 0;
+                    }
+                    return 0;
 
                 })
 
@@ -366,56 +367,58 @@ createApp({
 
             setTimeout(() => this.messageAlert.message = "", seconds * 1000)
         },
-        addFavorites(product){
+        addFavorites(product) {
 
-            if(this.favs.find(fav => fav.productId == product.id)){
+            if (this.favs.find(fav => fav.productId == product.id)) {
 
-                axios.delete("/api/client/current/favorites/"+this.favs.find(fav => fav.productId == product.id).id)
-                .then(res => {
+                axios.delete("/api/client/current/favorites/" + this.favs.find(fav => fav.productId == product.id).id)
+                    .then(res => {
 
-                    this.handleMessageAlert("Fav quit succesfully", 2, false)
+                        this.handleMessageAlert("Fav quit succesfully", 2, false)
 
-                    this.loadData();
+                        this.loadData();
 
-                }).catch(err => console.log(err))
+                    }).catch(err => console.log(err))
 
 
             } else {
 
-                const data = {  name : product.name, 
-                    imgUrl : product.imgsUrls[0], 
-                    price : product.price,
-                    productId : product.id,
-                    description : product.description,
-                    stock : product.stock}
+                const data = {
+                    name: product.name,
+                    imgUrl: product.imgsUrls[0],
+                    price: product.price,
+                    productId: product.id,
+                    description: product.description,
+                    stock: product.stock
+                }
 
-                axios.post("/api/client/current/favorites", {...data})
-                        .then(res => {
+                axios.post("/api/client/current/favorites", { ...data })
+                    .then(res => {
 
-                            this.handleMessageAlert("Fav added succesfully", 2, false)
+                        this.handleMessageAlert("Fav added succesfully", 2, false)
 
-                            this.loadData();
+                        this.loadData();
 
-                        }).catch(err => console.log(err))
+                    }).catch(err => console.log(err))
 
             }
 
-          
+
 
         },
-        checkedFavoritesAdded(){
+        checkedFavoritesAdded() {
 
             this.filteredProducts = this.filteredProducts.map(updated => {
 
-                        if(this.favs.find(fav => fav.productId == updated.id)){
+                if (this.favs.find(fav => fav.productId == updated.id)) {
 
-                            return {...updated, inFavs : true}
+                    return { ...updated, inFavs: true }
 
-                        } else {
+                } else {
 
-                            return {...updated, inFavs : false}
+                    return { ...updated, inFavs: false }
 
-                        }
+                }
 
             })
 
@@ -529,9 +532,9 @@ createApp({
         },
 
     },
-    computed : {
+    computed: {
 
-        filtering(){
+        filtering() {
 
             this.handleFilterProducts();
             this.checkedFavoritesAdded();
