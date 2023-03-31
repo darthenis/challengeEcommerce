@@ -3,6 +3,7 @@ package com.easybuy.easybuy.services;
 import com.easybuy.easybuy.DTO.FavoriteApplyDTO;
 import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.models.Client;
+import com.easybuy.easybuy.models.Product;
 import org.springframework.security.core.Authentication;
 
 import java.util.List;

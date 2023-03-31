@@ -5,7 +5,7 @@ createApp({
         return{
             navActive : null,
             active : null,
-            bag: [],
+            bag: JSON.parse(localStorage.getItem("bag")) || [],
             totalCartQuantity: 0,
             totalCart: 0,
             isLogged: false

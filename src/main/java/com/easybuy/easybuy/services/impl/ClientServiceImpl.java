@@ -4,6 +4,7 @@ import com.easybuy.easybuy.DTO.FavoriteApplyDTO;
 import com.easybuy.easybuy.DTO.NewClientDTO;
 import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.Favorite;
+import com.easybuy.easybuy.models.Product;
 import com.easybuy.easybuy.repositories.ClientRepository;
 import com.easybuy.easybuy.services.ClientService;
 import com.easybuy.easybuy.utils.EmailHandler;
@@ -140,6 +141,7 @@ public class ClientServiceImpl implements ClientService {
 
         clientRepository.save(client.get());
     }
+
 
     @Override
     public void resendEmail(String email) throws Exception {

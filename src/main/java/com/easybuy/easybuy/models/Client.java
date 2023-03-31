@@ -33,6 +33,9 @@ public class Client {
     private String keyToken;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    private Set<Ticket> tickets;
+
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<Favorite> favorites;
 
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
@@ -61,6 +64,12 @@ public class Client {
         purchaseOrders.add(purchaseOrder);
     }
 
+    public void addTicketPurchase(Ticket ticket){
+
+            ticket.setClient(this);
+            this.tickets.add(ticket);
+
+    }
     public String getKeyToken() {
         return keyToken;
     }
@@ -99,6 +108,8 @@ public class Client {
     public Set<PurchaseOrder> getTickets() {
         return purchaseOrders;
     }
+
+    public Set<Ticket> getTicketsPurchase(){return tickets; }
 
     public void setTickets(Set<PurchaseOrder> purchaseOrders) {
         this.purchaseOrders = purchaseOrders;
@@ -168,4 +179,7 @@ public class Client {
     public void setRates(List<Rate> rates) {
         this.rates = rates;
     }
+
+
+
 }
