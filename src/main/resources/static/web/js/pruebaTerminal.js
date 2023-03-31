@@ -21,9 +21,24 @@ createApp({
     },
     created() {
 
-        this.calculateTotal();
+        this.checkIsLogged().then(res => {
 
-        this.reserved();    
+           if(this.isLogged){
+
+            this.calculateTotal();
+
+            this.reserved(); 
+
+
+           } else {
+
+            location.href = "/web/index.html"
+
+           }
+         
+        })
+
+          
 
 
     },
@@ -39,6 +54,22 @@ createApp({
                 .catch(err => {
                     console.error(err.response.data)
                 })
+        },
+        async checkIsLogged() {
+
+            axios("/api/clients/auth")
+                .then(res => {
+
+                    this.isLogged = true;
+
+                })
+                .catch(err => {
+
+                    console.log(err)
+
+                    this.isLogged = false
+                })
+
         },
         handleMessageAlert(message, seconds, isError) {
 
