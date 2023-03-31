@@ -3,7 +3,7 @@ createApp({
     data() {
         return {
             selectImg: "",
-            dataProduct: null,
+            products: [],
             radioPayments: null,
             bag: JSON.parse(localStorage.getItem("bag")) || [],
             active: null,
@@ -12,7 +12,8 @@ createApp({
             id: null,
             navActive: null,
             isLogged: false,
-            selectSubMenu: false
+            selectSubMenu: false,
+            date: ""
 
         }
     },
@@ -20,7 +21,11 @@ createApp({
 
         this.checkIsLogged()
 
-        console.log(JSON.parse(localStorage.getItem("bag")))
+        this.loadData();
+
+        let date = new Date();
+
+        this.date = date.getDate() + "/" + (date.getMonth() + 1)+"/" +date.getFullYear();
     },
 
     /*-------------------METHODS----------------------*/
@@ -40,6 +45,17 @@ createApp({
 
                     this.isLogged = false
                 })
+
+        },
+
+        loadData(){
+
+                axios("/api/client/current/products")
+                        .then(res => {
+
+                            this.products = res.data;
+
+                        }).catch(err => console.log(err))
 
         },
     
