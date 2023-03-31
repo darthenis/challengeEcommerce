@@ -149,14 +149,13 @@ body {
 
 .padre-segundaOferta {
     display: flex;
-    background-image: url("./img/fondoazul.jpg");
-    background-position: center;
-    background-size: cover;
+
+    background-color: #428bca;
+
     width: 50%;
     gap: 10px;
     height: 19rem;
     text-align: center;
-    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     justify-content: space-between;
     left: -200px;
     opacity: 0;
@@ -178,9 +177,8 @@ body {
 
 .padre-textoo {
     display: flex;
-    /* REGULADOR DE COLOR DE FONDO */
-    background-color: rgba(0, 0, 0, 0.63);
-    /* REGULADOR DE COLOR DE FONDO */
+
+
 }
 
 .padre-segundaOferta h2 {
