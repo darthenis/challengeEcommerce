@@ -109,6 +109,8 @@ public class PurchaseOrderController {
 
             Optional<Client> client = clientService.findByEmail(authentication.getName());
 
+            if(client.isEmpty()) return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+
             Ticket ticket = ticketService.createTicket(purchaseOrder, client.get());
 
             PDFExporter exporter = new PDFExporter(ticket);
