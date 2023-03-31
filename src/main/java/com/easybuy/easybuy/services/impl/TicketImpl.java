@@ -1,6 +1,7 @@
 package com.easybuy.easybuy.services.impl;
 
 import com.easybuy.easybuy.DTO.ApplyProductDTO;
+import com.easybuy.easybuy.models.Client;
 import com.easybuy.easybuy.models.PurchaseOrder;
 import com.easybuy.easybuy.models.Ticket;
 import com.easybuy.easybuy.models.TicketProduct;
@@ -21,7 +22,7 @@ public class TicketImpl implements TicketService {
     TicketRepository ticketRepository;
 
     @Override
-    public Ticket createTicket(PurchaseOrder purchaseOrder) throws Exception{
+    public Ticket createTicket(PurchaseOrder purchaseOrder, Client client) throws Exception{
 
         if(purchaseOrder.getDateTime() == null ) throw new Exception("missing date");
 
@@ -50,17 +51,21 @@ public class TicketImpl implements TicketService {
 
         List<TicketProduct> ticketProducts = purchaseOrder.getTicketProducts().stream().map(TicketProduct::new).collect(Collectors.toList());
 
-        Ticket newTicket = new Ticket(finalTicketNumber, purchaseOrder.getClient().getName() + " " + purchaseOrder.getClient().getLastName(), ticketProducts, purchaseOrder.getDateTime());
+        Ticket newTicket = new Ticket(finalTicketNumber, purchaseOrder.getClient().getName() + " " + purchaseOrder.getClient().getLastName(), purchaseOrder.getDateTime());
 
         double amount = 0.0;
 
-        for(TicketProduct ticketProduct : newTicket.getTicketProducts()){
+        for(TicketProduct ticketProduct : ticketProducts){
 
             double total = ticketProduct.getPrice() * ticketProduct.getQuantity();
 
             amount += total;
 
+            newTicket.addTicketProduct(ticketProduct);
+
         }
+
+        newTicket.setClient(client);
 
         ticketRepository.save(newTicket);
 
@@ -71,6 +76,11 @@ public class TicketImpl implements TicketService {
     @Override
     public Optional<Ticket> findByid(Long id) {
         return ticketRepository.findById(id);
+    }
+
+    @Override
+    public void save(Ticket ticket) {
+        ticketRepository.save(ticket);
     }
 
 

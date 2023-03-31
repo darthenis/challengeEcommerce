@@ -23,10 +23,29 @@ createApp({
         this.id = parameters.get("id")
         this.params()
         this.checkIsLogged()
+        this.quantityTotalCart()
+        this.priceTotalCart()
     },
 
     /*-------------------METHODS----------------------*/
     methods: {
+
+        checkIsLogged() {
+
+            axios("/api/clients/auth")
+                .then(res => {
+
+                    this.isLogged = true;
+
+                })
+                .catch(err => {
+
+                    console.log(err)
+
+                    this.isLogged = false
+                })
+
+        },
 
         /*----------------PARAMS ID PRODUCTO-------------------*/
         params() {
@@ -128,8 +147,9 @@ createApp({
         /*--------------TOGGLE CART--------------*/
         toggleCart() {
 
-            if (this.active == null) {
+            if (!this.active) {
                 this.active = true;
+                this.navActive = this.navActive !== null ? false : null;
             } else {
                 this.active = !this.active;
             }
@@ -217,17 +237,6 @@ createApp({
                 this.navActive = false;
 
             }
-
-        },
-        checkIsLogged(){
-
-            axios("/clients/auth")
-                .then(res => {
-
-                    this.isLogged = true;
-
-                })
-                .catch(err => this.isLogged = false)
 
         },
 

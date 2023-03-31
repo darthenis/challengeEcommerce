@@ -16,14 +16,14 @@ body {
     align-items: center;
     width: 100%;
     /* border: 1px solid black; */
-    background-color: rgba(0, 0, 0, 0.538);
+    background-color: hsla(195, 61%, 40%, 0.538);
     height: 32rem;
     margin-top: 5rem;
     justify-content: space-between;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./img/fondoazul.jpg");
 }
 
 .padre-delPadre-emi {
-    background-image: url(./img/th.jfif);
     background-position: center;
     background-size: cover;
     left: -200px;
@@ -129,7 +129,7 @@ body {
 }
 
 .tres p {
-    color: rgb(0, 255, 26);
+    color: rgb(54, 90, 57);
 }
 
 .cuatro p {
@@ -149,14 +149,13 @@ body {
 
 .padre-segundaOferta {
     display: flex;
-    background-image: url(./img/th.jfif);
+    background-image: url("../assets/img/fondoimg.jpg");
     background-position: center;
     background-size: cover;
     width: 50%;
     gap: 10px;
     height: 19rem;
     text-align: center;
-    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     justify-content: space-between;
     left: -200px;
     opacity: 0;
@@ -178,9 +177,8 @@ body {
 
 .padre-textoo {
     display: flex;
-    /* REGULADOR DE COLOR DE FONDO */
-    background-color: rgba(0, 0, 0, 0.63);
-    /* REGULADOR DE COLOR DE FONDO */
+
+
 }
 
 .padre-segundaOferta h2 {
@@ -288,8 +286,6 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 3rem;
-    /* justify-content: space-between; */
-    background-color: rgb(95, 108, 226);
 }
 
 .categoriasLeonardo h2 {
@@ -321,7 +317,7 @@ body {
     align-items: center;
     margin-bottom: 3rem;
     /* justify-content: space-between; */
-    background-color: rgb(95, 108, 226);
+
 }
 
 .popularLeo h2 {
@@ -336,8 +332,6 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 3rem;
-    /* justify-content: space-between; */
-    background-color: rgb(95, 108, 226);
 }
 
 @media (max-width:818px) {

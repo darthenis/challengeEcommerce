@@ -56,7 +56,7 @@ public class PurchaseOrderController {
     }
 
     @PostMapping("/client/current/orders")
-    public ResponseEntity<Object> newOrder(@RequestBody NewPurchaseOrderDTO newPurchaseOrderDTO, Authentication authentication) {
+    public ResponseEntity<?> newOrder(@RequestBody NewPurchaseOrderDTO newPurchaseOrderDTO, Authentication authentication) {
 
         if(newPurchaseOrderDTO.getAmount() == null) return new ResponseEntity<>("missing amount", HttpStatus.FORBIDDEN);
 
@@ -91,11 +91,13 @@ public class PurchaseOrderController {
            if(!isBuyed) purchaseService.delete(purchaseOrder.getNumber());
         });
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        PurchaseOrder purchaseOrder1 = purchaseService.findByNumber(purchaseOrder.getNumber());
+
+        return new ResponseEntity<>(purchaseOrder1.getId(), HttpStatus.CREATED);
     }
 
     @PostMapping("/client/current/orders/{id}/tickets")
-    public ResponseEntity<?> completePurchaseOrder(@PathVariable Long id, @RequestBody PayApplicationDTO payApplicationDTO,  Authentication authentication){
+    public ResponseEntity<?> completePurchaseOrder(@PathVariable Long id, Authentication authentication){
 
         try {
 
@@ -107,9 +109,15 @@ public class PurchaseOrderController {
 
             Optional<Client> client = clientService.findByEmail(authentication.getName());
 
-            Ticket ticket = ticketService.createTicket(purchaseOrder);
+            if(client.isEmpty()) return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+
+            Ticket ticket = ticketService.createTicket(purchaseOrder, client.get());
 
             PDFExporter exporter = new PDFExporter(ticket);
+
+            //client.get().addTicketPurchase(ticket);
+
+            //clientService.save(client.get());
 
             exporter.exportToRoot();
 

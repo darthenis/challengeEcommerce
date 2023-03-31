@@ -22,7 +22,7 @@ createApp({
             favs : [],
             isLogged : false,
             active: null,
-            bag: [],
+            bag: JSON.parse(localStorage.getItem("bag")) || [],
             totalCartQuantity : 0,
             totalCart: 0,
             navActive : null
@@ -39,6 +39,10 @@ createApp({
         document.addEventListener("scroll", () => this.isVisible());
 
         this.checkIsLogged()
+
+        this.quantityTotalCart()
+
+        this.priceTotalCart()
 
     },
     methods:{

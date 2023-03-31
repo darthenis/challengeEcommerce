@@ -22,6 +22,10 @@ createApp({
     },
     created() {
 
+        this.quantityTotalCart()
+
+        this.priceTotalCart()
+
         document.addEventListener("scroll", () => this.isVisible());
 
         axios.post("/api/login", "email=emi.acevedo@gmail.com&password=123")
@@ -193,6 +197,8 @@ createApp({
                     console.log(res)
 
                     this.handleMessageAlert("Favorite deleted succesfully", 2, false)
+
+                    setTimeout(() => location.href="/index.html", 2000)
 
                 })
                 .catch(err => {
