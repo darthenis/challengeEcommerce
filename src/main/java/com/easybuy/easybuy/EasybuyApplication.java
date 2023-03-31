@@ -109,7 +109,7 @@ public class EasybuyApplication {
 			Rate laptopRate = new Rate("I recently purchased a new laptop and I am blown away by its speed and performance. The processor is lightning fast and can handle multiple tasks without slowing down. The display is vibrant and clear, making it perfect for streaming videos or working on graphics-intensive projects. The battery life is impressive, lasting for several hours even with heavy use. Overall, I highly recommend this laptop for anyone in need of a reliable and powerful machine.", StarsEnum.FIVE);
 			Rate laptopRate2 = new Rate("I bought a budget-friendly laptop and while it gets the job done, it falls short in some areas. The processor is not as fast as I would like, which makes it difficult to multitask or run more demanding programs. The display is decent, but not as sharp or vibrant as higher-end models. However, the battery life is impressive and lasts for several hours on a single charge. If you're looking for a basic laptop for everyday use, this one could work for you, but if you need something more powerful and feature-rich, you may want to consider a higher-end model.", StarsEnum.THREE);
 
-			Product pcApple = new Product("MacBook Air 13.3' Laptop - Apple M1 chip",
+			Product pcApple = new Product("MacBook Air 13.3'",
 					"Apple’s thinnest and lightest notebook gets supercharged with the Apple M1 chip." +
 							" Tackle your projects with the blazing-fast 8-core CPU. " +
 							"Take graphics-intensive apps and games to the next level with the 7-core GPU. " +
@@ -176,7 +176,7 @@ public class EasybuyApplication {
 			Rate sofaRate = new Rate("I recently purchased this sofa and I am extremely satisfied with my purchase. The quality is amazing, with durable and comfortable materials that make it perfect for lounging or entertaining. The design is sleek and modern, and it fits perfectly with my home decor. The assembly was straightforward and easy to do on my own. I highly recommend this sofa to anyone in need of a high-quality and stylish addition to their home.", StarsEnum.FIVE);
 			Rate sofaRate2 = new Rate("I purchased this sofa hoping to upgrade my living room, but unfortunately it fell short of my expectations. The quality was not as good as I had hoped, with thin and flimsy materials that didn't feel very durable. The design was not as comfortable as I had hoped, and the color was not as vibrant as it appeared in the photos. Assembly was difficult and required the help of a professional. While it's a budget-friendly option, I would recommend spending more for a higher-quality sofa.", StarsEnum.TWO);
 
-			Product sofaXl = new Product("Lovesac - 4 Seats + 5 Sides Corded" , "The World’s Most Adaptable Couch – Sactionals were specially designed to provide style, comfort," +
+			Product sofaXl = new Product("Lovesac - 4 Seats" , "The World’s Most Adaptable Couch – Sactionals were specially designed to provide style, comfort," +
 					" and peace of mind. Not only do they easily change their shape to perfectly accommodate every occasion, " +
 					"they can transform their color and style to always match your tastes. " +
 					"The Sactionals product platform provides peace of mind where other couches can’t. " +
@@ -192,7 +192,7 @@ public class EasybuyApplication {
 
 
 
-			Product desk = new Product("Sauder - Boulevard Café L Shape Desk",
+			Product desk = new Product("Sauder - Desk",
 					"It's time for a style upgrade. Get motivated to take on all your major projects with the charming good looks and " +
 					"industrial-inspired design of this L-shaped desk from the Boulevard Café collection. Its spacious workspace provides " +
 					"you with all the room you need for your must-have desk essentials like your laptop, collection of notepads and your " +
