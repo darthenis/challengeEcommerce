@@ -33,23 +33,23 @@ createApp({
 						window.location.href = '/web/index.html';
 					}
 				})
-				.catch(error => concole.error(error))
+				.catch(error => console.error(error))
 		},
 		handleNavResponsive() {
 
 			console.log("aca")
 
-            if (!this.navActive) {
+			if (!this.navActive) {
 
-                this.navActive = true;
+				this.navActive = true;
 
-            } else {
+			} else {
 
-                this.navActive = false;
+				this.navActive = false;
 
-            }
+			}
 
-        },
+		},
 
 		/*----------------PARAMS TOKEN LOGIN-------------------*/
 
