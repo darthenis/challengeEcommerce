@@ -40,7 +40,9 @@ createApp({
 
         this.checkIsLogged()
 
-        console.log()
+        this.quantityTotalCart()
+
+        this.priceTotalCart()
 
     },
     methods:{

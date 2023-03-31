@@ -23,6 +23,8 @@ createApp({
         this.id = parameters.get("id")
         this.params()
         this.checkIsLogged()
+        this.quantityTotalCart()
+        this.priceTotalCart()
     },
 
     /*-------------------METHODS----------------------*/

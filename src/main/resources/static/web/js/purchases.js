@@ -23,6 +23,10 @@ createApp({
 
         this.loadData();
 
+        this.quantityTotalCart()
+
+        this.priceTotalCart()
+
         let date = new Date();
 
         this.date = date.getDate() + "/" + (date.getMonth() + 1)+"/" +date.getFullYear();

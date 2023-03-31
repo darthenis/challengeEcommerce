@@ -16,6 +16,10 @@ createApp({
 
         this.checkIsLogged()
 
+        this.quantityTotalCart()
+
+        this.priceTotalCart()
+
     },
     methods:{
         /*-------------------LOGOUT--------------------*/
