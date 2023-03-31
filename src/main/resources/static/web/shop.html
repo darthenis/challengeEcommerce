@@ -327,7 +327,7 @@
       </nav>
     </header>
         
-        <main class="container_shop_main">
+        <main class="container_shop_main" v-cloak>
              <section class="grid_layout">
             
                 <div class="categories_shop" style="height: fit-content">
@@ -368,7 +368,7 @@
                 </div>
 
                 <div class="menu_top_shop pt-4 pb-2">
-                    <div>Showing {{(initPage / 9) + 1}}–<span v-html="Math.round(totalFilteredProducts.length / 9)"></span> of <span v-html="filteredProducts.length"></span> results</div>
+                    <div>Showing <span v-html="(initPage / 9) + 1"></span>–<span v-html="Math.round(totalFilteredProducts.length / 9)"></span> of <span v-html="filteredProducts.length"></span> results</div>
                     <div>Sort by: 
                         <select style="width: 100px;" v-model="sortSeleted">
                             <option value="">Default</option>
