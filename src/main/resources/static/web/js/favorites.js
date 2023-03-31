@@ -6,8 +6,7 @@ createApp({
 
             active: null,
             activeFade: false,
-            favorites: [{ id: 1, name: "Refrigerator Patrick Fagor", description: "Refrigerator Patrick Fagor, engine watts 1/4HP", price: 200, stock: 258 },
-            { id: 2, name: "Refrigerator Patrick Fagor", description: "Refrigerator Patrick Fagor, engine watts 1/4HP", price: 200, stock: 258 }],
+            favorites: [],
             visibleArticle: [],
             messageAlert: {
                 message: "",
@@ -28,20 +27,7 @@ createApp({
 
         document.addEventListener("scroll", () => this.isVisible());
 
-        axios.post("/api/login", "email=emi.acevedo@gmail.com&password=123")
-            .then(res => {
-
-                console.log(res)
-                this.loadData();
-
-            })
-            .catch(err => {
-
-                console.log(err)
-
-            })
-
-
+        this.loadData();
 
     },
     methods: {
