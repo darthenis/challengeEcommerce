@@ -28,6 +28,23 @@ createApp({
     /*-------------------METHODS----------------------*/
     methods: {
 
+        checkIsLogged() {
+
+            axios("/api/clients/auth")
+                .then(res => {
+
+                    this.isLogged = true;
+
+                })
+                .catch(err => {
+
+                    console.log(err)
+
+                    this.isLogged = false
+                })
+
+        },
+
         /*----------------PARAMS ID PRODUCTO-------------------*/
         params() {
             axios.get("/api/products/" + this.id)
@@ -128,8 +145,9 @@ createApp({
         /*--------------TOGGLE CART--------------*/
         toggleCart() {
 
-            if (this.active == null) {
+            if (!this.active) {
                 this.active = true;
+                this.navActive = this.navActive !== null ? false : null;
             } else {
                 this.active = !this.active;
             }
@@ -217,17 +235,6 @@ createApp({
                 this.navActive = false;
 
             }
-
-        },
-        checkIsLogged(){
-
-            axios("/clients/auth")
-                .then(res => {
-
-                    this.isLogged = true;
-
-                })
-                .catch(err => this.isLogged = false)
 
         },
 

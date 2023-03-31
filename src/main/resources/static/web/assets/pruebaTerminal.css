@@ -4,11 +4,6 @@
   margin: 0;
 }
 
-.main-selectProduct {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.107), rgba(0, 0, 0, 0.101)), url("./img/pexels-monstera-7794441.jpg");
-  min-height: 100vh;
-
-}
 
 .seletedImg {
   border: 2px solid rgb(47, 46, 46);
@@ -22,10 +17,4 @@
   padding: 1rem;
 
   height: 30rem;
-}
-
-.box-general {
-  padding: 1rem;
-  backdrop-filter: blur(3px);
-  /*  background-color: rgba(128, 128, 128, 0.442); */
 }
