@@ -16,6 +16,8 @@ createApp({
             active: null,
             totalCart: 0,
             totalCartQuantity: 0,
+            isLogged: false,
+            navActive: null
     
         }
     },
@@ -28,6 +30,8 @@ createApp({
         document.addEventListener("scroll", () => this.isVisible());
 
         this.loadData();
+
+        this.checkIsLogged()
 
     },
     methods: {
@@ -45,6 +49,40 @@ createApp({
                     console.log(err)
 
                 })
+
+        },
+        checkIsLogged() {
+
+            axios("/api/clients/auth")
+                .then(res => {
+
+                    this.isLogged = true;
+
+                })
+                .catch(err => {
+
+                    console.log(err)
+
+                    this.isLogged = false
+                })
+
+        },
+        handleSearch() {
+
+            location.href = "/web/shop.html?search=" + this.searchProduct;
+
+        },
+        handleNavResponsive() {
+
+            if (!this.navActive) {
+
+                this.navActive = true;
+
+            } else {
+
+                this.navActive = false;
+
+            }
 
         },
         /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/

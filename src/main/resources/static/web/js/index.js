@@ -298,7 +298,7 @@ createApp({
 
             let html = "";
 
-            for (let i = 1; i < rounded; i++) {
+            for (let i = 1; i <= rounded; i++) {
 
                 html += star;
 
