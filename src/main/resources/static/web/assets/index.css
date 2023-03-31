@@ -672,3 +672,66 @@ word-spacing: 0.4rem;
     }
 
 }
+/* carta de precentacion */
+.contenedor-cartas-dePrecentacion{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.contenedor-carta-precentancion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 38rem;
+    width: 18rem;
+    background-color: rgba(79, 78, 112, 0.833);
+    margin: 5px;
+    margin-top: 40px;
+    text-align: center;
+    padding-bottom: 5rem;
+    border-radius: 4px;
+}
+.contenedor-carta-precentancion img{
+    border-radius: 9rem;
+    height: 10rem;
+    box-shadow: -2px 1px 8px rgba(0, 0, 0, 0.555);
+}
+.cartaMai img{
+height: 10rem;
+width: 10rem;
+}
+.cartaLeo img{
+    height: 10rem;
+width: 10rem;
+}
+.contenedor-carta-precentancion h3{
+    color: white;
+    font-size: 1.6rem;
+}
+.contenedor-carta-precentancion h4{
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+.contenedor-carta-precentancion p{
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    margin-top: 15px;
+    min-height: 15rem;
+}
+.contenedor-carta-precentancion i{
+    font-size:25px;
+    margin: 10px;
+    color: white;
+    margin-top: 26px;
+    transition: all 1s;
+}
+.contenedor-carta-precentancion i:hover{
+    rotate: 360deg;
+    color: rgb(217, 175, 216);
+}
+/* carta de precentacion */
