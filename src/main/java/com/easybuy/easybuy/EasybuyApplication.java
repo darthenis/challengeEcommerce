@@ -206,7 +206,7 @@ public class EasybuyApplication {
 
 
 
-			Product bed = new Product("CorLiving - Nova Ridge Tufted ","\n" +
+			Product bed = new Product("CorLiving - Nova Ridge Tufted ",
 					"This beautifully upholstered fabric bed is the complete package, all delivered to you in 1 package. Complete your bedroom space with the stylish diamond button-tufted padded headboard with matching upholstered fabric bed frame. Equipped with durable slats and adjustable support legs designed with comfort and stability in mind, " +
 					"enjoy a restful night's sleep on this trendy extension to your bedroom or guestroom.",421.99,15,5,LocalDate.now().minusWeeks(1),List.of(CategoriesEnum.FURNITURE));
 			bed.setImgsUrls(List.of("http://localhost:8080/web/assets/img/camaa.png"));
@@ -330,6 +330,12 @@ public class EasybuyApplication {
 			productRepository.save(sofaXl);
 			productRepository.save(desk);
 			productRepository.save(bed);
+			productRepository.save(bloodPressure);
+			productRepository.save(cuutopiaPlush);
+			productRepository.save(speaker);
+			productRepository.save(cableHdmi);
+			productRepository.save(sofa);
+			productRepository.save(laptop);
 
 
 			purchaseOrderRepository.save(newPurchaseOrder);
