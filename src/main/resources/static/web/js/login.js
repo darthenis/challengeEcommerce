@@ -8,17 +8,16 @@ createApp({
 			lastName: "",
 			tel: "",
 			password: "",
-			email: ""
-
+			email: "",
+			token: "",
+			navActive: null
 
 		}
 	},
 	created() {
-
-
-
-
-
+		let parameterUrl = location.search
+		let parameters = new URLSearchParams(parameterUrl)
+		this.token = parameters.get("token")
 
 
 	},
@@ -36,7 +35,23 @@ createApp({
 				})
 				.catch(error => concole.error(error))
 		},
+		handleNavResponsive() {
 
+			console.log("aca")
+
+            if (!this.navActive) {
+
+                this.navActive = true;
+
+            } else {
+
+                this.navActive = false;
+
+            }
+
+        },
+
+		/*----------------PARAMS TOKEN LOGIN-------------------*/
 
 		signUp() {
 			axios.post('/api/clients', {
@@ -47,10 +62,7 @@ createApp({
 				password: this.password
 			},)
 				.then(response => {
-					console.log(response)
-					this.user = this.email
-					this.password1 = this.password
-					this.login()
+					window.location.href = "/web/login.html"
 				})
 				.catch(error => console.log(error))
 		},

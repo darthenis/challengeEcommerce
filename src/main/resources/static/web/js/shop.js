@@ -21,18 +21,38 @@ createApp({
             endPage: 9,
             favs : [],
             isLogged : false,
-            active: null
+            active: null,
+            bag: [],
+            totalCartQuantity : 0,
+            totalCart: 0,
+            navActive : null
         }
     },
     created(){
 
-        this.loadData();
+        let valueSearch = this.getParam("search");
+
+        if(valueSearch) this.searchProduct = valueSearch;
+
+        this.loadData().then(() => this.setCheckBox());
 
         document.addEventListener("scroll", () => this.isVisible());
 
         this.checkIsLogged()
+
     },
     methods:{
+        logout(){
+
+            axios.post("/api/logout")
+                .then(() => {
+
+                    this.isLogged = false;
+                    this.handleMessageAlert("Sign out successfully", 3, false)
+
+                })
+
+        },
         checkIsLogged(){
 
             axios("/api/clients/auth")
@@ -55,20 +75,13 @@ createApp({
             return parameters.get(key)
 
         },
-        loadData(){
+        async loadData(){
 
             axios.get("/api/products")
                 .then(res => {
                     console.log(res)
                     this.products = res.data;
                     this.filterProducts = res.data;
-
-                    let string = this.getParam("filter");
-
-                    let element = document.getElementById(string);
-
-                    if(element) element.click();         
-                    
                 })
                 .catch(err => {
 
@@ -78,6 +91,44 @@ createApp({
 
             axios.get("/api/client/current/favorites")
                     .then(res => this.favs = res.data)
+
+        },
+        setCheckBox(){
+
+            let string = this.getParam("filter");
+
+            let element;
+            
+            switch(string){
+                case "Appliance":
+                    element = document.getElementById("appli1");
+                    break;
+                case "Audio":   
+                    element = document.getElementById("aud1");
+                    break;
+                case "Furniture":
+                    element = document.getElementById("furn1");
+                    break;
+                case "Health":
+                    element = document.getElementById("heal1");
+                    break;
+                case "Kids":
+                    element = document.getElementById("kids1");
+                    break;
+                case "Tecnology":
+                    element = document.getElementById("tecn1");
+                    break;
+                case "Video":
+                    element = document.getElementById("vid1");
+                    break;
+            }
+
+            if(element) element.click();     
+            
+            let element2 = document.getElementById(string);
+
+            if(element2) element2.click();
+
 
         },
         handlePages(isNext){
@@ -325,28 +376,30 @@ createApp({
                 }).catch(err => console.log(err))
 
 
+            } else {
+
+                const data = {  name : product.name, 
+                    imgUrl : product.imgsUrls[0], 
+                    price : product.price,
+                    productId : product.id,
+                    description : product.description,
+                    stock : product.stock}
+
+                axios.post("/api/client/current/favorites", {...data})
+                        .then(res => {
+
+                            this.handleMessageAlert("Fav added succesfully", 2, false)
+
+                            this.loadData();
+
+                        }).catch(err => console.log(err))
+
             }
 
-            const data = {  name : product.name, 
-                            imgUrl : product.imgsUrls[0], 
-                            price : product.price,
-                            productId : product.id,
-                            description : product.description,
-                            stock : product.stock}
-
-            axios.post("/api/client/current/favorites", {...data})
-                    .then(res => {
-
-                        this.handleMessageAlert("Fav added succesfully", 2, false)
-
-                        this.loadData();
-
-                    }).catch(err => console.log(err))
+          
 
         },
         checkedFavoritesAdded(){
-
-            console.log("favs: ", this.favs)
 
             this.filteredProducts = this.filteredProducts.map(updated => {
 
@@ -393,6 +446,8 @@ createApp({
             localStorage.setItem("bag", JSON.stringify(this.bag))
             this.quantityTotalCart()
             this.priceTotalCart()
+
+            this.handleMessageAlert("Product added succesfully", 2, false)
         },
 
         /* -------------QUITAR CANTIDAD DEL CARRITO -------------*/
@@ -447,10 +502,24 @@ createApp({
         /*--------------TOGGLE CART--------------*/
         toggleCart() {
 
-            if (this.active == null) {
+            if (!this.active) {
                 this.active = true;
+                this.navActive = this.navActive != null ? false : null;
             } else {
                 this.active = !this.active;
+            }
+
+        },
+        handleNavResponsive() {
+
+            if (!this.navActive) {
+
+                this.navActive = true;
+
+            } else {
+
+                this.navActive = false;
+
             }
 
         },
