@@ -20,14 +20,15 @@ createApp({
         }
     },
     created() {
-
+        this.calculateTotal()
+        this.reserved()
         this.checkIsLogged().then(res => {
             if (this.isLogged) {
                 this.calculateTotal();
-                this.reserved();
+                ;
             } else {
 
-                location.href = "/web/index.html"
+                /*  location.href = "/web/index.html" */
 
             }
 
@@ -45,7 +46,10 @@ createApp({
                 products: [...this.getProducts()]
             },
                 { headers: { 'content-type': 'application/json' } })
-                .then(res => this.orderId = res.data)
+                .then(res => {
+                    this.orderId = res.data
+                    console.log(res.data)
+                })
                 .catch(err => {
                     console.error(err.response.data)
                 })
@@ -106,42 +110,50 @@ createApp({
 
             this.isLoading = true;
 
-            axios.post('https://mindhub-huborange.up.railway.app/api/transactions/pay', {
-                cardNumber: this.cardNumber,
+            axios.post('https://numba-bank.up.railway.app/api/clients/transaction/buy', {
+                number: this.cardNumber,
                 cvv: this.cvv,
-                amount: this.total
+                transactionAmount: this.total,
+                description: "Easy Buy - Debit"
+
             })
                 .then(res => {
-
-                    this.clearForm();
-                    this.handleMessage("Paid succesfully", 3, false)
-                    this.isLoading = false;
+                    this.finishPay()
 
                 }).catch(err => {
 
                     console.log(err)
                     this.isLoading = false;
-                    this.handleMessage(err.response.data, 3, true)
+                    this.handleMessage(err, 3, true)
 
                 })
 
         },
         finishPay() {
 
-            axios.post(`/client/current/orders/${orderId}/tickets`)
+            axios.post(`/api/client/current/orders/${this.orderId}/tickets`)
                 .then(res => {
-
-
-                    this.handleMessageAlert("Purchase completed succesfully", 3, false)
-
-                    this.completed = true;
+                    localStorage.clear()
+                    location.href = "/web/purchases.html"
 
                 })
+                .catch(err =>
+                    console.error(err.data))
 
-        }
+        },
 
+        /*------------------FORMATEO A MONEDA TIPO DOLAR US--------------*/
+        formatDollar(price) {
+            let USDollar = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+            return USDollar.format(price)
+        },
 
-
+        resetPayments() {
+            this.radioPayments = null
+        },
 
     },
 

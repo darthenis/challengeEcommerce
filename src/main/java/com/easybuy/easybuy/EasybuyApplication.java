@@ -28,7 +28,7 @@ public class EasybuyApplication {
 	public CommandLineRunner initData(ClientRepository clientRepository, ProductRepository productRepository, PurchaseOrderProductRepository purchaseOrderProductRepository, PurchaseOrderRepository purchaseOrderRepository, RateRepository rateRepository) {
 		return (args) ->{
 
-			Client luisito = new Client("Luis","pirulo","1234444","emi.acevedo@gmail.com", passwordEncoder.encode("123"));
+				Client luisito = new Client("Luis","pirulo","1234444","emi.acevedo.letras@gmail.com", passwordEncoder.encode("123"));
 			luisito.setEnabled(true);
 			Client client1 = new Client("Juan Antonio", "Pérez", "555-1234", "japerez@email.com", passwordEncoder.encode("123"));
 			client1.setEnabled(true);
@@ -51,7 +51,7 @@ public class EasybuyApplication {
 			Client client10 = new Client("Isabel Cristina", "Vargas", "555-8901", "icvargas@email.com",  passwordEncoder.encode("123"));
 			client10.setEnabled(true);
 
-			Client admin = new Client("Admin","Admin","4444444","admin@mindhub.com", passwordEncoder.encode( passwordEncoder.encode("123")));
+			Client admin = new Client("Admin","Admin","4444444","admin@mindhub.com",  passwordEncoder.encode("123"));
 			admin.setEnabled(true);
 
 
