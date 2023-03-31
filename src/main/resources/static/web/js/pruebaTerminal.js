@@ -8,7 +8,7 @@ createApp({
             amountBuy: 0,
             bag: JSON.parse(localStorage.getItem("bag")) || [],
             total: 0,
-            orderId : null,
+            orderId: null,
             messageAlert: {
                 message: "",
                 isError: false
@@ -22,23 +22,18 @@ createApp({
     created() {
 
         this.checkIsLogged().then(res => {
+            if (this.isLogged) {
+                this.calculateTotal();
+                this.reserved();
+            } else {
 
-           if(this.isLogged){
+                location.href = "/web/index.html"
 
-            this.calculateTotal();
+            }
 
-            this.reserved(); 
-
-
-           } else {
-
-            location.href = "/web/index.html"
-
-           }
-         
         })
 
-          
+
 
 
     },
@@ -80,9 +75,9 @@ createApp({
 
             setTimeout(() => this.messageAlert.message = "", seconds * 1000)
         },
-        calculateTotal(){
+        calculateTotal() {
 
-            for(product of this.bag){
+            for (product of this.bag) {
 
                 this.total += product.price * product.quantity
 
@@ -90,58 +85,60 @@ createApp({
 
         },
 
-        getProducts(){
+        getProducts() {
 
             let products = [];
 
-            for(let product of this.bag){
+            for (let product of this.bag) {
 
                 products.push({
-                                idProduct: product.id,
-                                price: product.price,
-                                quantity: product.quantity
-                            })
+                    idProduct: product.id,
+                    price: product.price,
+                    quantity: product.quantity
+                })
 
             }
 
             return products;
 
         },
-        handlerPay(){
+        handlerPay() {
 
             this.isLoading = true;
 
-            axios.post('https://mindhub-huborange.up.railway.app/api/transactions/pay',{    cardNumber : this.cardNumber,
-                                                                                                cvv : this.cvv,
-                                                                                                amount : this.total})
-              .then(res => {
+            axios.post('https://mindhub-huborange.up.railway.app/api/transactions/pay', {
+                cardNumber: this.cardNumber,
+                cvv: this.cvv,
+                amount: this.total
+            })
+                .then(res => {
 
-                  this.clearForm();
-                  this.handleMessage("Paid succesfully", 3, false)
-                  this.isLoading = false;
+                    this.clearForm();
+                    this.handleMessage("Paid succesfully", 3, false)
+                    this.isLoading = false;
 
-              }).catch(err => {
+                }).catch(err => {
 
-                console.log(err)
-                this.isLoading = false;
-                this.handleMessage(err.response.data, 3, true)
+                    console.log(err)
+                    this.isLoading = false;
+                    this.handleMessage(err.response.data, 3, true)
 
-              })
+                })
 
-          },
-          finishPay(){
+        },
+        finishPay() {
 
             axios.post(`/client/current/orders/${orderId}/tickets`)
-                    .then(res => {
+                .then(res => {
 
 
-                        this.handleMessageAlert("Purchase completed succesfully", 3, false)
+                    this.handleMessageAlert("Purchase completed succesfully", 3, false)
 
-                        this.completed = true;
+                    this.completed = true;
 
-                    })
+                })
 
-          }
+        }
 
 
 

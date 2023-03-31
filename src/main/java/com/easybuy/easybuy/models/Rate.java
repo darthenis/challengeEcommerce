@@ -12,6 +12,7 @@ public class Rate {
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
+    @Column(length = 1000)
     private String commentary;
 
     private StarsEnum stars;

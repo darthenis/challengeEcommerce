@@ -16,12 +16,12 @@ createApp({
             isLogged: false,
             navActive: null,
             favs: [],
-            searchProduct : "",
-            counter : {
-                days:0,
-                hours:0,
-                minutes:0,
-                seconds:0
+            searchProduct: "",
+            counter: {
+                days: 0,
+                hours: 0,
+                minutes: 0,
+                seconds: 0
             }
 
         }
@@ -298,15 +298,15 @@ createApp({
 
             let html = "";
 
-            for (let i = 1; i <= rounded; i++) {
+            for (let i = 1; i < rounded; i++) {
 
-                hmtl += star;
+                html += star;
 
             }
 
             if ((5 - rounded) != 0) {
 
-                for (let i = rounded; i <= 5; i++) {
+                for (let i = rounded; i < 5; i++) {
 
                     rounded++
 
@@ -381,12 +381,12 @@ createApp({
             })
 
         },
-        handleSearch(){
+        handleSearch() {
 
-            location.href = "/web/shop.html?search="+this.searchProduct;
+            location.href = "/web/shop.html?search=" + this.searchProduct;
 
         },
-        regretCount(countDownDate){
+        regretCount(countDownDate) {
 
             setInterval(() => {
 
@@ -400,7 +400,7 @@ createApp({
                 this.counter.seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
             }, 1000);
-            
+
 
         }
 

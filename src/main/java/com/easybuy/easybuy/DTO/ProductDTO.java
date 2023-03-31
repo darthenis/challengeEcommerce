@@ -7,6 +7,7 @@ import javax.persistence.ElementCollection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProductDTO {
     private Long id;
@@ -40,6 +41,7 @@ public class ProductDTO {
         this.stock = product.getStock();
         this.date = product.getDate();
         this.categoriesEnums = product.getCategoriesEnums();
+        this.rates = product.getRates().stream().map(rate-> new RateDTO(rate)).collect(Collectors.toList());
     }
 
     public Long getId() {

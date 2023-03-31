@@ -62,7 +62,7 @@ createApp({
                         }).catch(err => console.log(err))
 
         },
-    
+
 
         /*---------CAMBIO DE IMAGEN DE PRODUCTO-----------------*/
 
@@ -161,7 +161,7 @@ createApp({
 
         },
         avaregeStars(rates){
-            
+
             let five = 0;
 
             let four = 0;
