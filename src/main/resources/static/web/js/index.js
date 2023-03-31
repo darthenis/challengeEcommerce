@@ -37,6 +37,10 @@ createApp({
         document.addEventListener("scroll", () => this.isVisible("offer"));
 
         document.addEventListener("scroll", () => this.isVisible("top"));
+
+        this.quantityTotalCart()
+
+        this.priceTotalCart()
     },
     methods: {
         checkIsLogged() {

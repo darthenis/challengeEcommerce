@@ -22,6 +22,10 @@ createApp({
     },
     created() {
 
+        this.quantityTotalCart()
+
+        this.priceTotalCart()
+
         document.addEventListener("scroll", () => this.isVisible());
 
         axios.post("/api/login", "email=emi.acevedo@gmail.com&password=123")

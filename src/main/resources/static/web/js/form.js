@@ -13,7 +13,11 @@ createApp({
     },
     created(){
 
+        this.quantityTotalCart()
+
         this.checkIsLogged()
+
+        this.priceTotalCart()
 
     },
     methods: {
