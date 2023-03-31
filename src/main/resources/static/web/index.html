@@ -16,214 +16,277 @@
 <body class="bg-rose-50">
   <div id="app">
     {{checkedFavorites}}
-    <nav class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center"
-      :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
-      <div class="navAnimated w-min-screen flex flex-end"
-        :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
-        <div class="fixed px-4 py-2 m-2 bg-white text-black rounded-lg font-bold" @click="handleNavResponsive">X
+    
+  <nav class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center"
+:style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
+<div class="navAnimated w-min-screen flex flex-end"
+  :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
+  <div class="fixed px-4 py-2 m-2 bg-white text-black rounded-lg font-bold" @click="handleNavResponsive">X
+  </div>
+</div>
+
+<div
+  class="flex flex-col h-screen items-center text-white w-full tracking-[1px] transition-all pt-4">
+
+  <div class="flex gap-10 items-center gap-6">
+    <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
+    <div class="relative inline-flex w-fit">
+      <div v-if="totalCartQuantity"
+        class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
+        {{totalCartQuantity}}
+      </div>
+      <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"  data-te-ripple-init
+      data-te-ripple-color="light" @click="toggleCart"></i>
+      
+    </div>
+    <div class="flex justify-center">
+      <div>
+        <div class="relative" data-te-dropdown-ref>
+          <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
+            data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+            data-te-ripple-color="light"></i>
+          <ul
+            class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+            aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+            <li>
+              <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
+            </li>
+            <li>
+              <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                href="./favorites.html" data-te-dropdown-item-ref>Favorites</a>
+            </li>
+            <li>
+              <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
+            </li>
+            <hr
+              class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
+            <li>
+              <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                  href="#" 
+                  @click="logout" 
+                  data-te-dropdown-item-ref>Sign out</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div
-        class="flex flex-col gap-10 mt-4 justify-center items-center text-white w-full tracking-[1px] transition-all">
+  <a href="#" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+    Home
+  </a>
+  <p class="mt-10 hover:text-blue-300 mt-10 cursor-pointer transition-all duration-[.3s]">
+    <div class="relative" data-te-dropdown-ref>
+      <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d"
+        data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+        data-te-ripple-color="light">Categories</div>
+      <ul
+        class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+        aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+        <li class="hover:bg-blue-900 py-1 px-2">
+          <a href="./shop.html?filter=Tecnology">
+            <h2>Technology</h2>
+          </a>
+        </li>
+        <li class="hover:bg-blue-900 py-1 px-2">
+          <a href="./shop.html?filter=Appliance">
+            <h2>Appliance</h2>
+          </a>
+        </li>
+        <li class="hover:bg-blue-900 py-1 px-2">
+          <a href="./shop.html?filter=Furniture">
+            <h2>Furniture</h2>
+          </a>
+        </li>
+        <li class="hover:bg-blue-900 py-1 px-2">
+          <a href="./shop.html?filter=Health">
+            <h2>Health</h2>
+          </a>
+        </li>
+        <li class="hover:bg-blue-900 py-1 px-2">
+          <a href="./shop.html?filter=Audio">
+            <h2>Audio</h2>
+          </a>
+        </li>
+        <li class="hover:bg-blue-900 py-1 px-2">
+          <a href="./shop.html?filter=Video">
+            <h2>Video</h2>
+          </a>
+        </li>
+        <li class="hover:bg-blue-900 py-1 px-2">
+          <a href="./shop.html?filter=Kids">
+            <h2>Kids</h2>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </p>
+  <a href="./frecuents.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+    Frecuent Questions
+  </a>
+  <a href="./about-us.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+    About Us
+  </a>
+  <a href="./form.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+    Contact </a>
+  <div class="flex justify-center gap-4 mt-10">
+    <input type="text" class="w-[20rem] p-2 rounded-lg" placeholder="Search a product..."
+      style="max-width: 69vw; box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5);" />
+    <button style="max-width: 20vw;"
+      class=" flex items-center justify-center w-[5rem] bg-white text-black rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+      <i class="fa-solid fa-magnifying-glass p-1 md:hidden text-black"></i>
+    </button>
+  </div>
 
-        <div class="flex gap-10 items-center gap-6">
-          <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
-          <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCart"><span
-              class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
-          <div class="flex justify-center">
-            <div>
-              <div class="relative" data-te-dropdown-ref>
-                <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
-                  data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-                  data-te-ripple-color="light"></i>
-                <ul
-                  class="p-3 absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-400 bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                  aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
-                  <li>
-                    <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                      href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
-                  </li>
-                  <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                      href="./favorites.html" data-te-dropdown-item-ref>favorites</a>
-                  </li>
-                  <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                      href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
-                  </li>
-                  <hr
-                    class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
-                  <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-500 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                      href="#" @click="logout" data-te-dropdown-item-ref>LogOut</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+</div>
+</nav>
 
-        <a href="#" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-          Home
-        </a>
-        <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-          Categories
-        </p>
-        <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-          Frecuent Questions
-        </a>
-        <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-          About Us
-        </a>
-        <a href="./form.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-          Contact </a>
-        <div class="flex justify-center gap-4 mt-4">
-          <input type="text" class="w-[20rem] p-2 rounded-lg" placeholder="Search a product..."
-            style="max-width: 69vw;" />
-          <button style="max-width: 20vw;"
-            class=" flex items-center justify-center w-[5rem] bg-white text-black rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
-            <i class="fa-solid fa-magnifying-glass p-1 md:hidden text-black"></i>
-          </button>
-        </div>
+<!-- mai -->
+<header>
+<nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
 
+
+
+  <div class="flex items-center justify-center md:flex">
+    <img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" />
+  </div>
+
+
+
+  <div class="md:w-[50%] justify-center gap-4 hidden sm:flex">
+    <input v-model="searchProduct" type="text" class="w-[80%] p-2 rounded-lg" style="box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5)" placeholder="Search a product..." />
+    <button
+      @click="handleSearch"
+      class=" flex items-center justify-center w-[10rem] bg-blue-900 text-white rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+      <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
+      <span class="hidden md:flex">SEARCH</span>
+    </button>
+  </div>
+
+  <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden mr-5" @click="handleNavResponsive">
+    <div class="w-8  h-1 bg-blue-900"></div>
+    <div class="w-8  h-1 bg-blue-900"></div>
+    <div class="w-8  h-1 bg-blue-900"></div>
+  </div>
+
+  <div class="hidden lg:flex items-center gap-6" v-if="isLogged">
+    <a href="./favorites.html"><i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i></a>
+    
+    <div class="relative inline-flex w-fit">
+      <div v-if="totalCartQuantity"
+        class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
+        {{totalCartQuantity}}
       </div>
-    </nav>
-
-    <!-- mai -->
-    <header>
-      <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
-
-
-
-        <div class="flex items-center justify-center md:flex">
-          <img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" />
+      <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"  data-te-ripple-init
+      data-te-ripple-color="light" @click="toggleCart"></i>
+      
+    </div>
+    
+    <div class="flex justify-center">
+      <div>
+        <div class="relative" data-te-dropdown-ref>
+          <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
+            data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+            data-te-ripple-color="light"></i>
+          <ul
+            class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+            aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+            <li>
+              <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
+            </li>
+            <li>
+              <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                href="./favorites.html" data-te-dropdown-item-ref>Favorites</a>
+            </li>
+            <li>
+              <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
+            </li>
+            <hr
+              class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
+            <li>
+              <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                href="#" @click="logout" data-te-dropdown-item-ref>Sign out</a>
+            </li>
+          </ul>
         </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="hidden lg:flex" v-else>
+    <a href="./login.html">
+      <button
+        class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
+    </a>
+  </div>
+</nav>
 
-
-        <div class="md:w-[50%] justify-center gap-4 hidden sm:flex">
-          <input type="text" class="w-[80%] p-2 rounded-lg" placeholder="Search a product..." />
-          <button
-            class=" flex items-center justify-center w-[10rem] bg-blue-900 text-white rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
-            <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
-            <span class="hidden md:flex">SEARCH</span>
-          </button>
-        </div>
-
-        <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden mr-5" @click="handleNavResponsive">
-          <div class="w-8  h-1 bg-blue-900"></div>
-          <div class="w-8  h-1 bg-blue-900"></div>
-          <div class="w-8  h-1 bg-blue-900"></div>
-        </div>
-
-        <div class="hidden lg:flex items-center gap-6" v-if="isLogged">
-          <a href="./favorites.html"><i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i></a>
-          <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" @click="toggleCart"><span
-              class="font-thin text-sm bg-yellow-400 p-1 rounded-full ml-2">{{totalCartQuantity}}</span></i>
-          <div class="flex justify-center">
-            <div>
-              <div class="relative" data-te-dropdown-ref>
-                <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
-                  data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-                  data-te-ripple-color="light"></i>
-                <ul
-                  class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
-                  aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
-                  <li>
-                    <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                      href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
-                  </li>
-                  <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                      href="./favorites.html" data-te-dropdown-item-ref>Favorites</a>
-                  </li>
-                  <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                      href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
-                  </li>
-                  <hr
-                    class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
-                  <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                      href="./updateClient.html" @click="logout" data-te-dropdown-item-ref>LogOut</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hidden lg:flex" v-else>
-          <a href="./login.html">
-            <button
-              class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
-          </a>
-        </div>
-      </nav>
-
-      <nav class="hidden lg:h-[4rem] bg-blue-900 lg:flex justify-center">
-        <div class="flex justify-around items-center text-white w-[45%] tracking-[1px] transition-all">
-          <a href="#" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-            Home
-          </a>
-          <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-            <div class="relative" data-te-dropdown-ref>
-              <div class="cursor-pointer" id="dropdownMenuButton1d"
-                data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-                data-te-ripple-color="light">Categories</div>
-              <ul
-                class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
-                aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Tecnology">
-                    <h2>Technology</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Appliance">
-                    <h2>Appliance</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Furniture">
-                    <h2>Furniture</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Health">
-                    <h2>Health</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Audio">
-                    <h2>Audio</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Video">
-                    <h2>Video</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Kids">
-                    <h2>Kids</h2>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </p>
-          <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-            Frecuent Questions
-          </a>
-          <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-            About Us
-          </a>
-          <a href="./form.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-            Contact </a>
-        </div>
-      </nav>
-    </header>
+<nav class="hidden lg:h-[4rem] bg-blue-900 lg:flex justify-center">
+  <div class="flex justify-center items-center text-white w-[45%] tracking-[1px] transition-all">
+    <a href="./index.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+      Home
+    </a>
+    <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
+      <div class="relative" data-te-dropdown-ref>
+        <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d"
+          data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+          data-te-ripple-color="light">Categories</div>
+        <ul
+          class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+          aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+          <li class="hover:bg-blue-900 py-1 px-2">
+            <a href="./shop.html?filter=Tecnology">
+              <h2>Technology</h2>
+            </a>
+          </li>
+          <li class="hover:bg-blue-900 py-1 px-2">
+            <a href="./shop.html?filter=Appliance">
+              <h2>Appliance</h2>
+            </a>
+          </li>
+          <li class="hover:bg-blue-900 py-1 px-2">
+            <a href="./shop.html?filter=Furniture">
+              <h2>Furniture</h2>
+            </a>
+          </li>
+          <li class="hover:bg-blue-900 py-1 px-2">
+            <a href="./shop.html?filter=Health">
+              <h2>Health</h2>
+            </a>
+          </li>
+          <li class="hover:bg-blue-900 py-1 px-2">
+            <a href="./shop.html?filter=Audio">
+              <h2>Audio</h2>
+            </a>
+          </li>
+          <li class="hover:bg-blue-900 py-1 px-2">
+            <a href="./shop.html?filter=Video">
+              <h2>Video</h2>
+            </a>
+          </li>
+          <li class="hover:bg-blue-900 py-1 px-2">
+            <a href="./shop.html?filter=Kids">
+              <h2>Kids</h2>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </p>
+    <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
+      Frecuent Questions
+    </a>
+    <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
+      About Us
+    </a>
+    <a href="./form.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
+      Contact </a>
+  </div>
+</nav>
+</header>
 
     <main class="flex flex-col items-center lg:flex-row lg:justify-evenly w-[100%] relative">
       <div
@@ -319,6 +382,11 @@
         <article :id="'product-'+product.id" :class="{elementFadeIn : offersEffect[index]}" style="height: 370px"
           class="rounded-lg relative  w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
 
+
+          <div  class="absolute top-0 left-0 mt-2 ml-2 p-1 rounded-lg text-white "
+          :class="{'bg-red-500' : product.stock < 6, 'bg-blue-500' : product.stock > 5}">{{product.stock == 0 ? 'No stock' : product.stock < 6 ? 'Last '+ product.stock + ' units': product.stock + ' units' }}</div>
+          
+
           <i @click="addFavorites(product)" v-if="isLogged"
             :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
             class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
@@ -365,20 +433,20 @@
           <div class="texto-emi">
             <div class="hijoTextoEmi">
               <div class="hijo-del-hijo-emi uno">
-                <p>0</p>
-                <h6>day</h6>
+                <p>{{counter.days}}</p>
+                <h6>days</h6>
               </div>
               <div class="hijo-del-hijo-emi dos">
-                <p>0</p>
-                <h6>day</h6>
+                <p>{{counter.hours}}</p>
+                <h6>hours</h6>
               </div>
               <div class="hijo-del-hijo-emi tres">
-                <p>0</p>
-                <h6>day</h6>
+                <p>{{counter.minutes}}</p>
+                <h6>minutes</h6>
               </div>
               <div class="hijo-del-hijo-emi cuatro">
-                <p>0</p>
-                <h6>day</h6>
+                <p>{{counter.seconds}}</p>
+                <h6>seconds</h6>
               </div>
             </div>
             <h2>WOOO! Flash Sale</h2>
@@ -469,6 +537,11 @@
         <article :id="'productUpdated-'+product.id" :class="{elementFadeInLeft : topUpdatedEffect[index]}"
           style="height: 370px"
           class="rounded-lg relative w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
+
+
+          <div  class="absolute top-0 left-0 mt-2 ml-2 p-1 rounded-lg text-white "
+          :class="{'bg-red-500' : product.stock < 6, 'bg-blue-500' : product.stock > 5}">{{product.stock == 0 ? 'No stock' : product.stock < 6 ? 'Last '+ product.stock + ' units': product.stock + ' units' }}</div>
+          
 
           <i  v-if="isLogged"
               @click="addFavorites(product)"
@@ -766,6 +839,8 @@
       </div>
     </div>
     <!--     CART MODAL -->
+  </div>
+
   </div>
 
   <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
