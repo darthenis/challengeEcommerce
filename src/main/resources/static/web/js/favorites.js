@@ -228,11 +228,8 @@ createApp({
                 .then(res => {
 
                     this.loadData();
-                    console.log(res)
 
                     this.handleMessageAlert("Favorite deleted succesfully", 2, false)
-
-                    setTimeout(() => location.href="/index.html", 2000)
 
                 })
                 .catch(err => {

@@ -772,7 +772,7 @@
           <div class="flex justify-between items-center">
             <img src="./assets/img/cart.svg" alt="cart" style="width: 40px">
             <p class="lg:text-2xl text-1xl font-black leading-10 text-white">My cart</p>
-            <div class="py-1 px-3 font-bold bg-white rounded-full shadow-lg hover:bg-blue-300" @click="toggleCart">X
+            <div class="py-1 px-3 font-bold bg-white rounded-full shadow-lg hover:bg-blue-300 cursor-pointer" @click="toggleCart">X
             </div>
           </div>
 
@@ -811,7 +811,7 @@
                   <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
                     @click="removeItem(product)">Remove</a>
                 </div>
-                <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price )}}
+                <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price / 100) * product.discount))}}
                 </p>
               </div>
             </div>
