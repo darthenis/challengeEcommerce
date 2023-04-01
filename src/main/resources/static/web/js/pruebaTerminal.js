@@ -21,19 +21,7 @@ createApp({
     },
     created() {
         this.calculateTotal()
-        this.reserved()
-        this.checkIsLogged().then(res => {
-            if (this.isLogged) {
-                this.calculateTotal();
-                ;
-            } else {
-
-                /*  location.href = "/web/index.html" */
-
-            }
-
-        })
-
+        this.checkIsLogged()
 
 
 
@@ -54,7 +42,7 @@ createApp({
                     console.error(err.response.data)
                 })
         },
-        async checkIsLogged() {
+        checkIsLogged() {
 
             axios("/api/clients/auth")
                 .then(res => {
@@ -64,7 +52,7 @@ createApp({
                 })
                 .catch(err => {
 
-                    console.log(err)
+                    location.href = "/web/index.html"
 
                     this.isLogged = false
                 })
