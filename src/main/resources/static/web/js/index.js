@@ -177,9 +177,26 @@ createApp({
 
         /*--------------CALCULO DE TOTAL CARRITO--------------*/
         priceTotalCart() {
-            let totalCount = 0
+            let totalCount = 0;
+            
             this.bag.forEach(object => {
-                totalCount += object.price * object.quantity
+
+                console.log(object)
+
+                if(object.discount > 0){
+
+                    let priceDiscount = object.price - ((object.price / 100) * object.discount);
+
+                    console.log(priceDiscount)
+
+                    totalCount += priceDiscount * object.quantity
+
+                } else {
+
+                    totalCount += object.price * object.quantity
+                }
+
+               
             })
             this.totalCart = totalCount
         },
