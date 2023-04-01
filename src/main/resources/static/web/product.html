@@ -677,7 +677,7 @@
                 <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
                   @click="removeItem(product)">Remove</a>
               </div>
-              <p class="text-base font-black leading-none text-gray-800">{{product.price - ((product.price / 100) * product.discount))}}
+              <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price / 100) * product.discount))))}}
               </p>
             </div>
           </div>
