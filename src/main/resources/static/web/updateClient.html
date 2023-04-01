@@ -511,9 +511,9 @@
                   
                   <ul class="space-y-2 text-sm">
                     <li>
-                      <a href="/web/frecuents.html" class="text-blue-900 transition hover:opacity-75">
+                      <button class="text-blue-900 transition hover:opacity-75" data-modal-target="authentication-modal-FAQ" data-modal-toggle="authentication-modal-FAQ" type="button">
                         FAQ
-                      </a>
+                      </button>
                     </li>
   
                     <li>
@@ -541,9 +541,150 @@
           </div>
         </div>
       </footer>
+
+      <!-- MODAL FAQ -->
+
+      <!-- Main modal -->
+<div id="authentication-modal-FAQ" tabindex="-1" aria-hidden="true" class=" fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden md:inset-0 h-[calc(100%-1rem)] md:h-full ">
+  <div class="relative w-full min-h-[100%] mt-40 max-w-[70rem] md:h-auto">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal-Created-Ticket">
+              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              <span class="sr-only">Close modal</span>
+          </button>
+          <div class="px-6 py-6 g:px-8l">
+              <main>
+                
+    
+                <div class="h-screen  grid place-items-center overflow-y-scroll relative mt-10">
+                  <div class="flex justify-center items-center p-2 top-0 w-[100%] gap-1 bg-gradient-to-r from-cyan-700 to-blue-400 mt-4 ">
+                    <img src="./assets/img/preg.png" alt="corazon" style="width:3rem; background-color: white; border-radius: 50%;">
+                    <h2 class="text-xl font-bold text-white pl-1" style="text-shadow: 1px 1px 5px black;">Frecuently Asked Questions</h2>
+                </div>
+                    <div class="w-11/12 md:w-9/12 lg:w-6/12 mx-auto rounded border">
+                        <div class="bg-white p-10 shadow-sm">
+                            <h3 class="text-lg font-medium text-gray-800">Frecuently asked questions</h3>
+                            <p class="text-sm font-light text-gray-600 my-3">
+                                Here we have a section to solve issues with purchases
+                            </p>
+        
+                            <div class="h-1 w-full mx-auto border-b my-5"></div>
+        
+                            <!-- What is term -->
+                            <div class="transition hover:bg-indigo-50">
+                                <!-- header -->
+                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                    <i class="fas fa-plus"></i>
+                                    <h3>How to return a purchase?</h3>
+                                </div>
+                                <!-- Content -->
+                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        Contact a representative through the contact form or through our telephone lines. tel:341-2235-3456
+                                    </p>
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        Contactesé con un representante    mediante el formulario de contactos o a traves de nuestras lineas telefonicas. tel:341-2235-3456                            </p>
+                                </div>
+                            </div>
+        
+                            <!-- When to use Accordion Components -->
+                            <div class="transition hover:bg-indigo-50">
+                                <!-- header -->
+                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                    <i class="fas fa-plus"></i>
+                                    <h3>Billing and taxes on EASY BUY</h3>
+                                </div>
+                                <!-- Content -->
+                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        Surcharges are added when the buyer has not made the payment by the due date.
+                                    </p>
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        Los recargos se agregan cuando al pasar la fecha limite el comprador no efectuó el pago.
+                                    </p>
+                                    
+                                </div>
+                            </div>
+        
+                            <!-- Accordion Wrapper -->
+                            <div class="transition hover:bg-indigo-50">
+                                <!-- header -->
+                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                    <i class="fas fa-plus"></i>
+                                    <h3>Why some products do not have shipping?
+                                    </h3>
+                                </div>
+                                <!-- Content -->
+                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        Some products do not have shipping since a minimum amount is required in the purchase.
+                                        
+                                    </p>
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        
+                                        Algunos productos no tienen envio ya que se requiere un monto minimo en la compra.
+                                    </p>
+                                    
+                                </div>
+                            </div>
+        
+                            <!-- Accordion Wrapper -->
+                            <div class="transition hover:bg-indigo-50">
+                                <!-- header -->
+                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                    <i class="fas fa-plus"></i>
+                                    <h3>About the offers on EASY BUY</h3>
+                                </div>
+                                <!-- Content -->
+                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        Offers on our site have a maximum of 7 days from their publication.
+        
+                                    </p>
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        Las ofertas en nuestro sitio tienen un maximo de 7 dias desde su publicacion.
+        
+                                    </p>
+                                </div>
+                            </div>
+        
+                            <!-- Accordion Wrapper -->
+                            <div class="transition hover:bg-indigo-50">
+                                <!-- header -->
+                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                                    <i class="fas fa-plus"></i>
+                                    <h3>Minimun amount to free shiping</h3>
+                                </div>
+                                <!-- Content -->
+                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        The minimum amount to get free shipings is over U$D 100 dollars or product weights greater than 50kg
+                                    </p>
+                                    <p class="leading-6 font-light pl-9 text-justify">
+                                        El monto mínimo para obtener envíos gratis es superior a U$D 100 dólares o pesos de productos superiores a 50 kg.
+        
+                                    </p>
+                                </div>
+                            </div>
+        
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+    
+            </main>
+          </div>
+      </div>
+  </div>
+  </div> 
+
+      <!-- MODAL FAQ -->
     </div>
       <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
       <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
       <script
         src="https://kit.fontawesome.com/a9a67006ad.js"
         crossorigin="anonymous"
@@ -553,6 +694,34 @@
         crossorigin="anonymous"
       ></script>
       <script src="./js/editProfile.js"></script>
+      <style>
+        .accordion-content {
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+    </style>
+  
+    <script>
+        const accordionHeader = document.querySelectorAll(".accordion-header");
+        accordionHeader.forEach((header) => {
+            header.addEventListener("click", function () {
+                const accordionContent = header.parentElement.querySelector(".accordion-content");
+                let accordionMaxHeight = accordionContent.style.maxHeight;
+  
+                // Condition handling
+                if (accordionMaxHeight == "0px" || accordionMaxHeight.length == 0) {
+                    accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
+                    header.querySelector(".fas").classList.remove("fa-plus");
+                    header.querySelector(".fas").classList.add("fa-minus");
+                    header.parentElement.classList.add("bg-indigo-50");
+                } else {
+                    accordionContent.style.maxHeight = `0px`;
+                    header.querySelector(".fas").classList.add("fa-plus");
+                    header.querySelector(".fas").classList.remove("fa-minus");
+                    header.parentElement.classList.remove("bg-indigo-50");
+                }
+            });
+        });
+    </script>
     </body>
 
 </html>
