@@ -283,14 +283,21 @@
       </nav>
     </header>
 
-        <main class="main-selectProduct h-full">
+        <main class="main-selectProduct">
             <section class="pb-1 sm:py-2">
                 <div class="flex justify-center items-center p-2 bg-gradient-to-r from-cyan-700 to-blue-400">
                     <img src="./assets/img/cuore.png" alt="corazon" style="width:3rem;">
                     <h2 class="text-3xl font-bold text-white pl-1" style="text-shadow: 1px 1px 5px black;">Wishlist</h2>
                 </div>
                 <div>
-                    <template v-for="(favorite, index) of favorites">
+                    <template v-if="!favorites.length">
+                      <div class="h-100 flex flex-col justify-center items-center w-full">
+                        <p class="text-2xl">Add some product!</p>
+                        <img src="./assets/img/nofavs.png" alt="nofavs" style="max-width: 400px;">
+                      </div>
+                        
+                    </template>
+                    <template v-else v-for="(favorite, index) of favorites">
                         <article :id="'article-'+favorite.id" class="w-100"
                             :class="{elementFadeIn : visibleArticle[index]}">
                             <div
@@ -563,7 +570,7 @@
                                 <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
                                     @click="removeItem(product)">Remove</a>
                             </div>
-                            <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price )}}
+                            <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price / 100) * product.discount))}}
                             </p>
                         </div>
                     </div>
