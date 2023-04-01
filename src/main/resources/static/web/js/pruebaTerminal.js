@@ -14,47 +14,24 @@ createApp({
                 isError: false
 
             },
-            completed: false
+            completed: false,
+            isLoading: false,
+            count: 3
 
 
         }
     },
     created() {
         this.calculateTotal()
-        this.reserved()
-        this.checkIsLogged().then(res => {
-            if (this.isLogged) {
-                this.calculateTotal();
-                ;
-            } else {
+        this.checkIsLogged()
 
-                /*  location.href = "/web/index.html" */
-
-            }
-
-        })
-
-
-
+        let parameterUrl = location.search
+        let parameters = new URLSearchParams(parameterUrl)
+        this.orderId = parameters.get("order")
 
     },
     methods: {
-        reserved() {
-            axios.post('/api/client/current/orders', {
-                dateTime: new Date(),
-                amount: this.total,
-                products: [...this.getProducts()]
-            },
-                { headers: { 'content-type': 'application/json' } })
-                .then(res => {
-                    this.orderId = res.data
-                    console.log(res.data)
-                })
-                .catch(err => {
-                    console.error(err.response.data)
-                })
-        },
-        async checkIsLogged() {
+        checkIsLogged() {
 
             axios("/api/clients/auth")
                 .then(res => {
@@ -64,7 +41,7 @@ createApp({
                 })
                 .catch(err => {
 
-                    console.log(err)
+                    location.href = "/web/index.html"
 
                     this.isLogged = false
                 })
@@ -83,7 +60,16 @@ createApp({
 
             for (product of this.bag) {
 
-                this.total += product.price * product.quantity
+                if(product.discount){
+
+                    this.total += ( product.price - ((product.price / 100) * product.discount))  * product.quantity
+
+                } else {
+
+                    this.total += product.price * product.quantity
+                }
+
+        
 
             }
 
@@ -110,23 +96,26 @@ createApp({
 
             this.isLoading = true;
 
-            axios.post('https://numba-bank.up.railway.app/api/clients/transaction/buy', {
-                number: this.cardNumber,
-                cvv: this.cvv,
-                transactionAmount: this.total,
-                description: "Easy Buy - Debit"
+            setTimeout(() => {
 
-            })
-                .then(res => {
-                    this.finishPay()
-
-                }).catch(err => {
-
-                    console.log(err)
-                    this.isLoading = false;
-                    this.handleMessage(err, 3, true)
-
+                axios.post('https://numba-bank.up.railway.app/api/clients/transaction/buy', {
+                    number: this.cardNumber,
+                    cvv: this.cvv,
+                    transactionAmount: this.total,
+                    description: "Easy Buy - Debit"
+    
                 })
+                    .then(res => {
+                        this.finishPay()
+    
+                    }).catch(err => {
+    
+                        this.isLoading = false;
+                        this.handleMessage("Payment could not be processed.", 3, true)
+    
+                    })
+
+            }, 3000)
 
         },
         finishPay() {
@@ -134,11 +123,21 @@ createApp({
             axios.post(`/api/client/current/orders/${this.orderId}/tickets`)
                 .then(res => {
                     localStorage.clear()
-                    location.href = "/web/purchases.html"
+
+                    this.isLoading = false; this.completed = true
+
+                    setTimeout(() => location.href = "/web/purchases.html", 3000)
+
+                    setInterval(() => this.count--, 1000)
 
                 })
-                .catch(err =>
-                    console.error(err.data))
+                .catch(err => {
+
+                    this.handleMessageAlert("Error processing purchase, please contact support")
+                    
+                    console.error(err.data)
+                
+                })
 
         },
 
