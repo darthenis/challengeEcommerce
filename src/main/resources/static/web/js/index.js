@@ -26,7 +26,8 @@ createApp({
             messageAlert: {
                 message : "",
                 isError: false
-            }
+            },
+            scrollheader : false
 
         }
     },
@@ -227,6 +228,10 @@ createApp({
                 preId = "productUpdated-"
 
             }
+
+            if(window.scrollY > 100) this.scrollheader = true;
+
+            else this.scrollheader = false;
 
             for (product of array) {
 

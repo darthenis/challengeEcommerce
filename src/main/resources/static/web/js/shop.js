@@ -25,7 +25,8 @@ createApp({
             bag: JSON.parse(localStorage.getItem("bag")) || [],
             totalCartQuantity: 0,
             totalCart: 0,
-            navActive: null
+            navActive: null,
+            scrollheader : false
         }
     },
     created() {
@@ -184,6 +185,10 @@ createApp({
         isVisible() {
 
             this.visibleArticle = [];
+
+            if(window.scrollY > 100) this.scrollheader = true;
+
+            else this.scrollheader = false;
 
             for (product of this.filteredProducts) {
 
