@@ -60,9 +60,9 @@ createApp({
             if (this.bag.find(item => item.id == object.id)) {
                 object.quantity--
                 if (object.quantity === 0) {
-                    let index = this.bag.indexOf(this.bag.find(prod => prod.id === object))
-                    this.bag.splice(index, 1)
+                    this.bag = this.bag.filter(item => item.quantity !== 0);
                 }
+                this.bag = this.bag.filter(item => item.quantity != 0)
             }
             localStorage.setItem("bag", JSON.stringify(this.bag))
             this.quantityTotalCart()

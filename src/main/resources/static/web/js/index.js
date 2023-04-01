@@ -22,6 +22,10 @@ createApp({
                 hours: 0,
                 minutes: 0,
                 seconds: 0
+            },
+            messageAlert: {
+                message : "",
+                isError: false
             }
 
         }
@@ -53,8 +57,6 @@ createApp({
                 })
                 .catch(err => {
 
-                    console.log(err)
-
                     this.isLogged = false
                 })
 
@@ -63,14 +65,14 @@ createApp({
 
             axios.get("/api/products/last/updated")
                 .then(res => {
-                    this.top4LastUpdated = res.data;
+                    this.top4LastUpdated = res.data.sort((a,b) => a.id - b.id);
                     this.checkIsLogged()
 
                 }).catch(err => console.log(err))
 
             axios.get("/api/products/last/offers")
                 .then(res => {
-                    this.top4offersProducts = res.data;
+                    this.top4offersProducts = res.data.sort((a,b) => a.id - b.id);
 
                 }).catch(err => console.log(err))
 
@@ -88,6 +90,16 @@ createApp({
                 this.navActive = false;
 
             }
+
+        },
+        handleMessageAlert(message, seconds, isError){
+
+            this.messageAlert = {
+                message,
+                isError
+            }
+
+            setTimeout(() => this.messageAlert.message = "", seconds * 1000)
 
         },
         /*-------------------LOGOUT--------------------*/
@@ -114,6 +126,7 @@ createApp({
             if (this.bag.find(item => item.id == object.id)) {
                 this.bag = this.bag.map(item => {
                     if (item.id == object.id && object.stock > 0 && object.stock > item.quantity) {
+                        this.handleMessageAlert("Item added to cart", 3, false)
                         return { ...item, quantity: (item.quantity + 1) }
                     } else {
                         return item;
@@ -123,10 +136,13 @@ createApp({
 
                 let product = { ...object, quantity: 1 }
                 this.bag.push(product)
+                this.handleMessageAlert("Item added to cart", 3, false)
             }
             localStorage.setItem("bag", JSON.stringify(this.bag))
             this.quantityTotalCart()
             this.priceTotalCart()
+
+          
         },
 
         /* -------------QUITAR CANTIDAD DEL CARRITO -------------*/
@@ -137,8 +153,7 @@ createApp({
             if (this.bag.find(item => item.id == object.id)) {
                 object.quantity--
                 if (object.quantity === 0) {
-                    let index = this.bag.indexOf(this.bag.find(prod => prod.id === object))
-                    this.bag.splice(index, 1)
+                    this.bag = this.bag.filter(item => item.quantity !== 0);
                 }
             }
             localStorage.setItem("bag", JSON.stringify(this.bag))
@@ -326,28 +341,36 @@ createApp({
                 axios.delete("/api/client/current/favorites/" + this.favs.find(fav => fav.productId == product.id).id)
                     .then(res => {
 
+                        this.handleMessageAlert("Item quited from favorites", 3, false)
+
                         this.loadData();
 
                     }).catch(err => console.log(err))
 
 
+            } else {
+
+                const data = {
+                    name: product.name,
+                    imgUrl: product.imgsUrls[0],
+                    price: product.price,
+                    productId: product.id,
+                    description: product.description,
+                    stock: product.stock
+                }
+    
+                axios.post("/api/client/current/favorites", { ...data })
+                    .then(res => {
+    
+                        this.loadData();
+    
+                        this.handleMessageAlert("Item added to favorites", 3, false)
+    
+                    }).catch(err => console.log(err))
+
             }
 
-            const data = {
-                name: product.name,
-                imgUrl: product.imgsUrls[0],
-                price: product.price,
-                productId: product.id,
-                description: product.description,
-                stock: product.stock
-            }
-
-            axios.post("/api/client/current/favorites", { ...data })
-                .then(res => {
-
-                    this.loadData();
-
-                }).catch(err => console.log(err))
+         
 
         },
         checkedFavoritesAdded() {

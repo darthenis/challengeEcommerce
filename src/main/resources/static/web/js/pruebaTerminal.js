@@ -162,20 +162,3 @@ createApp({
 
 
 }).mount("#app")
-
-/*
-
-{
-    "dateTime": "2023-03-28T16:12:40",
-    "amount": 200.0,
-    "products": [
-        {
-            "idProduct": 1,
-            "price": 200.0,
-            "quantity": 2
-        }
-    ]
-}
-
-
-*/
