@@ -104,21 +104,21 @@ createApp({
 
             axios.get("/api/products/"+object.productId)
                     .then(res => {
-                        
-                        console.log(res.data)
 
-                        if (this.bag.find(item => item.id == res.data.id)) {
+                        if (this.bag.find(item => item.id == object.id)) {
                             this.bag = this.bag.map(item => {
-                                if (item.id == res.data.id && res.data.stock > 0 && res.data.stock > item.quantity) {
+                                if (item.id == object.id && object.stock > 0 && object.stock > item.quantity) {
+                                    this.handleMessageAlert("Item added to cart", 3, false)
                                     return { ...item, quantity: (item.quantity + 1) }
                                 } else {
                                     return item;
                                 }
                             })
-                        } else {
-            
-                            let product = { ...res.data, quantity: 1 }
+                        } else if(object.stock > 0){
+                            
+                            let product = { ...object, quantity: 1 }
                             this.bag.push(product)
+                            this.handleMessageAlert("Item added to cart", 3, false)
                         }
                         localStorage.setItem("bag", JSON.stringify(this.bag))
                         this.quantityTotalCart()
@@ -266,6 +266,47 @@ createApp({
             }
 
         },
+        checkoutHandler(){
+
+            this.isLoading = true;
+
+            axios.post('/api/client/current/orders', {
+                dateTime: new Date(),
+                amount: this.totalCart,
+                products: [...this.getProducts()]
+            },
+                { headers: { 'content-type': 'application/json' } })
+                .then(res => {
+                    console.log(res.data)
+                    location.href = "/web/terminalpay.html?order="+res.data;
+                })
+                .catch(err => {
+                    let item = this.bag.filter(item => item.id == err.response.data.split(":")[1].trim())
+                    this.handleMessageAlert("No stock for "+item[0].name, 3, true)
+                    this.isLoading = false;
+                })
+
+
+    
+
+    },
+    getProducts() {
+
+        let products = [];
+
+        for (let product of this.bag) {
+
+            products.push({
+                idProduct: product.id,
+                price: product.price,
+                quantity: product.quantity
+            })
+
+        }
+
+        return products;
+
+    },
 
     },
     mounted() {
