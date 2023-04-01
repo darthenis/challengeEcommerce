@@ -133,7 +133,18 @@ createApp({
         priceTotalCart() {
             let totalCount = 0
             this.bag.forEach(object => {
-                totalCount += object.price * object.quantity
+
+                if(object.discount > 0){
+
+                    let priceDiscount = object.price - ((object.price / 100) * object.discount);
+
+                    totalCount += priceDiscount * object.quantity
+
+                } else {
+
+                    totalCount += object.price * object.quantity
+                }
+
             })
             this.totalCart = totalCount
         },
