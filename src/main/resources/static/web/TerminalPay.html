@@ -156,8 +156,38 @@
       </nav>
     </header>
 
-    <main class="main-selectProduct" style="min-height: 40vh;">
+    <main class="main-selectProduct" style="height: 500px;">
 
+    <template v-if="isLoading || !isLoading && completed">
+      
+      <div class="flex justify-center items-center p-2 bg-gradient-to-r from-cyan-700 to-blue-400">
+        <h2 class="text-3xl font-bold text-white pl-1" style="text-shadow: 1px 1px 5px black;">Completing purchase
+        </h2>
+      </div>
+      <div class="flex flex-col justify-center items-center w-100 h-full" v-if="isLoading">
+        <lottie-player src="./assets/jsons/loading-car.json"  
+            background="transparent"  
+            speed="1"  
+            style="width: 300px; height: 300px;"  
+            loop 
+            autoplay>
+        </lottie-player>
+        <p class="text-4x1">Processing purchase</p>
+      </div>
+      
+      <div class="flex flex-col justify-center items-center w-100 h-full" v-if="completed">
+        <lottie-player src="./assets/jsons/green-check.json"  
+            background="transparent"  
+            speed="1"  
+            style="width: 300px; height: 300px;"   
+            autoplay>
+        </lottie-player>
+        <p class="text-4x1">Completed. Redirect in {{count}}</p>
+      </div>
+     
+    </template>
+     
+    <template v-else>
       <div class="flex justify-center items-center p-2 bg-gradient-to-r from-cyan-700 to-blue-400">
         <h2 class="text-3xl font-bold text-white pl-1" style="text-shadow: 1px 1px 5px black;">Complete purchase
         </h2>
@@ -176,7 +206,7 @@
                 <div class="flex w-full flex-col px-4 py-4">
                   <span class="font-semibold">{{product.name}}</span>
                   <span class="float-right text-gray-400"></span>
-                  <p class="text-lg font-bold">${{product.price}}
+                  <p class="text-lg font-bold">{{formatDollar(product.price - ((product.price / 100) * product.discount))}}
                   </p>
                   <p>
                     Units: {{product.quantity}}
@@ -250,7 +280,7 @@
             Order</button>
         </div>
       </div>
-
+    </template>
     </main>
 
     <footer aria-label="Site Footer" class="w-full mt-20 bg-blue-200 flex justify-center items-center">
@@ -443,6 +473,7 @@
 
 
   <script src="https://cdn.tailwindcss.com/"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
