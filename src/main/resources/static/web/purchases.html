@@ -296,7 +296,14 @@
                     </h2>
                 </div>
                 <div style="min-height: 40vh">
-                    <p v-if="!products.length">No purchases</p>
+                  <template v-if="!products.length">
+                    <div class="h-100 flex flex-col justify-center items-center w-full">
+                      <p class="text-2xl">Buy something!</p>
+                      <img src="./assets/img/nopurchases.png" alt="purchases" style="max-width: 400px;">
+                    </div>
+                    
+                  </template>
+                    
                     <template v-else v-for="product of products">
                         <article class="w-100" class=>
                             <div
@@ -562,7 +569,7 @@
                                 <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
                                     @click="removeItem(product)">Remove</a>
                             </div>
-                            <p class="text-base font-black leading-none text-gray-800">{{product.price - ((product.price / 100) * product.discount))}}
+                            <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price / 100) * product.discount))}}
                             </p>
                         </div>
                     </div>
