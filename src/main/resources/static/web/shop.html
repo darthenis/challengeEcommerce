@@ -414,9 +414,9 @@
                                         <div class="font-bold text-red-400" :style="{visibility: product.discount ? 'visible' : 'hidden'}" style="font-size: 14px">{{product.discount ? product.discount + '%off' : "asd"}} <span v-if="product.discount" style="text-decoration: line-through; font-size: 12px">{{formatCurrency(product.price)}}</span></div>
                                         <span class="text-2xl font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price, product.discount)}}</span>
                                     </div>
-                                    <a  href="#"
+                                    <button
                                         @click="saveBag(product)" 
-                                        class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add to cart</a>
+                                        class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add to cart</button>
                                 </div>
                             </div>
                         </article>
@@ -699,9 +699,21 @@
   <!--     CART MODAL -->
 
         <div    v-if="messageAlert.message" 
-                :class="{'bg-green-500' : !messageAlert.isError, 'bg-red-500' : messageAlert.isError}"
-                class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-2 p-4 rounded-lg">
-                <p>{{messageAlert.message}}</p>
+          :class="{'bg-green-500' : !messageAlert.isError, 'bg-red-500' : messageAlert.isError}"
+          class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-2 p-4 rounded-lg animationAlertMessage">
+          <p>{{messageAlert.message}}</p>   
+        </div>      
+
+        <div v-if="scrollheader" class="fixed flex justify-center items-center bottom-5 right-5 bg-blue-600 text-white rounded-full py-4 px-4">
+          <div class="relative inline-flex w-fit">
+            <div v-if="totalCartQuantity"
+              class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-200 py-1.5 px-2.5 text-center align-baseline text-xs font-bold leading-none text-black">
+              {{totalCartQuantity}}
+            </div>
+            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init
+              data-te-ripple-color="light" @click="toggleCart"></i>
+    
+          </div>
         </div>
 
     </div>
