@@ -333,8 +333,8 @@
       </nav>
     </header>
 
-    <main class="container_shop_main" v-cloak>
-      <section class="grid_layout">
+  <main class="container_shop_main" v-cloak>
+    <section class="grid_layout">
 
         <div class="categories_shop" style="height: fit-content">
           <h4 class="mb-2">Categories</h4>
@@ -398,7 +398,7 @@
           <div class="button_mobile_categories" @click="handlerMenuCategories">Filters ></div>
         </div>
 
-        <div class="container_cards_shop">
+      <div class="container_cards_shop">
 
           <h1 class="text-center text-lg font-bold" v-if="!filteredProducts.length" style="grid-column: 1/-1">Cards not
             found</h1>
@@ -448,71 +448,8 @@
                     </div>
                   </div>
             </article>
-
-
-                <div class="menu_top_shop pt-4 pb-2 w-[93%]">
-                    <div>Showing <span v-html="(initPage / 9) + 1"></span>–<span v-html="Math.round(totalFilteredProducts.length / 9)"></span> of <span v-html="filteredProducts.length"></span> results</div>
-                    <div>Sort by: 
-                        <select style="width: 100px;" v-model="sortSeleted">
-                            <option value="">Default</option>
-                            <option value="asc">Price Ascending</option>
-                            <option value="des">Price Descending</option>
-                            <option value="a-z">a-z</option>
-                            <option value="z-a">z-a</option>
-                        </select>
-                    </div>
-                    <div class="button_mobile_categories" @click="handlerMenuCategories">Filters ></div>
-                </div>
-
-                <div class="container_cards_shop flex flex-wrap">
-                    <h1 class="text-center text-lg font-bold" v-if="!filteredProducts.length" style="grid-column: 1/-1">Cards not found</h1>
-                    <template v-for="(product, index) of filteredProducts">
-                      <article :id="'productUpdated-'+product.id" :class="{elementFadeIn : visibleArticle[index]}"
-                      class="rounded-lg relative pt-4 w-[23rem] h-[33rem] bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
-            
-                      <div class="absolute top-0 left-0 mt-2 ml-2 p-1 rounded-lg text-white "
-                        :class="{'bg-red-500' : product.stock < 6, 'bg-blue-500' : product.stock > 5}">{{product.stock == 0 ?
-                        'No stock' : product.stock < 6 ? 'Last ' + product.stock + ' units' : product.stock + ' units' }}</div>
-            
-            
-                          <i v-if="isLogged" @click="addFavorites(product)"
-                            :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
-                            class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
-            
-                          <a :href="'./product.html?id='+product.id">
-                            <img class="mx-auto pt-2" style="height: 250px; object-fit: contain;"
-                              :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
-                              alt="product image" />
-                          </a>
-                          <div class=" flex flex-col justify-between">
-                            <a :href="'./product.html?id='+product.id">
-                              <h5 style="font-size: 22px; margin-top: 1rem; margin-bottom: 1rem;"
-                                class="text-center font-semibold tracking-tight text-gray-900 dark:text-dark">
-                                {{product.name}}</h5>
-                            </a>
-                            <div class="flex items-center mt-2 justify-center">
-                              <span class="flex" v-html="counterStars(product.rates)"></span>
-                              <span
-                                class="bg-blue-100 text-blue-800  font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
-                            </div>
-                            <div class="flex items-center flex-col justify-between">
-                              <div class="flex justify-center gap-4 items-center text-3xl">
-                                <div class="font-bold text-xl text-red-400" :style="{visibility: product.discount ? 'visible' : 'hidden'}"
-                                  style="font-size: 18px">{{product.discount ? product.discount + '%off' : "asd"}} <span
-                                    v-if="product.discount"
-                                    style="text-decoration: line-through; font-size: 18px">{{formatDollar(product.price)}}</span>
-                                </div>
-                                <span class=" font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
-                                  product.discount)}}</span>
-                              </div>
-                              <button @click="saveBag(product)"
-                                class="text-white mt-6 bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-6 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
-                                to cart</button>
-                            </div>
-                          </div>
-                    </article>
-                    </template>
-                </div>
+              </template>
+        </div>
 
         <div class="flex justify-end gap-1 w-100" style="grid-column: 1/-1">
           <span v-if="initPage != 0" class="bg-white font-bold hover:bg-gray-200 text-black p-2 rounded-sm shadow-sm"
@@ -522,9 +459,9 @@
             @click="handlePages(true)">Next</span>
         </div>
 
-      </section>
+    </section>
 
-    </main>
+  </main>
 
     <footer aria-label="Site Footer" class="w-full mt-20 bg-blue-200 flex justify-center items-center">
       <div class="max-w-screen-2xl py-4 mx-auto space-y-8 sm:px-4 lg:space-y-2" style="width: 86rem;">
