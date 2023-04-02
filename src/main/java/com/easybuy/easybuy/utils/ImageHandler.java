@@ -22,6 +22,7 @@ public class ImageHandler {
     final static String DOWNLOAD_URL = "https://firebasestorage.googleapis.com/v0/b/portfolioap-102b7.appspot.com/o/%s?alt=media";
 
     private static String uploadFile(File file, String fileName) throws IOException {
+        System.out.println("aca");
         BlobId blobId = BlobId.of("portfolioap-102b7.appspot.com", fileName);
         BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("media").build();
         Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("./firebaseConfig.json"));
@@ -42,7 +43,7 @@ public class ImageHandler {
         return fileName.substring(fileName.lastIndexOf("."));
     }
 
-    public static String upload(MultipartFile multipartFile, String idName) {
+    public static String upload(MultipartFile multipartFile, String idName) throws Exception {
 
         String route = "productsImages/"+idName;
 
@@ -56,7 +57,7 @@ public class ImageHandler {
             return url;
         } catch (Exception e) {
             e.printStackTrace();
-            return "Unsuccessfully Uploaded";
+            throw new Exception(e);
         }
 
     }

@@ -264,10 +264,21 @@
         </div>
 
         <div class="hidden lg:flex" v-else>
-          <a href="./login.html">
-            <button
-              class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
-          </a>
+          <div class="hidden lg:flex items-center gap-5" v-if="!isLogged">
+            <div class="relative inline-flex w-fit">
+              <div v-if="totalCartQuantity"
+                class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
+                {{totalCartQuantity}}
+              </div>
+              <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init
+                data-te-ripple-color="light" @click="toggleCart"></i>
+  
+            </div>
+            <a href="./login.html">
+              <button
+                class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -403,53 +414,54 @@
           <h1 class="text-center text-lg font-bold" v-if="!filteredProducts.length" style="grid-column: 1/-1">Cards not
             found</h1>
 
-          <template v-for="(product, index) of filteredProducts">
+            <template v-for="(product, index) of filteredProducts">
 
-            <article :id="'product-'+product.id" :class="{elementFadeIn : visibleArticle[index]}" style="height: 370px"
-              class="rounded-lg relative  w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
-
-              <div class="absolute top-0 left-0 mt-2 ml-2 p-1 rounded-lg text-white "
-                :class="{'bg-red-500' : product.stock < 6, 'bg-blue-500' : product.stock > 5}">{{product.stock == 0 ?
-                'No stock' : product.stock < 6 ? 'Last ' + product.stock + ' units' : product.stock + ' units' }}</div>
-
-                  <i @click="addFavorites(product)"
-                    :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
-                    class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
-                  <a :href="'./product.html?id='+product.id">
-                    <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"
-                      :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
-                      alt="product image" />
-                  </a>
-                  <div class="px-5 flex flex-col justify-between">
+              <article :id="'product-'+product.id" :class="{elementFadeInLeft : visibleArticle[index]}"
+                class="rounded-lg relative pt-4 w-[21rem] h-[30rem] bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
+      
+                <div class="absolute top-0 left-0 mt-2 ml-2 p-1 rounded-lg text-white "
+                  :class="{'bg-red-500' : product.stock < 6, 'bg-blue-500' : product.stock > 5}">{{product.stock == 0 ?
+                  'No stock' : product.stock < 6 ? 'Last ' + product.stock + ' units' : product.stock + ' units' }}</div>
+      
+      
+                    <i v-if="isLogged" @click="addFavorites(product)"
+                      :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
+                      class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
+      
                     <a :href="'./product.html?id='+product.id">
-                      <h5 style="font-size: 15px;"
-                        class="mt-1 text-center text-xl font-semibold tracking-tight text-gray-900 dark:text-dark">
-                        {{product.name}}</h5>
+                      <img class="mx-auto pt-2" style="height: 230px; object-fit: contain;"
+                        :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
+                        alt="product image" />
                     </a>
-                    <div class="flex items-center mt-2.5 justify-center">
-                      <span class="flex" v-html="counterStars(product.rates)"></span>
-                      <span
-                        class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
-                    </div>
-                    <div class="flex items-center flex-col justify-between">
-                      <div class="flex flex-col items-center">
-                        <div class="font-bold text-red-400"
-                          :style="{visibility: product.discount ? 'visible' : 'hidden'}" style="font-size: 14px">
-                          {{product.discount ? product.discount + '%off' : "asd"}} <span v-if="product.discount"
-                            style="text-decoration: line-through; font-size: 12px">{{formatCurrency(product.price)}}</span>
-
-                        </div>
-                        <span class="text-2xl font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
-                          product.discount)}}</span>
+                    <div class=" flex flex-col justify-between">
+                      <a :href="'./product.html?id='+product.id">
+                        <h5 style="font-size: 22px; margin-top: 1rem;"
+                          class="text-center font-semibold tracking-tight text-gray-900 dark:text-dark">
+                          {{product.name}}</h5>
+                      </a>
+                      <div class="flex items-center justify-center">
+                        <span class="flex" v-html="counterStars(product.rates)"></span>
+                        <span
+                          class="bg-blue-100 text-blue-800  font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
                       </div>
-                      <button @click="saveBag(product)"
-                        class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
-                        to cart</button>
+                      <div class="flex items-center flex-col justify-between">
+                        <div class="flex flex-col justify-center items-center text-3xl">
+                          <div class="font-bold text-xl text-red-400" :style="{visibility: product.discount ? 'visible' : 'hidden'}"
+                            style="font-size: 18px">{{product.discount ? product.discount + '%off' : "asd"}} <span
+                              v-if="product.discount"
+                              style="text-decoration: line-through; font-size: 18px">{{formatDollar(product.price)}}</span>
+                          </div>
+                          <span class=" font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
+                            product.discount)}}</span>
+                        </div>
+                        <button @click="saveBag(product)"
+                          class="text-white mt-3 bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-6 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
+                          to cart</button>
+                      </div>
                     </div>
-                  </div>
-            </article>
-              </template>
-        </div>
+              </article>
+      
+            </template>
 
         <div class="flex justify-end gap-1 w-100" style="grid-column: 1/-1">
           <span v-if="initPage != 0" class="bg-white font-bold hover:bg-gray-200 text-black p-2 rounded-sm shadow-sm"

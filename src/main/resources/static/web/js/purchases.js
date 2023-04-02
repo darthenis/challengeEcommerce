@@ -13,7 +13,15 @@ createApp({
             navActive: null,
             isLogged: false,
             selectSubMenu: false,
-            date: ""
+            date: "",
+            rate:{
+                stars: "",
+                comment: ""
+            },
+            messageAlert:{
+                message : "",
+                isError : false
+            }
 
         }
     },
@@ -309,6 +317,25 @@ createApp({
 
         return products;
 
+    },
+    addRate(){
+
+        axios.post(`/api/products/${this.id}/rates`, `commentary=${this.rate.comment}&starsEnum=${this.rate.stars}`)
+                    .then(res => {
+
+                        this.handleMessageAlert("Product rated successfully", 3, false)
+                        
+                    })
+
+    },
+    handleMessageAlert(message, seconds, isError) {
+
+        this.messageAlert = {
+            message,
+            isError
+        }
+
+        setTimeout(() => this.messageAlert.message = "", seconds * 1000)
     },
 
 

@@ -13,10 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -62,16 +61,18 @@ public class ProductController {
     }
 
     @PostMapping("/products/{id}/images")
-    public ResponseEntity<?> uploadImages(@RequestParam("images") MultipartFile[] images, @PathVariable Long id) {
+    public ResponseEntity<?> uploadImages(MultipartHttpServletRequest request, @PathVariable Long id) {
 
         Optional<Product> product =  productService.findById(id);
 
-        if(images.length > 4) return new ResponseEntity<>("Only upload until 4 images", HttpStatus.FORBIDDEN);
+        Map<String, MultipartFile> fileMap = request.getFileMap();
+
+        if(fileMap.size() > 4) return new ResponseEntity<>("Only upload until 4 images", HttpStatus.FORBIDDEN);
 
         if(product.isEmpty()) return new ResponseEntity<>("product not found", HttpStatus.FORBIDDEN);
 
         try {
-            productService.uploadImages(images, product.get());
+            productService.uploadImages(fileMap, product.get());
             return new ResponseEntity<>("uploaded sucessfully", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
@@ -139,6 +140,11 @@ public class ProductController {
                 Optional<Product> product = productService.findById(ticketProduct.getProductId());
                 PurchaseDTO purchaseDTO = new PurchaseDTO(product.get());
                 purchaseDTO.setDate(ticket.getDateTime());
+
+                boolean rated = client.getRates().stream().anyMatch(rate -> Objects.equals(rate.getProduct().getId(), product.get().getId()));
+
+                purchaseDTO.setRated(rated);
+
                 purchaseDTOS.add(purchaseDTO);
             }
 

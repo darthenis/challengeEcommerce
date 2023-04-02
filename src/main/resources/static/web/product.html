@@ -213,10 +213,21 @@
         </div>
 
         <div class="hidden lg:flex" v-else>
-          <a href="./login.html">
-            <button
-              class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
-          </a>
+          <div class="hidden lg:flex items-center gap-5" v-if="!isLogged">
+            <div class="relative inline-flex w-fit">
+              <div v-if="totalCartQuantity"
+                class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
+                {{totalCartQuantity}}
+              </div>
+              <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init
+                data-te-ripple-color="light" @click="toggleCart"></i>
+  
+            </div>
+            <a href="./login.html">
+              <button
+                class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -860,6 +871,11 @@
       </div>
     </div>
     <!--     CART MODAL -->
+    <div    v-if="messageAlert.message" 
+    :class="{'bg-green-500' : !messageAlert.isError, 'bg-red-500' : messageAlert.isError, 'text-white': messageAlert.isError}"
+    class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-2 p-4 rounded-lg animationAlertMessage">
+    <p>{{messageAlert.message}}</p>   
+</div>
   </div>
   
   <script src="https://cdn.tailwindcss.com/"></script>

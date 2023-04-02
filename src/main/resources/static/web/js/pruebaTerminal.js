@@ -97,9 +97,8 @@ createApp({
             this.isLoading = true;
 
             setTimeout(() => {
-                this.finishPay()
 
-                /*axios.post('https://numba-bank.up.railway.app/api/clients/transaction/buy', {
+                axios.post('https://numba-bank.up.railway.app/api/clients/transaction/buy', {
                     number: this.cardNumber,
                     cvv: this.cvv,
                     transactionAmount: this.total,
@@ -114,7 +113,7 @@ createApp({
                         this.isLoading = false;
                         this.handleMessage("Payment could not be processed.", 3, true)
     
-                    })*/
+                    })
 
             }, 3000)
 

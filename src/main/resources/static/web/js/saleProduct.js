@@ -12,7 +12,11 @@ createApp({
             id: null,
             navActive: null,
             isLogged: false,
-            selectSubMenu: false
+            selectSubMenu: false,
+            messageAlert : {
+                message : "",
+                isError: false
+            }
 
         }
     },
@@ -95,6 +99,7 @@ createApp({
                 this.bag.push(product)
                 this.handleMessageAlert("Item added to cart", 3, false)
             }
+
             localStorage.setItem("bag", JSON.stringify(this.bag))
             this.quantityTotalCart()
             this.priceTotalCart()
@@ -344,6 +349,16 @@ createApp({
         }
 
         return products;
+
+    },
+    handleMessageAlert(message, seconds, isError){
+
+        this.messageAlert = {
+            message,
+            isError
+        }
+
+        setTimeout(() => this.messageAlert.message = "", seconds * 1000)
 
     },
 
