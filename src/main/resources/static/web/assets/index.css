@@ -538,16 +538,26 @@ body {
     background-position: center;
     background-size: cover;
     /* backdrop-filter: blur(3px); */
-    background-color: rgba(172, 175, 219, 0.815);
+    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/img/fondoazul.jpg");
+    
 }
 
 .carousel h2 {
-    color: rgb(3, 3, 3);
+    color: rgb(244, 238, 238);
     margin-top: 1rem;
     /*font-family: Georgia, 'Times New Roman', Times, serif;*/
     font-weight: 700;
     font-size: 1.6rem;
     text-shadow: -1.3px 1px 1px rgb(76, 50, 50);
+}
+
+.h2-team{
+    color: rgb(244, 238, 238);
+       
+        font-weight: 700;
+        font-size: 1.6rem;
+        text-shadow: -1.3px 1px 1px rgb(76, 50, 50);
 }
 
 .carousel-inner {
