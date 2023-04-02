@@ -16,7 +16,9 @@ createApp({
             },
             completed: false,
             isLoading: false,
-            count: 3
+            count: 3,
+            isLogged : false
+            
 
 
         }
@@ -35,7 +37,7 @@ createApp({
 
             axios("/api/clients/auth")
                 .then(res => {
-
+                    console.log(res)
                     this.isLogged = true;
 
                 })
