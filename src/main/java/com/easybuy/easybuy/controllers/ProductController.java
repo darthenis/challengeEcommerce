@@ -61,7 +61,7 @@ public class ProductController {
     }
 
     @PostMapping("/products/{id}/images")
-    public ResponseEntity<?> uploadImages(@RequestParam() MultipartFile[] images, @PathVariable Long id) {
+    public ResponseEntity<?> uploadImages(@RequestParam("images") MultipartFile[] images, @PathVariable Long id) {
 
         Optional<Product> product =  productService.findById(id);
 

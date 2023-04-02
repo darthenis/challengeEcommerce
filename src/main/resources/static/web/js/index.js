@@ -27,7 +27,8 @@ createApp({
                 message : "",
                 isError: false
             },
-            scrollheader : false
+            scrollheader : false,
+            isLoading : false
 
         }
     },
@@ -133,8 +134,8 @@ createApp({
                         return item;
                     }
                 })
-            } else {
-
+            } else if(object.stock > 0){
+                
                 let product = { ...object, quantity: 1 }
                 this.bag.push(product)
                 this.handleMessageAlert("Item added to cart", 3, false)
@@ -445,7 +446,48 @@ createApp({
             }, 1000);
 
 
-        }
+        },
+        checkoutHandler(){
+
+                this.isLoading = true;
+
+                axios.post('/api/client/current/orders', {
+                    dateTime: new Date(),
+                    amount: this.totalCart,
+                    products: [...this.getProducts()]
+                },
+                    { headers: { 'content-type': 'application/json' } })
+                    .then(res => {
+                        console.log(res.data)
+                        location.href = "/web/terminalpay.html?order="+res.data;
+                    })
+                    .catch(err => {
+                        let item = this.bag.filter(item => item.id == err.response.data.split(":")[1].trim())
+                        this.handleMessageAlert("No stock for "+item[0].name, 3, true)
+                        this.isLoading = false;
+                    })
+   
+
+        
+
+        },
+        getProducts() {
+
+            let products = [];
+
+            for (let product of this.bag) {
+
+                products.push({
+                    idProduct: product.id,
+                    price: product.price,
+                    quantity: product.quantity
+                })
+
+            }
+
+            return products;
+
+        },
 
     },
     computed: {

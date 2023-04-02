@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<<<<<<< HEAD
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SHOP | Easy Buy</title>
@@ -12,51 +13,74 @@
     <link rel="stylesheet" href="./assets/shop.css">
     <link rel="stylesheet" href="./assets/carrito.css">
     <link rel="shortcut icon" href="./assets/img/logo-easy_-_copia-removebg-preview.png" type="image/x-icon">
+=======
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SHOP | Easy Buy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./assets/pruebaTerminal.css">
+  <link rel="stylesheet" href="./assets/index.css">
+  <link rel="stylesheet" href="./assets/fadeInBottom.css">
+  <link rel="stylesheet" href="./assets/shop.css">
+  <link rel="stylesheet" href="./assets/carrito.css">
+  <link rel="shortcut icon" href="./assets/img/logo-easy.png" type="image/x-icon">
+>>>>>>> 0b3bc928c3bbd5ff74d928350f30f8dfc30ac6b7
 </head>
 
 <body>
-    <div id="app">
-        {{filtering}}
-        <div class="categories_shop_mobile" :style="{animationName : activeMenuCategories ? 'slideIn' : activeMenuCategories != null ? 'slideOut' : ''}">
-            <button v-if="activeMenuCategories" @click="handlerMenuCategories" class="fixed top-0 right-0 m-4 rounded-lg p-4">X</button>
-            <h4 class="mb-2">Categories</h4>
-            <ul class="flex flex-col gap-2">
-                <li>
-                    
-                   <input type="checkbox" id="appli1" value="Appliance" v-model="filterTags"> <label class="ml-8" for="appli1">Appliance</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="aud1" value="Audio" v-model="filterTags"> <label class="ml-8" for="aud">Audio</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="furn1"  value="Furniture" v-model="filterTags"> <label class="ml-8" for="forn1">Furniture</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="heal1"  value="Health" v-model="filterTags">  <label class="ml-8" for="heal1">Health</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="kids1"  value="Kids" v-model="filterTags">  <label class="ml-8" for="kids1">Kids</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="tecn1"  value="Tecnology" v-model="filterTags">  <label class="ml-8" for="tecn1">Tecnology</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="vid1"  value="Video" v-model="filterTags"> <label class="ml-8" for="vid1">Video</label> 
-                </li>
-            </ul>
+  <div id="app">
+    {{filtering}}
+    <div class="categories_shop_mobile"
+      :style="{animationName : activeMenuCategories ? 'slideIn' : activeMenuCategories != null ? 'slideOut' : ''}">
+      <button v-if="activeMenuCategories" @click="handlerMenuCategories"
+        class="fixed top-0 right-0 m-4 rounded-lg p-4">X</button>
+      <h4 class="mb-2">Categories</h4>
+      <ul class="flex flex-col gap-2">
+        <li>
 
-            <div class="mt-4">
-                <h3 class="text-center mb-2">Range price</h3>
-                <div class="flex gap-2 justify-center items-center">
-                    <input class="border input_shop" id="min" type="text" placeholder="min" v-model="minPrice" style="width: 70px;"/>
-                    -
-                    <input class="border input_shop" id="min" type="text" placeholder="max" v-model="maxPrice" style="width: 70px;"/>
-                </div>
-            </div>
+          <input type="checkbox" id="appli1" value="Appliance" v-model="filterTags"> <label class="ml-8"
+            for="appli1">Appliance</label>
+        </li>
+        <li>
+          <input type="checkbox" id="aud1" value="Audio" v-model="filterTags"> <label class="ml-8"
+            for="aud">Audio</label>
+        </li>
+        <li>
+          <input type="checkbox" id="furn1" value="Furniture" v-model="filterTags"> <label class="ml-8"
+            for="forn1">Furniture</label>
+        </li>
+        <li>
+          <input type="checkbox" id="heal1" value="Health" v-model="filterTags"> <label class="ml-8"
+            for="heal1">Health</label>
+        </li>
+        <li>
+          <input type="checkbox" id="kids1" value="Kids" v-model="filterTags"> <label class="ml-8"
+            for="kids1">Kids</label>
+        </li>
+        <li>
+          <input type="checkbox" id="tecn1" value="Tecnology" v-model="filterTags"> <label class="ml-8"
+            for="tecn1">Tecnology</label>
+        </li>
+        <li>
+          <input type="checkbox" id="vid1" value="Video" v-model="filterTags"> <label class="ml-8"
+            for="vid1">Video</label>
+        </li>
+      </ul>
+
+      <div class="mt-4">
+        <h3 class="text-center mb-2">Range price</h3>
+        <div class="flex gap-2 justify-center items-center">
+          <input class="border input_shop" id="min" type="text" placeholder="min" v-model="minPrice"
+            style="width: 70px;" />
+          -
+          <input class="border input_shop" id="min" type="text" placeholder="max" v-model="maxPrice"
+            style="width: 70px;" />
         </div>
+      </div>
+    </div>
 
 
-        <nav class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center"
+    <nav class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center"
       :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
       <div class="navAnimated w-min-screen flex flex-end"
         :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
@@ -64,8 +88,7 @@
         </div>
       </div>
 
-      <div
-        class="flex flex-col h-screen items-center text-white w-full tracking-[1px] transition-all pt-4">
+      <div class="flex flex-col h-screen items-center text-white w-full tracking-[1px] transition-all pt-4">
 
         <div class="flex gap-10 items-center gap-6">
           <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
@@ -74,9 +97,9 @@
               class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
               {{totalCartQuantity}}
             </div>
-            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"  data-te-ripple-init
-            data-te-ripple-color="light" @click="toggleCart"></i>
-            
+            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init
+              data-te-ripple-color="light" @click="toggleCart"></i>
+
           </div>
           <div class="flex justify-center">
             <div>
@@ -103,9 +126,7 @@
                     class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
                   <li>
                     <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                        href="#" 
-                        @click="logout" 
-                        data-te-dropdown-item-ref>Sign out</a>
+                      href="#" @click="logout" data-te-dropdown-item-ref>Sign out</a>
                   </li>
                 </ul>
               </div>
@@ -113,57 +134,56 @@
           </div>
         </div>
 
-        <a href="#" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+        <a href="./index.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
           Home
         </a>
         <p class="mt-10 hover:text-blue-300 mt-10 cursor-pointer transition-all duration-[.3s]">
-          <div class="relative" data-te-dropdown-ref>
-            <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d"
-              data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-              data-te-ripple-color="light">Categories</div>
-            <ul
-              class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
-              aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
-              <li class="hover:bg-blue-900 py-1 px-2">
-                <a href="./shop.html?filter=Tecnology">
-                  <h2>Technology</h2>
-                </a>
-              </li>
-              <li class="hover:bg-blue-900 py-1 px-2">
-                <a href="./shop.html?filter=Appliance">
-                  <h2>Appliance</h2>
-                </a>
-              </li>
-              <li class="hover:bg-blue-900 py-1 px-2">
-                <a href="./shop.html?filter=Furniture">
-                  <h2>Furniture</h2>
-                </a>
-              </li>
-              <li class="hover:bg-blue-900 py-1 px-2">
-                <a href="./shop.html?filter=Health">
-                  <h2>Health</h2>
-                </a>
-              </li>
-              <li class="hover:bg-blue-900 py-1 px-2">
-                <a href="./shop.html?filter=Audio">
-                  <h2>Audio</h2>
-                </a>
-              </li>
-              <li class="hover:bg-blue-900 py-1 px-2">
-                <a href="./shop.html?filter=Video">
-                  <h2>Video</h2>
-                </a>
-              </li>
-              <li class="hover:bg-blue-900 py-1 px-2">
-                <a href="./shop.html?filter=Kids">
-                  <h2>Kids</h2>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </p>
-        <a href="./frecuents.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-          Frecuent Questions
+        <div class="relative" data-te-dropdown-ref>
+          <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d" data-te-dropdown-toggle-ref
+            aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">Categories</div>
+          <ul
+            class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+            aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+            <li class="hover:bg-blue-900 py-1 px-2">
+              <a href="./shop.html?filter=Tecnology">
+                <h2>Technology</h2>
+              </a>
+            </li>
+            <li class="hover:bg-blue-900 py-1 px-2">
+              <a href="./shop.html?filter=Appliance">
+                <h2>Appliance</h2>
+              </a>
+            </li>
+            <li class="hover:bg-blue-900 py-1 px-2">
+              <a href="./shop.html?filter=Furniture">
+                <h2>Furniture</h2>
+              </a>
+            </li>
+            <li class="hover:bg-blue-900 py-1 px-2">
+              <a href="./shop.html?filter=Health">
+                <h2>Health</h2>
+              </a>
+            </li>
+            <li class="hover:bg-blue-900 py-1 px-2">
+              <a href="./shop.html?filter=Audio">
+                <h2>Audio</h2>
+              </a>
+            </li>
+            <li class="hover:bg-blue-900 py-1 px-2">
+              <a href="./shop.html?filter=Video">
+                <h2>Video</h2>
+              </a>
+            </li>
+            <li class="hover:bg-blue-900 py-1 px-2">
+              <a href="./shop.html?filter=Kids">
+                <h2>Kids</h2>
+              </a>
+            </li>
+          </ul>
+        </div>
+       
+        <a href="#" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Shop
         </a>
         <a href="./about-us.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
           About Us
@@ -189,15 +209,15 @@
 
 
         <div class="flex items-center justify-center md:flex">
-          <img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" />
+          <a href="./index.html"><img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" /></a>
         </div>
 
 
 
         <div class="md:w-[50%] justify-center gap-4 hidden sm:flex">
-          <input v-model="searchProduct" type="text" class="w-[80%] p-2 rounded-lg" style="box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5)" placeholder="Search a product..." />
-          <button
-            @click="handleSearch"
+          <input v-model="searchProduct" type="text" class="w-[80%] p-2 rounded-lg"
+            style="box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5)" placeholder="Search a product..." />
+          <button @click="handleSearch"
             class=" flex items-center justify-center w-[10rem] bg-blue-900 text-white rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
             <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
             <span class="hidden md:flex">SEARCH</span>
@@ -212,17 +232,17 @@
 
         <div class="hidden lg:flex items-center gap-6" v-if="isLogged">
           <a href="./favorites.html"><i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i></a>
-          
+
           <div class="relative inline-flex w-fit">
             <div v-if="totalCartQuantity"
               class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
               {{totalCartQuantity}}
             </div>
-            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"  data-te-ripple-init
-            data-te-ripple-color="light" @click="toggleCart"></i>
-            
+            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init
+              data-te-ripple-color="light" @click="toggleCart"></i>
+
           </div>
-          
+
           <div class="flex justify-center">
             <div>
               <div class="relative" data-te-dropdown-ref>
@@ -270,53 +290,52 @@
             Home
           </a>
           <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
-            <div class="relative" data-te-dropdown-ref>
-              <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d"
-                data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-                data-te-ripple-color="light">Categories</div>
-              <ul
-                class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
-                aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Tecnology">
-                    <h2>Technology</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Appliance">
-                    <h2>Appliance</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Furniture">
-                    <h2>Furniture</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Health">
-                    <h2>Health</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Audio">
-                    <h2>Audio</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Video">
-                    <h2>Video</h2>
-                  </a>
-                </li>
-                <li class="hover:bg-blue-900 py-1 px-2">
-                  <a href="./shop.html?filter=Kids">
-                    <h2>Kids</h2>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </p>
-          <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
-            Frecuent Questions
+          <div class="relative" data-te-dropdown-ref>
+            <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d" data-te-dropdown-toggle-ref
+              aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">Categories</div>
+            <ul
+              class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+              aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Tecnology">
+                  <h2>Technology</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Appliance">
+                  <h2>Appliance</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Furniture">
+                  <h2>Furniture</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Health">
+                  <h2>Health</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Audio">
+                  <h2>Audio</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Video">
+                  <h2>Video</h2>
+                </a>
+              </li>
+              <li class="hover:bg-blue-900 py-1 px-2">
+                <a href="./shop.html?filter=Kids">
+                  <h2>Kids</h2>
+                </a>
+              </li>
+            </ul>
+          </div>
+         
+          <a href="#" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
+            Shop
           </a>
           <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
             About Us
@@ -326,46 +345,123 @@
         </div>
       </nav>
     </header>
-        
-        <main class="container_shop_main w-full" v-cloak>
-             <section class="grid_layout w-[90%]">
-            
-                <div class="categories_shop" style="height: fit-content">
-                    <h4 class="mb-2">Categories</h4>
-                    <ul class="flex flex-col gap-2">
-                        <li>
-                            
-                           <input type="checkbox" id="Appliance" value="Appliance" v-model="filterTags"> <label class="ml-8" for="Appliance">Appliance</label>
-                        </li>   
-                        <li>
-                            <input type="checkbox" id="Audio" value="Audio" v-model="filterTags"> <label class="ml-8" for="Audio">Audio</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="Furniture" value="Furniture" v-model="filterTags"> <label class="ml-8" for="Furniture">Furniture</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="Health" value="Health" v-model="filterTags">  <label class="ml-8" for="Health">Health</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="kids" value="Kids" v-model="filterTags">  <label class="ml-8" for="kids">Kids</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="Tecnology" value="Tecnology" v-model="filterTags">  <label class="ml-8" for="Tecnology">Tecnology</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="Video" value="Video" v-model="filterTags"> <label class="ml-8" for="Video">Video</label> 
-                        </li>
-                    </ul>
 
-                    <div class="mt-4">
-                        <h3 class="mb-2">Range price</h3>
-                        <div class="flex gap-2 justify-center items-center">
-                            <input class="border input_shop" id="min" type="text" v-model="minPrice" placeholder="min" style="width: 70px;"/>
-                            -
-                            <input class="border input_shop" id="min" type="text" v-model="maxPrice" placeholder="max" style="width: 70px;"/>
-                        </div>
+    <main class="container_shop_main" v-cloak>
+      <section class="grid_layout">
+
+        <div class="categories_shop" style="height: fit-content">
+          <h4 class="mb-2">Categories</h4>
+          <ul class="flex flex-col gap-2">
+            <li>
+
+              <input type="checkbox" id="Appliance" value="Appliance" v-model="filterTags"> <label class="ml-8"
+                for="Appliance">Appliance</label>
+            </li>
+            <li>
+              <input type="checkbox" id="Audio" value="Audio" v-model="filterTags"> <label class="ml-8"
+                for="Audio">Audio</label>
+            </li>
+            <li>
+              <input type="checkbox" id="Furniture" value="Furniture" v-model="filterTags"> <label class="ml-8"
+                for="Furniture">Furniture</label>
+            </li>
+            <li>
+              <input type="checkbox" id="Health" value="Health" v-model="filterTags"> <label class="ml-8"
+                for="Health">Health</label>
+            </li>
+            <li>
+              <input type="checkbox" id="kids" value="Kids" v-model="filterTags"> <label class="ml-8"
+                for="kids">Kids</label>
+            </li>
+            <li>
+              <input type="checkbox" id="Tecnology" value="Tecnology" v-model="filterTags"> <label class="ml-8"
+                for="Tecnology">Tecnology</label>
+            </li>
+            <li>
+              <input type="checkbox" id="Video" value="Video" v-model="filterTags"> <label class="ml-8"
+                for="Video">Video</label>
+            </li>
+          </ul>
+
+          <div class="mt-4">
+            <h3 class="mb-2">Range price</h3>
+            <div class="flex gap-2 justify-center items-center">
+              <input class="border input_shop" id="min" type="text" v-model="minPrice" placeholder="min"
+                style="width: 70px;" />
+              -
+              <input class="border input_shop" id="min" type="text" v-model="maxPrice" placeholder="max"
+                style="width: 70px;" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu_top_shop pt-4 pb-2">
+          <div>Showing <span v-html="(initPage / 9) + 1"></span>–<span
+              v-html="Math.round(totalFilteredProducts.length / 9)"></span> of <span
+              v-html="filteredProducts.length"></span> results</div>
+          <div>Sort by:
+            <select style="width: 100px;" v-model="sortSeleted">
+              <option value="">Default</option>
+              <option value="asc">Price Ascending</option>
+              <option value="des">Price Descending</option>
+              <option value="a-z">a-z</option>
+              <option value="z-a">z-a</option>
+            </select>
+          </div>
+          <div class="button_mobile_categories" @click="handlerMenuCategories">Filters ></div>
+        </div>
+
+        <div class="container_cards_shop">
+
+          <h1 class="text-center text-lg font-bold" v-if="!filteredProducts.length" style="grid-column: 1/-1">Cards not
+            found</h1>
+
+          <template v-for="(product, index) of filteredProducts">
+
+            <article :id="'product-'+product.id" :class="{elementFadeIn : visibleArticle[index]}" style="height: 370px"
+              class="rounded-lg relative  w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
+
+              <div class="absolute top-0 left-0 mt-2 ml-2 p-1 rounded-lg text-white "
+                :class="{'bg-red-500' : product.stock < 6, 'bg-blue-500' : product.stock > 5}">{{product.stock == 0 ?
+                'No stock' : product.stock < 6 ? 'Last ' + product.stock + ' units' : product.stock + ' units' }}</div>
+
+                  <i @click="addFavorites(product)"
+                    :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
+                    class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
+                  <a :href="'./product.html?id='+product.id">
+                    <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"
+                      :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
+                      alt="product image" />
+                  </a>
+                  <div class="px-5 flex flex-col justify-between">
+                    <a :href="'./product.html?id='+product.id">
+                      <h5 style="font-size: 15px;"
+                        class="mt-1 text-center text-xl font-semibold tracking-tight text-gray-900 dark:text-dark">
+                        {{product.name}}</h5>
+                    </a>
+                    <div class="flex items-center mt-2.5 justify-center">
+                      <span class="flex" v-html="counterStars(product.rates)"></span>
+                      <span
+                        class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
                     </div>
-                </div>
+                    <div class="flex items-center flex-col justify-between">
+                      <div class="flex flex-col items-center">
+                        <div class="font-bold text-red-400"
+                          :style="{visibility: product.discount ? 'visible' : 'hidden'}" style="font-size: 14px">
+                          {{product.discount ? product.discount + '%off' : "asd"}} <span v-if="product.discount"
+                            style="text-decoration: line-through; font-size: 12px">{{formatCurrency(product.price)}}</span>
+
+                        </div>
+                        <span class="text-2xl font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
+                          product.discount)}}</span>
+                      </div>
+                      <button @click="saveBag(product)"
+                        class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
+                        to cart</button>
+                    </div>
+                  </div>
+            </article>
+
 
                 <div class="menu_top_shop pt-4 pb-2 w-[93%]">
                     <div>Showing <span v-html="(initPage / 9) + 1"></span>–<span v-html="Math.round(totalFilteredProducts.length / 9)"></span> of <span v-html="filteredProducts.length"></span> results</div>
@@ -431,305 +527,515 @@
                     </template>
                 </div>
 
-                <div class="flex justify-end gap-1 w-100" style="grid-column: 1/-1" >
-                    <span   v-if="initPage != 0"
-                            class="bg-white font-bold hover:bg-gray-200 text-black p-2 rounded-sm shadow-sm" 
-                            @click="handlePages(false)">Prev</span> 
-                    <span   v-if="totalFilteredProducts.length > endPage"
-                            class="bg-white font-bold hover:bg-gray-200 text-black p-2 rounded-sm shadow-sm"
-                            @click="handlePages(true)">Next</span>
-                </div>
+        <div class="flex justify-end gap-1 w-100" style="grid-column: 1/-1">
+          <span v-if="initPage != 0" class="bg-white font-bold hover:bg-gray-200 text-black p-2 rounded-sm shadow-sm"
+            @click="handlePages(false)">Prev</span>
+          <span v-if="totalFilteredProducts.length > endPage"
+            class="bg-white font-bold hover:bg-gray-200 text-black p-2 rounded-sm shadow-sm"
+            @click="handlePages(true)">Next</span>
+        </div>
 
-            </section>
+      </section>
 
-        </main>
+    </main>
 
-        <footer aria-label="Site Footer" class="w-full mt-20 bg-blue-200 flex justify-center items-center">
-          <div class="max-w-screen-2xl py-4 mx-auto space-y-8 sm:px-4 lg:space-y-2" style="width: 86rem;">
-            <div class="grid grid-cols-1 gap-24 lg:grid-cols-3">
-    
-              <div class="flex flex-col items-center">
-                <div class="text-blue-900">
-                  <img class="w-32" src="./assets/img/logo-easy.png" alt="logo-easy-buy">
-                </div>
-    
-                <div>
-                  <p class="max-w-xs mt-4 text-blue-900">
-                    Av. 205 E Houston St. - San Francisco, Texas.
-                  </p>
-                  <p class="max-w-xs mt-4 text-blue-900 text-center">
-                    Telephone: 341-2253-3479
-                  </p>
-                </div>
-                <ul class="flex justify-center gap-6 pb-2 mt-4">
+    <footer aria-label="Site Footer" class="w-full mt-20 bg-blue-200 flex justify-center items-center">
+      <div class="max-w-screen-2xl py-4 mx-auto space-y-8 sm:px-4 lg:space-y-2" style="width: 86rem;">
+        <div class="grid grid-cols-1 gap-24 lg:grid-cols-3">
+
+          <div class="flex flex-col items-center">
+            <div class="text-blue-900">
+              <a href="./index.html"><img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" /></a>
+            </div>
+
+            <div>
+              <p class="max-w-xs mt-4 text-blue-900">
+                Av. 205 E Houston St. - San Francisco, Texas.
+              </p>
+              <p class="max-w-xs mt-4 text-blue-900 text-center">
+                Telephone: 341-2253-3479
+              </p>
+            </div>
+            <ul class="flex justify-center gap-6 pb-2 mt-4">
+              <li>
+                <a href="/" rel="noreferrer" target="_blank" class="text-blue-900 transition hover:opacity-75">
+                  <span class="sr-only">Facebook</span>
+
+                  <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a href="/" rel="noreferrer" target="_blank" class="text-blue-900 transition hover:opacity-75">
+                  <span class="sr-only">Instagram</span>
+
+                  <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a href="/" rel="noreferrer" target="_blank" class="text-blue-900 transition hover:opacity-75">
+                  <span class="sr-only">Twitter</span>
+
+                  <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a href="/" rel="noreferrer" target="_blank" class="text-blue-900 transition hover:opacity-75">
+                  <span class="sr-only">GitHub</span>
+
+                  <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div class="mx-auto grid grid-cols-1 gap-24 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-3">
+            <div class="services">
+              <p class="font-medium text-blue-900 font-bold">Meet the team</p>
+
+              <nav aria-label="Footer Navigation - Company" class="mt-3">
+                <ul class="space-y-2 text-sm">
                   <li>
-                    <a href="/" rel="noreferrer" target="_blank" class="text-blue-900 transition hover:opacity-75">
-                      <span class="sr-only">Facebook</span>
-    
-                      <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                          d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                          clip-rule="evenodd" />
-                      </svg>
+                    <a href="https://github.com/Mailen93" target="_blank"
+                      class="text-blue-900 transition hover:opacity-75">
+                      Mailen Alvarez
                     </a>
                   </li>
-    
+
                   <li>
-                    <a href="/" rel="noreferrer" target="_blank" class="text-blue-900 transition hover:opacity-75">
-                      <span class="sr-only">Instagram</span>
-    
-                      <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                          d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                          clip-rule="evenodd" />
-                      </svg>
+                    <a href="https://github.com/darthenis" target="_blank"
+                      class="text-blue-900 transition hover:opacity-75">
+                      Emiliano Acevedo
                     </a>
                   </li>
-    
+
                   <li>
-                    <a href="/" rel="noreferrer" target="_blank" class="text-blue-900 transition hover:opacity-75">
-                      <span class="sr-only">Twitter</span>
-    
-                      <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                          d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                      </svg>
+                    <a href="https://github.com/emiliano45214" target="_blank"
+                      class="text-blue-900 transition hover:opacity-75">
+                      Emiliano Brizio
                     </a>
                   </li>
-    
+
                   <li>
-                    <a href="/" rel="noreferrer" target="_blank" class="text-blue-900 transition hover:opacity-75">
-                      <span class="sr-only">GitHub</span>
-    
-                      <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                          clip-rule="evenodd" />
-                      </svg>
+                    <a href="https://github.com/juancalvo864" target="_blank"
+                      class="text-blue-900 transition hover:opacity-75">
+                      Juan Calvo
                     </a>
                   </li>
-    
+
+                  <li>
+                    <a href="https://github.com/Dferprojects" target="_blank"
+                      class="text-blue-900 transition hover:opacity-75">
+                      Leonardo F Jara
+                    </a>
+                  </li>
                 </ul>
-    
-              </div>
-    
-              <div class="mx-auto grid grid-cols-1 gap-24 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-3">
-                <div class="services">
-                  <p class="font-medium text-blue-900 font-bold">Meet the team</p>
-    
-                  <nav aria-label="Footer Navigation - Company" class="mt-3">
-                    <ul class="space-y-2 text-sm">
-                      <li>
-                        <a href="https://github.com/Mailen93" target="_blank"
-                          class="text-blue-900 transition hover:opacity-75">
-                          Mailen Alvarez
-                        </a>
-                      </li>
-    
-                      <li>
-                        <a href="https://github.com/darthenis" target="_blank"
-                          class="text-blue-900 transition hover:opacity-75">
-                          Emiliano Acevedo
-                        </a>
-                      </li>
-    
-                      <li>
-                        <a href="https://github.com/emiliano45214" target="_blank"
-                          class="text-blue-900 transition hover:opacity-75">
-                          Emiliano Brizio
-                        </a>
-                      </li>
-    
-                      <li>
-                        <a href="https://github.com/juancalvo864" target="_blank"
-                          class="text-blue-900 transition hover:opacity-75">
-                          Juan Calvo
-                        </a>
-                      </li>
-    
-                      <li>
-                        <a href="https://github.com/Dferprojects" target="_blank"
-                          class="text-blue-900 transition hover:opacity-75">
-                          Leonardo F Jara
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-    
-                <div class="services">
-                  <p class="font-medium text-blue-900 font-bold my-0">Contact Us!</p>
-    
-                  <nav aria-label="Footer Navigation - Company" class="mt-3">
-                    <ul class="space-y-2 text-sm">
-                      <li>
-                        <a class="text-blue-900 transition hover:opacity-75" href="mailto:m.labarrere2@gmail.com">m.labarrere2@gmail.com</a>
-                      </li>
-                      <li>
-                        <a class="text-blue-900 transition hover:opacity-75" href="mailto:emi.acevedo.letras@gmail.com">emi.acevedo.letras@gmail.com</a>
-                      </li>
-                      <li>
-                        <a class="text-blue-900 transition hover:opacity-75" href="mailto:emilianobrizio2017@gmail.com">emilianobrizio2017@gmail.com</a>
-                      </li>
-                      <li>
-                        <a class="text-blue-900 transition hover:opacity-75" href="mailto:calvojuancito@gmail.com">calvojuancito@gmail.com</a>
-                      </li>
-                      <li>
-                        <a class="text-blue-900 transition hover:opacity-75" href="mailto:dfernandezjara@live.com">Dfernandezjara@live.com</a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-    
-                <div>
-                  <p class="font-medium text-blue-900 font-bold my-0">Information</p>
-    
-                  <nav aria-label="Footer Navigation - Legal" class="mt-3">
-                    
-                    <ul class="space-y-2 text-sm">
-                      <li>
-                        <a href="/web/frecuents.html" class="text-blue-900 transition hover:opacity-75">
-                          FAQ
-                        </a>
-                      </li>
-    
-                      <li>
-                        <a href="/web/about-us.html" class="text-blue-900 transition hover:opacity-75">
-                          About Us
-                        </a>
-                      </li>
-    
-                      <li>
-                        <a href="/web/form.html" class="text-blue-900 transition hover:opacity-75">
-                         Contact
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
+              </nav>
             </div>
-    
-            <div class=" flex bg-blue-900 items-center justify-around text-blue-200">
-              <p class="underline">Mind Hub</p>
-              <p class="text-sm text-blue-200 py-2">
-                &copy; 2023. EASY BUY. All rights reserved.</p>
-                <p class="underline">Cohort 41</p>
+
+            <div class="services">
+              <p class="font-medium text-blue-900 font-bold my-0">Contact Us!</p>
+
+              <nav aria-label="Footer Navigation - Company" class="mt-3">
+                <ul class="space-y-2 text-sm">
+                  <li>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:m.labarrere2@gmail.com">m.labarrere2@gmail.com</a>
+                  </li>
+                  <li>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:emi.acevedo.letras@gmail.com">emi.acevedo.letras@gmail.com</a>
+                  </li>
+                  <li>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:emilianobrizio2017@gmail.com">emilianobrizio2017@gmail.com</a>
+                  </li>
+                  <li>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:calvojuancito@gmail.com">calvojuancito@gmail.com</a>
+                  </li>
+                  <li>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:dfernandezjara@live.com">Dfernandezjara@live.com</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <div>
+              <p class="font-medium text-blue-900 font-bold my-0">Information</p>
+
+              <nav aria-label="Footer Navigation - Legal" class="mt-3">
+
+                <ul class="space-y-2 text-sm">
+                  <li>
+                    <button class="text-blue-900 transition hover:opacity-75"
+                      data-modal-target="authentication-modal-FAQ" data-modal-toggle="authentication-modal-FAQ"
+                      type="button">
+                      FAQ
+                    </button>
+                  </li>
+
+                  <li>
+                    <a href="/web/about-us.html" class="text-blue-900 transition hover:opacity-75">
+                      About Us
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/web/form.html" class="text-blue-900 transition hover:opacity-75">
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
-        </footer>
-        <!-- CART MODAL -->
+        </div>
+
+        <div class=" flex bg-blue-900 items-center justify-around text-blue-200">
+          <p class="underline">Mind Hub</p>
+          <p class="text-sm text-blue-200 py-2">
+            &copy; 2023. EASY BUY. All rights reserved.</p>
+          <p class="underline">Cohort 41</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- MODAL FAQ -->
+
+    <!-- Main modal -->
+    <div id="authentication-modal-FAQ" tabindex="-1" aria-hidden="true"
+      class=" fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden md:inset-0 h-[calc(100%-1rem)] md:h-full ">
+      <div class="relative w-full min-h-[100%] mt-40 max-w-[70rem] md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button type="button"
+            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+            data-modal-hide="authentication-modal-Created-Ticket">
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+          <div class="px-6 py-6 g:px-8l">
+            <main>
+
+
+              <div class="h-screen  grid place-items-center overflow-y-scroll relative mt-10">
+                <div
+                  class="flex justify-center items-center p-2 top-0 w-[100%] gap-1 bg-gradient-to-r from-cyan-700 to-blue-400 mt-4 ">
+                  <img src="./assets/img/preg.png" alt="corazon"
+                    style="width:3rem; background-color: white; border-radius: 50%;">
+                  <h2 class="text-xl font-bold text-white pl-1" style="text-shadow: 1px 1px 5px black;">Frecuently Asked
+                    Questions</h2>
+                </div>
+                <div class="w-11/12 md:w-9/12 lg:w-6/12 mx-auto rounded border">
+                  <div class="bg-white p-10 shadow-sm">
+                    <h3 class="text-lg font-medium text-gray-800">Frecuently asked questions</h3>
+                    <p class="text-sm font-light text-gray-600 my-3">
+                      Here we have a section to solve issues with purchases
+                    </p>
+
+                    <div class="h-1 w-full mx-auto border-b my-5"></div>
+
+                    <!-- What is term -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>How to return a purchase?</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Contact a representative through the contact form or through our telephone lines.
+                          tel:341-2235-3456
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Contactesé con un representante mediante el formulario de contactos o a traves de nuestras
+                          lineas telefonicas. tel:341-2235-3456 </p>
+                      </div>
+                    </div>
+
+                    <!-- When to use Accordion Components -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>Billing and taxes on EASY BUY</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Surcharges are added when the buyer has not made the payment by the due date.
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Los recargos se agregan cuando al pasar la fecha limite el comprador no efectuó el pago.
+                        </p>
+
+                      </div>
+                    </div>
+
+                    <!-- Accordion Wrapper -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>Why some products do not have shipping?
+                        </h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Some products do not have shipping since a minimum amount is required in the purchase.
+
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+
+                          Algunos productos no tienen envio ya que se requiere un monto minimo en la compra.
+                        </p>
+
+                      </div>
+                    </div>
+
+                    <!-- Accordion Wrapper -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>About the offers on EASY BUY</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Offers on our site have a maximum of 7 days from their publication.
+
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Las ofertas en nuestro sitio tienen un maximo de 7 dias desde su publicacion.
+
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Accordion Wrapper -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>Minimun amount to free shiping</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          The minimum amount to get free shipings is over U$D 100 dollars or product weights greater
+                          than 50kg
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          El monto mínimo para obtener envíos gratis es superior a U$D 100 dólares o pesos de productos
+                          superiores a 50 kg.
+
+                        </p>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+              </div>
+
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL FAQ -->
+    <!-- CART MODAL -->
     <div v-if="active" class="fixed top-0 left-0 w-screen h-screen"
-        style="z-index: 100; background-color: rgba(0, 0, 0, 0.5);">
+      style="z-index: 100; background-color: rgba(0, 0, 0, 0.5);">
 
-    <div
-      class="carrito bg-blue-900 shadow-lg w-96 h-screen p-2 flex flex-col gap-1 max-h-screen overflow-y-scroll overflow-x-hidden"
-      :style="{animationName : active ? 'slideIn' : active != null ? 'slideOut' : ''}" style="max-width: 100vw;">
+      <div
+        class="carrito bg-blue-900 shadow-lg w-96 h-screen p-2 flex flex-col gap-1 max-h-screen overflow-y-scroll overflow-x-hidden"
+        :style="{animationName : active ? 'slideIn' : active != null ? 'slideOut' : ''}" style="max-width: 100vw;">
 
-      <div class="flex justify-between items-center">
-        <img src="./assets/img/cart.svg" alt="cart" style="width: 40px">
-        <p class="lg:text-2xl text-1xl font-black leading-10 text-white">My cart</p>
-        <div class="py-1 px-3 font-bold bg-white rounded-full shadow-lg hover:bg-blue-300" @click="toggleCart">X</div>
-      </div>
-
-
-      <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-for="product of bag"
-        v-if="bag.length">
-        <div class="md:w-4/12 2xl:w-1/4 w-full">
-          <img :src="product.imgsUrls[0]" alt="Black Leather Bag"
-            class="h-full object-center object-cover md:block hidden" />
-
+        <div class="flex justify-between items-center">
+          <img src="./assets/img/cart.svg" alt="cart" style="width: 40px">
+          <p class="lg:text-2xl text-1xl font-black leading-10 text-white">My cart</p>
+          <div class="py-1 px-3 font-bold bg-white rounded-full shadow-lg hover:bg-blue-300" @click="toggleCart">X</div>
         </div>
-        <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col md:justify-between md:h-full">
-          <div class="flex items-center justify-between w-full">
-            <p class="text-base font-black leading-none text-gray-800">{{product.name}}</p>
-            <div class="custom-number-input h-10 w-20">
-              <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-                <button data-action="decrement"
-                  class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
-                  @click="outProductBag(product)">
-                  <span class="m-auto text-2xl font-thin">−</span>
-                </button>
-                <input type="number" style="width: 20px;"
-                  class="input outline-none focus:outline-none text-center bg-gray-200 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
-                  name="custom-input-number" :value="product.quantity"></input>
-                <button data-action="increment"
-                  class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
-                  @click="saveBag(product)">
-                  <span class="m-auto text-2xl font-thin">+</span>
-                </button>
+
+
+        <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-for="product of bag"
+          v-if="bag.length">
+          <div class="md:w-4/12 2xl:w-1/4 w-full">
+            <img :src="product.imgsUrls[0]" alt="Black Leather Bag"
+              class="h-full object-center object-cover md:block hidden" />
+
+          </div>
+          <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col md:justify-between md:h-full">
+            <div class="flex items-center justify-between w-full">
+              <p class="text-base font-black leading-none text-gray-800">{{product.name}}</p>
+              <div class="custom-number-input h-10 w-20">
+                <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                  <button data-action="decrement"
+                    class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+                    @click="outProductBag(product)">
+                    <span class="m-auto text-2xl font-thin">−</span>
+                  </button>
+                  <input type="number" style="width: 20px;"
+                    class="input outline-none focus:outline-none text-center bg-gray-200 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                    name="custom-input-number" :value="product.quantity"></input>
+                  <button data-action="increment"
+                    class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+                    @click="saveBag(product)">
+                    <span class="m-auto text-2xl font-thin">+</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-5">
+              <div class="flex itemms-center">
+                <p class="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
+                <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
+                  @click="removeItem(product)">Remove</a>
+              </div>
+              <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price
+                / 100) * product.discount))}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-else>
+          <img
+            src="https://cdni.iconscout.com/illustration/premium/thumb/confusing-woman-due-to-empty-cart-4558760-3780056.png"
+            alt="">
+        </div>
+        <div class="w-full bg-white rounded-lg ">
+          <div class="flex flex-col h-auto lg:px-8 md:px-7 px-4 lg:py-2 md:py-10 py-2 justify-between overflow-y-auto">
+            <div>
+              <div class="flex items-center justify-between border-b-2">
+                <p class="text-xl leading-normal text-gray-800">Quantity Products</p>
+                <p class="text-xl font-bold leading-normal text-right text-gray-800">
+                  {{totalCartQuantity}}</p>
+              </div>
+              <div class="flex items-center pb-1 mb-2 justify-between lg:pt-3 border-b-2">
+                <p class="text-2xl leading-normal text-gray-800">Total</p>
+                <p class="text-2xl font-bold leading-normal text-right text-gray-800">
+                  {{formatDollar(totalCart)}}</p>
+              </div>
+              <button @click="checkoutHandler" :disabled="!isLogged || !bag.length || isLoading"
+                class="text-xl flex items-center justify-center hover:bg-red-500 disabled:bg-red-300 rounded-md leading-none w-full py-5 bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
+                <div role="status" v-if="isLoading">
+                  <svg aria-hidden="true" class="w-8 h-8 mr-2 text-blue-600 animate-spin fill-white"
+                    viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="currentColor" />
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentFill" />
+                  </svg>
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <template v-else>Checkout</template>
+              </button>
+              <div v-if="!isLogged">
+                <p class="text-x1">To make a purchase, either sign in to your account or create one. <a
+                    href="/web/login.html" class="underline">Sign in</a></p>
+
               </div>
             </div>
           </div>
-          <div class="flex items-center justify-between pt-5">
-            <div class="flex itemms-center">
-              <p class="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
-              <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
-                @click="removeItem(product)">Remove</a>
-            </div>
-            <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price / 100) * product.discount))}}
-            </p>
-          </div>
         </div>
-      </div>
-      <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-else>
-        <img
-          src="https://cdni.iconscout.com/illustration/premium/thumb/confusing-woman-due-to-empty-cart-4558760-3780056.png"
-          alt="">
-      </div>
-      <div class="w-full bg-white rounded-lg ">
-        <div class="flex flex-col h-auto lg:px-8 md:px-7 px-4 lg:py-2 md:py-10 py-2 justify-between overflow-y-auto">
-          <div>
-            <div class="flex items-center justify-between border-b-2">
-              <p class="text-xl leading-normal text-gray-800">Quantity Products</p>
-              <p class="text-xl font-bold leading-normal text-right text-gray-800">
-                {{totalCartQuantity}}</p>
-            </div>
-            <div class="flex items-center pb-1 mb-2 justify-between lg:pt-3 border-b-2">
-              <p class="text-2xl leading-normal text-gray-800">Total</p>
-              <p class="text-2xl font-bold leading-normal text-right text-gray-800">
-                {{formatDollar(totalCart)}}</p>
-            </div>
-            <a href="/web/TerminalPay.html">
-              <button
-                class="text-xl hover:bg-red-500 hover:drop-shadow-2xl rounded-md leading-none w-full py-5 bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">Checkout</button>
-            </a>
-        </div>
-        </div>
-      </div>
 
+      </div>
     </div>
+    <!--     CART MODAL -->
+
+    <div v-if="messageAlert.message"
+      :class="{'bg-green-500' : !messageAlert.isError, 'bg-red-500' : messageAlert.isError}"
+      class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-2 p-4 rounded-lg animationAlertMessage">
+      <p>{{messageAlert.message}}</p>
+    </div>
+
+    <div v-if="scrollheader"
+      class="fixed flex justify-center items-center bottom-5 right-5 bg-blue-600 text-white rounded-full py-4 px-4">
+      <div class="relative inline-flex w-fit">
+        <div v-if="totalCartQuantity"
+          class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-200 py-1.5 px-2.5 text-center align-baseline text-xs font-bold leading-none text-black">
+          {{totalCartQuantity}}
+        </div>
+        <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init data-te-ripple-color="light"
+          @click="toggleCart"></i>
+
+      </div>
+    </div>
+
   </div>
-  <!--     CART MODAL -->
 
-        <div    v-if="messageAlert.message" 
-          :class="{'bg-green-500' : !messageAlert.isError, 'bg-red-500' : messageAlert.isError}"
-          class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-2 p-4 rounded-lg animationAlertMessage">
-          <p>{{messageAlert.message}}</p>   
-        </div>      
+  <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4ffb8edd00.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+  <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./js/shop.js"></script>
+  <style>
+    .accordion-content {
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
+    }
+  </style>
 
-        <div v-if="scrollheader" class="fixed flex justify-center items-center bottom-5 right-5 bg-blue-600 text-white rounded-full py-4 px-4">
-          <div class="relative inline-flex w-fit">
-            <div v-if="totalCartQuantity"
-              class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-200 py-1.5 px-2.5 text-center align-baseline text-xs font-bold leading-none text-black">
-              {{totalCartQuantity}}
-            </div>
-            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init
-              data-te-ripple-color="light" @click="toggleCart"></i>
-    
-          </div>
-        </div>
+  <script>
+    const accordionHeader = document.querySelectorAll(".accordion-header");
+    accordionHeader.forEach((header) => {
+      header.addEventListener("click", function () {
+        const accordionContent = header.parentElement.querySelector(".accordion-content");
+        let accordionMaxHeight = accordionContent.style.maxHeight;
 
-    </div>
-
-    <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/4ffb8edd00.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/shop.js"></script>
-
+        // Condition handling
+        if (accordionMaxHeight == "0px" || accordionMaxHeight.length == 0) {
+          accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
+          header.querySelector(".fas").classList.remove("fa-plus");
+          header.querySelector(".fas").classList.add("fa-minus");
+          header.parentElement.classList.add("bg-indigo-50");
+        } else {
+          accordionContent.style.maxHeight = `0px`;
+          header.querySelector(".fas").classList.add("fa-plus");
+          header.querySelector(".fas").classList.remove("fa-minus");
+          header.parentElement.classList.remove("bg-indigo-50");
+        }
+      });
+    });
+  </script>
 </body>
+
+</html>
