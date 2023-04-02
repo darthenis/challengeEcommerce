@@ -20,7 +20,6 @@ public class ProductDTO {
 
     private int discount;
 
-
     private List<String> imgsUrls;
 
     private int stock;
@@ -82,5 +81,9 @@ public class ProductDTO {
 
     public List<RateDTO> getRates() {
         return rates;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

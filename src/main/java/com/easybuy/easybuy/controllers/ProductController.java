@@ -2,6 +2,7 @@ package com.easybuy.easybuy.controllers;
 
 import com.easybuy.easybuy.DTO.CreateProductDTO;
 import com.easybuy.easybuy.DTO.ProductDTO;
+import com.easybuy.easybuy.DTO.PurchaseDTO;
 import com.easybuy.easybuy.DTO.UpdateProductDTO;
 import com.easybuy.easybuy.models.*;
 import com.easybuy.easybuy.services.ClientService;
@@ -123,26 +124,27 @@ public class ProductController {
     }
 
     @GetMapping("/client/current/products")
-    public List<ProductDTO> getBuyedProducts(Authentication authentication){
+    public List<PurchaseDTO> getBuyedProducts(Authentication authentication){
 
         Client client = clientService.findByEmail(authentication.getName()).get();
 
         List<TicketProduct> ticketProducts = new ArrayList<>();
 
-        List<ProductDTO> productDTOS = new ArrayList<>();
+        List<PurchaseDTO> purchaseDTOS = new ArrayList<>();
 
         for(Ticket ticket : client.getTicketsPurchase()){
 
             for(TicketProduct ticketProduct : ticket.getTicketProducts()){
 
                 Optional<Product> product = productService.findById(ticketProduct.getProductId());
-
-                product.ifPresent(value -> productDTOS.add(new ProductDTO(value)));
+                PurchaseDTO purchaseDTO = new PurchaseDTO(product.get());
+                purchaseDTO.setDate(ticket.getDateTime());
+                purchaseDTOS.add(purchaseDTO);
             }
 
         }
 
-        return productDTOS;
+        return purchaseDTOS;
 
     }
 

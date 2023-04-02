@@ -7,8 +7,9 @@
 
 
 .grid_layout{
+    width: 90%;
     display: grid;
-    gap: 6rem;
+    gap: 1rem;
     grid-template-columns: 200px 1fr;
     grid-template-rows: 70px 1fr;
 }
