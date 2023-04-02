@@ -4,21 +4,26 @@ createApp({
     data() {
         return {
             clients: [],
+            filteredClients: [],
             products: [],
             filteredProducts: [],
             searchProduct: "",
-                name: "",
-                description: "",
-                price: null,
-                discount: null,
-                stock: null,
-                category: "",
+            searchClient: "",                
+            name: "",
+            description: "",
+            price: null,
+            discount: null,
+            stock: null,
+            category: "",
             id: null,
             pictures: null,
             messageAlert: {
                 message : "",
                 isError: false
-            }
+            },
+            lastName : "",
+            tel : "",
+            email : ""
 
 
         }
@@ -32,18 +37,13 @@ createApp({
         loadData() {
             axios.get('/api/clients')
                 .then(res => {
-                    this.clients = res.data
+                    this.clients = res.data.sort((a, b) => b.id - a.id)
+                    this.filteredClients = [...this.clients]
                 })
             axios.get('/api/products')
                 .then(res => {
-                    this.products = res.data
+                    this.products = res.data.sort((a, b) => b.id - a.id)
                     this.filteredProducts = [...this.products]
-                    console.log(this.products)
-                })
-
-            axios.get('/api/tickets')
-                .then(res => {
-                    this.tickets = res.data
                 })
         },
         handleMessageAlert(message, seconds, isError){
@@ -56,9 +56,62 @@ createApp({
             setTimeout(() => this.messageAlert.message = "", seconds * 1000)
 
         },
+        handleSearchClient(){
+
+            this.filteredClients = this.clients.filter(client =>   client.name.toUpperCase().includes(this.searchClient.toUpperCase()) || 
+                                                                    client.lastName.toUpperCase().includes(this.searchClient.toUpperCase()) ||
+                                                                    client.email.toUpperCase().includes(this.searchClient.toUpperCase()) ||
+                                                                    client.tel.toUpperCase().includes(this.searchClient.toUpperCase()))
+
+        },
         handleSearchProduct(){
 
-            this.filteredProducts = this.products.filter(product => product.name.toUpperCase().includes(this.searchProduct.toUpperCase()))
+            this.filteredProducts = this.products.filter(product => product.name.toUpperCase().includes(this.searchProduct.toUpperCase()) ||
+                                                                    product.categoriesEnums[0].toUpperCase().includes(this.searchProduct.toUpperCase()))
+
+        },
+        handleEditClient(){
+
+            axios.patch("/api/clients/"+this.id, {  
+                                            name : this.name, 
+                                            lastName: this.lastName, 
+                                            email : this.email,
+                                            tel : this.tel,
+                                        })
+                                        .then(res => {
+
+                                        this.handleMessageAlert("edit client succesfully", 3, false);
+                                        this.loadData();
+                                        this.clearForm();
+
+                                        }).catch(err => console.log(err))
+
+        },
+        setClientToEdit(client){
+
+            this.name = client.name;
+            this.lastName = client.lastName;
+            this.tel = client.tel;
+            this.email = client.email;
+            this.id = client.id;
+
+
+        },
+        clientId(id){
+
+            this.id = id;
+
+        },
+        handleEnabledClient(){
+
+            axios.post(`/api/clients/${this.id}`)
+            .then(() => {
+
+                this.handleMessageAlert("changed status succesfully", 3, false);
+                this.loadData();
+
+            }).catch(err => console.log(err))
+
 
         },
         clearForm(){
@@ -69,6 +122,9 @@ createApp({
                 this.discount = null;
                 this.stock= null;
                 this.category= "";
+                this.lastName = "";
+                this.tel = "";
+                this.email = "";
 
         },
         createProduct() {
@@ -85,6 +141,26 @@ createApp({
             }).then(res => {
 
                 
+                this.handleMessageAlert("Product created succesfully", 3, false);
+                this.loadData();
+
+
+            }).catch(err => {
+
+                console.log(err)
+
+            })
+        },
+        createClient() {
+
+            axios.post('/api/admin/clients', {
+                name: this.name,
+                lastName: this.lastName,
+                email: this.email,
+                tel: this.tel,
+                password: this.password,
+            }).then(res => {
+
                 this.handleMessageAlert("Product created succesfully", 3, false);
                 this.loadData();
 

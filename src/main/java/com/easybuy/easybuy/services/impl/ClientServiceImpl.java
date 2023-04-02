@@ -45,7 +45,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void createClient(NewClientDTO newClientDTO) throws Exception {
+    public void createClient(NewClientDTO newClientDTO, boolean isAdmin) throws Exception {
 
         if(newClientDTO.getName() == null || newClientDTO.getName().isEmpty()) throw new Exception("missing name");
 
@@ -59,19 +59,25 @@ public class ClientServiceImpl implements ClientService {
 
         if(clientRepository.existsByEmail(newClientDTO.getEmail())) throw new Exception("Email already registered");
 
-        String token = UUID.randomUUID().toString();
-
         Client newClient = new Client(newClientDTO.getName(), newClientDTO.getLastName(), newClientDTO.getTel(), newClientDTO.getEmail(), passwordEncoder.encode(newClientDTO.getPassword()));
 
-        newClient.setKeyToken(token);
+        if(!isAdmin){
 
-        emailHandler.sendEmailToken("emi.acevedo.letras@gmail.com", newClient.getEmail(), "Confirm email", token);
+            String token = UUID.randomUUID().toString();
+
+            newClient.setKeyToken(token);
+
+            emailHandler.sendEmailToken("emi.acevedo.letras@gmail.com", newClient.getEmail(), "Confirm email", token);
+
+
+        }
+
 
         clientRepository.save(newClient);
     }
 
     @Override
-    public void editClient(NewClientDTO newClientDTO, String email) throws Exception {
+    public void editClient(NewClientDTO newClientDTO, String email, boolean isAdmin) throws Exception {
 
         if (    (newClientDTO.getName() == null || newClientDTO.getName().isEmpty()) &&
                 (newClientDTO.getLastName() == null || newClientDTO.getLastName().isEmpty()) &&
@@ -92,7 +98,7 @@ public class ClientServiceImpl implements ClientService {
 
         clientRepository.save(client.get());
 
-        if (newClientDTO.getEmail() != null) {
+        if (newClientDTO.getEmail() != null && !isAdmin) {
 
             Authentication auth = new UsernamePasswordAuthenticationToken(newClientDTO.getEmail(), client.get().getPassword(), AuthorityUtils.createAuthorityList("CLIENT"));
 
@@ -170,6 +176,22 @@ public class ClientServiceImpl implements ClientService {
 
             clientRepository.save(client.get());
 
+    }
+
+    @Override
+    public void handleEnabled(Long id) throws Exception {
+        Optional<Client> client = clientRepository.findById(id);
+
+        if(client.isEmpty()) throw new Exception("client not found");
+
+        client.get().setEnabled(!client.get().isEnabled());
+
+        clientRepository.save(client.get());
+    }
+
+    @Override
+    public Optional<Client> findByid(Long id) {
+        return clientRepository.findById(id);
     }
 
 

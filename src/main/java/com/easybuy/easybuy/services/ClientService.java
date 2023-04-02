@@ -15,9 +15,9 @@ public interface ClientService {
 
     public List<Client> findAll();
 
-    public void createClient(NewClientDTO newClientDTO) throws Exception;
+    public void createClient(NewClientDTO newClientDTO, boolean isAdmin) throws Exception;
 
-    public void editClient(NewClientDTO newClientDTO, String email) throws Exception;
+    public void editClient(NewClientDTO newClientDTO, String email, boolean isAdmin) throws Exception;
 
     public Optional<Client> findByEmail(String email);
 
@@ -28,4 +28,8 @@ public interface ClientService {
     void resendEmail(String email) throws Exception;
 
     void addFavorite(FavoriteApplyDTO favoriteApplyDTO, Authentication authentication) throws Exception;
+
+    void handleEnabled(Long id) throws Exception;
+
+    Optional<Client> findByid(Long id);
 }

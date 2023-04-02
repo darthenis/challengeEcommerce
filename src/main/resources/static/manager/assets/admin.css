@@ -73,7 +73,6 @@ table {
 }
 
 .tbl-header {
-  margin-top: 20px;
   background-color: rgba(21, 54, 90, 0.772) !important;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -114,11 +113,11 @@ table {
 .tbl-content {
   overflow-x: auto;
   margin-top: 0px;
-  border: 1px solid rgba(132, 132, 132, 0.679);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: #000000af;
   width: 100%;
+  height: fit-content;
 }
 
 .tbl-content button {

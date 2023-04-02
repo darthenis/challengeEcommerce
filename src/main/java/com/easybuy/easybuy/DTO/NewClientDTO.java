@@ -1,6 +1,6 @@
 package com.easybuy.easybuy.DTO;
 
-public class NewClientDTO {
+public class    NewClientDTO {
 
     private String name;
     private String lastName;

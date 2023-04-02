@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -49,19 +50,56 @@ public class ClientController {
     @PostMapping("/clients")
     public ResponseEntity<?> create(@RequestBody NewClientDTO newClientDTO){
         try{
-            clientService.createClient(newClientDTO);
+            clientService.createClient(newClientDTO, false);
             return new ResponseEntity<>("Client created succesfully", HttpStatus.CREATED);
         }catch(Exception exception){
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
         }
     }
 
+    @PostMapping("/admin/clients")
+    public ResponseEntity<?> createClient(@RequestBody NewClientDTO newClientDTO){
+        try{
+            clientService.createClient(newClientDTO, true);
+            return new ResponseEntity<>("Client created succesfully", HttpStatus.CREATED);
+        }catch(Exception exception){
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
+
+    @PostMapping("/clients/{id}")
+    public ResponseEntity<?> handleEnable(@PathVariable Long id){
+
+        try {
+            clientService.handleEnabled(id);
+            return new ResponseEntity<>("changed enable status succesfully", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+        }
+
+    }
+
+    @PatchMapping("/clients/{id}")
+    public ResponseEntity<?> editClient(@RequestBody NewClientDTO newClientDTO, @PathVariable Long id){
+
+        Optional<Client> client = clientService.findByid(id);
+
+        if(client.isEmpty()) return new ResponseEntity<>("Client not found", HttpStatus.FORBIDDEN);
+
+        try {
+            clientService.editClient(newClientDTO, client.get().getEmail(), true);
+            return new ResponseEntity<>("edited succesfully", HttpStatus.OK);
+        }catch(Exception exception){
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
+        }
+
+    }
 
     @PatchMapping("/clients/current")
     public ResponseEntity<?> edit(@RequestBody NewClientDTO newClientDTO, Authentication authentication){
 
         try {
-            clientService.editClient(newClientDTO, authentication.getName());
+            clientService.editClient(newClientDTO, authentication.getName(), false);
             return new ResponseEntity<>("edited succesfully", HttpStatus.OK);
         }catch(Exception exception){
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.FORBIDDEN);
