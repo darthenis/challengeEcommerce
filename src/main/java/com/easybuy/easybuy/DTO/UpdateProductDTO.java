@@ -12,7 +12,6 @@ public class UpdateProductDTO {
     private String description;
     private Double price;
     private int discount;
-    private List<String> imgUrl;
     private int Stock;
     private LocalDate date;
 
@@ -20,15 +19,13 @@ public class UpdateProductDTO {
 
 
 
-    public UpdateProductDTO(Long id,String name, String description, Double price, int discount, List<String> imgUrl, int stock, LocalDate date, List<CategoriesEnum> categories) {
+    public UpdateProductDTO(Long id,String name, String description, Double price, int discount, int stock, List<CategoriesEnum> categories) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.discount = discount;
-        this.imgUrl = imgUrl;
         this.Stock = stock;
-        this.date = date;
         this.categories=categories;
     }
 
@@ -78,14 +75,6 @@ public class UpdateProductDTO {
 
     public void setDiscount(int discount) {
         this.discount = discount;
-    }
-
-    public List<String> getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(List<String> imgUrl) {
-        this.imgUrl = imgUrl;
     }
 
     public int getStock() {

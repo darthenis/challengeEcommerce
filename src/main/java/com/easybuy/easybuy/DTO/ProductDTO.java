@@ -5,6 +5,7 @@ import com.easybuy.easybuy.models.Product;
 
 import javax.persistence.ElementCollection;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +25,9 @@ public class ProductDTO {
 
     private int stock;
 
-    private LocalDate date;
+    private LocalDateTime date;
+
+    private boolean status;
 
     private List<CategoriesEnum> categoriesEnums;
 
@@ -39,6 +42,7 @@ public class ProductDTO {
         this.imgsUrls = product.getImgsUrls();
         this.stock = product.getStock();
         this.date = product.getDate();
+        this.status = product.getStatus();
         this.categoriesEnums = product.getCategoriesEnums();
         this.rates = product.getRates().stream().map(rate-> new RateDTO(rate)).collect(Collectors.toList());
     }
@@ -71,7 +75,7 @@ public class ProductDTO {
         return stock;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
@@ -83,7 +87,15 @@ public class ProductDTO {
         return rates;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

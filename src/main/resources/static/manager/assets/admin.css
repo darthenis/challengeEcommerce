@@ -112,7 +112,6 @@ table {
 }
 
 .tbl-content {
-  height: 300px;
   overflow-x: auto;
   margin-top: 0px;
   border: 1px solid rgba(132, 132, 132, 0.679);

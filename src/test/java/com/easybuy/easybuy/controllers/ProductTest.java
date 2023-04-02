@@ -23,6 +23,7 @@ import static org.hamcrest.Matchers.*;
 
 import java.io.FileInputStream;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -49,7 +50,7 @@ public class ProductTest {
     public void createProduct() throws Exception {
 
 
-        CreateProductDTO product = new CreateProductDTO("Television", "30 pulgadas", 1000.0, 0, 20, LocalDate.now(), List.of(CategoriesEnum.VIDEO));
+        CreateProductDTO product = new CreateProductDTO("Television", "30 pulgadas", 1000.0, 0, 20, LocalDateTime.now(), List.of(CategoriesEnum.VIDEO));
 
         
 
@@ -71,7 +72,7 @@ public class ProductTest {
     @Order(4)
     public void patchProduct() throws Exception{
 
-        UpdateProductDTO updateProduct = new UpdateProductDTO(1L,"tv","full hd", 1500.5, 15, null,80, LocalDate.now(), null);
+        UpdateProductDTO updateProduct = new UpdateProductDTO(1L,"tv","full hd", 1500.5, 15,80, null);
         mockMvc.perform(patch("/api/products")
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(updateProduct)))
@@ -104,7 +105,7 @@ public class ProductTest {
 
         String url = productService.findById(1L).get().getImgsUrls().get(0);
 
-        UpdateProductDTO updateProduct = new UpdateProductDTO(1L,"tv","full hd", 1500.5, 15, null,80, LocalDate.now(), null);
+        UpdateProductDTO updateProduct = new UpdateProductDTO(1L,"tv","full hd", 1500.5, 15,80, null);
         mockMvc.perform(delete("/api/products/1")
                         .param("url", url))
                 .andExpect(status().isOk());

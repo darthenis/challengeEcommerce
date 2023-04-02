@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -32,9 +33,9 @@ public class Product {
 
     private int stock;
 
-    private LocalDate date;
+    private LocalDateTime date;
 
-    private Boolean status = true;
+    private Boolean status = false;
 
     @ElementCollection
     private List<CategoriesEnum> categoriesEnums;
@@ -48,12 +49,11 @@ public class Product {
 
     public Product(){}
 
-    public Product(String name, String description, Double price, int discount, int stock, LocalDate date,List<CategoriesEnum> categoriesEnums) {
+    public Product(String name, String description, Double price, int discount, int stock, LocalDateTime date,List<CategoriesEnum> categoriesEnums) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.discount = discount;
-        this.imgsUrls = imgsUrls;
         this.stock = stock;
         this.date = date;
         this.categoriesEnums = categoriesEnums;
@@ -148,11 +148,11 @@ public class Product {
         this.stock = stock;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
