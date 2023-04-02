@@ -106,7 +106,17 @@ createApp({
 
           
         },
+        formatTime(value){
 
+            let date = value.split("T");
+
+            let dateFinal = date[0].split("-").reverse().join("/");
+
+            let time = date[1].split(".")[0];
+
+            return dateFinal + " - " + time;
+
+        },
 
         /* -------------QUITAR CANTIDAD DEL CARRITO -------------*/
         outProductBag(object) {
