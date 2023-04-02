@@ -10,6 +10,7 @@ createApp({
             totalCart: 0,
             totalCartQuantity: 0,
             id: null,
+            productid: null,
             navActive: null,
             isLogged: false,
             selectSubMenu: false,

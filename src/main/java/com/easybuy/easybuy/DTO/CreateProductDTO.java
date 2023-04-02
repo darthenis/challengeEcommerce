@@ -3,6 +3,7 @@ package com.easybuy.easybuy.DTO;
 import com.easybuy.easybuy.models.CategoriesEnum;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class CreateProductDTO {
@@ -12,11 +13,11 @@ public class CreateProductDTO {
     private Double price;
     private int discount;
     private int stock;
-    private LocalDate date;
+    private LocalDateTime date;
     private List<CategoriesEnum> categories;
 
 
-        public CreateProductDTO(String name, String description, Double price, int discount, int stock, LocalDate date,List<CategoriesEnum> categories) {
+        public CreateProductDTO(String name, String description, Double price, int discount, int stock, LocalDateTime date,List<CategoriesEnum> categories) {
             this.name = name;
             this.description = description;
             this.price = price;
@@ -74,11 +75,11 @@ public class CreateProductDTO {
         this.stock = stock;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

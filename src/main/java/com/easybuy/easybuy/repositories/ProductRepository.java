@@ -10,7 +10,11 @@ import java.util.List;
 @RepositoryRestResource
 public interface ProductRepository extends JpaRepository <Product, Long> {
 
-    List<Product> findTop4ByOrderByDateDesc();
+    @Query("SELECT p FROM Product p WHERE p.status = true ORDER BY p.discount DESC")
+    List<Product> findTop4ByDiscount();
 
-    List<Product> findTop4ByOrderByDiscountDesc();
+    @Query("SELECT p FROM Product p WHERE p.status = true ORDER BY p.date DESC")
+    List<Product> findTop4ByDate();
+
+
 }

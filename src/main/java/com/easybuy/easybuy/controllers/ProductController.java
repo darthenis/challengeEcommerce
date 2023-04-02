@@ -34,6 +34,14 @@ public class ProductController {
         return productService.findAll().stream().map(ProductDTO::new).collect(Collectors.toList());
     }
 
+    @GetMapping("/clients/products")
+    public List<ProductDTO> getProductsAvalible(){
+
+        List<Product> products = productService.findAll().stream().filter(Product::getStatus).collect(Collectors.toList());
+
+        return products.stream().map(ProductDTO::new).collect(Collectors.toList());
+    }
+
     @GetMapping("/products/{id}")
     public ProductDTO getByID(@PathVariable Long id){
         return  new ProductDTO(productService.findById(id).get());
@@ -98,8 +106,8 @@ public class ProductController {
 
     }
 
-    @DeleteMapping("/current/products")
-    public ResponseEntity<?> delete(@RequestParam Long id){
+    @PostMapping("/current/products/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
         if(id == null) return new ResponseEntity<>("missing id", HttpStatus.FORBIDDEN);
 
         try{

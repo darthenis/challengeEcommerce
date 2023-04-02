@@ -84,6 +84,10 @@ public class ProductServiceImpl implements ProductService {
 
         if(!urls.remove(url)) throw new Exception("url not found");
 
+        product.get().setImgsUrls(urls);
+
+        productRepository.save(product.get());
+
     }
 
     @Override
@@ -93,7 +97,7 @@ public class ProductServiceImpl implements ProductService {
          if(selectProduct == null){
              throw new Exception("The product doesn't exist");
          }else {
-             selectProduct.setStatus(false);
+             selectProduct.setStatus(!selectProduct.getStatus());
          }
 
          productRepository.save(selectProduct);
@@ -127,12 +131,23 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findLast4ProductsUpdated() {
-        return productRepository.findTop4ByOrderByDateDesc();
+
+        List<Product> top4Productos = productRepository.findTop4ByDate();
+
+        if(top4Productos.size() > 4) {
+            top4Productos = top4Productos.subList(0, 4);
+        }
+        return top4Productos;
     }
 
     @Override
     public List<Product> findBest4Offers() {
-        return productRepository.findTop4ByOrderByDiscountDesc();
+        List<Product> top4Productos = productRepository.findTop4ByDiscount();
+
+        if(top4Productos.size() > 4) {
+            top4Productos = top4Productos.subList(0, 4);
+        }
+        return top4Productos;
     }
 
     @Override
@@ -156,7 +171,7 @@ public class ProductServiceImpl implements ProductService {
 
             Product newProduct = new Product(createProductDTO.getName(), createProductDTO.getDescription(), createProductDTO.getPrice(), createProductDTO.getDiscount(),createProductDTO.getStock(),createProductDTO.getDate(),createProductDTO.getCategories())  ;
 
-          productRepository.save(newProduct);
+            productRepository.save(newProduct);
 
         }
 
@@ -187,10 +202,7 @@ public class ProductServiceImpl implements ProductService {
             selectProduct.setDiscount(updateProductDTO.getDiscount());
             isEmpty = false;
         }
-        if (updateProductDTO.getImgUrl() != null){
-            selectProduct.setImgsUrls(updateProductDTO.getImgUrl());
-            isEmpty = false;
-        }
+
         if (updateProductDTO.getStock() >= 0){
             selectProduct.setStock(updateProductDTO.getStock());
             isEmpty = false;

@@ -43,6 +43,17 @@ createApp({
     /*-------------------METHODS----------------------*/
     methods: {
 
+        logout(){
+
+            axios('/api/logout')
+                .then(() => {
+
+                    location.href = "/web/index.html"
+
+                })
+
+        },
+
         checkIsLogged() {
 
             axios("/api/clients/auth")
