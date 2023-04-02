@@ -383,56 +383,57 @@
         </a>
       </div>
     </section>
+
+
+   
     <!-- leo -->
-    <div class="categoriasLeonardo bg-blue-900">
+    <div class="popularLeo bg-blue-900">
       <h2 class="text-white">Top Offers</h2>
     </div>
 
-    <div class="flex justify-evenly flex-wrap gap-1">
-      <template v-for="(product, index) of top4offersProducts">
+    <div class="flex justify-around flex-wrap">
+      <template v-for="(product, index) of  top4offersProducts">
 
-        <article :id="'product-'+product.id" :class="{elementFadeIn : offersEffect[index]}" style="height: 370px"
-          class="rounded-lg relative  w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
-
+        <article :id="'productUpdated-'+product.id" :class="{elementFadeInLeft : top4offersProducts[index]}"
+          class="rounded-lg relative pt-4 w-[23rem] h-[33rem] bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
 
           <div class="absolute top-0 left-0 mt-2 ml-2 p-1 rounded-lg text-white "
             :class="{'bg-red-500' : product.stock < 6, 'bg-blue-500' : product.stock > 5}">{{product.stock == 0 ?
             'No stock' : product.stock < 6 ? 'Last ' + product.stock + ' units' : product.stock + ' units' }}</div>
 
 
-              <i @click="addFavorites(product)" v-if="isLogged"
+              <i v-if="isLogged" @click="addFavorites(product)"
                 :class="{'text-red-500': product.inFavs, 'text-gray-400': !product.inFavs}"
                 class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
 
               <a :href="'./product.html?id='+product.id">
-                <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"
+                <img class="mx-auto pt-2" style="height: 250px; object-fit: contain;"
                   :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
                   alt="product image" />
               </a>
-              <div class="px-5 flex flex-col justify-between">
+              <div class=" flex flex-col justify-between">
                 <a :href="'./product.html?id='+product.id">
-                  <h5 style="font-size: 15px;"
-                    class="mt-1 text-center font-semibold tracking-tight text-gray-900 dark:text-dark">
+                  <h5 style="font-size: 22px; margin-top: 1rem; margin-bottom: 1rem;"
+                    class="text-center font-semibold tracking-tight text-gray-900 dark:text-dark">
                     {{product.name}}</h5>
                 </a>
-                <div class="flex items-center mt-2.5 justify-center">
+                <div class="flex items-center mt-2 justify-center">
                   <span class="flex" v-html="counterStars(product.rates)"></span>
                   <span
-                    class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
+                    class="bg-blue-100 text-blue-800  font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
                 </div>
                 <div class="flex items-center flex-col justify-between">
-                  <div class="flex flex-col items-center">
-                    <div class="font-bold text-red-400" :style="{visibility: product.discount ? 'visible' : 'hidden'}"
-                      style="font-size: 14px">{{product.discount ? product.discount + '%off' : "asd"}} <span
+                  <div class="flex justify-center gap-4 items-center text-3xl">
+                    <div class="font-bold text-xl text-red-400" :style="{visibility: product.discount ? 'visible' : 'hidden'}"
+                      style="font-size: 18px">{{product.discount ? product.discount + '%off' : "asd"}} <span
                         v-if="product.discount"
-                        style="text-decoration: line-through; font-size: 12px">{{formatDollar(product.price)}}</span>
+                        style="text-decoration: line-through; font-size: 18px">{{formatDollar(product.price)}}</span>
                     </div>
-                    <span class="text-2xl font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
+                    <span class=" font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
                       product.discount)}}</span>
                   </div>
-                  <button 
-                    class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300"
-                    @click="saveBag(product)">Add
+                  <button @click="saveBag(product)"
+                    class="text-white mt-6 bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-6 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
                     to cart</button>
                 </div>
               </div>
@@ -545,13 +546,11 @@
       <h2 class="text-white">Last updated</h2>
     </div>
 
-    <div class="flex justify-evenly flex-wrap gap-1">
+    <div class="flex justify-around flex-wrap">
       <template v-for="(product, index) of top4LastUpdated">
 
         <article :id="'productUpdated-'+product.id" :class="{elementFadeInLeft : topUpdatedEffect[index]}"
-          style="height: 370px"
-          class="rounded-lg relative w-64 max-w-xs bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
-
+          class="rounded-lg relative pt-4 w-[23rem] h-[33rem] bg-white shadow dark:bg-white-400 dark:border-gray-800 card__product">
 
           <div class="absolute top-0 left-0 mt-2 ml-2 p-1 rounded-lg text-white "
             :class="{'bg-red-500' : product.stock < 6, 'bg-blue-500' : product.stock > 5}">{{product.stock == 0 ?
@@ -563,33 +562,33 @@
                 class="fa-solid fa-heart fa-solid fa-lg hover:text-red-500 absolute top-0 right-0 mt-4 mr-2"></i>
 
               <a :href="'./product.html?id='+product.id">
-                <img class="mx-auto w-32 pt-2" style="height: 200px; object-fit: contain;"
+                <img class="mx-auto pt-2" style="height: 250px; object-fit: contain;"
                   :src="product.imgsUrls[0] || 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'"
                   alt="product image" />
               </a>
-              <div class="px-5 flex flex-col justify-between">
+              <div class=" flex flex-col justify-between">
                 <a :href="'./product.html?id='+product.id">
-                  <h5 style="font-size: 15px;"
-                    class="text-center mt-1 font-semibold tracking-tight text-gray-900 dark:text-dark">
+                  <h5 style="font-size: 22px; margin-top: 1rem; margin-bottom: 1rem;"
+                    class="text-center font-semibold tracking-tight text-gray-900 dark:text-dark">
                     {{product.name}}</h5>
                 </a>
-                <div class="flex items-center mt-2.5 justify-center">
+                <div class="flex items-center mt-2 justify-center">
                   <span class="flex" v-html="counterStars(product.rates)"></span>
                   <span
-                    class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
+                    class="bg-blue-100 text-blue-800  font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mb-1">{{avaregeStars(product.rates)}}</span>
                 </div>
                 <div class="flex items-center flex-col justify-between">
-                  <div class="flex flex-col items-center">
-                    <div class="font-bold text-red-400" :style="{visibility: product.discount ? 'visible' : 'hidden'}"
-                      style="font-size: 14px">{{product.discount ? product.discount + '%off' : "asd"}} <span
+                  <div class="flex justify-center gap-4 items-center text-3xl">
+                    <div class="font-bold text-xl text-red-400" :style="{visibility: product.discount ? 'visible' : 'hidden'}"
+                      style="font-size: 18px">{{product.discount ? product.discount + '%off' : "asd"}} <span
                         v-if="product.discount"
-                        style="text-decoration: line-through; font-size: 12px">{{formatDollar(product.price)}}</span>
+                        style="text-decoration: line-through; font-size: 18px">{{formatDollar(product.price)}}</span>
                     </div>
-                    <span class="text-2xl font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
+                    <span class=" font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
                       product.discount)}}</span>
                   </div>
                   <button @click="saveBag(product)"
-                    class="text-white bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
+                    class="text-white mt-6 bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-6 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300">Add
                     to cart</button>
                 </div>
               </div>

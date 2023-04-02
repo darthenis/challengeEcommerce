@@ -1,21 +1,16 @@
-
 .container_shop_main{
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 20px;
-
 }
 
 
 .grid_layout{
-    width: 1200px;
-    max-width: 90vw;
     display: grid;
-    gap: 20px;
+    gap: 6rem;
     grid-template-columns: 200px 1fr;
     grid-template-rows: 70px 1fr;
-
 }
 
 .categories_shop{
@@ -27,7 +22,6 @@
     width: fit-content;
     grid-column: 1span;
     grid-row: 1/-1;
-
 }
 
 .menu_top_shop{
@@ -41,7 +35,6 @@
     background-color: white;
     grid-column: 2/-1;
     grid-row: 1span;
-
 }
 
 .container_cards_shop{
@@ -51,33 +44,27 @@
 }
 
 .container_cards_shop > article{
-
     align-self: center;
     justify-self: center;
-
 }
 
 .input_shop{
-
     padding: 5px;
     border: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-
 }
 
 .categories_shop_mobile{
-
     display: none;
-
-
 }
 
 
 .button_mobile_categories{
-
-    display: none;
-    
+    display: none; 
 }
+
+
+
 
 @media (max-width: 823px) {
 
@@ -85,29 +72,22 @@
         grid-template-rows: 100px 1fr;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
-
     }
 
     .menu_top_shop{
-
         grid-column: 1/-1;
         height: 100px;
         flex-direction: column;
-
     }
 
     .categories_shop{
-
         display: none;
     }
 
     .button_mobile_categories{
-
         display: inline-block;
-        
     }
     
-
     .categories_shop_mobile{
         display: inline-block;
         z-index: 10000000;
@@ -126,7 +106,6 @@
         animation-fill-mode: forwards;
     }
     
-    
 }
 
 @media (max-width: 550px) {
@@ -136,7 +115,6 @@
         grid-template-rows: 1fr;
         grid-template-columns: 1fr;
         gap: 20px;
-
     }
     
 }
