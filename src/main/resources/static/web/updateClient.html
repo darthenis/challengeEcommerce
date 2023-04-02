@@ -309,7 +309,7 @@
               ></div>
               <img
                 id="profile"
-                src="../web/assets/img/profile3.png"
+                :src="avatarUrl ? avatarUrl : '../web/assets/img/profile3.png'"
                 class="w-32 h-32 rounded-full object-cover object-center z-10"
                 alt=""
               />
@@ -320,7 +320,7 @@
                   type="file"
                   accept="image/png, image/jpeg"
                   class="w-full h-full absolute top-0 opacity-0"
-                  :onChange="editProfilePic"
+                  @input="editProfilePic"
                 />
               </div>
               <div
@@ -332,6 +332,7 @@
                     type="text"
                     class="p-2 rounded-md"
                     placeholder="Name..."
+                    v-model="name" 
                   />
                 </div>
                 <div class="flex flex-col gap-2 text-white tracking-[2px]">
@@ -340,9 +341,32 @@
                     type="text"
                     placeholder="Lastname..."
                     class="p-2 rounded-md"
+                    v-model="lastName"
                   />
                 </div>
               </div>
+              <div
+              class="bg-blue-900 p-10 flex flex-col md:flex-row gap-4 w-[90%] justify-center z-10"
+            >
+              <div class="flex flex-col gap-2 text-white tracking-[2px]">
+                <span>Email:</span>
+                <input
+                  type="text"
+                  class="p-2 rounded-md"
+                  placeholder="Email..."
+                  v-model="email" 
+                />
+              </div>
+              <div class="flex flex-col gap-2 text-white tracking-[2px]">
+                <span>tel:</span>
+                <input
+                  type="text"
+                  placeholder="Tel..."
+                  class="p-2 rounded-md"
+                  v-model="tel"
+                />
+              </div>
+            </div>
               <div
                 class="bg-blue-900 p-10 w-[90%] flex flex-col md:flex-row gap-4 justify-center z-10"
               >
@@ -352,6 +376,7 @@
                     type="text"
                     class="p-2 rounded-md"
                     placeholder="Password..."
+                    v-model="oldPassword"
                   />
                 </div>
                 <div class="flex flex-col gap-2 text-white tracking-[2px]">
@@ -360,10 +385,11 @@
                     type="text"
                     class="p-2 rounded-md"
                     placeholder="New password..."
+                    v-model="newPassword"
                   />
                 </div>
               </div>
-              <button class="bg-blue-800 p-3 rounded-lg text-white z-10">
+              <button class="bg-blue-800 p-3 rounded-lg text-white z-10" @click.prevent="updateInfo">
                 Submit Changes
               </button>
             </form>

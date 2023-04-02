@@ -149,7 +149,7 @@ public class ClientController {
     }
 
     @PostMapping("/clients/auth/avatar")
-    public ResponseEntity<?> resendToken(MultipartFile multipartFile, Authentication authentication){
+    public ResponseEntity<?> uploadImage(@RequestParam("avatar") MultipartFile multipartFile, Authentication authentication){
 
         try {
 
