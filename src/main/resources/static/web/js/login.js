@@ -27,7 +27,7 @@ createApp({
 				{ headers: { 'content-type': 'application/x-www-form-urlencoded' } })
 				.then(response => {
 					if (this.user === "admin@mindhub.com") {
-						window.location.href = '/web/vista-admin.html';
+						window.location.href = '/manager/vista-admin.html';
 					}
 					else {
 						window.location.href = '/web/index.html';

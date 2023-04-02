@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,69 +13,68 @@
   </head>
   <body>
     <div id="app">
+
     <nav class="navAnimated h-screen w-screen top-0 bg-blue-900 flex flex-col justify-center items-center"
-    :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
-    <div class="navAnimated w-min-screen flex flex-end"
       :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
-      <div class="fixed px-4 py-2 m-2 bg-white text-black rounded-lg font-bold" @click="handleNavResponsive">X
-      </div>
-    </div>
-
-    <div
-      class="flex flex-col h-screen items-center text-white w-full tracking-[1px] transition-all pt-4">
-
-      <div class="flex gap-10 items-center gap-6">
-        <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
-        <div class="relative inline-flex w-fit">
-          <div v-if="totalCartQuantity"
-            class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
-            {{totalCartQuantity}}
-          </div>
-          <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"  data-te-ripple-init
-          data-te-ripple-color="light" @click="toggleCart"></i>
-          
+      <div class="navAnimated w-min-screen flex flex-end"
+        :style="{animationName: navActive ? 'moveIn' : navActive != null ? 'moveOut' : ''}">
+        <div class="fixed px-4 py-2 m-2 bg-white text-black rounded-lg font-bold" @click="handleNavResponsive">X
         </div>
-        <div class="flex justify-center">
-          <div>
-            <div class="relative" data-te-dropdown-ref>
-              <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
-                data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-                data-te-ripple-color="light"></i>
-              <ul
-                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
-                aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
-                <li>
-                  <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                    href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
-                </li>
-                <li>
-                  <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                    href="./favorites.html" data-te-dropdown-item-ref>Favorites</a>
-                </li>
-                <li>
-                  <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                    href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
-                </li>
-                <hr
-                  class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
-                <li>
-                  <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                    href="./updateClient.html" @click="logout" data-te-dropdown-item-ref>Sign out</a>
-                </li>
-              </ul>
+      </div>
+
+      <div class="flex flex-col h-screen items-center text-white w-full tracking-[1px] transition-all pt-4">
+
+        <div class="flex gap-10 items-center gap-6">
+          <i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i>
+          <div class="relative inline-flex w-fit">
+            <div v-if="totalCartQuantity"
+              class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
+              {{totalCartQuantity}}
+            </div>
+            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init
+              data-te-ripple-color="light" @click="toggleCart"></i>
+
+          </div>
+          <div class="flex justify-center">
+            <div>
+              <div class="relative" data-te-dropdown-ref>
+                <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
+                  data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+                  data-te-ripple-color="light"></i>
+                <ul
+                  class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+                  aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+                  <li>
+                    <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./favorites.html" data-te-dropdown-item-ref>Favorites</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
+                  </li>
+                  <hr
+                    class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./updateClient.html" @click="logout" data-te-dropdown-item-ref>Sign out</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <a href="#" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-        Home
-      </a>
-      <p class="mt-10 hover:text-blue-300 mt-10 cursor-pointer transition-all duration-[.3s]">
+        <a href="./index.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Home
+        </a>
+        <p class="mt-10 hover:text-blue-300 mt-10 cursor-pointer transition-all duration-[.3s]">
         <div class="relative" data-te-dropdown-ref>
-          <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d"
-            data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-            data-te-ripple-color="light">Categories</div>
+          <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d" data-te-dropdown-toggle-ref
+            aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">Categories</div>
           <ul
             class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
             aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
@@ -115,119 +115,118 @@
             </li>
           </ul>
         </div>
-      </p>
-      <a href="./frecuents.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-        Frecuent Questions
-      </a>
-      <a href="./about-us.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-        About Us
-      </a>
-      <a href="./form.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-        Contact </a>
-      <div class="flex justify-center gap-4 mt-10">
-        <input type="text" class="w-[20rem] p-2 rounded-lg" placeholder="Search a product..."
-          style="max-width: 69vw; box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5);" />
-        <button style="max-width: 20vw;"
-          class=" flex items-center justify-center w-[5rem] bg-white text-black rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
-          <i class="fa-solid fa-magnifying-glass p-1 md:hidden text-black"></i>
-        </button>
-      </div>
-
-    </div>
-  </nav>
-
-  <!-- mai -->
-  <header>
-    <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
-
-
-
-      <div class="flex items-center justify-center md:flex">
-        <img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" />
-      </div>
-
-
-
-      <div class="md:w-[50%] justify-center gap-4 hidden sm:flex">
-        <input v-model="searchProduct" type="text" class="w-[80%] p-2 rounded-lg" style="box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5)" placeholder="Search a product..." />
-        <button
-          @click="handleSearch"
-          class=" flex items-center justify-center w-[10rem] bg-blue-900 text-white rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
-          <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
-          <span class="hidden md:flex">SEARCH</span>
-        </button>
-      </div>
-
-      <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden mr-5" @click="handleNavResponsive">
-        <div class="w-8  h-1 bg-blue-900"></div>
-        <div class="w-8  h-1 bg-blue-900"></div>
-        <div class="w-8  h-1 bg-blue-900"></div>
-      </div>
-
-      <div class="hidden lg:flex items-center gap-6" v-if="isLogged">
-        <a href="./favorites.html"><i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i></a>
-        
-        <div class="relative inline-flex w-fit">
-          <div v-if="totalCartQuantity"
-            class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
-            {{totalCartQuantity}}
-          </div>
-          <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer"  data-te-ripple-init
-          data-te-ripple-color="light" @click="toggleCart"></i>
-          
-        </div>
-        
-        <div class="flex justify-center">
-          <div>
-            <div class="relative" data-te-dropdown-ref>
-              <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
-                data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-                data-te-ripple-color="light"></i>
-              <ul
-                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
-                aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
-                <li>
-                  <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                    href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
-                </li>
-                <li>
-                  <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                    href="./favorites.html" data-te-dropdown-item-ref>Favorites</a>
-                </li>
-                <li>
-                  <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                    href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
-                </li>
-                <hr
-                  class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
-                <li>
-                  <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
-                    href="./updateClient.html" @click="logout" data-te-dropdown-item-ref>Sign out</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hidden lg:flex" v-else>
-        <a href="./login.html">
-          <button
-            class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
+        </p>
+        <a href="./shop.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Shop
         </a>
+        <a href="./about-us.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          About Us
+        </a>
+        <a href="./form.html" class="mt-10 hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+          Contact </a>
+        <div class="flex justify-center gap-4 mt-10">
+          <input type="text" class="w-[20rem] p-2 rounded-lg" placeholder="Search a product..."
+            style="max-width: 69vw; box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5);" />
+          <button style="max-width: 20vw;"
+            class=" flex items-center justify-center w-[5rem] bg-white text-black rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+            <i class="fa-solid fa-magnifying-glass p-1 md:hidden text-black"></i>
+          </button>
+        </div>
+
       </div>
     </nav>
 
-    <nav class="hidden lg:h-[4rem] bg-blue-900 lg:flex justify-center">
-      <div class="flex justify-center items-center text-white w-[45%] tracking-[1px] transition-all">
-        <a href="./index.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
-          Home
-        </a>
-        <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
+    <!-- mai -->
+    <header>
+      <nav class="bg-blue-200 flex justify-between items-center p-2 md:px-24">
+
+
+
+        <div class="flex items-center justify-center md:flex">
+          <a href="./index.html"><img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" /></a>
+        </div>
+
+
+
+        <div class="md:w-[50%] justify-center gap-4 hidden sm:flex">
+          <input v-model="searchProduct" type="text" class="w-[80%] p-2 rounded-lg"
+            style="box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5)" placeholder="Search a product..." />
+          <button @click="handleSearch"
+            class=" flex items-center justify-center w-[10rem] bg-blue-900 text-white rounded-md hover:bg-blue-600 transition-all duration-[.5s]">
+            <i class="fa-solid fa-magnifying-glass p-1 md:hidden"></i>
+            <span class="hidden md:flex">SEARCH</span>
+          </button>
+        </div>
+
+        <div id="hamburguesa_casera" class="flex flex-col gap-1 lg:hidden mr-5" @click="handleNavResponsive">
+          <div class="w-8  h-1 bg-blue-900"></div>
+          <div class="w-8  h-1 bg-blue-900"></div>
+          <div class="w-8  h-1 bg-blue-900"></div>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-6" v-if="isLogged">
+          <a href="./favorites.html"><i class="fa-solid fa-heart fa-beat fa-xl cursor-pointer text-red-500"></i></a>
+
+          <div class="relative inline-flex w-fit">
+            <div v-if="totalCartQuantity"
+              class="absolute top-0 right-0 bottom-auto left-auto z-10 inline-block translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-blue-600 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-white">
+              {{totalCartQuantity}}
+            </div>
+            <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init
+              data-te-ripple-color="light" @click="toggleCart"></i>
+
+          </div>
+
+          <div class="flex justify-center">
+            <div>
+              <div class="relative" data-te-dropdown-ref>
+                <i class="text-2xl fa-solid fa-user cursor-pointer" id="dropdownMenuButton1d"
+                  data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
+                  data-te-ripple-color="light"></i>
+                <ul
+                  class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+                  aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
+                  <li>
+                    <a class=" block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./purchases.html" data-te-dropdown-item-ref>Purchases</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./favorites.html" data-te-dropdown-item-ref>Favorites</a>
+                  </li>
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./updateClient.html" data-te-dropdown-item-ref>Settings</a>
+                  </li>
+                  <hr
+                    class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
+                  <li>
+                    <a class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-white hover:bg-blue-900 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent"
+                      href="./updateClient.html" @click="logout" data-te-dropdown-item-ref>Sign out</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden lg:flex" v-else>
+          <a href="./login.html">
+            <button
+              class="justify-center p-2 bg-blue-900 rounded w-[5rem] text-white  hover:bg-blue-600 transition-all duration-[.5s]">Login</button>
+          </a>
+        </div>
+      </nav>
+
+      <nav class="hidden lg:h-[4rem] bg-blue-900 lg:flex justify-center">
+        <div class="flex justify-center items-center text-white w-[45%] tracking-[1px] transition-all">
+          <a href="./index.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s]">
+            Home
+          </a>
+          <p class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
           <div class="relative" data-te-dropdown-ref>
-            <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d"
-              data-te-dropdown-toggle-ref aria-expanded="false" data-te-ripple-init
-              data-te-ripple-color="light">Categories</div>
+            <div class="cursor-pointer hover:text-blue-300" id="dropdownMenuButton1d" data-te-dropdown-toggle-ref
+              aria-expanded="false" data-te-ripple-init data-te-ripple-color="light">Categories</div>
             <ul
               class="pt-2 absolute z-[1000] gap-2 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-blue-500 bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
               aria-labelledby="dropdownMenuButton1d" data-te-dropdown-menu-ref>
@@ -268,163 +267,115 @@
               </li>
             </ul>
           </div>
-        </p>
-        <a href="./frecuents.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
-          Frecuent Questions
-        </a>
-        <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
-          About Us
-        </a>
-        <a href="./form.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
-          Contact </a>
-      </div>
-    </nav>
+          </p>
+          <a href="./shop.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
+            Shop
+          </a>
+          <a href="./about-us.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
+            About Us
+          </a>
+          <a href="./form.html" class="hover:text-blue-300 cursor-pointer transition-all duration-[.3s] ml-4">
+            Contact </a>
+        </div>
+      </nav>
 
     </header>
-    
+
     <main>
-      
-    <section class="w-full lg:h-screen flex flex-col-reverse lg:flex-row">
-      <div
-        class="mt-[10rem] lg:mt-0 h-screen lg:h-full lg:w-[50%] flex flex-col justify-between p-4 lg:p-8 gap-4"
-      >
-        <div class=" h-[50%] flex flex-col justify-center gap-2">
-          <div class="hidden items-center lg:flex flex-col justify-center">
-            <h2 class="tracking-[2px] font-bold text-blue-900 md:text-3xl">
+
+      <section class="w-full lg:h-screen flex flex-col-reverse lg:flex-row">
+        <div class="mt-[10rem] lg:mt-0 h-screen lg:h-full lg:w-[50%] flex flex-col justify-between p-4 lg:p-8 gap-4">
+          <div class=" h-[50%] flex flex-col justify-center gap-2">
+            <div class="hidden items-center lg:flex flex-col justify-center">
+              <h2 class="tracking-[2px] font-bold text-blue-900 md:text-3xl">
+                Contact Information
+              </h2>
+              <h4>
+                Fill the form or write us. We will help you as soon as
+                possible!
+              </h4>
+            </div>
+            <div class="w-full h-[70%] flex gap-3">
+              <div class="w-full lg:w-[48%] bg-red-50 flex items-center justify-center flex-col gap-2 text-blue-600">
+                <i class="fa-solid fa-phone-volume text-2xl border border-blue-600 text-blue-600 p-3 rounded-full"></i>
+                <h3 class="uppercase tracking-[4px]">phone</h3>
+                <h4>341-2253-3479</h4>
+              </div>
+              <div class=" w-full lg:w-[48%] bg-blue-100 flex flex-col items-center justify-center text-blue-600 gap-2">
+                <i class="fa-solid fa-envelope text-2xl border border-blue-600 p-3 rounded-full text-blue-600"></i>
+                <h3 class="uppercase tracking-[4px]">Email</h3>
+                <h4>easybuy@gmail.com</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-[50%] bg-blue-100 lg:p-6 flex flex-col justify-start lg:justify-between p-3">
+            <div class="text-teal-600 flex flex-col gap-2 mb-2">
+              <h2 class="text-2xl uppercase text-teal-600">
+                Adress <i class="fa-solid fa-location-dot"></i>
+              </h2>
+              <h3>Av. 205 E Houston St. - San Francisco, Texas.</h3>
+            </div>
+            <div class="h-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3275.899660431132!2d-58.40286238491382!3d-34.80846618040696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd36602e010cf%3A0x3228bb4050895397!2sBoulevard%20Shopping!5e0!3m2!1ses!2sar!4v1679825763291!5m2!1ses!2sar"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                class="w-full h-full"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="h-screen lg:h-full lg:w-[50%] md:p-10 md:pt-24 flex flex-col items-center justify-center">
+          <div class="mt-[10rem] lg:hidden items-center flex flex-col justify-center">
+            <h2 class="tracking-[2px] font-bold text-blue-900 text-3xl">
               Contact Information
             </h2>
-            <h4>
+            <h4 class="px-7">
               Fill the form or write us. We will help you as soon as
               possible!
             </h4>
           </div>
-          <div class="w-full h-[70%] flex gap-3">
-            <div
-              class="w-full lg:w-[48%] bg-red-50 flex items-center justify-center flex-col gap-2 text-blue-600"
-            >
-              <i
-                class="fa-solid fa-phone-volume text-2xl border border-blue-600 text-blue-600 p-3 rounded-full"
-              ></i>
-              <h3 class="uppercase tracking-[4px]">phone</h3>
-              <h4>341-2253-3479</h4>
+
+          <form action="" class="space-y-2 bg-white p-4 flex flex-col w-full items-left justify-center">
+            <div class="flex justify-center pb-3 items-center gap-4">
+              <h2 class="text-4xl">Get in touch</h2>
+              <img src="../web/assets/img/logo-easy.png" alt="logo" class="w-24" />
             </div>
-            <div
-              class=" w-full lg:w-[48%] bg-blue-100 flex flex-col items-center justify-center text-blue-600 gap-2"
-            >
-              <i
-                class="fa-solid fa-envelope text-2xl border border-blue-600 p-3 rounded-full text-blue-600"
-              ></i>
-              <h3 class="uppercase tracking-[4px]">Email</h3>
-              <h4>easybuy@gmail.com</h4>
-            </div>
-          </div>
+            <label for="Name" class="block text-sm font-medium text-gray-700">First Name</label>
+            <input type="text"
+              class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-sky-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Name" name="" id="" />
+
+            <label for="Last" class="block text-sm font-medium text-gray-700">Last Name</label>
+            <input type="text"
+              class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-sky-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Last Name" name="" id="" />
+
+            <label for="Adress" class="block text-sm font-medium text-gray-700">Email Adress</label>
+            <input type="text"
+              class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-sky-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Email" name="" id="" />
+
+            <label for="Message" class="block text-sm font-medium text-gray-700">Message</label>
+            <input type="text"
+              class="mt-2 shadow appearance-none border rounded w-full h-24 text-sky-700 focus:outline-none focus:shadow-outline"
+              name="" id="" />
+            <button
+              class="bg-blue-600 mt-1 text-white px-6 py-4 uppercase tracking-[4px] font-thin hover:bg-blue-800 hover:text-white transition-all">
+              Send Now
+            </button>
+          </form>
         </div>
-
-        <div
-          class="h-[50%] bg-blue-100 lg:p-6 flex flex-col justify-start lg:justify-between p-3"
-        >
-          <div class="text-teal-600 flex flex-col gap-2 mb-2">
-            <h2 class="text-2xl uppercase text-teal-600">
-              Adress <i class="fa-solid fa-location-dot"></i>
-            </h2>
-            <h3>Av. 205 E Houston St. - San Francisco, Texas.</h3>
-          </div>
-          <div class="h-full">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3275.899660431132!2d-58.40286238491382!3d-34.80846618040696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd36602e010cf%3A0x3228bb4050895397!2sBoulevard%20Shopping!5e0!3m2!1ses!2sar!4v1679825763291!5m2!1ses!2sar"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              class="w-full h-full"
-            ></iframe>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="h-screen lg:h-full lg:w-[50%] md:p-10 md:pt-24 flex flex-col items-center justify-center"
-      >
-      <div class="mt-[10rem] lg:hidden items-center flex flex-col justify-center">
-        <h2 class="tracking-[2px] font-bold text-blue-900 text-3xl">
-          Contact Information
-        </h2>
-        <h4 class="px-7">
-          Fill the form or write us. We will help you as soon as
-          possible!
-        </h4>
-      </div>
-      
-        <form
-          action=""
-          class="space-y-2 bg-white p-4 flex flex-col w-full items-left justify-center"
-        >
-        <div class="flex justify-center pb-3 items-center gap-4">
-          <h2 class="text-4xl">Get in touch</h2>
-          <img
-            src="../web/assets/img/logo-easy.png"
-            alt="logo"
-            class="w-24"
-          />
-        </div>
-          <label for="Name" class="block text-sm font-medium text-gray-700"
-            >First Name</label
-          >
-          <input
-            type="text"
-            class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-sky-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Name"
-            name=""
-            id=""
-          />
-
-          <label for="Last" class="block text-sm font-medium text-gray-700"
-            >Last Name</label
-          >
-          <input
-            type="text"
-            class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-sky-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Last Name"
-            name=""
-            id=""
-          />
-
-          <label for="Adress" class="block text-sm font-medium text-gray-700"
-            >Email Adress</label
-          >
-          <input
-            type="text"
-            class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-sky-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Email"
-            name=""
-            id=""
-          />
-
-          <label for="Message" class="block text-sm font-medium text-gray-700"
-            >Message</label
-          >
-          <input
-            type="text"
-            class="mt-2 shadow appearance-none border rounded w-full h-24 text-sky-700 focus:outline-none focus:shadow-outline"
-            name=""
-            id=""
-          />
-          <button
-          class="bg-blue-600 mt-1 text-white px-6 py-4 uppercase tracking-[4px] font-thin hover:bg-blue-800 hover:text-white transition-all"
-        >
-          Send Now
-        </button>
-        </form>
-      </div>
-    </section>
+      </section>
     </main>
-    
+
     <footer aria-label="Site Footer" class="w-full mt-20 bg-blue-200 flex justify-center items-center">
       <div class="max-w-screen-2xl py-4 mx-auto space-y-8 sm:px-4 lg:space-y-2" style="width: 86rem;">
         <div class="grid grid-cols-1 gap-24 lg:grid-cols-3">
 
           <div class="flex flex-col items-center">
             <div class="text-blue-900">
-              <img class="w-32" src="./assets/img/logo-easy.png" alt="logo-easy-buy">
+              <a href="./index.html"><img src="./assets/img/logo-easy.png" alt="" class="w-16 md:w-[8.5rem]" /></a>
             </div>
 
             <div>
@@ -537,19 +488,24 @@
               <nav aria-label="Footer Navigation - Company" class="mt-3">
                 <ul class="space-y-2 text-sm">
                   <li>
-                    <a class="text-blue-900 transition hover:opacity-75" href="mailto:m.labarrere2@gmail.com">m.labarrere2@gmail.com</a>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:m.labarrere2@gmail.com">m.labarrere2@gmail.com</a>
                   </li>
                   <li>
-                    <a class="text-blue-900 transition hover:opacity-75" href="mailto:emi.acevedo.letras@gmail.com">emi.acevedo.letras@gmail.com</a>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:emi.acevedo.letras@gmail.com">emi.acevedo.letras@gmail.com</a>
                   </li>
                   <li>
-                    <a class="text-blue-900 transition hover:opacity-75" href="mailto:emilianobrizio2017@gmail.com">emilianobrizio2017@gmail.com</a>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:emilianobrizio2017@gmail.com">emilianobrizio2017@gmail.com</a>
                   </li>
                   <li>
-                    <a class="text-blue-900 transition hover:opacity-75" href="mailto:calvojuancito@gmail.com">calvojuancito@gmail.com</a>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:calvojuancito@gmail.com">calvojuancito@gmail.com</a>
                   </li>
                   <li>
-                    <a class="text-blue-900 transition hover:opacity-75" href="mailto:dfernandezjara@live.com">Dfernandezjara@live.com</a>
+                    <a class="text-blue-900 transition hover:opacity-75"
+                      href="mailto:dfernandezjara@live.com">Dfernandezjara@live.com</a>
                   </li>
                 </ul>
               </nav>
@@ -559,12 +515,14 @@
               <p class="font-medium text-blue-900 font-bold my-0">Information</p>
 
               <nav aria-label="Footer Navigation - Legal" class="mt-3">
-                
+
                 <ul class="space-y-2 text-sm">
                   <li>
-                    <a href="/web/frecuents.html" class="text-blue-900 transition hover:opacity-75">
+                    <button class="text-blue-900 transition hover:opacity-75"
+                      data-modal-target="authentication-modal-FAQ" data-modal-toggle="authentication-modal-FAQ"
+                      type="button">
                       FAQ
-                    </a>
+                    </button>
                   </li>
 
                   <li>
@@ -575,7 +533,7 @@
 
                   <li>
                     <a href="/web/form.html" class="text-blue-900 transition hover:opacity-75">
-                     Contact
+                      Contact
                     </a>
                   </li>
                 </ul>
@@ -588,104 +546,304 @@
           <p class="underline">Mind Hub</p>
           <p class="text-sm text-blue-200 py-2">
             &copy; 2023. EASY BUY. All rights reserved.</p>
-            <p class="underline">Cohort 41</p>
+          <p class="underline">Cohort 41</p>
         </div>
       </div>
     </footer>
 
-            <!-- CART MODAL -->
-            <div v-if="active" class="fixed top-0 left-0 w-screen h-screen"
-            style="z-index: 100; background-color: rgba(0, 0, 0, 0.5);">
-        
-        <div
-          class="carrito bg-blue-900 shadow-lg w-96 h-screen p-2 flex flex-col gap-1 max-h-screen overflow-y-scroll overflow-x-hidden"
-          :style="{animationName : active ? 'slideIn' : active != null ? 'slideOut' : ''}" style="max-width: 100vw;">
-        
-          <div class="flex justify-between items-center">
-            <img src="./assets/img/cart.svg" alt="cart" style="width: 40px">
-            <p class="lg:text-2xl text-1xl font-black leading-10 text-white">My cart</p>
-            <div class="py-1 px-3 font-bold bg-white rounded-full shadow-lg hover:bg-blue-300" @click="toggleCart">X</div>
-          </div>
-        
-        
-          <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-for="product of bag"
-            v-if="bag.length">
-            <div class="md:w-4/12 2xl:w-1/4 w-full">
-              <img :src="product.imgsUrls[0]" alt="Black Leather Bag"
-                class="h-full object-center object-cover md:block hidden" />
-        
-            </div>
-            <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col md:justify-between md:h-full">
-              <div class="flex items-center justify-between w-full">
-                <p class="text-base font-black leading-none text-gray-800">{{product.name}}</p>
-                <div class="custom-number-input h-10 w-20">
-                  <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-                    <button data-action="decrement"
-                      class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
-                      @click="outProductBag(product)">
-                      <span class="m-auto text-2xl font-thin">−</span>
-                    </button>
-                    <input type="number" style="width: 20px;"
-                      class="input outline-none focus:outline-none text-center bg-gray-200 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
-                      name="custom-input-number" :value="product.quantity"></input>
-                    <button data-action="increment"
-                      class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
-                      @click="saveBag(product)">
-                      <span class="m-auto text-2xl font-thin">+</span>
-                    </button>
+    <!-- MODAL FAQ -->
+
+    <!-- Main modal -->
+    <div id="authentication-modal-FAQ" tabindex="-1" aria-hidden="true"
+      class=" fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden md:inset-0 h-[calc(100%-1rem)] md:h-full ">
+      <div class="relative w-full min-h-[100%] mt-40 max-w-[70rem] md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button type="button"
+            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+            data-modal-hide="authentication-modal-Created-Ticket">
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+          <div class="px-6 py-6 g:px-8l">
+            <main>
+
+
+              <div class="h-screen  grid place-items-center overflow-y-scroll relative mt-10">
+                <div
+                  class="flex justify-center items-center p-2 top-0 w-[100%] gap-1 bg-gradient-to-r from-cyan-700 to-blue-400 mt-4 ">
+                  <img src="./assets/img/preg.png" alt="corazon"
+                    style="width:3rem; background-color: white; border-radius: 50%;">
+                  <h2 class="text-xl font-bold text-white pl-1" style="text-shadow: 1px 1px 5px black;">Frecuently Asked
+                    Questions</h2>
+                </div>
+                <div class="w-11/12 md:w-9/12 lg:w-6/12 mx-auto rounded border">
+                  <div class="bg-white p-10 shadow-sm">
+                    <h3 class="text-lg font-medium text-gray-800">Frecuently asked questions</h3>
+                    <p class="text-sm font-light text-gray-600 my-3">
+                      Here we have a section to solve issues with purchases
+                    </p>
+
+                    <div class="h-1 w-full mx-auto border-b my-5"></div>
+
+                    <!-- What is term -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>How to return a purchase?</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Contact a representative through the contact form or through our telephone lines.
+                          tel:341-2235-3456
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Contactesé con un representante mediante el formulario de contactos o a traves de nuestras
+                          lineas telefonicas. tel:341-2235-3456 </p>
+                      </div>
+                    </div>
+
+                    <!-- When to use Accordion Components -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>Billing and taxes on EASY BUY</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Surcharges are added when the buyer has not made the payment by the due date.
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Los recargos se agregan cuando al pasar la fecha limite el comprador no efectuó el pago.
+                        </p>
+
+                      </div>
+                    </div>
+
+                    <!-- Accordion Wrapper -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>Why some products do not have shipping?
+                        </h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Some products do not have shipping since a minimum amount is required in the purchase.
+
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+
+                          Algunos productos no tienen envio ya que se requiere un monto minimo en la compra.
+                        </p>
+
+                      </div>
+                    </div>
+
+                    <!-- Accordion Wrapper -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>About the offers on EASY BUY</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Offers on our site have a maximum of 7 days from their publication.
+
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Las ofertas en nuestro sitio tienen un maximo de 7 dias desde su publicacion.
+
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Accordion Wrapper -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>Minimun amount to free shiping</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          The minimum amount to get free shipings is over U$D 100 dollars or product weights greater
+                          than 50kg
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          El monto mínimo para obtener envíos gratis es superior a U$D 100 dólares o pesos de productos
+                          superiores a 50 kg.
+
+                        </p>
+                      </div>
+                    </div>
+
+
                   </div>
                 </div>
-              </div>
-              <div class="flex items-center justify-between pt-5">
-                <div class="flex itemms-center">
-                  <p class="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
-                  <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
-                    @click="removeItem(product)">Remove</a>
-                </div>
-                <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price / 100) * product.discount))}}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-else>
-            <img
-              src="https://cdni.iconscout.com/illustration/premium/thumb/confusing-woman-due-to-empty-cart-4558760-3780056.png"
-              alt="">
-          </div>
-          <div class="w-full bg-white rounded-lg ">
-            <div class="flex flex-col h-auto lg:px-8 md:px-7 px-4 lg:py-2 md:py-10 py-2 justify-between overflow-y-auto">
-              <div>
-                <div class="flex items-center justify-between border-b-2">
-                  <p class="text-xl leading-normal text-gray-800">Quantity Products</p>
-                  <p class="text-xl font-bold leading-normal text-right text-gray-800">
-                    {{totalCartQuantity}}</p>
-                </div>
-                <div class="flex items-center pb-1 mb-2 justify-between lg:pt-3 border-b-2">
-                  <p class="text-2xl leading-normal text-gray-800">Total</p>
-                  <p class="text-2xl font-bold leading-normal text-right text-gray-800">
-                    {{formatDollar(totalCart)}}</p>
-                </div>
-                <a href="/web/TerminalPay.html">
-                  <button
-                    class="text-xl hover:bg-red-500 hover:drop-shadow-2xl rounded-md leading-none w-full py-5 bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">Checkout</button>
-                </a>
-              </div>
-            </div>
-          </div>
-        
-        </div>
-        </div>
-        <!--     CART MODAL -->
 
-</div>
-    <script
-      src="https://kit.fontawesome.com/a9a67006ad.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="./js/form.js"></script>
-  </body>
+              </div>
+
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL FAQ -->
+
+    <!-- CART MODAL -->
+    <div v-if="active" class="fixed top-0 left-0 w-screen h-screen"
+      style="z-index: 100; background-color: rgba(0, 0, 0, 0.5);">
+
+      <div
+        class="carrito bg-blue-900 shadow-lg w-96 h-screen p-2 flex flex-col gap-1 max-h-screen overflow-y-scroll overflow-x-hidden"
+        :style="{animationName : active ? 'slideIn' : active != null ? 'slideOut' : ''}" style="max-width: 100vw;">
+
+        <div class="flex justify-between items-center">
+          <img src="./assets/img/cart.svg" alt="cart" style="width: 40px">
+          <p class="lg:text-2xl text-1xl font-black leading-10 text-white">My cart</p>
+          <div class="py-1 px-3 font-bold bg-white rounded-full shadow-lg hover:bg-blue-300" @click="toggleCart">X</div>
+        </div>
+
+
+        <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-for="product of bag"
+          v-if="bag.length">
+          <div class="md:w-4/12 2xl:w-1/4 w-full">
+            <img :src="product.imgsUrls[0]" alt="Black Leather Bag"
+              class="h-full object-center object-cover md:block hidden" />
+
+          </div>
+          <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col md:justify-between md:h-full">
+            <div class="flex items-center justify-between w-full">
+              <p class="text-base font-black leading-none text-gray-800">{{product.name}}</p>
+              <div class="custom-number-input h-10 w-20">
+                <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                  <button data-action="decrement"
+                    class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+                    @click="outProductBag(product)">
+                    <span class="m-auto text-2xl font-thin">−</span>
+                  </button>
+                  <input type="number" style="width: 20px;"
+                    class="input outline-none focus:outline-none text-center bg-gray-200 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                    name="custom-input-number" :value="product.quantity"></input>
+                  <button data-action="increment"
+                    class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+                    @click="saveBag(product)">
+                    <span class="m-auto text-2xl font-thin">+</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-5">
+              <div class="flex itemms-center">
+                <p class="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
+                <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
+                  @click="removeItem(product)">Remove</a>
+              </div>
+              <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price
+                / 100) * product.discount))}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="md:flex items-center py-8 md:py-2 lg:py-2 px-2 bg-white rounded-lg" v-else>
+          <img
+            src="https://cdni.iconscout.com/illustration/premium/thumb/confusing-woman-due-to-empty-cart-4558760-3780056.png"
+            alt="">
+        </div>
+        <div class="w-full bg-white rounded-lg ">
+          <div class="flex flex-col h-auto lg:px-8 md:px-7 px-4 lg:py-2 md:py-10 py-2 justify-between overflow-y-auto">
+            <div>
+              <div class="flex items-center justify-between border-b-2">
+                <p class="text-xl leading-normal text-gray-800">Quantity Products</p>
+                <p class="text-xl font-bold leading-normal text-right text-gray-800">
+                  {{totalCartQuantity}}</p>
+              </div>
+              <div class="flex items-center pb-1 mb-2 justify-between lg:pt-3 border-b-2">
+                <p class="text-2xl leading-normal text-gray-800">Total</p>
+                <p class="text-2xl font-bold leading-normal text-right text-gray-800">
+                  {{formatDollar(totalCart)}}</p>
+              </div>
+              <button @click="checkoutHandler" :disabled="!isLogged || !bag.length || isLoading"
+                class="text-xl flex items-center justify-center hover:bg-red-500 disabled:bg-red-300 rounded-md leading-none w-full py-5 bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
+                <div role="status" v-if="isLoading">
+                  <svg aria-hidden="true" class="w-8 h-8 mr-2 text-blue-600 animate-spin fill-white"
+                    viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="currentColor" />
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentFill" />
+                  </svg>
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <template v-else>Checkout</template>
+              </button>
+              <div v-if="!isLogged">
+                <p class="text-x1">To make a purchase, either sign in to your account or create one. <a
+                    href="/web/login.html" class="underline">Sign in</a></p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--     CART MODAL -->
+
+  </div>
+  <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./js/form.js"></script>
+  <style>
+    .accordion-content {
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
+    }
+  </style>
+
+  <script>
+    const accordionHeader = document.querySelectorAll(".accordion-header");
+    accordionHeader.forEach((header) => {
+      header.addEventListener("click", function () {
+        const accordionContent = header.parentElement.querySelector(".accordion-content");
+        let accordionMaxHeight = accordionContent.style.maxHeight;
+
+        // Condition handling
+        if (accordionMaxHeight == "0px" || accordionMaxHeight.length == 0) {
+          accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
+          header.querySelector(".fas").classList.remove("fa-plus");
+          header.querySelector(".fas").classList.add("fa-minus");
+          header.parentElement.classList.add("bg-indigo-50");
+        } else {
+          accordionContent.style.maxHeight = `0px`;
+          header.querySelector(".fas").classList.add("fa-plus");
+          header.querySelector(".fas").classList.remove("fa-minus");
+          header.parentElement.classList.remove("bg-indigo-50");
+        }
+      });
+    });
+  </script>
+</body>
+
 </html>
