@@ -390,7 +390,7 @@
       <h2 class="text-white">Top Offers</h2>
     </div>
 
-    <div class="flex justify-around flex-wrap">
+    <div class="flex justify-around flex-wrap gap-6">
       <template v-for="(product, index) of  top4offersProducts">
 
         <article :id="'productUpdated-'+product.id" :class="{elementFadeInLeft : top4offersProducts[index]}"
@@ -545,7 +545,7 @@
       <h2 class="text-white">Last updated</h2>
     </div>
 
-    <div class="flex justify-around flex-wrap">
+    <div class="flex justify-around flex-wrap gap-6">
       <template v-for="(product, index) of top4LastUpdated">
 
         <article :id="'productUpdated-'+product.id" :class="{elementFadeInLeft : topUpdatedEffect[index]}"
