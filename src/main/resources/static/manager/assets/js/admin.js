@@ -13,7 +13,7 @@ createApp({
             date: null,
             category: "",
             id: null,
-            picture: null,
+            pictures: null,
 
 
         }
@@ -57,7 +57,12 @@ createApp({
         addPhotos() {
 
             let formData = new FormData()
-            formData.append('images', this.picture)
+            for(picture of this.pictures){
+
+                formData.append('images[]', picture)
+                
+            }
+         
             console.log(formData)
             axios.post(`/api/products/${this.id}/images`, formData,
                 { headers: { "Content-Type": "multipart/form-data" } })
