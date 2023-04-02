@@ -79,6 +79,11 @@ public class TicketImpl implements TicketService {
     }
 
     @Override
+    public Set<Ticket> findAll() {
+        return ticketRepository.findAll().stream().collect(Collectors.toSet());
+    }
+
+    @Override
     public void save(Ticket ticket) {
         ticketRepository.save(ticket);
     }
