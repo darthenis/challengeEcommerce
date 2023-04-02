@@ -42,37 +42,42 @@
               <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-              <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Welcome to the section to modify a
-                Client</h3>
+              <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Modify a Client</h3>
               <form class="space-y-6" action="#">
-                <div>
-                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                  <input type="email" name="email" id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    placeholder="name@company.com" required>
+                <div class="flex gap-2">
+                  <div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                    <input type="email" name="email" id="email" v-model="email"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      placeholder="name@company.com" required>
+                  </div>
+                  <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                    <input type="text" name="text" id="text" placeholder="Name" v-model="name"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      required>
+                  </div>
                 </div>
-                <div>
-                  <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                  <input type="text" name="text" id="text" placeholder="Name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required>
+                <div class="flex gap-2">
+                  <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
+                      Name</label>
+                    <input type="text" name="text" id="text" placeholder="Last Name" v-model="lastName"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      required>
+                  </div>
+                  <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
+                    <input type="text" name="text" id="text" placeholder="Phone " v-model="tel"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      required>
+                  </div>
                 </div>
-                <div>
-                  <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
-                    Name</label>
-                  <input type="text" name="text" id="text" placeholder="Last Name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required>
-                </div>
-                <div>
-                  <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
-                  <input type="text" name="text" id="text" placeholder="Phone "
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required>
-                </div>
-                <button type="submit"
-                  class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">modify
-                  Client</button>
+                
+                <button type="submit" @click.prevent="handleEditClient" data-modal-hide="authentication-modal-Client"
+                  class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  Modify
+                  </button>
               </form>
             </div>
           </div>
@@ -107,37 +112,47 @@
               <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-              <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Welcome to the section to Created
-                Clients</h3>
+              <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Create a Client</h3>
               <form class="space-y-6" action="#">
-                <div>
-                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                  <input type="email" name="email" id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    placeholder="name@company.com" required>
+                <div class="flex gap-1">
+                  <div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                    <input type="email" name="email" id="email" v-model="email"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      placeholder="name@company.com" required>
+                  </div>
+                  <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                    <input type="text" name="text" id="text" placeholder="Name" v-model="name"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      required>
+                  </div>
                 </div>
+                <div class="flex gap-1">
+                  <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
+                      Name</label>
+                    <input type="text" name="text" id="text" placeholder="Last Name" v-model="lastName"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      required>
+                  </div>
+                  <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
+                    <input type="text" name="text" id="text" placeholder="Phone" v-model="tel"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      required>
+                  </div>
+                </div>
+                
                 <div>
-                  <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                  <input type="text" name="text" id="text" placeholder="Name"
+                  <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                  <input type="text" name="text" id="text" placeholder="Password" v-model="password"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     required>
                 </div>
-                <div>
-                  <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
-                    Name</label>
-                  <input type="text" name="text" id="text" placeholder="Last Name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required>
-                </div>
-                <div>
-                  <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
-                  <input type="text" name="text" id="text" placeholder="Phone "
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required>
-                </div>
-                <button type="submit"
-                  class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Created
-                  Customer</button>
+                <button type="submit" @click.prevent="createClient"
+                  class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  Create</button>
               </form>
             </div>
           </div>
@@ -172,9 +187,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this
+              <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to change enable state of this
                 client?</h3>
-              <button data-modal-hide="popup-modal-Customers" type="button"
+              <button data-modal-hide="popup-modal-Customers" type="button" @click="handleEnabledClient"
                 class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                 Yes, I'm sure
               </button>
@@ -277,7 +292,7 @@
                   data-modal-hide="authentication-modal-Modify-Products"
                   @click.prevent="edit" 
                   class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  Create
+                  Modify
                 </button>
               </form>
             </div>
@@ -372,10 +387,10 @@
                 </div>
                 
                 <button
-                  data-modal-hide="authentication-modal-Modify-Products"
+                  data-modal-hide="authentication-modal-Created-Products"
                   @click.prevent="createProduct" 
                   class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  Modify
+                  Create
                 </button>
               </form>
             </div>
@@ -427,7 +442,7 @@
 
 
       <!-- Main modal -->
-      <div id="defaultModal" tabindex="-1" aria-hidden="true"
+      <div id="defaultModal-photos" tabindex="-1" aria-hidden="true"
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
         <div class="relative w-full h-full max-w-4xl md:h-auto">
           <!-- Modal content -->
@@ -443,7 +458,7 @@
               
               <button type="button"
               class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-              data-modal-hide="defaultModal">
+              data-modal-hide="defaultModal-photos">
               <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -491,11 +506,11 @@
             </div>
             <!-- Modal footer -->
             <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-              <button data-modal-hide="defaultModal" type="button"
+              <button data-modal-hide="defaultModal-photos" type="button"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 @click="addPhotos">I
                 accept</button>
-              <button data-modal-hide="defaultModal" type="button"
+              <button data-modal-hide="defaultModal-photos" type="button"
                 class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
             </div>
           </div>
@@ -506,45 +521,56 @@
 
       <section class="section-tabla">
         <h1 class="h1">Table to delete, modify and create customers</h1>
-        <div class="tbl-header-buscador">
+        <div class=" text-white text-center">
           <h4>Search your client...</h4>
-          <div>
-            <input type="text"><button>search</button>
+
+          <div class="flex gap-2 mt-2">
+            <input class="text-black rounded-lg p-1" type="text" class="p-1 rounded-lg" placeholder="search..." @input="handleSearchClient" v-model="searchClient">
+            <button class="p-2 bg-blue-500 hover:bg-blue-400 rounded-lg text-white">search</button>
           </div>
+
         </div>
+        <div class="relative" style="height: 400px; width: 950px; max-width: 90vw; background-color: #000000af; margin-top: 20px; overflow: auto;">
           <table class="tbl-header" cellpadding="0" cellspacing="0">
-            <thead>
+            <thead class="sticky top-0 bg-black">
               <tr>
                 <th style="width: 150px;">Name</th>
                 <th style="width: 150px;">Last Name</th>
                 <th style="width: 250px;">Email</th>
-                <th style="width: 150px;">Phone</th>
-                <th style="width: 150px;"></th>
-                <th style="width: 150px;"></th>
+                <th style="width: 100px;">Phone</th>
+                <th style="width: 70px;">Status</th>
+                <th style="width: 100px;"></th>
+                <th style="width: 100px;"></th>
               </tr>
             </thead>
             <tbody class="tbl-content">
-              <tr v-if="clients.length" v-for="client of clients">
+              <tr v-if="clients.length" v-for="client of filteredClients">
                 <td style="color: white; min-width: 150px;">{{client.name}}</td>
                 <td style="color: white; min-width: 150px;">{{client.lastName}}</td>
                 <td style="color: white; min-width: 250px;">{{client.email}}</td>
                 <td style="color: white; min-width: 150px;">{{client.tel}}</td>
-                <td style="color: white; min-width: 150px;">
-                  <button 
-                    data-modal-target="popup-modal-Customers"
-                    data-modal-toggle="popup-modal-Customers" 
-                    type="button"
-                    class="w-[2rem]">
-                    <i class="fa-solid fa-trash-can"></i>
-                  </button></td>
+                <td :style="{color: client.isEnabled ? 'green' : 'red'}">{{client.isEnabled ? "enabled" : "disabled"}}</td>
+                <td style="color: white;">
+                  <button data-modal-target="popup-modal-Customers"
+                          data-modal-toggle="popup-modal-Customers"
+                          class="flex justify-center" 
+                          @click="clientId(client.id)">
+                          <svg width="20px" height="20px" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13 3C13 2.44772 12.5523 2 12 2C11.4477 2 11 2.44772 11 3V12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12V3ZM8.6092 5.8744C9.09211 5.60643 9.26636 4.99771 8.99839 4.5148C8.73042 4.03188 8.12171 3.85763 7.63879 4.1256C4.87453 5.65948 3 8.61014 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.66747 19.1882 5.75928 16.5007 4.20465C16.0227 3.92811 15.4109 4.09147 15.1344 4.56953C14.8579 5.04759 15.0212 5.65932 15.4993 5.93586C17.5942 7.14771 19 9.41027 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 9.3658 6.45462 7.06997 8.6092 5.8744Z" fill="white"/>
+                            </svg>
+                  </button>
+                </td>
                 <td style="width: 150px;">
-                  <button data-modal-target="authentication-modal-Client"
-                    data-modal-toggle="authentication-modal-Client" class="Modify" type="button"><i
-                      class="fa-solid fa-pencil"></i></button>
+                  <button data-modal-target="authentication-modal-Client" 
+                          data-modal-toggle="authentication-modal-Client" 
+                          @click="setClientToEdit(client)"
+                          class="Modify" type="button"><i
+                          class="fa-solid fa-pencil"></i></button>
                 </td>
               </tr>
             </tbody>
           </table>
+        </div>
         <button data-modal-target="authentication-modal-Creatad-Client"
                 data-modal-toggle="authentication-modal-Creatad-Client" 
                 class="button-created bg-blue-500 w-[10rem] p-2 hover:bg-blue-400" 
@@ -564,52 +590,54 @@
             <button class="p-2 bg-blue-500 hover:bg-blue-400 rounded-lg text-white">search</button>
           </div>
         </div>
-
-          <table class="tbl-header" cellpadding="0" cellspacing="0" style="min-height: 500px">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th>Discount</th>
-                <th>Categories</th>
-                <th>Status</th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody  class="tbl-content">
-              <tr v-for="product of filteredProducts">
-                <td style="color: white;">{{product.name}}</td>
-                <td style="color: white;">{{product.price}}</td>
-                <td style="color: white;">{{product.stock}}</td>
-                <td style="color: white;">{{product.discount}}</td>
-                <td style="color: white;">{{product.categoriesEnums[0]}}</td>
-                <td :style="{color: product.status ? 'green' : 'red'}">{{product.status ? "actived" : "desactived"}}</td>
-                <td style="color: white;">
-                  <button data-modal-target="popup-modal-Products"
-                          data-modal-toggle="popup-modal-Products"
-                          class="flex justify-center" 
-                          @click="productId(product.id)">
-                          <svg width="20px" height="20px" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13 3C13 2.44772 12.5523 2 12 2C11.4477 2 11 2.44772 11 3V12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12V3ZM8.6092 5.8744C9.09211 5.60643 9.26636 4.99771 8.99839 4.5148C8.73042 4.03188 8.12171 3.85763 7.63879 4.1256C4.87453 5.65948 3 8.61014 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.66747 19.1882 5.75928 16.5007 4.20465C16.0227 3.92811 15.4109 4.09147 15.1344 4.56953C14.8579 5.04759 15.0212 5.65932 15.4993 5.93586C17.5942 7.14771 19 9.41027 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 9.3658 6.45462 7.06997 8.6092 5.8744Z" fill="white"/>
-                            </svg>
-                  </button>
-                </td>
-                <td>
-                  <button data-modal-target="authentication-modal-Modify-Products"
-                          data-modal-toggle="authentication-modal-Modify-Products" 
-                          class="Modify"
-                          @click="editProduct(product)">
-                          <i class="fa-solid fa-pencil"></i></button>
-                </td>
-                <td style="color: white;"><button data-modal-target="authentication-modal-Created-Products"
-                    data-modal-toggle="defaultModal" class="button-created" type="button"
-                    @click="productId(product.id)"><i class="fa-regular fa-square-plus"></i> Photos</button></td>
-              </tr>
-            </tbody>
-          </table>
+          <div style="height: 400px; width: 1050px;  max-width: 90vw; background-color: #000000af; margin-top: 20px; overflow: auto;">
+            <table   cellpadding="0" cellspacing="0" style="overflow: auto;">
+              <thead class="sticky top-0 bg-black">
+                <tr>
+                  <th style="width: 220px">Name</th>
+                  <th style="width: 90px">Price</th>
+                  <th style="width: 70px">Stock</th>
+                  <th style="width: 70px">Discount</th>
+                  <th style="width: 120px">Categories</th>
+                  <th style="width: 70px">Status</th>
+                  <th style="width: 120px"></th>
+                  <th style="width: 120px"></th>
+                  <th style="width: 120px"></th>
+                </tr>
+              </thead>
+              <tbody  class="tbl-content">
+                <tr v-for="product of filteredProducts">
+                  <td style="color: white; width: 300px;">{{product.name}}</td>
+                  <td style="color: white;">{{product.price}}</td>
+                  <td style="color: white;">{{product.stock}}</td>
+                  <td style="color: white;">{{product.discount}}</td>
+                  <td style="color: white;">{{product.categoriesEnums[0]}}</td>
+                  <td :style="{color: product.status ? 'green' : 'red'}">{{product.status ? "actived" : "desactived"}}</td>
+                  <td style="color: white;">
+                    <button data-modal-target="popup-modal-Products"
+                            data-modal-toggle="popup-modal-Products"
+                            class="flex justify-center" 
+                            @click="productId(product.id)">
+                            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M13 3C13 2.44772 12.5523 2 12 2C11.4477 2 11 2.44772 11 3V12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12V3ZM8.6092 5.8744C9.09211 5.60643 9.26636 4.99771 8.99839 4.5148C8.73042 4.03188 8.12171 3.85763 7.63879 4.1256C4.87453 5.65948 3 8.61014 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.66747 19.1882 5.75928 16.5007 4.20465C16.0227 3.92811 15.4109 4.09147 15.1344 4.56953C14.8579 5.04759 15.0212 5.65932 15.4993 5.93586C17.5942 7.14771 19 9.41027 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 9.3658 6.45462 7.06997 8.6092 5.8744Z" fill="white"/>
+                              </svg>
+                    </button>
+                  </td>
+                  <td>
+                    <button data-modal-target="authentication-modal-Modify-Products"
+                            data-modal-toggle="authentication-modal-Modify-Products" 
+                            class="Modify"
+                            @click="editProduct(product)">
+                            <i class="fa-solid fa-pencil"></i></button>
+                  </td>
+                  <td style="color: white;"><button data-modal-target="defaultModal-photos"
+                      data-modal-toggle="defaultModal-photos" class="button-created" type="button"
+                      @click="productId(product.id)"><i class="fa-regular fa-square-plus"></i> Photos</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
         <button data-modal-target="authentication-modal-Created-Products" @click="clearForm"
           data-modal-toggle="authentication-modal-Created-Products" class="button-created bg-blue-500 w-[10rem] p-2 hover:bg-blue-400"  type="button"><i
             class="fa-regular fa-square-plus"></i> Create Products</button>

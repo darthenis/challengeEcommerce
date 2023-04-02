@@ -25,6 +25,8 @@ public class ClientDTO {
 
     private Set<PurchaseOrderDTO> ticket ;
 
+    private boolean isEnabled;
+
 
     public ClientDTO(Client client) {
         this.id = client.getId();
@@ -36,6 +38,7 @@ public class ClientDTO {
         this.urlImg = client.getUrlImg();
         this.favorites = client.getFavorites().stream().map(FavoriteDTO::new).collect(Collectors.toSet());
         this.ticket = client.getTickets().stream().map(PurchaseOrderDTO::new).collect(Collectors.toSet());
+        this.isEnabled = client.isEnabled();
     }
 
     public Long getId() {
@@ -72,5 +75,9 @@ public class ClientDTO {
 
     public Set<PurchaseOrderDTO> getTickets() {
         return ticket;
+    }
+
+    public boolean getIsEnabled() {
+        return isEnabled;
     }
 }
