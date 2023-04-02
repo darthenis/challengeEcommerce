@@ -9,7 +9,9 @@ createApp({
             oldPassword : "",
             newPassword: "",
             avatarUrl : null,
-            avatar : null
+            avatar : null,
+            navActive: null,
+            active: null
             
 
         }
@@ -35,6 +37,16 @@ createApp({
                 })
 
         },
+        toggleCart() {
+
+            if (!this.active) {
+                this.active = true;
+                this.navActive = this.navActive != null ? false : null;
+            } else {
+                this.active = !this.active;
+            }
+
+        },
         editProfilePic(event){
 
             console.log(event.target.files)
@@ -42,6 +54,19 @@ createApp({
             this.avatar = event.target.files;
 
             this.avatarUrl = URL.createObjectURL(event.target.files[0])
+
+        },
+        handleNavResponsive() {
+
+            if (!this.navActive) {
+
+                this.navActive = true;
+
+            } else {
+
+                this.navActive = false;
+
+            }
 
         },
         handleMessageAlert(message, seconds, isError){
