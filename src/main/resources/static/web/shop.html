@@ -395,7 +395,7 @@
 
         <div class="menu_top_shop pt-4 pb-2">
           <div>Showing <span v-html="(initPage / 9) + 1"></span>–<span
-              v-html="Math.round(totalFilteredProducts.length / 9)"></span> of <span
+              v-html="Math.round((totalFilteredProducts.length / 9) + 1)"></span> of <span
               v-html="filteredProducts.length"></span> results</div>
           <div>Sort by:
             <select style="width: 100px;" v-model="sortSeleted">
