@@ -24,11 +24,11 @@ createApp({
                 seconds: 0
             },
             messageAlert: {
-                message : "",
+                message: "",
                 isError: false
             },
-            scrollheader : false,
-            isLoading : false
+            scrollheader: false,
+            isLoading: false
 
         }
     },
@@ -67,14 +67,14 @@ createApp({
 
             axios.get("/api/products/last/updated")
                 .then(res => {
-                    this.top4LastUpdated = res.data.sort((a,b) => a.id - b.id);
+                    this.top4LastUpdated = res.data.sort((a, b) => a.id - b.id);
                     this.checkIsLogged()
 
                 }).catch(err => console.log(err))
 
             axios.get("/api/products/last/offers")
                 .then(res => {
-                    this.top4offersProducts = res.data.sort((a,b) => a.id - b.id);
+                    this.top4offersProducts = res.data.sort((a, b) => a.id - b.id);
 
                 }).catch(err => console.log(err))
 
@@ -94,7 +94,7 @@ createApp({
             }
 
         },
-        handleMessageAlert(message, seconds, isError){
+        handleMessageAlert(message, seconds, isError) {
 
             this.messageAlert = {
                 message,
@@ -134,8 +134,8 @@ createApp({
                         return item;
                     }
                 })
-            } else if(object.stock > 0){
-                
+            } else if (object.stock > 0) {
+
                 let product = { ...object, quantity: 1 }
                 this.bag.push(product)
                 this.handleMessageAlert("Item added to cart", 3, false)
@@ -144,7 +144,7 @@ createApp({
             this.quantityTotalCart()
             this.priceTotalCart()
 
-          
+
         },
 
         /* -------------QUITAR CANTIDAD DEL CARRITO -------------*/
@@ -179,12 +179,12 @@ createApp({
         /*--------------CALCULO DE TOTAL CARRITO--------------*/
         priceTotalCart() {
             let totalCount = 0;
-            
+
             this.bag.forEach(object => {
 
                 console.log(object)
 
-                if(object.discount > 0){
+                if (object.discount > 0) {
 
                     let priceDiscount = object.price - ((object.price / 100) * object.discount);
 
@@ -195,7 +195,7 @@ createApp({
                     totalCount += object.price * object.quantity
                 }
 
-               
+
             })
             this.totalCart = totalCount
         },
@@ -245,7 +245,7 @@ createApp({
 
             }
 
-            if(window.scrollY > 100) this.scrollheader = true;
+            if (window.scrollY > 100) this.scrollheader = true;
 
             else this.scrollheader = false;
 
@@ -318,7 +318,8 @@ createApp({
 
             }
 
-            return ((five * 5) + (four * 4) + (three * 3) + (two * 2) + (one * 1)) / rates.length || "0.0"
+            let stars = ((five * 5) + (four * 4) + (three * 3) + (two * 2) + (one * 1)) / rates.length || "0.0"
+            return Math.round(stars)
 
         },
 
@@ -379,19 +380,19 @@ createApp({
                     description: product.description,
                     stock: product.stock
                 }
-    
+
                 axios.post("/api/client/current/favorites", { ...data })
                     .then(res => {
-    
+
                         this.loadData();
-    
+
                         this.handleMessageAlert("Item added to favorites", 3, false)
-    
+
                     }).catch(err => console.log(err))
 
             }
 
-         
+
 
         },
         checkedFavoritesAdded() {
@@ -447,28 +448,28 @@ createApp({
 
 
         },
-        checkoutHandler(){
+        checkoutHandler() {
 
-                this.isLoading = true;
+            this.isLoading = true;
 
-                axios.post('/api/client/current/orders', {
-                    dateTime: new Date(),
-                    amount: this.totalCart,
-                    products: [...this.getProducts()]
-                },
-                    { headers: { 'content-type': 'application/json' } })
-                    .then(res => {
-                        console.log(res.data)
-                        location.href = "/web/terminalpay.html?order="+res.data;
-                    })
-                    .catch(err => {
-                        let item = this.bag.filter(item => item.id == err.response.data.split(":")[1].trim())
-                        this.handleMessageAlert("No stock for "+item[0].name, 3, true)
-                        this.isLoading = false;
-                    })
-   
+            axios.post('/api/client/current/orders', {
+                dateTime: new Date(),
+                amount: this.totalCart,
+                products: [...this.getProducts()]
+            },
+                { headers: { 'content-type': 'application/json' } })
+                .then(res => {
+                    console.log(res.data)
+                    location.href = "/web/terminalpay.html?order=" + res.data;
+                })
+                .catch(err => {
+                    let item = this.bag.filter(item => item.id == err.response.data.split(":")[1].trim())
+                    this.handleMessageAlert("No stock for " + item[0].name, 3, true)
+                    this.isLoading = false;
+                })
 
-        
+
+
 
         },
         getProducts() {

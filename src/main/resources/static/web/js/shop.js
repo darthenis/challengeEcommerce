@@ -26,7 +26,7 @@ createApp({
             totalCartQuantity: 0,
             totalCart: 0,
             navActive: null,
-            scrollheader : false
+            scrollheader: false
         }
     },
     created() {
@@ -186,7 +186,7 @@ createApp({
 
             this.visibleArticle = [];
 
-            if(window.scrollY > 100) this.scrollheader = true;
+            if (window.scrollY > 100) this.scrollheader = true;
 
             else this.scrollheader = false;
 
@@ -246,7 +246,8 @@ createApp({
 
             }
 
-            return ((five * 5) + (four * 4) + (three * 3) + (two * 2) + (one * 1)) / rates.length || "0.0"
+            let starts = ((five * 5) + (four * 4) + (three * 3) + (two * 2) + (one * 1)) / rates.length || "0.0"
+            return Math.round(starts)
 
         },
 
@@ -451,8 +452,8 @@ createApp({
                         return item;
                     }
                 })
-            } else if(object.stock > 0){
-                
+            } else if (object.stock > 0) {
+
                 let product = { ...object, quantity: 1 }
                 this.bag.push(product)
                 this.handleMessageAlert("Item added to cart", 3, false)
@@ -461,7 +462,7 @@ createApp({
             this.quantityTotalCart()
             this.priceTotalCart()
 
-          
+
         },
 
 
@@ -499,7 +500,7 @@ createApp({
             let totalCount = 0
             this.bag.forEach(object => {
 
-                if(object.discount > 0){
+                if (object.discount > 0) {
 
                     let priceDiscount = object.price - ((object.price / 100) * object.discount);
 
@@ -548,7 +549,7 @@ createApp({
             }
 
         },
-        checkoutHandler(){
+        checkoutHandler() {
 
             this.isLoading = true;
 
@@ -560,35 +561,35 @@ createApp({
                 { headers: { 'content-type': 'application/json' } })
                 .then(res => {
                     console.log(res.data)
-                    location.href = "/web/terminalpay.html?order="+res.data;
+                    location.href = "/web/terminalpay.html?order=" + res.data;
                 })
                 .catch(err => {
                     let item = this.bag.filter(item => item.id == err.response.data.split(":")[1].trim())
-                    this.handleMessageAlert("No stock for "+item[0].name, 3, true)
+                    this.handleMessageAlert("No stock for " + item[0].name, 3, true)
                     this.isLoading = false;
                 })
 
 
-    
 
-    },
-    getProducts() {
 
-        let products = [];
+        },
+        getProducts() {
 
-        for (let product of this.bag) {
+            let products = [];
 
-            products.push({
-                idProduct: product.id,
-                price: product.price,
-                quantity: product.quantity
-            })
+            for (let product of this.bag) {
 
-        }
+                products.push({
+                    idProduct: product.id,
+                    price: product.price,
+                    quantity: product.quantity
+                })
 
-        return products;
+            }
 
-    },
+            return products;
+
+        },
 
     },
     computed: {

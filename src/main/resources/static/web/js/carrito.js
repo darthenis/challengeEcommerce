@@ -1,16 +1,16 @@
-const {createApp} = Vue;
+const { createApp } = Vue;
 
-createApp({ 
-    data(){
+createApp({
+    data() {
         return {
 
-            active : null
+            active: null
         }
     },
-    methods : {
-        toggleCar(){
+    methods: {
+        toggleCar() {
 
-            if(this.active == null){
+            if (this.active == null) {
 
                 this.active = true;
 
@@ -22,7 +22,7 @@ createApp({
 
             console.log(this.active)
 
-        }
+        },
     }
 
 
