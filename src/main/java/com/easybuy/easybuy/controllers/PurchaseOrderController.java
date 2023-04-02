@@ -73,8 +73,9 @@ public class PurchaseOrderController {
             purchaseOrder = purchaseService.createPurchaseOrder(newPurchaseOrderDTO);
 
         } catch (Exception e) {
-            e.printStackTrace();
+
             return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+
         }
 
         purchaseOrderProductService.createTicketProduct(newPurchaseOrderDTO.getProducts(), purchaseOrder);
