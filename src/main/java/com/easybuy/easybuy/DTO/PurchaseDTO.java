@@ -8,6 +8,8 @@ import java.util.List;
 
 public class PurchaseDTO {
 
+    private Long id;
+
     private String name;
 
     private String description;
@@ -18,7 +20,10 @@ public class PurchaseDTO {
 
     private LocalDateTime date;
 
+    private boolean rated = false;
+
     public PurchaseDTO(Product product) {
+        this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
         this.price = product.getPrice();
@@ -63,5 +68,21 @@ public class PurchaseDTO {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isRated() {
+        return rated;
+    }
+
+    public void setRated(boolean rated) {
+        this.rated = rated;
     }
 }

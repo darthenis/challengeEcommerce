@@ -59,13 +59,17 @@ createApp({
             let formData = new FormData()
             for(picture of this.pictures){
 
-                formData.append('images[]', picture)
-                
+                formData.append('images', picture)
+
             }
          
-            console.log(formData)
             axios.post(`/api/products/${this.id}/images`, formData,
                 { headers: { "Content-Type": "multipart/form-data" } })
+                .then(res =>{
+
+                    console.log(res.data)
+
+                })
                 .catch(er => console.error(er))
 
         },
@@ -75,7 +79,7 @@ createApp({
         },
 
         addPic(event) {
-            this.picture = event.target.files
+            this.pictures = event.target.files
         },
 
 

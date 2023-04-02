@@ -7,6 +7,7 @@ import com.easybuy.easybuy.models.Product;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface ProductService {
@@ -25,7 +26,7 @@ public interface ProductService {
 
     public boolean productsExists(List<ApplyProductDTO> products);
 
-    public void uploadImages(MultipartFile[] multipartFiles, Product product) throws Exception;
+    public void uploadImages(Map<String, MultipartFile> multipartFiles, Product product) throws Exception;
 
     public void deleteImage(String url, Long id) throws Exception;
 

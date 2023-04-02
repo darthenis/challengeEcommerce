@@ -34,7 +34,7 @@ createApp({
     },
     created() {
 
-        let countDownDate = new Date(Date.UTC(2023, 3, 2, 20, 33, 0)).getTime();
+        let countDownDate = new Date(Date.UTC(2023, 3, 5, 20, 33, 0)).getTime();
 
         this.regretCount(countDownDate)
 

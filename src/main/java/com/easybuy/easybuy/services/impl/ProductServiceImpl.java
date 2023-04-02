@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -49,20 +50,21 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void uploadImages(MultipartFile[] multipartFiles, Product product) {
+    public void uploadImages(Map<String, MultipartFile> multipartFiles, Product product) throws Exception {
 
         List<String> urls = product.getImgsUrls();
 
-        for(MultipartFile multipartFile : multipartFiles){
+        if(urls.size() == 4) throw new Exception("Full images uploaded");
 
+        for (Map.Entry<String, MultipartFile> entry : multipartFiles.entrySet()) {
+            MultipartFile file = entry.getValue();
             if(urls.size() < 4){
 
-                String url = ImageHandler.upload(multipartFile, product.getId() + "-" + urls.size());
+                String url = ImageHandler.upload(file, product.getId() + "-" + urls.size());
 
                 urls.add(url);
 
             }
-
         }
 
         product.setImgsUrls(urls);
