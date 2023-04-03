@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./assets/index.css" />
   <link rel="stylesheet" href="./assets/carrito.css">
   <link rel="stylesheet" href="./assets/fadeInBottom.css">
@@ -433,9 +434,9 @@
                     <span class=" font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
                       product.discount)}}</span>
                   </div>
-                  <button @click="saveBag(product)"
-                    :disabled="product.stock === 0"
-                    class="text-white mt-4 bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-6 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300" :class="{'bg-gray-200 hover:bg-gray-200' : product.stock === 0, null : product.stock > 0}">Add
+                  <button @click="saveBag(product)" :disabled="product.stock === 0"
+                    class="text-white mt-4 bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-6 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300"
+                    :class="{'bg-gray-200 hover:bg-gray-200' : product.stock === 0, null : product.stock > 0}">Add
                     to cart</button>
                 </div>
               </div>
@@ -589,8 +590,9 @@
                     <span class=" font-bold text-gray-900 dark:text-dark">{{getWithDiscount(product.price,
                       product.discount)}}</span>
                   </div>
-                  <button :disabled="product.stock == 0" @click="saveBag(product)" 
-                    class="text-white mt-4 bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-6 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300" :class="{'bg-gray-200 hover:bg-gray-200' : product.stock === 0, null : product.stock > 0}">Add
+                  <button :disabled="product.stock == 0" @click="saveBag(product)"
+                    class="text-white mt-4 bg-blue-900 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-6 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-600 dark:focus:ring-blue-300"
+                    :class="{'bg-gray-200 hover:bg-gray-200' : product.stock === 0, null : product.stock > 0}">Add
                     to cart</button>
                 </div>
               </div>
@@ -1062,7 +1064,7 @@
     </div>
 
   </div>
-  <script src="https://cdn.tailwindcss.com"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
   <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4ffb8edd00.js" crossorigin="anonymous"></script>

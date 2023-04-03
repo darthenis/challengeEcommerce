@@ -14,13 +14,13 @@ createApp({
             isLogged: false,
             selectSubMenu: false,
             date: "",
-            rate:{
+            rate: {
                 stars: "",
                 comment: ""
             },
-            messageAlert:{
-                message : "",
-                isError : false
+            messageAlert: {
+                message: "",
+                isError: false
             }
 
         }
@@ -37,13 +37,13 @@ createApp({
 
         let date = new Date();
 
-        this.date = date.getDate() + "/" + (date.getMonth() + 1)+"/" +date.getFullYear();
+        this.date = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     },
 
     /*-------------------METHODS----------------------*/
     methods: {
 
-        logout(){
+        logout() {
 
             axios('/api/logout')
                 .then(() => {
@@ -71,14 +71,14 @@ createApp({
 
         },
 
-        loadData(){
+        loadData() {
 
-                axios("/api/client/current/products")
-                        .then(res => {
+            axios("/api/client/current/products")
+                .then(res => {
 
-                            this.products = res.data;
+                    this.products = res.data;
 
-                        }).catch(err => console.log(err))
+                }).catch(err => console.log(err))
 
         },
 
@@ -113,8 +113,8 @@ createApp({
                         return item;
                     }
                 })
-            } else if(object.stock > 0){
-                
+            } else if (object.stock > 0) {
+
                 let product = { ...object, quantity: 1 }
                 this.bag.push(product)
                 this.handleMessageAlert("Item added to cart", 3, false)
@@ -123,9 +123,9 @@ createApp({
             this.quantityTotalCart()
             this.priceTotalCart()
 
-          
+
         },
-        formatTime(value){
+        formatTime(value) {
 
             let date = value.split("T");
 
@@ -168,7 +168,7 @@ createApp({
             let totalCount = 0
             this.bag.forEach(object => {
 
-                if(object.discount > 0){
+                if (object.discount > 0) {
 
                     let priceDiscount = object.price - ((object.price / 100) * object.discount);
 
@@ -204,7 +204,7 @@ createApp({
             }
 
         },
-        avaregeStars(rates){
+        avaregeStars(rates) {
 
             let five = 0;
 
@@ -216,23 +216,23 @@ createApp({
 
             let one = 0;
 
-            for(let rate of rates){
+            for (let rate of rates) {
 
-                switch(rate.stars){
+                switch (rate.stars) {
                     case "ONE":
-                        one ++;
+                        one++;
                         break;
                     case "TWO":
-                        two ++;
+                        two++;
                         break;
                     case "THREE":
-                        three ++;
+                        three++;
                         break;
                     case "FOUR":
-                        four ++;
+                        four++;
                         break;
                     case "FIVE":
-                        five ++;
+                        five++;
                         break;
                 }
 
@@ -242,7 +242,7 @@ createApp({
 
         },
 
-        counterStars(rates){
+        counterStars(rates) {
 
             let rounded = 0;
 
@@ -254,15 +254,15 @@ createApp({
 
             let html = "";
 
-            for(let i = 1; i <= rounded; i++){
+            for (let i = 1; i <= rounded; i++) {
 
                 hmtl += star;
 
             }
 
-            if((5 - rounded) != 0){
+            if ((5 - rounded) != 0) {
 
-                for(let i = rounded; i <= 5; i++){
+                for (let i = rounded; i <= 5; i++) {
 
                     rounded++
 
@@ -275,9 +275,9 @@ createApp({
             return html
 
         },
-        handleNavResponsive(){
+        handleNavResponsive() {
 
-            if(!this.navActive){
+            if (!this.navActive) {
 
                 this.navActive = true;
 
@@ -288,7 +288,7 @@ createApp({
             }
 
         },
-        checkoutHandler(){
+        checkoutHandler() {
 
             this.isLoading = true;
 
@@ -300,54 +300,55 @@ createApp({
                 { headers: { 'content-type': 'application/json' } })
                 .then(res => {
                     console.log(res.data)
-                    location.href = "/web/terminalpay.html?order="+res.data;
+                    location.href = "/web/terminalpay.html?order=" + res.data;
                 })
                 .catch(err => {
                     let item = this.bag.filter(item => item.id == err.response.data.split(":")[1].trim())
-                    this.handleMessageAlert("No stock for "+item[0].name, 3, true)
+                    this.handleMessageAlert("No stock for " + item[0].name, 3, true)
                     this.isLoading = false;
                 })
 
 
-    
 
-    },
-    getProducts() {
 
-        let products = [];
+        },
+        getProducts() {
 
-        for (let product of this.bag) {
+            let products = [];
 
-            products.push({
-                idProduct: product.id,
-                price: product.price,
-                quantity: product.quantity
-            })
+            for (let product of this.bag) {
 
-        }
+                products.push({
+                    idProduct: product.id,
+                    price: product.price,
+                    quantity: product.quantity
+                })
 
-        return products;
+            }
 
-    },
-    addRate(){
+            return products;
 
-        axios.post(`/api/products/${this.id}/rates`, `commentary=${this.rate.comment}&starsEnum=${this.rate.stars}`)
-                    .then(res => {
+        },
+        addRate() {
 
-                        this.handleMessageAlert("Product rated successfully", 3, false)
-                        
-                    })
+            axios.post(`/api/products/${this.id}/rates`, `commentary=${this.rate.comment}&starsEnum=${this.rate.stars}`)
+                .then(res => {
 
-    },
-    handleMessageAlert(message, seconds, isError) {
+                    this.handleMessageAlert("Product rated successfully", 3, false)
+                    this.loadData()
 
-        this.messageAlert = {
-            message,
-            isError
-        }
+                })
 
-        setTimeout(() => this.messageAlert.message = "", seconds * 1000)
-    },
+        },
+        handleMessageAlert(message, seconds, isError) {
+
+            this.messageAlert = {
+                message,
+                isError
+            }
+
+            setTimeout(() => this.messageAlert.message = "", seconds * 1000)
+        },
 
 
 

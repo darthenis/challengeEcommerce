@@ -17,8 +17,8 @@ createApp({
             completed: false,
             isLoading: false,
             count: 3,
-            isLogged : false
-            
+            isLogged: false
+
 
 
         }
@@ -62,16 +62,16 @@ createApp({
 
             for (product of this.bag) {
 
-                if(product.discount){
+                if (product.discount) {
 
-                    this.total += ( product.price - ((product.price / 100) * product.discount))  * product.quantity
+                    this.total += (product.price - ((product.price / 100) * product.discount)) * product.quantity
 
                 } else {
 
                     this.total += product.price * product.quantity
                 }
 
-        
+
 
             }
 
@@ -100,23 +100,23 @@ createApp({
 
             setTimeout(() => {
 
-                axios.post('https://numba-bank.up.railway.app/api/clients/transaction/buy', {
-                    number: this.cardNumber,
-                    cvv: this.cvv,
-                    transactionAmount: this.total,
-                    description: "Easy Buy - Debit"
-    
-                })
-                    .then(res => {
-                        this.finishPay()
-    
-                    }).catch(err => {
-    
-                        this.isLoading = false;
-                        this.handleMessage("Payment could not be processed.", 3, true)
-    
-                    })
-
+                /*   axios.post('https://numba-bank.up.railway.app/api/clients/transaction/buy', {
+                      number: this.cardNumber,
+                      cvv: this.cvv,
+                      transactionAmount: this.total,
+                      description: "Easy Buy - Debit"
+      
+                  })
+                      .then(res => {
+                          this.finishPay()
+      
+                      }).catch(err => {
+      
+                          this.isLoading = false;
+                          this.handleMessage("Payment could not be processed.", 3, true)
+      
+                      }) */
+                this.finishPay()
             }, 3000)
 
         },
@@ -136,9 +136,9 @@ createApp({
                 .catch(err => {
 
                     this.handleMessageAlert("Error processing purchase, please contact support")
-                    
+
                     console.error(err.data)
-                
+
                 })
 
         },

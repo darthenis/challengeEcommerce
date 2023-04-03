@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
   <title>PRODUCT | Easy Buy</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./assets/pruebaTerminal.css">
@@ -221,7 +223,7 @@
               </div>
               <i class="text-2xl fa-solid fa-cart-shopping cursor-pointer" data-te-ripple-init
                 data-te-ripple-color="light" @click="toggleCart"></i>
-  
+
             </div>
             <a href="./login.html">
               <button
@@ -340,8 +342,13 @@
 
                 </div>
                 <div class="flex flex-col mt-10">
-                  <div class="font-bold text-red-400" :style="{visibility: dataProduct.discount ? 'visible' : 'hidden'}" style="font-size: 14px">{{dataProduct.discount ? dataProduct.discount + '%off' : "asd"}} <span v-if="dataProduct.discount" style="text-decoration: line-through; font-size: 16px">{{formatDollar(dataProduct.price)}}</span></div>
-                  <h1 class="text-4xl font-bold">{{formatDollar(dataProduct.price - ((dataProduct.price / 100) * dataProduct.discount))}}</h1>
+                  <div class="font-bold text-red-400" :style="{visibility: dataProduct.discount ? 'visible' : 'hidden'}"
+                    style="font-size: 14px">{{dataProduct.discount ? dataProduct.discount + '%off' : "asd"}} <span
+                      v-if="dataProduct.discount"
+                      style="text-decoration: line-through; font-size: 16px">{{formatDollar(dataProduct.price)}}</span>
+                  </div>
+                  <h1 class="text-4xl font-bold">{{formatDollar(dataProduct.price - ((dataProduct.price / 100) *
+                    dataProduct.discount))}}</h1>
                   <div class="flex items-end" v-show="radioPayments">
                     <h1 class="text-1xl font-bold">{{formatDollar(dataProduct.price/radioPayments)}}</h1>
                   </div>
@@ -351,60 +358,73 @@
 
                   <ul class="space-y-2">
                     <li class="flex items-center text-left text-sm font-medium text-gray-600">
-                      <svg fill="blue" width="30px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m15.66 7-.91-2.68L8.62.85a1.28 1.28 0 0 0-1.24 0L1.25 4.32.34 7a1.24 1.24 0 0 0 .58 1.5l.33.18V11a1.25 1.25 0 0 0 .63 1l5.5 3.11a1.28 1.28 0 0 0 1.24 0l5.5-3.11a1.25 1.25 0 0 0 .63-1V8.68l.33-.18a1.24 1.24 0 0 0 .58-1.5zM10 9.87l-.48-1.28L14 6.13l.44 1.28zM8 1.94 13.46 5 8 8 2.54 5zM1.52 7.41 2 6.13l4.48 2.46L6 9.87zm1 1.95 4.25 2.32.62-1.84v3.87L2.5 11zM13.5 11l-4.88 2.71V9.84l.63 1.84 4.25-2.32z"/></svg>
-                        <p>FREE shipping to San Francisco</p> 
+                      <svg fill="blue" width="30px" height="20px" viewBox="0 0 16 16"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="m15.66 7-.91-2.68L8.62.85a1.28 1.28 0 0 0-1.24 0L1.25 4.32.34 7a1.24 1.24 0 0 0 .58 1.5l.33.18V11a1.25 1.25 0 0 0 .63 1l5.5 3.11a1.28 1.28 0 0 0 1.24 0l5.5-3.11a1.25 1.25 0 0 0 .63-1V8.68l.33-.18a1.24 1.24 0 0 0 .58-1.5zM10 9.87l-.48-1.28L14 6.13l.44 1.28zM8 1.94 13.46 5 8 8 2.54 5zM1.52 7.41 2 6.13l4.48 2.46L6 9.87zm1 1.95 4.25 2.32.62-1.84v3.87L2.5 11zM13.5 11l-4.88 2.71V9.84l.63 1.84 4.25-2.32z" />
+                      </svg>
+                      <p>FREE shipping to San Francisco</p>
                     </li>
 
                     <li class="flex items-center text-left text-sm font-medium text-gray-600">
-                      <svg width="30px" height="30px" viewBox="-20 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M75.731 148.984C51.601 148.984 39.518 135.493 36.518 119.052L49.911 115.521C52.842 124.896 61.52 132.687 75.209 132.687C106.6 132.687 106.802 83.5787 74.659 83.5787C67.786 83.5787 61.694 84.7297 57.427 87.8287L81.116 95.7027L73.994 110.279L35.072 90.2057L53.535 46.4287L68.171 53.5597L57.085 72.2367C62.122 69.5007 67.995 67.7277 74.817 67.7277C128.313 67.7287 127.977 148.984 75.731 148.984Z" fill="blue"/>
-                        </svg>
-                      <p>Free returns. You have 30 days from when you receive it.</p> 
+                      <svg width="30px" height="30px" viewBox="-20 0 190 190" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M75.731 148.984C51.601 148.984 39.518 135.493 36.518 119.052L49.911 115.521C52.842 124.896 61.52 132.687 75.209 132.687C106.6 132.687 106.802 83.5787 74.659 83.5787C67.786 83.5787 61.694 84.7297 57.427 87.8287L81.116 95.7027L73.994 110.279L35.072 90.2057L53.535 46.4287L68.171 53.5597L57.085 72.2367C62.122 69.5007 67.995 67.7277 74.817 67.7277C128.313 67.7287 127.977 148.984 75.731 148.984Z"
+                          fill="blue" />
+                      </svg>
+                      <p>Free returns. You have 30 days from when you receive it.</p>
                     </li>
-  
+
                     <li class="flex items-center text-left text-sm font-medium text-gray-600">
-                      <svg fill="blue" width="30px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  
-                        <title/>
-                        
+                      <svg fill="blue" width="30px" height="20px" viewBox="0 0 32 32"
+                        xmlns="http://www.w3.org/2000/svg">
+
+                        <title />
+
                         <g data-name="Layer 12" id="Layer_12">
-                        
-                        <path d="M25.41,7.09l-9-4a1,1,0,0,0-.82,0l-9,4A1,1,0,0,0,6,8v8.56A8.69,8.69,0,0,0,8.91,23l6.43,5.71a1,1,0,0,0,1.32,0L23.09,23A8.69,8.69,0,0,0,26,16.56V8A1,1,0,0,0,25.41,7.09ZM24,16.56a6.67,6.67,0,0,1-2.24,5L16,26.66l-5.76-5.12a6.67,6.67,0,0,1-2.24-5V8.65l8-3.56,8,3.56Z"/>
-                        
-                        <path d="M13,14.29a1,1,0,0,0-1.42,1.42l2.5,2.5a1,1,0,0,0,1.42,0l5-5A1,1,0,0,0,19,11.79l-4.29,4.3Z"/>
-                        
+
+                          <path
+                            d="M25.41,7.09l-9-4a1,1,0,0,0-.82,0l-9,4A1,1,0,0,0,6,8v8.56A8.69,8.69,0,0,0,8.91,23l6.43,5.71a1,1,0,0,0,1.32,0L23.09,23A8.69,8.69,0,0,0,26,16.56V8A1,1,0,0,0,25.41,7.09ZM24,16.56a6.67,6.67,0,0,1-2.24,5L16,26.66l-5.76-5.12a6.67,6.67,0,0,1-2.24-5V8.65l8-3.56,8,3.56Z" />
+
+                          <path
+                            d="M13,14.29a1,1,0,0,0-1.42,1.42l2.5,2.5a1,1,0,0,0,1.42,0l5-5A1,1,0,0,0,19,11.79l-4.29,4.3Z" />
+
                         </g>
-                        
-                        </svg>
-                      <p>12 months factory warranty.</p> 
+
+                      </svg>
+                      <p>12 months factory warranty.</p>
                     </li>
-  
+
                     <li class="flex items-center text-left text-sm font-medium text-gray-600">
-                      <svg width="30px" height="15px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    
+                      <svg width="30px" height="15px" viewBox="0 0 20 20" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
                         <title>clock [#1315]</title>
                         <desc>Created with Sketch.</desc>
                         <defs>
-                    
-                    </defs>
+
+                        </defs>
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -2319.000000)" fill="blue">
-                                <g id="icons" transform="translate(56.000000, 160.000000)">
-                                    <path d="M302,2169 C302,2164.589 298.411,2161 294,2161 C289.589,2161 286,2164.589 286,2169 C286,2173.411 289.589,2177 294,2177 C298.411,2177 302,2173.411 302,2169 M304,2169 C304,2174.523 299.523,2179 294,2179 C288.477,2179 284,2174.523 284,2169 C284,2163.477 288.477,2159 294,2159 C299.523,2159 304,2163.477 304,2169 M300,2170 C300,2170.552 299.552,2171 299,2171 L295,2171 C293.895,2171 293,2170.105 293,2169 L293,2164 C293,2163.448 293.448,2163 294,2163 C294.552,2163 295,2163.448 295,2164 L295,2168 C295,2168.55 295.45,2169 296,2169 L299,2169 C299.552,2169 300,2169.448 300,2170" id="clock-[#1315]">
-                    
-                    </path>
-                                </g>
+                          <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -2319.000000)" fill="blue">
+                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                              <path
+                                d="M302,2169 C302,2164.589 298.411,2161 294,2161 C289.589,2161 286,2164.589 286,2169 C286,2173.411 289.589,2177 294,2177 C298.411,2177 302,2173.411 302,2169 M304,2169 C304,2174.523 299.523,2179 294,2179 C288.477,2179 284,2174.523 284,2169 C284,2163.477 288.477,2159 294,2159 C299.523,2159 304,2163.477 304,2169 M300,2170 C300,2170.552 299.552,2171 299,2171 L295,2171 C293.895,2171 293,2170.105 293,2169 L293,2164 C293,2163.448 293.448,2163 294,2163 C294.552,2163 295,2163.448 295,2164 L295,2168 C295,2168.55 295.45,2169 296,2169 L299,2169 C299.552,2169 300,2169.448 300,2170"
+                                id="clock-[#1315]">
+
+                              </path>
                             </g>
+                          </g>
                         </g>
-                    </svg>
-                        <p>Arrives tomorrow if you buy before 7:00 pm</p> 
+                      </svg>
+                      <p>Arrives tomorrow if you buy before 7:00 pm</p>
                     </li>
                   </ul>
                 </div>
-                
+
                 <div
                   class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
- 
+
                   <button type="button" @click="saveBag(dataProduct)"
                     class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-blue-900 px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-blue-800">
                     <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
@@ -604,7 +624,9 @@
 
                 <ul class="space-y-2 text-sm">
                   <li>
-                    <button class="text-blue-900 transition hover:opacity-75" data-modal-target="authentication-modal-FAQ" data-modal-toggle="authentication-modal-FAQ" type="button">
+                    <button class="text-blue-900 transition hover:opacity-75"
+                      data-modal-target="authentication-modal-FAQ" data-modal-toggle="authentication-modal-FAQ"
+                      type="button">
                       FAQ
                     </button>
                   </li>
@@ -637,143 +659,158 @@
 
     <!-- MODAL FAQ -->
 
-      <!-- Main modal -->
-<div id="authentication-modal-FAQ" tabindex="-1" aria-hidden="true" class=" fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden md:inset-0 h-[calc(100%-1rem)] md:h-full ">
-  <div class="relative w-full min-h-[100%] mt-40 max-w-[70rem] md:h-auto">
-      <!-- Modal content -->
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-          <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal-Created-Ticket">
-              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-              <span class="sr-only">Close modal</span>
+    <!-- Main modal -->
+    <div id="authentication-modal-FAQ" tabindex="-1" aria-hidden="true"
+      class=" fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden md:inset-0 h-[calc(100%-1rem)] md:h-full ">
+      <div class="relative w-full min-h-[100%] mt-40 max-w-[70rem] md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button type="button"
+            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+            data-modal-hide="authentication-modal-Created-Ticket">
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
           </button>
           <div class="px-6 py-6 g:px-8l">
-              <main>
-                
-    
-                <div class="h-screen  grid place-items-center overflow-y-scroll relative mt-10">
-                  <div class="flex justify-center items-center p-2 top-0 w-[100%] gap-1 bg-gradient-to-r from-cyan-700 to-blue-400 mt-4 ">
-                    <img src="./assets/img/preg.png" alt="corazon" style="width:3rem; background-color: white; border-radius: 50%;">
-                    <h2 class="text-xl font-bold text-white pl-1" style="text-shadow: 1px 1px 5px black;">Frecuently Asked Questions</h2>
+            <main>
+
+
+              <div class="h-screen  grid place-items-center overflow-y-scroll relative mt-10">
+                <div
+                  class="flex justify-center items-center p-2 top-0 w-[100%] gap-1 bg-gradient-to-r from-cyan-700 to-blue-400 mt-4 ">
+                  <img src="./assets/img/preg.png" alt="corazon"
+                    style="width:3rem; background-color: white; border-radius: 50%;">
+                  <h2 class="text-xl font-bold text-white pl-1" style="text-shadow: 1px 1px 5px black;">Frecuently Asked
+                    Questions</h2>
                 </div>
-                    <div class="w-11/12 md:w-9/12 lg:w-6/12 mx-auto rounded border">
-                        <div class="bg-white p-10 shadow-sm">
-                            <h3 class="text-lg font-medium text-gray-800">Frecuently asked questions</h3>
-                            <p class="text-sm font-light text-gray-600 my-3">
-                                Here we have a section to solve issues with purchases
-                            </p>
-        
-                            <div class="h-1 w-full mx-auto border-b my-5"></div>
-        
-                            <!-- What is term -->
-                            <div class="transition hover:bg-indigo-50">
-                                <!-- header -->
-                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
-                                    <i class="fas fa-plus"></i>
-                                    <h3>How to return a purchase?</h3>
-                                </div>
-                                <!-- Content -->
-                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        Contact a representative through the contact form or through our telephone lines. tel:341-2235-3456
-                                    </p>
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        Contactesé con un representante    mediante el formulario de contactos o a traves de nuestras lineas telefonicas. tel:341-2235-3456                            </p>
-                                </div>
-                            </div>
-        
-                            <!-- When to use Accordion Components -->
-                            <div class="transition hover:bg-indigo-50">
-                                <!-- header -->
-                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
-                                    <i class="fas fa-plus"></i>
-                                    <h3>Billing and taxes on EASY BUY</h3>
-                                </div>
-                                <!-- Content -->
-                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        Surcharges are added when the buyer has not made the payment by the due date.
-                                    </p>
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        Los recargos se agregan cuando al pasar la fecha limite el comprador no efectuó el pago.
-                                    </p>
-                                    
-                                </div>
-                            </div>
-        
-                            <!-- Accordion Wrapper -->
-                            <div class="transition hover:bg-indigo-50">
-                                <!-- header -->
-                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
-                                    <i class="fas fa-plus"></i>
-                                    <h3>Why some products do not have shipping?
-                                    </h3>
-                                </div>
-                                <!-- Content -->
-                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        Some products do not have shipping since a minimum amount is required in the purchase.
-                                        
-                                    </p>
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        
-                                        Algunos productos no tienen envio ya que se requiere un monto minimo en la compra.
-                                    </p>
-                                    
-                                </div>
-                            </div>
-        
-                            <!-- Accordion Wrapper -->
-                            <div class="transition hover:bg-indigo-50">
-                                <!-- header -->
-                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
-                                    <i class="fas fa-plus"></i>
-                                    <h3>About the offers on EASY BUY</h3>
-                                </div>
-                                <!-- Content -->
-                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        Offers on our site have a maximum of 7 days from their publication.
-        
-                                    </p>
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        Las ofertas en nuestro sitio tienen un maximo de 7 dias desde su publicacion.
-        
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <!-- Accordion Wrapper -->
-                            <div class="transition hover:bg-indigo-50">
-                                <!-- header -->
-                                <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
-                                    <i class="fas fa-plus"></i>
-                                    <h3>Minimun amount to free shiping</h3>
-                                </div>
-                                <!-- Content -->
-                                <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        The minimum amount to get free shipings is over U$D 100 dollars or product weights greater than 50kg
-                                    </p>
-                                    <p class="leading-6 font-light pl-9 text-justify">
-                                        El monto mínimo para obtener envíos gratis es superior a U$D 100 dólares o pesos de productos superiores a 50 kg.
-        
-                                    </p>
-                                </div>
-                            </div>
-        
-                            
-                        </div>
+                <div class="w-11/12 md:w-9/12 lg:w-6/12 mx-auto rounded border">
+                  <div class="bg-white p-10 shadow-sm">
+                    <h3 class="text-lg font-medium text-gray-800">Frecuently asked questions</h3>
+                    <p class="text-sm font-light text-gray-600 my-3">
+                      Here we have a section to solve issues with purchases
+                    </p>
+
+                    <div class="h-1 w-full mx-auto border-b my-5"></div>
+
+                    <!-- What is term -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>How to return a purchase?</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Contact a representative through the contact form or through our telephone lines.
+                          tel:341-2235-3456
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Contactesé con un representante mediante el formulario de contactos o a traves de nuestras
+                          lineas telefonicas. tel:341-2235-3456 </p>
+                      </div>
                     </div>
-                    
+
+                    <!-- When to use Accordion Components -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>Billing and taxes on EASY BUY</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Surcharges are added when the buyer has not made the payment by the due date.
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Los recargos se agregan cuando al pasar la fecha limite el comprador no efectuó el pago.
+                        </p>
+
+                      </div>
+                    </div>
+
+                    <!-- Accordion Wrapper -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>Why some products do not have shipping?
+                        </h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Some products do not have shipping since a minimum amount is required in the purchase.
+
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+
+                          Algunos productos no tienen envio ya que se requiere un monto minimo en la compra.
+                        </p>
+
+                      </div>
+                    </div>
+
+                    <!-- Accordion Wrapper -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>About the offers on EASY BUY</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Offers on our site have a maximum of 7 days from their publication.
+
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          Las ofertas en nuestro sitio tienen un maximo de 7 dias desde su publicacion.
+
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Accordion Wrapper -->
+                    <div class="transition hover:bg-indigo-50">
+                      <!-- header -->
+                      <div class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16">
+                        <i class="fas fa-plus"></i>
+                        <h3>Minimun amount to free shiping</h3>
+                      </div>
+                      <!-- Content -->
+                      <div class="accordion-content px-5 pt-0 overflow-hidden max-h-0">
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          The minimum amount to get free shipings is over U$D 100 dollars or product weights greater
+                          than 50kg
+                        </p>
+                        <p class="leading-6 font-light pl-9 text-justify">
+                          El monto mínimo para obtener envíos gratis es superior a U$D 100 dólares o pesos de productos
+                          superiores a 50 kg.
+
+                        </p>
+                      </div>
+                    </div>
+
+
+                  </div>
                 </div>
-    
+
+              </div>
+
             </main>
           </div>
+        </div>
       </div>
-  </div>
-  </div> 
+    </div>
 
-      <!-- MODAL FAQ -->
+    <!-- MODAL FAQ -->
 
     <!-- CART MODAL -->
     <div v-if="active" class="fixed top-0 left-0 w-screen h-screen"
@@ -824,7 +861,8 @@
                 <a class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
                   @click="removeItem(product)">Remove</a>
               </div>
-              <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price / 100) * product.discount))}}
+              <p class="text-base font-black leading-none text-gray-800">{{formatDollar(product.price - ((product.price
+                / 100) * product.discount))}}
               </p>
             </div>
           </div>
@@ -847,23 +885,27 @@
                 <p class="text-2xl font-bold leading-normal text-right text-gray-800">
                   {{formatDollar(totalCart)}}</p>
               </div>
-              <button
-            @click="checkoutHandler"
-            :disabled="!isLogged || !bag.length || isLoading"
-            class="text-xl flex items-center justify-center hover:bg-red-500 disabled:bg-red-300 rounded-md leading-none w-full py-5 bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
-            <div role="status" v-if="isLoading">
-              <svg aria-hidden="true" class="w-8 h-8 mr-2 text-blue-600 animate-spin fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-              </svg>
-              <span class="sr-only">Loading...</span>
-          </div>
-            <template v-else>Checkout</template>  
-          </button>
-            <div v-if="!isLogged">
-              <p class="text-x1">To make a purchase, either sign in to your account or create one. <a href="/web/login.html" class="underline">Sign in</a></p>
-              
-            </div>
+              <button @click="checkoutHandler" :disabled="!isLogged || !bag.length || isLoading"
+                class="text-xl flex items-center justify-center hover:bg-red-500 disabled:bg-red-300 rounded-md leading-none w-full py-5 bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
+                <div role="status" v-if="isLoading">
+                  <svg aria-hidden="true" class="w-8 h-8 mr-2 text-blue-600 animate-spin fill-white"
+                    viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="currentColor" />
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentFill" />
+                  </svg>
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <template v-else>Checkout</template>
+              </button>
+              <div v-if="!isLogged">
+                <p class="text-x1">To make a purchase, either sign in to your account or create one. <a
+                    href="/web/login.html" class="underline">Sign in</a></p>
+
+              </div>
             </div>
           </div>
         </div>
@@ -871,14 +913,14 @@
       </div>
     </div>
     <!--     CART MODAL -->
-    <div    v-if="messageAlert.message" 
-    :class="{'bg-green-500' : !messageAlert.isError, 'bg-red-500' : messageAlert.isError, 'text-white': messageAlert.isError}"
-    class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-2 p-4 rounded-lg animationAlertMessage">
-    <p>{{messageAlert.message}}</p>   
-</div>
+    <div v-if="messageAlert.message"
+      :class="{'bg-green-500' : !messageAlert.isError, 'bg-red-500' : messageAlert.isError, 'text-white': messageAlert.isError}"
+      class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-2 p-4 rounded-lg animationAlertMessage">
+      <p>{{messageAlert.message}}</p>
+    </div>
   </div>
-  
-  <script src="https://cdn.tailwindcss.com/"></script>
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
   <script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4ffb8edd00.js" crossorigin="anonymous"></script>
@@ -890,32 +932,32 @@
   <script src="./js/saleProduct.js"></script>
   <style>
     .accordion-content {
-        transition: max-height 0.3s ease-out, padding 0.3s ease;
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
     }
-</style>
+  </style>
 
-<script>
+  <script>
     const accordionHeader = document.querySelectorAll(".accordion-header");
     accordionHeader.forEach((header) => {
-        header.addEventListener("click", function () {
-            const accordionContent = header.parentElement.querySelector(".accordion-content");
-            let accordionMaxHeight = accordionContent.style.maxHeight;
+      header.addEventListener("click", function () {
+        const accordionContent = header.parentElement.querySelector(".accordion-content");
+        let accordionMaxHeight = accordionContent.style.maxHeight;
 
-            // Condition handling
-            if (accordionMaxHeight == "0px" || accordionMaxHeight.length == 0) {
-                accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
-                header.querySelector(".fas").classList.remove("fa-plus");
-                header.querySelector(".fas").classList.add("fa-minus");
-                header.parentElement.classList.add("bg-indigo-50");
-            } else {
-                accordionContent.style.maxHeight = `0px`;
-                header.querySelector(".fas").classList.add("fa-plus");
-                header.querySelector(".fas").classList.remove("fa-minus");
-                header.parentElement.classList.remove("bg-indigo-50");
-            }
-        });
+        // Condition handling
+        if (accordionMaxHeight == "0px" || accordionMaxHeight.length == 0) {
+          accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
+          header.querySelector(".fas").classList.remove("fa-plus");
+          header.querySelector(".fas").classList.add("fa-minus");
+          header.parentElement.classList.add("bg-indigo-50");
+        } else {
+          accordionContent.style.maxHeight = `0px`;
+          header.querySelector(".fas").classList.add("fa-plus");
+          header.querySelector(".fas").classList.remove("fa-minus");
+          header.parentElement.classList.remove("bg-indigo-50");
+        }
+      });
     });
-</script>
+  </script>
 </body>
 
 </html>
